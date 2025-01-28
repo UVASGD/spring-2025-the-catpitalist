@@ -1,0 +1,47 @@
+[gd_scene load_steps=7 format=3 uid="uid://rwurml76tnqs"]
+
+[ext_resource type="Script" path="res://npc.gd" id="1_y11g8"]
+[ext_resource type="Texture2D" uid="uid://lsoaa2v0vkur" path="res://assets/sprites/ims06c64idb91-removebg-preview.png" id="2_u6axa"]
+[ext_resource type="PackedScene" uid="uid://wfajuc7nk6w6" path="res://assets/scenes/templates/conversation.tscn" id="3_57hca"]
+[ext_resource type="Script" path="res://message.gd" id="4_epsja"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0amcf"]
+radius = 32.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dpvfd"]
+
+[node name="NPC" type="Node2D"]
+script = ExtResource("1_y11g8")
+is_world_object = true
+npc_name = "Sign"
+voice_pitch = -1.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.105, 0.105)
+texture = ExtResource("2_u6axa")
+region_rect = Rect2(16, 224, 32, 56)
+
+[node name="hitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox"]
+shape = SubResource("CircleShape2D_0amcf")
+
+[node name="Convos" type="Node" parent="."]
+
+[node name="Conversation" parent="Convos" instance=ExtResource("3_57hca")]
+debugname = "askforwater"
+
+[node name="Message" parent="Convos/Conversation/Messages" index="0"]
+text = "hello"
+
+[node name="Message2" type="Node" parent="Convos/Conversation/Messages" index="1"]
+script = ExtResource("4_epsja")
+text = "I am a sign"
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, 16)
+shape = SubResource("RectangleShape2D_dpvfd")
+
+[editable path="Convos/Conversation"]

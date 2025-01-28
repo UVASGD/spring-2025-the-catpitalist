@@ -1,0 +1,14 @@
+[remap]
+
+importer="image"
+type="Image"
+uid="uid://b408b37k2qc4l"
+path="res://.godot/imported/watercan.png-45a0c2c88778867fbc4da85461771e40.image"
+
+[deps]
+
+source_file="res://assets/sprites/items/watercan.png"
+dest_files=["res://.godot/imported/watercan.png-45a0c2c88778867fbc4da85461771e40.image"]
+
+[params]
+

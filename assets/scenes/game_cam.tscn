@@ -1,0 +1,109 @@
+[gd_scene load_steps=9 format=3 uid="uid://1q5o1mr5w3yt"]
+
+[ext_resource type="Script" path="res://assets/scripts/game_cam.gd" id="1_oq746"]
+[ext_resource type="PackedScene" uid="uid://ck5jhxl01b266" path="res://assets/scenes/hotbar.tscn" id="2_8311a"]
+[ext_resource type="Script" path="res://assets/scenes/cam_controls.gd" id="3_4pcax"]
+[ext_resource type="PackedScene" uid="uid://c1hucaw7oqrll" path="res://assets/scenes/dialogue_holder.tscn" id="4_nar68"]
+[ext_resource type="Shader" path="res://assets/scenes/rain.gdshader" id="5_7h2bh"]
+[ext_resource type="PackedScene" uid="uid://bb4nw4kkvht2k" path="res://flasher.tscn" id="6_gldgv"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kllsx"]
+shader = ExtResource("5_7h2bh")
+shader_parameter/count = 150
+shader_parameter/slant = -0.01
+shader_parameter/speed = 50.0
+shader_parameter/blur = 0.002
+shader_parameter/colour = Color(1, 1, 1, 1)
+shader_parameter/size = Vector2(0.005, 0.2)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0uoj6"]
+shader = ExtResource("5_7h2bh")
+shader_parameter/count = 80
+shader_parameter/slant = 0.055
+shader_parameter/speed = 7.955
+shader_parameter/blur = 0.002
+shader_parameter/colour = Color(1, 1, 1, 0.415686)
+shader_parameter/size = Vector2(0.03, 0.03)
+
+[node name="GameCam" type="Camera2D"]
+script = ExtResource("1_oq746")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -320.0
+offset_top = -181.0
+offset_right = 320.0
+offset_bottom = -148.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/VBoxContainer"]
+layout_mode = 2
+
+[node name="day" type="Label" parent="Control/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(320, 36.275)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+text = "Day: "
+
+[node name="time" type="Label" parent="Control/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(154.695, 36.275)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+text = "Time: "
+horizontal_alignment = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Control/VBoxContainer"]
+layout_mode = 2
+
+[node name="money" type="Label" parent="Control/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(320, 36.275)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+text = "Money:"
+
+[node name="Season" type="Label" parent="Control/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(154.695, 36.275)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+horizontal_alignment = 2
+
+[node name="Hotbar" parent="." instance=ExtResource("2_8311a")]
+
+[node name="controls" type="Node" parent="."]
+script = ExtResource("3_4pcax")
+
+[node name="DialogueHolder" parent="." instance=ExtResource("4_nar68")]
+TEXT_SPEED = 2
+
+[node name="rain" type="ColorRect" parent="."]
+modulate = Color(1, 1, 1, 0)
+self_modulate = Color(1, 1, 1, 0)
+material = SubResource("ShaderMaterial_kllsx")
+offset_left = -328.0
+offset_top = -320.0
+offset_right = -288.0
+offset_bottom = -280.0
+scale = Vector2(16.86, 16.86)
+mouse_filter = 2
+
+[node name="snow" type="ColorRect" parent="."]
+modulate = Color(1, 1, 1, 0)
+self_modulate = Color(1, 1, 1, 0)
+material = SubResource("ShaderMaterial_0uoj6")
+offset_left = -328.0
+offset_top = -320.0
+offset_right = -288.0
+offset_bottom = -280.0
+scale = Vector2(16.86, 16.86)
+mouse_filter = 2
+
+[node name="flasher" parent="." instance=ExtResource("6_gldgv")]

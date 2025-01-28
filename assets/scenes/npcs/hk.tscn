@@ -1,0 +1,162 @@
+[gd_scene load_steps=10 format=3 uid="uid://cp6t18ha8tlxk"]
+
+[ext_resource type="Script" path="res://npc.gd" id="1_6svo1"]
+[ext_resource type="PackedScene" uid="uid://iwiyop1ts1ir" path="res://assets/3dmodels/HollowKnight.glb" id="2_y1n10"]
+[ext_resource type="PackedScene" uid="uid://wfajuc7nk6w6" path="res://assets/scenes/templates/conversation.tscn" id="3_ksenr"]
+[ext_resource type="Script" path="res://message.gd" id="4_plnkc"]
+
+[sub_resource type="Animation" id="Animation_xhnc7"]
+resource_name = "new_animation"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Cube:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.966667, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 1.53185, 0), Vector3(0, 1.73357, 0), Vector3(0, 1.53185, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_3bnw2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Cube:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 1.53185, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_y6aj3"]
+_data = {
+"RESET": SubResource("Animation_3bnw2"),
+"new_animation": SubResource("Animation_xhnc7")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0amcf"]
+radius = 32.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dpvfd"]
+
+[node name="NPC" type="Node2D"]
+script = ExtResource("1_6svo1")
+npc_name = "Blurbo"
+exhaust_dialogue_text = "im out of stuff to say, so go away. I dont even like cats. I used you for my own personal gain."
+voice_pitch = 0.5
+
+[node name="HollowKnight" parent="." instance=ExtResource("2_y1n10")]
+
+[node name="Skeleton3D" parent="HollowKnight/metarig" index="0"]
+bones/0/rotation = Quaternion(0.203049, 2.33452e-07, 4.84108e-08, 0.979168)
+bones/1/rotation = Quaternion(-0.18885, -1.16526e-07, -6.71843e-08, 0.982006)
+bones/2/rotation = Quaternion(-0.181162, -3.73188e-10, -4.37176e-08, 0.983453)
+bones/2/scale = Vector3(1, 1, 1)
+bones/3/rotation = Quaternion(0.153935, -1.17788e-07, 1.83505e-08, 0.988081)
+bones/4/rotation = Quaternion(0.309849, 1.13342e-07, 3.69369e-08, 0.950786)
+bones/5/rotation = Quaternion(-0.149992, 3.88533e-14, -3.57609e-08, 0.988687)
+bones/6/rotation = Quaternion(-0.15076, -1.17847e-07, -1.79719e-08, 0.98857)
+bones/6/scale = Vector3(1, 1, 1)
+bones/7/rotation = Quaternion(0.64649, 0.366238, 0.450618, -0.494837)
+bones/7/scale = Vector3(1, 1, 1)
+bones/8/rotation = Quaternion(0.0571746, 0.759642, -0.141129, 0.632264)
+bones/8/scale = Vector3(1, 1, 1)
+bones/9/rotation = Quaternion(0.0522077, -0.0266068, -0.035814, 0.997639)
+bones/10/rotation = Quaternion(0.0715161, 0.000338281, -0.023643, 0.997159)
+bones/10/scale = Vector3(1, 1, 1)
+bones/11/rotation = Quaternion(0.64649, -0.366238, -0.450618, -0.494837)
+bones/11/scale = Vector3(1, 1, 1)
+bones/12/rotation = Quaternion(0.0571746, -0.759642, 0.141129, 0.632264)
+bones/12/scale = Vector3(1, 1, 1)
+bones/13/rotation = Quaternion(0.0522077, 0.0266068, 0.035814, 0.997639)
+bones/14/rotation = Quaternion(0.0715161, -0.000338281, 0.023643, 0.997159)
+bones/14/scale = Vector3(1, 1, 1)
+bones/15/rotation = Quaternion(5.40818e-08, 0.697757, 0.716335, 5.26792e-08)
+bones/15/scale = Vector3(1, 1, 1)
+bones/16/rotation = Quaternion(5.40818e-08, 0.697757, 0.716335, 5.26792e-08)
+bones/16/scale = Vector3(1, 1, 1)
+bones/17/rotation = Quaternion(0.421752, 0.704852, 0.327678, -0.466836)
+bones/17/scale = Vector3(1, 1, 1)
+bones/18/scale = Vector3(1, 1, 1)
+bones/19/rotation = Quaternion(0.974405, 0.0250192, -0.00573391, 0.22333)
+bones/19/scale = Vector3(1, 1, 1)
+bones/20/scale = Vector3(1, 1, 1)
+bones/21/rotation = Quaternion(-0.543174, 0.0306321, -0.0471661, 0.837734)
+bones/21/scale = Vector3(1, 1, 1)
+bones/23/rotation = Quaternion(0.688641, 0.68864, -0.160543, 0.160546)
+bones/23/scale = Vector3(1, 1, 1)
+bones/24/rotation = Quaternion(0.974405, -0.0250193, 0.00573435, 0.22333)
+bones/24/scale = Vector3(1, 1, 0.999999)
+bones/25/rotation = Quaternion(0.0396888, 0.0012562, -0.081781, 0.995859)
+bones/25/scale = Vector3(1, 1, 1)
+bones/26/rotation = Quaternion(-0.543174, -0.0306321, 0.0471661, 0.837734)
+bones/26/scale = Vector3(1, 1, 1)
+bones/27/rotation = Quaternion(-4.75652e-07, 0.973884, -0.227045, -1.93106e-06)
+bones/28/rotation = Quaternion(0.688641, -0.68864, 0.160543, 0.160546)
+bones/28/scale = Vector3(1, 1, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="HollowKnight"]
+libraries = {
+"": SubResource("AnimationLibrary_y6aj3")
+}
+autoplay = "new_animation"
+
+[node name="hitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox"]
+shape = SubResource("CircleShape2D_0amcf")
+
+[node name="Convos" type="Node" parent="."]
+
+[node name="Conversation" parent="Convos" instance=ExtResource("3_ksenr")]
+debugname = "askforwater"
+requests_item = true
+request_item_id = 1
+
+[node name="Message" parent="Convos/Conversation/Messages" index="0"]
+text = "um hi"
+
+[node name="Message2" type="Node" parent="Convos/Conversation/Messages" index="1"]
+script = ExtResource("4_plnkc")
+text = "gimme that watercan boy"
+
+[node name="Conversation2" parent="Convos" instance=ExtResource("3_ksenr")]
+debugname = "thanks"
+
+[node name="Message" parent="Convos/Conversation2/Messages" index="0"]
+text = "thanks"
+
+[node name="Conversation3" parent="Convos" instance=ExtResource("3_ksenr")]
+debugname = "asks for signal"
+requests_signal = true
+request_signal_name = "convotest"
+
+[node name="Message" parent="Convos/Conversation3/Messages" index="0"]
+text = "now give me a signal"
+
+[node name="Conversation4" parent="Convos" instance=ExtResource("3_ksenr")]
+debugname = "got signal"
+
+[node name="Message" parent="Convos/Conversation4/Messages" index="0"]
+text = "signal test worked"
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, 16)
+shape = SubResource("RectangleShape2D_dpvfd")
+
+[editable path="HollowKnight"]
+[editable path="Convos/Conversation"]
+[editable path="Convos/Conversation2"]
+[editable path="Convos/Conversation3"]
+[editable path="Convos/Conversation4"]

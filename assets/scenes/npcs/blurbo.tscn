@@ -1,0 +1,72 @@
+[gd_scene load_steps=7 format=3 uid="uid://tpn3u80c1bsx"]
+
+[ext_resource type="Script" path="res://npc.gd" id="1_t5f2b"]
+[ext_resource type="PackedScene" uid="uid://wfajuc7nk6w6" path="res://assets/scenes/templates/conversation.tscn" id="2_qeda2"]
+[ext_resource type="Texture2D" uid="uid://brmvgg4xkuwa5" path="res://assets/sprites/goblin-sheet.png" id="2_u8yfk"]
+[ext_resource type="Script" path="res://message.gd" id="3_f6jaq"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0amcf"]
+radius = 32.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dpvfd"]
+
+[node name="NPC" type="Node2D"]
+script = ExtResource("1_t5f2b")
+npc_name = "Blurbo"
+exhaust_dialogue_text = "im out of stuff to say, so go away. I dont even like cats. I used you for my own personal gain."
+voice_pitch = 0.5
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_u8yfk")
+region_enabled = true
+region_rect = Rect2(16, 224, 32, 56)
+
+[node name="hitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox"]
+shape = SubResource("CircleShape2D_0amcf")
+
+[node name="Convos" type="Node" parent="."]
+
+[node name="Conversation" parent="Convos" instance=ExtResource("2_qeda2")]
+debugname = "askforwater"
+requests_item = true
+request_item_id = 1
+
+[node name="Message" parent="Convos/Conversation/Messages" index="0"]
+text = "um hi"
+
+[node name="Message2" type="Node" parent="Convos/Conversation/Messages" index="1"]
+script = ExtResource("3_f6jaq")
+text = "gimme that watercan boy"
+
+[node name="Conversation2" parent="Convos" instance=ExtResource("2_qeda2")]
+debugname = "thanks"
+
+[node name="Message" parent="Convos/Conversation2/Messages" index="0"]
+text = "thanks"
+
+[node name="Conversation3" parent="Convos" instance=ExtResource("2_qeda2")]
+debugname = "asks for signal"
+requests_signal = true
+request_signal_name = "convotest"
+
+[node name="Message" parent="Convos/Conversation3/Messages" index="0"]
+text = "now give me a signal"
+
+[node name="Conversation4" parent="Convos" instance=ExtResource("2_qeda2")]
+debugname = "got signal"
+
+[node name="Message" parent="Convos/Conversation4/Messages" index="0"]
+text = "signal test worked"
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, 16)
+shape = SubResource("RectangleShape2D_dpvfd")
+
+[editable path="Convos/Conversation"]
+[editable path="Convos/Conversation2"]
+[editable path="Convos/Conversation3"]
+[editable path="Convos/Conversation4"]

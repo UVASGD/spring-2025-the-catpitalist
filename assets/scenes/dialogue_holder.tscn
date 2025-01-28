@@ -1,0 +1,51 @@
+[gd_scene load_steps=5 format=3 uid="uid://c1hucaw7oqrll"]
+
+[ext_resource type="Script" path="res://assets/scenes/dialogueholder.gd" id="1_n8eg0"]
+[ext_resource type="Shader" path="res://assets/scenes/dialogue_holder.gdshader" id="3_y3wfs"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ru74g"]
+outline_size = 2
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_evgku"]
+shader = ExtResource("3_y3wfs")
+
+[node name="DialogueHolder" type="Node2D"]
+script = ExtResource("1_n8eg0")
+
+[node name="textbox" type="Label" parent="."]
+offset_left = -312.0
+offset_top = 64.0
+offset_right = 312.0
+offset_bottom = 176.0
+label_settings = SubResource("LabelSettings_ru74g")
+autowrap_mode = 3
+max_lines_visible = 4
+
+[node name="ColorRect" type="ColorRect" parent="textbox"]
+z_index = -1
+material = SubResource("ShaderMaterial_evgku")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.372549)
+
+[node name="speakerlabel" type="Label" parent="."]
+offset_left = -312.0
+offset_top = 40.0
+offset_right = -212.0
+offset_bottom = 64.0
+label_settings = SubResource("LabelSettings_ru74g")
+
+[node name="ColorRect" type="ColorRect" parent="speakerlabel"]
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.372549)

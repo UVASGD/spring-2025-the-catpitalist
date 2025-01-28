@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://b2133ovj0k7io"]
+
+[ext_resource type="PackedScene" uid="uid://1q5o1mr5w3yt" path="res://assets/scenes/game_cam.tscn" id="1_3xahy"]
+[ext_resource type="PackedScene" uid="uid://cmcemw1qn4i4q" path="res://assets/scenes/player.tscn" id="1_xwlel"]
+[ext_resource type="PackedScene" uid="uid://dkrtyhl727f0y" path="res://assets/scenes/inventory_screen.tscn" id="2_ose2p"]
+[ext_resource type="PackedScene" uid="uid://dloxiff7qqnfa" path="res://assets/scenes/templates/flower.tscn" id="2_xhv8c"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="GameCam" parent="." instance=ExtResource("1_3xahy")]
+
+[node name="InventoryScreen" parent="GameCam" instance=ExtResource("2_ose2p")]
+
+[node name="Player" parent="." instance=ExtResource("1_xwlel")]
+visible = false
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Player"]
+remote_path = NodePath("../../GameCam")
+
+[node name="Flower" parent="." instance=ExtResource("2_xhv8c")]
+position = Vector2(68, -1)

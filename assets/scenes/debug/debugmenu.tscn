@@ -1,0 +1,67 @@
+[gd_scene load_steps=3 format=3 uid="uid://cek3wjjfwfq0i"]
+
+[ext_resource type="Script" path="res://assets/scripts/debug/debugmenu.gd" id="1_1ueyc"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_u2iwi"]
+font_size = 18
+font_color = Color(0.454902, 0.717647, 1, 1)
+outline_size = 4
+outline_color = Color(0, 0, 0, 1)
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_top = 105.81
+offset_bottom = 105.81
+size_flags_horizontal = 0
+size_flags_vertical = 0
+script = ExtResource("1_1ueyc")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+offset_left = -320.0
+offset_top = -142.71
+offset_right = -235.0
+offset_bottom = -76.71
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "epic cheat menu"
+label_settings = SubResource("LabelSettings_u2iwi")
+
+[node name="skipday" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Skip day"
+
+[node name="skipweek" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "skip week"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="setMoneyInput" type="LineEdit" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+placeholder_text = "set $"
+
+[node name="addMoneyInput" type="LineEdit" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+placeholder_text = "add $"
+
+[node name="give blurbo water" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "give blurbo water"
+
+[node name="send convo signal" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "send convo signal"
+
+[connection signal="tree_exited" from="." to="." method="_on_tree_exited"]
+[connection signal="pressed" from="VBoxContainer/skipday" to="." method="_on_skipday_pressed"]
+[connection signal="pressed" from="VBoxContainer/skipweek" to="." method="_on_skipweek_pressed"]
+[connection signal="text_submitted" from="VBoxContainer/HBoxContainer/setMoneyInput" to="." method="_on_set_money_input_text_submitted"]
+[connection signal="text_submitted" from="VBoxContainer/HBoxContainer/addMoneyInput" to="." method="_on_add_money_input_text_submitted"]
+[connection signal="pressed" from="VBoxContainer/give blurbo water" to="." method="_on_give_blurbo_water_pressed"]
+[connection signal="pressed" from="VBoxContainer/send convo signal" to="." method="_on_send_convo_signal_pressed"]

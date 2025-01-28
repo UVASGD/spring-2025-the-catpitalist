@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://cuts6prbym5ep"]
+
+[ext_resource type="Script" path="res://plantable_tile.gd" id="1_m8suj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_23vk1"]
+size = Vector2(32, 32)
+
+[node name="PlantableTile" type="Node2D"]
+script = ExtResource("1_m8suj")
+
+[node name="shading" type="ColorRect" parent="."]
+visible = false
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = 16.0
+mouse_filter = 2
+color = Color(0, 0, 0, 0.529412)
+
+[node name="hitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox"]
+shape = SubResource("RectangleShape2D_23vk1")

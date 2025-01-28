@@ -1,0 +1,47 @@
+[gd_scene load_steps=5 format=3 uid="uid://cbdo28b5jlq6y"]
+
+[ext_resource type="Script" path="res://npc.gd" id="1_fg7q3"]
+[ext_resource type="PackedScene" uid="uid://wfajuc7nk6w6" path="res://assets/scenes/templates/conversation.tscn" id="2_w52lg"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pmeq2"]
+radius = 32.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_njb3k"]
+size = Vector2(20, 24)
+
+[node name="NPC" type="Node2D"]
+script = ExtResource("1_fg7q3")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="hitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox"]
+shape = SubResource("CircleShape2D_pmeq2")
+
+[node name="collisionbox" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="collisionbox"]
+position = Vector2(0, 12)
+shape = SubResource("RectangleShape2D_njb3k")
+
+[node name="Convos" type="Node" parent="."]
+
+[node name="Conversation" parent="Convos" instance=ExtResource("2_w52lg")]
+
+[node name="Message" parent="Convos/Conversation/Messages" index="0"]
+text = "um hi"
+
+[node name="Conversation2" parent="Convos" instance=ExtResource("2_w52lg")]
+
+[node name="Message" parent="Convos/Conversation2/Messages" index="0"]
+text = "how are you"
+
+[node name="Conversation3" parent="Convos" instance=ExtResource("2_w52lg")]
+
+[node name="Message" parent="Convos/Conversation3/Messages" index="0"]
+text = "deez nust"
+
+[editable path="Convos/Conversation"]
+[editable path="Convos/Conversation2"]
+[editable path="Convos/Conversation3"]
