@@ -12,6 +12,10 @@ var inv = null
 var signaled = false
 var inv_cooldown = false
 var inv_showing = false
+
+var pause = null
+var pause_cooldown = false
+var pause_showing = false
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	SignalBus.connect("rain_start", _on_rain)
@@ -73,6 +77,28 @@ func close_inv():
 	$Hotbar.show()
 	await get_tree().create_timer(0.5).timeout
 	inv_cooldown = false
+
+func open_pause():
+	if pause_cooldown:
+		return
+	if pause_showing:
+		close_pause()
+		return
+	SignalBus.emit_signal("pause_opened")
+	pause_showing = true
+	pause = load("res://assets/scenes/pause_screen.tscn").instantiate()
+	add_child(pause)
+	$Hotbar.hide()
+	
+func close_pause():
+	SignalBus.emit_signal("pause_closed")
+	remove_child(pause)
+	pause.queue_free()
+	pause_cooldown = true
+	pause_showing = false
+	$Hotbar.show()
+	await get_tree().create_timer(0.5).timeout
+	pause_cooldown = false
 
 func _on_rain():
 	var fadetween = get_tree().create_tween()

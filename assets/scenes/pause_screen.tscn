@@ -1,0 +1,25 @@
+[gd_scene load_steps=2 format=3 uid="uid://bfonqw3ugyqkd"]
+
+[ext_resource type="Script" path="res://pause_screen.gd" id="1_rb7rr"]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_rb7rr")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="backtogame" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "back to game"
+
+[node name="Button2" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "settings (no settings yet lmao)"
+
+[node name="quitgame" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "exit game"
+
+[connection signal="pressed" from="VBoxContainer/backtogame" to="." method="_on_backtogame_pressed"]
+[connection signal="pressed" from="VBoxContainer/quitgame" to="." method="_on_quitgame_pressed"]

@@ -68,7 +68,7 @@ func grow():
 		bloomed = (current_stage_index == stages.size() - 2)
 		print(bloomed)
 	pass
-	
+
 func die():
 	dead = true
 	stages[current_stage_index].hide()

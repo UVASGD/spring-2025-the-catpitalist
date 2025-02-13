@@ -47,7 +47,8 @@ signal dawn_end
 @warning_ignore("unused_signal")
 signal dusk_start
 signal midnight_debug
-
+signal pause_opened
+signal pause_closed
 func emit(string):
 	emit_signal(string)
 	print("emitted: ", string)
