@@ -16,6 +16,8 @@ var inv_showing = false
 var pause = null
 var pause_cooldown = false
 var pause_showing = false
+
+var ui_busy = false
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	SignalBus.connect("rain_start", _on_rain)
@@ -64,6 +66,7 @@ func open_inv():
 		return
 	SignalBus.emit_signal("inv_opened")
 	inv_showing = true
+	ui_busy = true
 	inv = load("res://assets/scenes/inventory_screen.tscn").instantiate()
 	add_child(inv)
 	$Hotbar.hide()
@@ -74,6 +77,7 @@ func close_inv():
 	inv.queue_free()
 	inv_cooldown = true
 	inv_showing = false
+	ui_busy = false
 	$Hotbar.show()
 	await get_tree().create_timer(0.5).timeout
 	inv_cooldown = false
@@ -84,22 +88,32 @@ func open_pause():
 	if pause_showing:
 		close_pause()
 		return
+	if ui_busy:
+		close_all()
+		return
 	SignalBus.emit_signal("pause_opened")
 	pause_showing = true
+	ui_busy = true
 	pause = load("res://assets/scenes/pause_screen.tscn").instantiate()
 	add_child(pause)
 	$Hotbar.hide()
 	
 func close_pause():
-	SignalBus.emit_signal("pause_closed")
-	remove_child(pause)
-	pause.queue_free()
-	pause_cooldown = true
-	pause_showing = false
-	$Hotbar.show()
-	await get_tree().create_timer(0.5).timeout
-	pause_cooldown = false
+	if pause_showing:
+		SignalBus.emit_signal("pause_closed")
+		remove_child(pause)
+		pause.queue_free()
+		pause_cooldown = true
+		pause_showing = false
+		ui_busy = false
+		$Hotbar.show()
+		await get_tree().create_timer(0.5).timeout
+		pause_cooldown = false
 
+func close_all():
+	close_inv()
+	close_pause()
+	
 func _on_rain():
 	var fadetween = get_tree().create_tween()
 	fadetween.tween_property(rain, "modulate", Color(50,50,255,255), 3)
