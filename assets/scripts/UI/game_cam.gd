@@ -67,7 +67,7 @@ func open_inv():
 	SignalBus.emit_signal("inv_opened")
 	inv_showing = true
 	ui_busy = true
-	inv = load("res://assets/scenes/inventory_screen.tscn").instantiate()
+	inv = load("res://assets/scenes/ui/inventory_screen.tscn").instantiate()
 	add_child(inv)
 	$Hotbar.hide()
 	
@@ -94,7 +94,7 @@ func open_pause():
 	SignalBus.emit_signal("pause_opened")
 	pause_showing = true
 	ui_busy = true
-	pause = load("res://assets/scenes/pause_screen.tscn").instantiate()
+	pause = load("res://assets/scenes/ui/pause_screen.tscn").instantiate()
 	add_child(pause)
 	$Hotbar.hide()
 	
