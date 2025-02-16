@@ -1,9 +1,9 @@
 [gd_scene load_steps=7 format=3 uid="uid://tpn3u80c1bsx"]
 
-[ext_resource type="Script" path="res://npc.gd" id="1_t5f2b"]
+[ext_resource type="Script" path="res://assets/scripts/npc.gd" id="1_t5f2b"]
 [ext_resource type="PackedScene" uid="uid://wfajuc7nk6w6" path="res://assets/scenes/templates/conversation.tscn" id="2_qeda2"]
 [ext_resource type="Texture2D" uid="uid://brmvgg4xkuwa5" path="res://assets/sprites/goblin-sheet.png" id="2_u8yfk"]
-[ext_resource type="Script" path="res://message.gd" id="3_f6jaq"]
+[ext_resource type="Script" path="res://assets/scripts/message.gd" id="3_f6jaq"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0amcf"]
 radius = 32.0

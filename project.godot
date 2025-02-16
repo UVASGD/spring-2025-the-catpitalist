@@ -11,20 +11,20 @@ config_version=5
 [application]
 
 config/name="sgd_spring_25"
-run/main_scene="res://assets/scenes/testworld.tscn"
+run/main_scene="res://assets/scenes/worlds/testworld.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 config/icon="res://icon.svg"
 
 [autoload]
 
-SignalBus="*res://assets/scripts/SignalBus.gd"
-Items="*res://Items.gd"
-PlayerData="*res://PlayerData.gd"
-DayManager="*res://assets/scripts/DayManager.gd"
-DebugManager="*res://assets/scripts/DebugManager.gd"
-Dialogue="*res://Dialogue.gd"
-NPCS="*res://NPCS.gd"
-Music="*res://music.gd"
+SignalBus="*res://assets/scripts/Globals/SignalBus.gd"
+Items="*res://assets/scripts/Globals/Items.gd"
+PlayerData="*res://assets/scripts/Globals/PlayerData.gd"
+DayManager="*res://assets/scripts/Globals/DayManager.gd"
+DebugManager="*res://assets/scripts/debug/DebugManager.gd"
+Dialogue="*res://assets/scripts/Globals/Dialogue.gd"
+NPCS="*res://assets/scripts/Globals/NPCS.gd"
+Music="*res://assets/scripts/Globals/music.gd"
 
 [display]
 

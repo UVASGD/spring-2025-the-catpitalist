@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://cuts6prbym5ep"]
 
-[ext_resource type="Script" path="res://plantable_tile.gd" id="1_m8suj"]
+[ext_resource type="Script" path="res://assets/scripts/plantable_tile.gd" id="1_m8suj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_23vk1"]
 size = Vector2(32, 32)

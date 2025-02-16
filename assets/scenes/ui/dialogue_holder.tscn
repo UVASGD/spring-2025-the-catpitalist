@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://c1hucaw7oqrll"]
 
-[ext_resource type="Script" path="res://assets/scenes/dialogueholder.gd" id="1_n8eg0"]
+[ext_resource type="Script" path="res://assets/scripts/UI/dialogueholder.gd" id="1_n8eg0"]
 [ext_resource type="Shader" path="res://assets/scenes/dialogue_holder.gdshader" id="3_y3wfs"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ru74g"]

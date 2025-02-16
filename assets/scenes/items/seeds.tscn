@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://b1gw443rigi0w"]
 
-[ext_resource type="Script" path="res://plantable.gd" id="1_bthgt"]
+[ext_resource type="Script" path="res://assets/scripts/plantable.gd" id="1_bthgt"]
 
 [sub_resource type="Image" id="Image_giwx6"]
 data = {

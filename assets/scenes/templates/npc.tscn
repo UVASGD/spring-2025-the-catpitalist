@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://cbdo28b5jlq6y"]
 
-[ext_resource type="Script" path="res://npc.gd" id="1_fg7q3"]
+[ext_resource type="Script" path="res://assets/scripts/npc.gd" id="1_fg7q3"]
 [ext_resource type="PackedScene" uid="uid://wfajuc7nk6w6" path="res://assets/scenes/templates/conversation.tscn" id="2_w52lg"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_pmeq2"]

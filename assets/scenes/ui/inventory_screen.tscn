@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://dkrtyhl727f0y"]
 
-[ext_resource type="Script" path="res://assets/scenes/inventory_screen.gd" id="1_nps2e"]
-[ext_resource type="PackedScene" uid="uid://dya5hp8twt46x" path="res://assets/scenes/inventory_slot.tscn" id="2_suqr4"]
+[ext_resource type="Script" path="res://assets/scripts/UI/inventory_screen.gd" id="1_nps2e"]
+[ext_resource type="PackedScene" uid="uid://dya5hp8twt46x" path="res://assets/scenes/ui/inventory_slot.tscn" id="2_suqr4"]
 
 [node name="InventoryScreen" type="Node2D"]
 z_index = 3

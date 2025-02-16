@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://wfajuc7nk6w6"]
 
-[ext_resource type="Script" path="res://conversation.gd" id="1_ayix2"]
-[ext_resource type="Script" path="res://message.gd" id="2_03tg0"]
+[ext_resource type="Script" path="res://assets/scripts/conversation.gd" id="1_ayix2"]
+[ext_resource type="Script" path="res://assets/scripts/message.gd" id="2_03tg0"]
 
 [node name="Conversation" type="Node"]
 script = ExtResource("1_ayix2")

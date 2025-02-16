@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://dya5hp8twt46x"]
 
-[ext_resource type="Script" path="res://inventory_slot.gd" id="1_cnc1n"]
+[ext_resource type="Script" path="res://assets/scripts/UI/inventory_slot.gd" id="1_cnc1n"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rhd1a"]
 

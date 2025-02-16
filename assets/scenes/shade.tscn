@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://dbfvkgx1l7l1"]
 
-[ext_resource type="Script" path="res://assets/scenes/shade.gd" id="1_mf1uu"]
+[ext_resource type="Script" path="res://assets/scripts/UI/shade.gd" id="1_mf1uu"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_v68nj"]
 blend_mode = 2

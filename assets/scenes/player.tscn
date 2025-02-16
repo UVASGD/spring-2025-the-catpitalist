@@ -4,9 +4,9 @@
 [ext_resource type="Texture2D" uid="uid://brmvgg4xkuwa5" path="res://assets/sprites/goblin-sheet.png" id="2_nlbnv"]
 [ext_resource type="Texture2D" uid="uid://dghtvcsvor8jg" path="res://assets/sprites/image.png" id="2_w14xm"]
 [ext_resource type="Script" path="res://assets/scripts/interactzone.gd" id="3_poudk"]
-[ext_resource type="Script" path="res://assets/scenes/player_controls.gd" id="4_ec0vj"]
+[ext_resource type="Script" path="res://assets/scripts/player_controls.gd" id="4_ec0vj"]
 [ext_resource type="Texture2D" uid="uid://vbtlablnxdim" path="res://assets/sprites/right_walk_anim.png" id="4_f0cf8"]
-[ext_resource type="PackedScene" uid="uid://1q5o1mr5w3yt" path="res://assets/scenes/game_cam.tscn" id="5_0lexq"]
+[ext_resource type="PackedScene" uid="uid://1q5o1mr5w3yt" path="res://assets/scenes/ui/game_cam.tscn" id="5_0lexq"]
 [ext_resource type="Texture2D" uid="uid://b4wxxi8nejd31" path="res://assets/sprites/backwards_walk_anim.png" id="5_ecivr"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wb534"]

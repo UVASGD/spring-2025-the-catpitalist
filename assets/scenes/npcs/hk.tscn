@@ -1,9 +1,9 @@
 [gd_scene load_steps=10 format=3 uid="uid://cp6t18ha8tlxk"]
 
-[ext_resource type="Script" path="res://npc.gd" id="1_6svo1"]
+[ext_resource type="Script" path="res://assets/scripts/npc.gd" id="1_6svo1"]
 [ext_resource type="PackedScene" uid="uid://iwiyop1ts1ir" path="res://assets/3dmodels/HollowKnight.glb" id="2_y1n10"]
 [ext_resource type="PackedScene" uid="uid://wfajuc7nk6w6" path="res://assets/scenes/templates/conversation.tscn" id="3_ksenr"]
-[ext_resource type="Script" path="res://message.gd" id="4_plnkc"]
+[ext_resource type="Script" path="res://assets/scripts/message.gd" id="4_plnkc"]
 
 [sub_resource type="Animation" id="Animation_xhnc7"]
 resource_name = "new_animation"

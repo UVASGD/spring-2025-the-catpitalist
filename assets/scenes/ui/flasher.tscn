@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://bb4nw4kkvht2k"]
+
+[ext_resource type="Script" path="res://assets/scripts/UI/flasher.gd" id="1_457ra"]
+[ext_resource type="Texture2D" uid="uid://dbegl80ds1t14" path="res://assets/sprites/image-removebg-preview.png" id="2_y4kxl"]
+[ext_resource type="Texture2D" uid="uid://djfcwv8kf1wat" path="res://assets/sprites/image-removebg-preview (1).png" id="3_r37uq"]
+
+[node name="flasher" type="Node2D"]
+script = ExtResource("1_457ra")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("2_y4kxl")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("3_r37uq")

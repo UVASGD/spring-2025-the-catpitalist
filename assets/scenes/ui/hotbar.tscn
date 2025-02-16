@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://ck5jhxl01b266"]
 
-[ext_resource type="Script" path="res://assets/scenes/hotbar.gd" id="1_43dtd"]
+[ext_resource type="Script" path="res://assets/scripts/UI/hotbar.gd" id="1_43dtd"]
 
 [sub_resource type="Animation" id="Animation_lsmw6"]
 length = 0.001
