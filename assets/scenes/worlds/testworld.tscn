@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=4 uid="uid://b2133ovj0k7io"]
+[gd_scene load_steps=21 format=4 uid="uid://b2133ovj0k7io"]
 
 [ext_resource type="Script" path="res://assets/scripts/testworld.gd" id="1_dsj35"]
 [ext_resource type="PackedScene" uid="uid://dbfvkgx1l7l1" path="res://assets/scenes/shade.tscn" id="2_yfgcp"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://cuts6prbym5ep" path="res://assets/scenes/plantable_tile.tscn" id="10_7hkwc"]
 [ext_resource type="Texture2D" uid="uid://demaw21ocpurs" path="res://assets/sprites/dirt_sprites.png" id="11_n2v6m"]
 [ext_resource type="Texture2D" uid="uid://rwlroq3ou1el" path="res://assets/sprites/farmland.png" id="12_iq63e"]
+[ext_resource type="PackedScene" uid="uid://b42c4mrfgwcvt" path="res://assets/scenes/npcs/dealer.tscn" id="13_jnkin"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7ivjj"]
 texture = ExtResource("8_2d8hv")
@@ -164,3 +165,6 @@ rotation = 1.5708
 [node name="CollisionShape2D" type="CollisionShape2D" parent="y_sorted/StaticBody2D4"]
 position = Vector2(-392, 24)
 shape = SubResource("WorldBoundaryShape2D_bdq3j")
+
+[node name="NPC" parent="." instance=ExtResource("13_jnkin")]
+position = Vector2(-176, 28)

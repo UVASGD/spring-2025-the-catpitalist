@@ -6,9 +6,13 @@ class_name NPC extends Interactable
 @export var exhaust_dialogue_text: String
 @onready var exhaust_convo
 @export_range(-1, 2, 0.1) var voice_pitch: float = 1
+@export var shopkeeper = false
 var current_convo_index = 0
 var requested_item_id
 var is_speaking = false
+
+var inventory = [] # list of items the NPC can sell 
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	super()
@@ -65,7 +69,10 @@ func speak():
 		print(convo.debugname, " " + str(convo.locked))
 		if convo.locked:
 			convo = get_old_convo() # repeat last dialogue if next dialogue is locked 
-			Dialogue.start_dialogue(convo)
+			if convo:
+				Dialogue.start_dialogue(convo)
+			else:
+				play_exhaust_dialogue()
 			return
 		elif convo.requests_item:
 			requested_item_id = convo.request_item_id
@@ -73,7 +80,8 @@ func speak():
 		elif convo.requests_signal:
 			SignalBus.connect(convo.request_signal_name, unlock_current_convo)
 			lock_next_convo()
-
+		if convo.signals_on_finish:
+			SignalBus.emit_signal(convo.finish_signal)
 		Dialogue.start_dialogue(convo)
 		current_convo_index += 1
 	else:
@@ -91,6 +99,9 @@ func setup_exhaust_dialogue():
 	add_child(convo)
 	convo.messages.add_child(message)
 	convo.name = "Exhaust"
+	convo.is_exhaust = true
+	if shopkeeper:
+		convo.opens_shop = true
 	exhaust_convo = convo
 	
 func play_exhaust_dialogue():
@@ -100,3 +111,6 @@ func _on_item_given(item, npc):
 	if item.ID == requested_item_id and npc == self:
 		requested_item_id = null
 		unlock_current_convo()
+
+func open_shop():
+	UI.open_shop(inventory)

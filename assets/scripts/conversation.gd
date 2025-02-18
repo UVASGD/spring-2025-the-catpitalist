@@ -9,7 +9,10 @@ var index:int
 @export var requests_signal:bool = false
 @export var request_signal_name:String
 @export var locked:bool = false
-
+@export var opens_shop:bool = false
+@export var signals_on_finish:bool = false
+@export var finish_signal:String
+@export var is_exhaust:bool = false
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	index = get_index()
@@ -19,7 +22,12 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
-
+	
+func get_npc():
+	if is_exhaust:
+		return get_parent()
+	return get_parent().get_parent()
+	
 func get_messages():
 	return messages.get_children()
 

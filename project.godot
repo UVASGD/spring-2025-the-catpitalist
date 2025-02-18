@@ -25,6 +25,7 @@ DebugManager="*res://assets/scripts/debug/DebugManager.gd"
 Dialogue="*res://assets/scripts/Globals/Dialogue.gd"
 NPCS="*res://assets/scripts/Globals/NPCS.gd"
 Music="*res://assets/scripts/Globals/music.gd"
+UI="*res://assets/scripts/Globals/UI.gd"
 
 [display]
 

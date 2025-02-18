@@ -47,6 +47,8 @@ func _on_dialogue(convo: Conversation) -> void:
 	await show_conversation()
 	self.hide()
 	SignalBus.emit_signal("dialogue_finished")
+	if convo.opens_shop:
+		convo.get_npc().open_shop()
 
 func show_conversation() -> void:
 	if conversation:
