@@ -95,6 +95,7 @@ func play_directional_anim(obj, action:String):
 			var animation = action + "_"
 			if abs(direction.x) > abs(direction.y):
 				if direction.x > 0:
+					animated_sprite.flip_h = false
 					animation += "right"
 				else:
 					animation += "left"

@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://djfcwv8kf1wat" path="res://assets/sprites/image-removebg-preview (1).png" id="3_r37uq"]
 
 [node name="flasher" type="Node2D"]
+visible = false
 script = ExtResource("1_457ra")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
