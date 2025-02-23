@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=4 uid="uid://b2133ovj0k7io"]
+[gd_scene load_steps=22 format=4 uid="uid://b2133ovj0k7io"]
 
 [ext_resource type="Script" path="res://assets/scripts/testworld.gd" id="1_dsj35"]
 [ext_resource type="PackedScene" uid="uid://dbfvkgx1l7l1" path="res://assets/scenes/shade.tscn" id="2_yfgcp"]
@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://demaw21ocpurs" path="res://assets/sprites/dirt_sprites.png" id="11_n2v6m"]
 [ext_resource type="Texture2D" uid="uid://rwlroq3ou1el" path="res://assets/sprites/farmland.png" id="12_iq63e"]
 [ext_resource type="PackedScene" uid="uid://b42c4mrfgwcvt" path="res://assets/scenes/npcs/dealer.tscn" id="13_jnkin"]
+[ext_resource type="PackedScene" uid="uid://boipty101huus" path="res://assets/scenes/npcs/fatcat.tscn" id="14_xuub3"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7ivjj"]
 texture = ExtResource("8_2d8hv")
@@ -97,6 +98,7 @@ script = ExtResource("1_dsj35")
 position = Vector2(0, 14)
 
 [node name="shade" parent="shading" instance=ExtResource("2_yfgcp")]
+visible = false
 offset_left = -363.0
 offset_top = -213.0
 offset_right = -362.585
@@ -168,3 +170,7 @@ shape = SubResource("WorldBoundaryShape2D_bdq3j")
 
 [node name="NPC" parent="." instance=ExtResource("13_jnkin")]
 position = Vector2(-176, 28)
+
+[node name="NPC2" parent="." instance=ExtResource("14_xuub3")]
+position = Vector2(86, 53)
+scale = Vector2(1.33, 1.33)

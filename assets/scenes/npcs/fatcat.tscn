@@ -1,0 +1,121 @@
+[gd_scene load_steps=17 format=3 uid="uid://boipty101huus"]
+
+[ext_resource type="Script" path="res://assets/scripts/npc.gd" id="1_bmgk6"]
+[ext_resource type="Texture2D" uid="uid://brhvumn6xggrr" path="res://assets/sprites/World NPCs/phat_cat-Sheet.png" id="2_avyt0"]
+[ext_resource type="PackedScene" uid="uid://wfajuc7nk6w6" path="res://assets/scenes/templates/conversation.tscn" id="2_lb0i5"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ab7j1"]
+atlas = ExtResource("2_avyt0")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ft0wj"]
+atlas = ExtResource("2_avyt0")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cst2d"]
+atlas = ExtResource("2_avyt0")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0kd4v"]
+atlas = ExtResource("2_avyt0")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e8h6n"]
+atlas = ExtResource("2_avyt0")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xnlbb"]
+atlas = ExtResource("2_avyt0")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3o4yu"]
+atlas = ExtResource("2_avyt0")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tpitg"]
+atlas = ExtResource("2_avyt0")
+region = Rect2(448, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sxx6h"]
+atlas = ExtResource("2_avyt0")
+region = Rect2(512, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_al3ps"]
+atlas = ExtResource("2_avyt0")
+region = Rect2(576, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4a6cb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ab7j1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ft0wj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cst2d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0kd4v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e8h6n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xnlbb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3o4yu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tpitg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sxx6h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_al3ps")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pmeq2"]
+radius = 32.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_njb3k"]
+size = Vector2(20, 24)
+
+[node name="NPC" type="Node2D"]
+script = ExtResource("1_bmgk6")
+npc_name = "chubbs"
+exhaust_dialogue_text = "ughhhh"
+voice_pitch = -0.8
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_4a6cb")
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.107828
+
+[node name="hitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox"]
+shape = SubResource("CircleShape2D_pmeq2")
+
+[node name="collisionbox" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="collisionbox"]
+position = Vector2(0, 12)
+shape = SubResource("RectangleShape2D_njb3k")
+
+[node name="Convos" type="Node" parent="."]
+
+[node name="Conversation" parent="Convos" instance=ExtResource("2_lb0i5")]
+
+[node name="Message" parent="Convos/Conversation/Messages" index="0"]
+text = "hiiiiiii"
+
+[editable path="Convos/Conversation"]
