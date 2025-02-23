@@ -1,0 +1,26 @@
+[gd_scene load_steps=2 format=3 uid="uid://mr1iawd58i4y"]
+
+[ext_resource type="Script" path="res://assets/scenes/start_screen/start_screen.gd" id="1_m41bo"]
+
+[node name="StartScreen" type="Node2D"]
+script = ExtResource("1_m41bo")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="start" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "start new"
+
+[node name="continue" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "continue game"
+
+[node name="quit" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "quit"
+
+[connection signal="pressed" from="VBoxContainer/start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="VBoxContainer/continue" to="." method="_on_continue_pressed"]
+[connection signal="pressed" from="VBoxContainer/quit" to="." method="_on_quit_pressed"]
