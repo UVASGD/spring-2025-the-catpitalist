@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://boipty101huus"]
+[gd_scene load_steps=17 format=3 uid="uid://c7bpitve6lom3"]
 
 [ext_resource type="Script" path="res://assets/scripts/npc.gd" id="1_bmgk6"]
 [ext_resource type="Texture2D" uid="uid://brhvumn6xggrr" path="res://assets/sprites/World NPCs/phat_cat-Sheet.png" id="2_avyt0"]
