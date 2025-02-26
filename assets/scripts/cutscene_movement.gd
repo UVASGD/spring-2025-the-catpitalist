@@ -16,8 +16,5 @@ func _ready() -> void:
 		movement.append(i.position + self.position)
 		final_pos += i.position
 		
-	print(movement[movement.size() - 1])
-	print(final_pos)
 	#tell NPC to add movement
-	print("eeee")
 	finished_loading.emit(self)

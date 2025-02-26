@@ -27,16 +27,16 @@ func _physics_process(delta: float) -> void:
 		for i in npcs_in_scene:
 			for j in i.moves:
 				if time_elapsed >= j.start_time:
+					var anim_sprite = i.get_node("Sprite2D")
+					
+					if j.curr_index == j.movement.size():
+						anim_sprite.play("idle")
+						i.speak()
+					
 					if j.curr_index < j.movement.size():
-						var anim_sprite = i.get_node("Sprite2D")
-
 						var next_point = j.movement[j.curr_index]
 						var direction = rad_to_deg((i.position - next_point).angle())
-						print(i.position, " ", j.final_pos)
-						if i.position == j.final_pos:
-							print("????")
-							anim_sprite.play("idle")
-							direction = -1000
+						
 						if direction <= -45 && direction >= -135:
 							anim_sprite.flip_h = false
 							anim_sprite.play("down", j.speed/20)

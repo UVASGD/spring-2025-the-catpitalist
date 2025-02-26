@@ -1,4 +1,4 @@
-[gd_scene load_steps=58 format=3 uid="uid://dwq31u7ekbfjy"]
+[gd_scene load_steps=61 format=3 uid="uid://dwq31u7ekbfjy"]
 
 [ext_resource type="Script" path="res://assets/scripts/cutscene_controller.gd" id="1_nvs65"]
 [ext_resource type="PackedScene" uid="uid://wfajuc7nk6w6" path="res://assets/scenes/templates/conversation.tscn" id="2_g7ffm"]
@@ -238,6 +238,18 @@ region = Rect2(384, 0, 64, 64)
 atlas = ExtResource("6_ek4wv")
 region = Rect2(448, 0, 64, 64)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_3s2ht"]
+atlas = ExtResource("6_ek4wv")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ityti"]
+atlas = ExtResource("6_ek4wv")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b8adi"]
+atlas = ExtResource("6_ek4wv")
+region = Rect2(128, 192, 64, 64)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_826el"]
 atlas = ExtResource("6_ek4wv")
 region = Rect2(0, 64, 64, 64)
@@ -335,6 +347,20 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_3s2ht")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ityti")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b8adi")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_826el")
 }, {
 "duration": 1.0,
@@ -398,6 +424,7 @@ script = ExtResource("1_nvs65")
 [node name="NPC" type="Node2D" parent="."]
 position = Vector2(48, 40)
 script = ExtResource("2_qimum")
+npc_name = "Blurbo"
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="NPC"]
 sprite_frames = SubResource("SpriteFrames_taqc1")
@@ -505,10 +532,11 @@ polygon = PackedVector2Array(-2, -2, 2, -2, 2, 2, -2, 2)
 [node name="NPC2" type="Node2D" parent="."]
 position = Vector2(112, 112)
 script = ExtResource("2_qimum")
+npc_name = "Sign"
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="NPC2"]
 sprite_frames = SubResource("SpriteFrames_asrc6")
-animation = &"down"
+animation = &"idle"
 
 [node name="hitbox" type="Area2D" parent="NPC2"]
 
