@@ -40,6 +40,12 @@ frame_7/duration = 1.0
 frame_8/texture = ExtResource("10_k1eih")
 frame_8/duration = 1.0
 
+[sub_resource type="LabelSettings" id="LabelSettings_46ibt"]
+font_color = Color(0.486275, 0, 1, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_7f5g5"]
+font_color = Color(0.486275, 0, 1, 1)
+
 [sub_resource type="LabelSettings" id="LabelSettings_ec34j"]
 font_size = 19
 font_color = Color(0.486275, 0, 1, 1)
@@ -54,12 +60,6 @@ border_color = Color(0.367804, 0.0016478, 0.768846, 1)
 VScrollBar/styles/grabber = SubResource("StyleBoxFlat_j0sdl")
 
 [sub_resource type="LabelSettings" id="LabelSettings_i11ye"]
-font_color = Color(0.486275, 0, 1, 1)
-
-[sub_resource type="LabelSettings" id="LabelSettings_46ibt"]
-font_color = Color(0.486275, 0, 1, 1)
-
-[sub_resource type="LabelSettings" id="LabelSettings_7f5g5"]
 font_color = Color(0.486275, 0, 1, 1)
 
 [node name="Control" type="Control"]
@@ -97,7 +97,52 @@ offset_right = 640.0
 offset_bottom = 360.0
 texture = ExtResource("11_f371q")
 
+[node name="choose" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 337.0
+offset_top = 47.0
+offset_right = 589.0
+offset_bottom = 143.0
+
+[node name="buy" type="TextureButton" parent="choose"]
+layout_mode = 2
+size_flags_vertical = 4
+size_flags_stretch_ratio = 0.35
+texture_normal = ExtResource("25_wwe6y")
+texture_hover = ExtResource("26_t0o76")
+stretch_mode = 4
+
+[node name="Label" type="Label" parent="choose/buy"]
+layout_mode = 0
+offset_left = 43.0
+offset_top = 6.0
+offset_right = 83.0
+offset_bottom = 29.0
+text = "BUY"
+label_settings = SubResource("LabelSettings_46ibt")
+
+[node name="sell" type="TextureButton" parent="choose"]
+custom_minimum_size = Vector2(127.845, 39.88)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+size_flags_stretch_ratio = 1.2
+texture_normal = ExtResource("23_hli48")
+texture_hover = ExtResource("24_h5nn0")
+stretch_mode = 4
+
+[node name="Label" type="Label" parent="choose/sell"]
+layout_mode = 0
+offset_left = 44.0
+offset_top = 6.0
+offset_right = 86.0
+offset_bottom = 29.0
+text = "SELL
+"
+label_settings = SubResource("LabelSettings_7f5g5")
+
 [node name="TextureRect" type="TextureRect" parent="."]
+visible = false
 layout_mode = 0
 offset_left = 418.0
 offset_top = 17.0
@@ -115,6 +160,7 @@ text = "SELL"
 label_settings = SubResource("LabelSettings_ec34j")
 
 [node name="invscroller" type="ScrollContainer" parent="."]
+visible = false
 layout_mode = 0
 offset_left = 315.0
 offset_top = 52.0
@@ -246,10 +292,10 @@ stretch_mode = 4
 
 [node name="Label" type="Label" parent="HBoxContainer/buybuttons/buy"]
 layout_mode = 0
-offset_left = 48.0
-offset_top = 7.58002
-offset_right = 88.0
-offset_bottom = 30.58
+offset_left = 43.0
+offset_top = 6.0
+offset_right = 83.0
+offset_bottom = 29.0
 text = "BUY"
 label_settings = SubResource("LabelSettings_46ibt")
 
@@ -263,10 +309,10 @@ stretch_mode = 0
 
 [node name="Label" type="Label" parent="HBoxContainer/buybuttons/back"]
 layout_mode = 0
-offset_left = 45.0
-offset_top = 2.58
-offset_right = 87.0
-offset_bottom = 25.58
+offset_left = 40.0
+offset_top = 4.00001
+offset_right = 82.0
+offset_bottom = 27.0
 text = "BACK"
 label_settings = SubResource("LabelSettings_7f5g5")
 
@@ -280,78 +326,36 @@ stretch_mode = 0
 
 [node name="Label" type="Label" parent="HBoxContainer/buybuttons/leave"]
 layout_mode = 0
-offset_left = 45.0
-offset_top = 2.58
-offset_right = 87.0
-offset_bottom = 25.58
+offset_left = 37.0
+offset_top = 4.00001
+offset_right = 85.0
+offset_bottom = 27.0
 text = "LEAVE"
 label_settings = SubResource("LabelSettings_7f5g5")
 
-[node name="choose" type="VBoxContainer" parent="HBoxContainer"]
-custom_minimum_size = Vector2(0, 119.58)
+[node name="leave" type="TextureButton" parent="HBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 4
-size_flags_stretch_ratio = 2.58
-
-[node name="buy" type="TextureButton" parent="HBoxContainer/choose"]
-layout_mode = 2
-size_flags_vertical = 3
-size_flags_stretch_ratio = 0.35
-texture_normal = ExtResource("25_wwe6y")
-texture_hover = ExtResource("26_t0o76")
-stretch_mode = 4
-
-[node name="Label" type="Label" parent="HBoxContainer/choose/buy"]
-layout_mode = 0
-offset_left = 48.0
-offset_top = 7.58002
-offset_right = 88.0
-offset_bottom = 30.58
-text = "BUY"
-label_settings = SubResource("LabelSettings_46ibt")
-
-[node name="sell" type="TextureButton" parent="HBoxContainer/choose"]
-layout_mode = 2
-size_flags_vertical = 3
-size_flags_stretch_ratio = 0.35
+size_flags_horizontal = 4
+size_flags_vertical = 6
+size_flags_stretch_ratio = 0.15
 texture_normal = ExtResource("23_hli48")
 texture_hover = ExtResource("24_h5nn0")
-stretch_mode = 0
 
-[node name="Label" type="Label" parent="HBoxContainer/choose/sell"]
+[node name="Label" type="Label" parent="HBoxContainer/leave"]
 layout_mode = 0
-offset_left = 45.0
-offset_top = 2.58
-offset_right = 87.0
-offset_bottom = 25.58
-text = "SELL
-"
-label_settings = SubResource("LabelSettings_7f5g5")
-
-[node name="leave" type="TextureButton" parent="HBoxContainer/choose"]
-layout_mode = 2
-size_flags_vertical = 3
-size_flags_stretch_ratio = 0.35
-texture_normal = ExtResource("23_hli48")
-texture_hover = ExtResource("24_h5nn0")
-stretch_mode = 0
-
-[node name="Label" type="Label" parent="HBoxContainer/choose/leave"]
-layout_mode = 0
-offset_left = 45.0
-offset_top = 2.58
-offset_right = 87.0
-offset_bottom = 25.58
+offset_left = 21.0
+offset_top = 3.0
+offset_right = 69.0
+offset_bottom = 26.0
 text = "LEAVE"
 label_settings = SubResource("LabelSettings_7f5g5")
 
+[connection signal="pressed" from="choose/buy" to="." method="_on_choose_buy_pressed"]
+[connection signal="pressed" from="choose/sell" to="." method="_on_choose_sell_pressed"]
 [connection signal="pressed" from="HBoxContainer/sellbuttons/sell" to="." method="_on_sell_pressed"]
 [connection signal="pressed" from="HBoxContainer/sellbuttons/back" to="." method="_on_back_pressed"]
 [connection signal="pressed" from="HBoxContainer/sellbuttons/leave" to="." method="_on_leave_pressed"]
 [connection signal="pressed" from="HBoxContainer/buybuttons/buy" to="." method="_on_buy_pressed"]
 [connection signal="pressed" from="HBoxContainer/buybuttons/back" to="." method="_on_back_pressed"]
 [connection signal="pressed" from="HBoxContainer/buybuttons/leave" to="." method="_on_leave_pressed"]
-[connection signal="pressed" from="HBoxContainer/choose/buy" to="." method="_on_choose_buy_pressed"]
-[connection signal="pressed" from="HBoxContainer/choose/sell" to="." method="_on_choose_sell_pressed"]
-[connection signal="pressed" from="HBoxContainer/choose/leave" to="." method="_on_leave_pressed"]
+[connection signal="pressed" from="HBoxContainer/leave" to="." method="_on_leave_pressed"]

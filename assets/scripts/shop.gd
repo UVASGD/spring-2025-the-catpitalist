@@ -5,7 +5,7 @@ extends Control
 @onready var portrait: TextureRect = $Cat
 @onready var cardboard: TextureRect = $Cardboard
 @onready var mode: Label = $TextureRect/mode
-
+@onready var texture_rect: TextureRect = $TextureRect
 @onready var sprite_2d: Sprite2D = $Sprite2D
 @onready var invscroller: ScrollContainer = $invscroller
 @onready var inv: VBoxContainer = $invscroller/inv
@@ -14,7 +14,8 @@ extends Control
 @onready var dialogue: Label = $HBoxContainer/dbox/dialogue
 @onready var sellbuttons: VBoxContainer = $HBoxContainer/sellbuttons
 @onready var buybuttons: VBoxContainer = $HBoxContainer/buybuttons
-@onready var choose: VBoxContainer = $HBoxContainer/choose
+@onready var choose: HBoxContainer = $choose
+@onready var leave: TextureButton = $HBoxContainer/leave
 
 @export var buy_dialogue: String
 @export var sell_dialogue: String
@@ -52,25 +53,34 @@ func _on_leave_pressed() -> void:
 
 
 func _on_choose_sell_pressed() -> void:
+	texture_rect.show()
 	sellbuttons.show()
+	invscroller.show()
 	choose.hide()
+	leave.hide()
 	dialogue.text = sellscreen_dialogue
 	mode.text = "SELL"
 	pass # Replace with function body.
 
 
 func _on_choose_buy_pressed() -> void:
+	texture_rect.show()
 	buybuttons.show()
+	invscroller.show()
 	choose.hide()
+	leave.hide()
 	dialogue.text = buyscreen_dialogue
 	mode.text = "BUY"
 	pass # Replace with function body.
 
 
 func _on_back_pressed() -> void:
+	texture_rect.hide()
 	sellbuttons.hide()
+	invscroller.hide()
 	buybuttons.hide()
 	choose.show()
+	leave.show()
 	dialogue.text = choosing_dialogue
 	pass # Replace with function body.
 
