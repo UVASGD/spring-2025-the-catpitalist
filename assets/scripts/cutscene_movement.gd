@@ -2,8 +2,10 @@ class_name CutsceneMovement extends Node2D
 
 @export var speed: float
 @export var movement: Array[Vector2]
+@export var start_time: float
 var final_pos: Vector2
-signal finishedLoading
+var curr_index = 0
+signal finished_loading(move: CutsceneMovement)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -14,5 +16,8 @@ func _ready() -> void:
 		movement.append(i.position + self.position)
 		final_pos += i.position
 		
-	#tell cutscene to start
-	finishedLoading.emit()
+	print(movement[movement.size() - 1])
+	print(final_pos)
+	#tell NPC to add movement
+	print("eeee")
+	finished_loading.emit(self)
