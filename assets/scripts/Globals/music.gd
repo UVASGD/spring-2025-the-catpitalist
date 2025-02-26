@@ -8,7 +8,7 @@ var path_to_music_dir = "res://assets/audio/music/"
 var current_playing = null
 var fade_duration = 5
 var playlisting_random = false
-enum{INFINITE}
+enum{INFINITE, LOOPING}
 var mode = null
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -55,9 +55,11 @@ func set_mode(newmode):
 	mode = newmode
 
 func _on_song_finish():
-	current_playing = null
 	if mode == INFINITE:
+		current_playing = null
 		play_random()
+	if mode == LOOPING:
+		play(current_playing)
 
 func play_random():
 	var keys = songplayers.keys()
@@ -83,11 +85,10 @@ func play_random_snow():
 		play(random_songname)
 
 func play_random_rain():
-	#var keys = songplayers_rain.keys()
-	#if keys.size() > 0:
-		#var random_songname = keys[randi() % keys.size()]
-		#play(random_songname)
-	play("rainy_paws")
+	var keys = songplayers_rain.keys()
+	if keys.size() > 0:
+		var random_songname = keys[randi() % keys.size()]
+		play(random_songname)
 
 func _on_snow_start():
 	play_random_snow()

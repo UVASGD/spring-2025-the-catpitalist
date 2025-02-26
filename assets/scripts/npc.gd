@@ -113,4 +113,4 @@ func _on_item_given(item, npc):
 		unlock_current_convo()
 
 func open_shop():
-	UI.open_shop(inventory)
+	UI.open_shop(inventory, self)

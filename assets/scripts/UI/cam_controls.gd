@@ -10,8 +10,8 @@ func _ready() -> void:
 
 
 func _input(_event: InputEvent) -> void:
-	if Input.is_action_pressed("openinventory"):
+	if Input.is_action_just_released("openinventory"):
 		cam.open_inv()
-	elif Input.is_action_pressed("openpause"):
+	elif Input.is_action_just_released("openpause"):
 		cam.open_pause()
 	return

@@ -1,0 +1,63 @@
+[gd_scene load_steps=7 format=3 uid="uid://cmlksnqw7uv3q"]
+
+[ext_resource type="Script" path="res://assets/scripts/npc.gd" id="1_f2cbg"]
+[ext_resource type="Texture2D" uid="uid://b6rqaha2tb4b" path="res://icon.svg" id="2_r0p3a"]
+[ext_resource type="Script" path="res://assets/scripts/conversation.gd" id="3_vsefj"]
+[ext_resource type="Script" path="res://assets/scripts/message.gd" id="4_7c56o"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pmeq2"]
+radius = 32.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_njb3k"]
+size = Vector2(20, 24)
+
+[node name="NPC" type="Node2D"]
+script = ExtResource("1_f2cbg")
+npc_name = "billy"
+exhaust_dialogue_text = "bruh"
+voice_pitch = 1.5
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, 4)
+scale = Vector2(0.25, 0.3125)
+texture = ExtResource("2_r0p3a")
+
+[node name="hitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox"]
+shape = SubResource("CircleShape2D_pmeq2")
+
+[node name="collisionbox" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="collisionbox"]
+position = Vector2(0, 12)
+shape = SubResource("RectangleShape2D_njb3k")
+
+[node name="Convos" type="Node" parent="."]
+
+[node name="Conversation" type="Node" parent="Convos"]
+script = ExtResource("3_vsefj")
+
+[node name="Messages" type="Node" parent="Convos/Conversation"]
+
+[node name="Message" type="Node" parent="Convos/Conversation/Messages"]
+script = ExtResource("4_7c56o")
+text = "hello"
+
+[node name="Conversation2" type="Node" parent="Convos"]
+script = ExtResource("3_vsefj")
+
+[node name="Messages" type="Node" parent="Convos/Conversation2"]
+
+[node name="Message" type="Node" parent="Convos/Conversation2/Messages"]
+script = ExtResource("4_7c56o")
+text = "how are you"
+
+[node name="Conversation3" type="Node" parent="Convos"]
+script = ExtResource("3_vsefj")
+
+[node name="Messages" type="Node" parent="Convos/Conversation3"]
+
+[node name="Message" type="Node" parent="Convos/Conversation3/Messages"]
+script = ExtResource("4_7c56o")
+text = "goodbye"

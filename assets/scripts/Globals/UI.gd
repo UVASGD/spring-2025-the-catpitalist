@@ -10,6 +10,6 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 
-func open_shop(inventory:Array):
+func open_shop(inventory:Array, npc:NPC):
 	print("opening shop")
 	return

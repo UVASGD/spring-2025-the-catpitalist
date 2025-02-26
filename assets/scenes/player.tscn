@@ -404,7 +404,7 @@ shape = SubResource("CapsuleShape2D_wb534")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_5fvoc")
-animation = &"water_left"
+animation = &"walk_down"
 
 [node name="interactzone" type="Area2D" parent="."]
 unique_name_in_owner = true

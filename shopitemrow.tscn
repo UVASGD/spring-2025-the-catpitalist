@@ -1,0 +1,70 @@
+[gd_scene load_steps=10 format=3 uid="uid://cluwosajte72y"]
+
+[ext_resource type="Texture2D" uid="uid://bua2t88vjiquv" path="res://assets/sprites/UI/squarebutton2.png" id="1_2g4so"]
+[ext_resource type="Script" path="res://shopitemrow.gd" id="1_5rl3m"]
+[ext_resource type="Texture2D" uid="uid://dl0ba176kmfni" path="res://assets/sprites/UI/leftarrow.png" id="2_mcpm5"]
+[ext_resource type="Texture2D" uid="uid://2eqgflmx3yxj" path="res://assets/sprites/UI/squarebutton.png" id="3_7i7gg"]
+[ext_resource type="Texture2D" uid="uid://dospipk825kjl" path="res://assets/sprites/UI/leftarrow_s.png" id="3_hdaag"]
+[ext_resource type="Texture2D" uid="uid://cj45rpr3ct17i" path="res://assets/sprites/UI/rightarrow.png" id="4_t2p8r"]
+[ext_resource type="Texture2D" uid="uid://bf6kwwej5w5yd" path="res://assets/sprites/UI/rightarrow_s.png" id="6_av3f7"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_s5gf3"]
+font_color = Color(0.486275, 0, 1, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_6c5si"]
+font_color = Color(0.486275, 0, 1, 1)
+
+[node name="shopitemrow" type="HBoxContainer"]
+script = ExtResource("1_5rl3m")
+
+[node name="Label" type="Label" parent="."]
+custom_minimum_size = Vector2(68.26, 31.245)
+layout_mode = 2
+text = "$999999"
+label_settings = SubResource("LabelSettings_s5gf3")
+horizontal_alignment = 1
+
+[node name="spriteholder" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(49.345, 43.34)
+layout_mode = 2
+size_flags_horizontal = 2
+texture = ExtResource("1_2g4so")
+
+[node name="itemname" type="Label" parent="."]
+custom_minimum_size = Vector2(123.075, 32.205)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.07
+text = "flowerlkjhh;asolkdj"
+label_settings = SubResource("LabelSettings_6c5si")
+clip_text = true
+text_overrun_behavior = 3
+
+[node name="decreasebutton" type="TextureButton" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+texture_normal = ExtResource("2_mcpm5")
+texture_hover = ExtResource("3_hdaag")
+
+[node name="countholder" type="TextureRect" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("3_7i7gg")
+
+[node name="countlabel" type="Label" parent="countholder"]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 9.0
+offset_right = 41.0
+offset_bottom = 32.0
+text = "0"
+horizontal_alignment = 1
+
+[node name="increasebutton" type="TextureButton" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+texture_normal = ExtResource("4_t2p8r")
+texture_hover = ExtResource("6_av3f7")
+
+[connection signal="pressed" from="decreasebutton" to="." method="removeitem"]
+[connection signal="pressed" from="increasebutton" to="." method="additem"]

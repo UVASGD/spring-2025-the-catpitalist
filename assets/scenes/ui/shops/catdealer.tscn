@@ -1,0 +1,357 @@
+[gd_scene load_steps=26 format=3 uid="uid://dd2mkiddmfp7v"]
+
+[ext_resource type="Texture2D" uid="uid://dkmca3g60ty7" path="res://assets/sprites/UI/shops/BGs/CATNIPDEALER_shop_background.png" id="1_nnu4b"]
+[ext_resource type="Script" path="res://assets/scripts/shop.gd" id="1_t0rf1"]
+[ext_resource type="Texture2D" uid="uid://l1mnrvpg1w7v" path="res://assets/sprites/UI/shops/portraits/catnipdealer/sprite_00.png" id="2_v08ey"]
+[ext_resource type="Texture2D" uid="uid://7vbfixfgm7je" path="res://assets/sprites/UI/shops/portraits/catnipdealer/sprite_01.png" id="3_mepu4"]
+[ext_resource type="Texture2D" uid="uid://byyp858sq213t" path="res://assets/sprites/UI/shops/portraits/catnipdealer/sprite_02.png" id="4_f7mwn"]
+[ext_resource type="Texture2D" uid="uid://baer40j1gj6sm" path="res://assets/sprites/UI/shops/portraits/catnipdealer/sprite_03.png" id="5_70lwc"]
+[ext_resource type="Texture2D" uid="uid://bcimufb0dxa3s" path="res://assets/sprites/UI/shops/portraits/catnipdealer/sprite_04.png" id="6_o3ed2"]
+[ext_resource type="Texture2D" uid="uid://cqxgd7vjgrsg4" path="res://assets/sprites/UI/shops/portraits/catnipdealer/sprite_05.png" id="7_rqqb1"]
+[ext_resource type="Texture2D" uid="uid://sovhk1bqkrkl" path="res://assets/sprites/UI/shops/portraits/catnipdealer/sprite_06.png" id="8_8emu5"]
+[ext_resource type="Texture2D" uid="uid://r5q2lsg53xy5" path="res://assets/sprites/UI/shops/portraits/catnipdealer/sprite_07.png" id="9_ro1xj"]
+[ext_resource type="Texture2D" uid="uid://r3n04qnqcyb7" path="res://assets/sprites/UI/shops/portraits/catnipdealer/sprite_08.png" id="10_k1eih"]
+[ext_resource type="Texture2D" uid="uid://t61v413emq2h" path="res://assets/sprites/UI/shops/shop_cardboard.png" id="11_f371q"]
+[ext_resource type="PackedScene" uid="uid://cluwosajte72y" path="res://shopitemrow.tscn" id="21_hovm5"]
+[ext_resource type="Texture2D" uid="uid://blvmtlga873ok" path="res://assets/sprites/UI/dbox.png" id="22_07sfd"]
+[ext_resource type="Texture2D" uid="uid://cjyq1o7ajogye" path="res://assets/sprites/UI/button2.png" id="23_hli48"]
+[ext_resource type="Texture2D" uid="uid://b63cs1dw4yja0" path="res://assets/sprites/UI/button2_s.png" id="24_h5nn0"]
+[ext_resource type="Texture2D" uid="uid://cr1scuwfnhc20" path="res://assets/sprites/UI/button3.png" id="25_wwe6y"]
+[ext_resource type="Texture2D" uid="uid://b3pqvmma1c8vc" path="res://assets/sprites/UI/button3_s.png" id="26_t0o76"]
+
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_xqf5p"]
+frames = 9
+speed_scale = 9.0
+frame_0/texture = ExtResource("2_v08ey")
+frame_1/texture = ExtResource("3_mepu4")
+frame_1/duration = 1.0
+frame_2/texture = ExtResource("4_f7mwn")
+frame_2/duration = 1.0
+frame_3/texture = ExtResource("5_70lwc")
+frame_3/duration = 1.0
+frame_4/texture = ExtResource("6_o3ed2")
+frame_4/duration = 1.0
+frame_5/texture = ExtResource("7_rqqb1")
+frame_5/duration = 1.0
+frame_6/texture = ExtResource("8_8emu5")
+frame_6/duration = 1.0
+frame_7/texture = ExtResource("9_ro1xj")
+frame_7/duration = 1.0
+frame_8/texture = ExtResource("10_k1eih")
+frame_8/duration = 1.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_ec34j"]
+font_size = 19
+font_color = Color(0.486275, 0, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j0sdl"]
+bg_color = Color(0.486275, 0, 1, 1)
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.367804, 0.0016478, 0.768846, 1)
+
+[sub_resource type="Theme" id="Theme_xx5or"]
+VScrollBar/styles/grabber = SubResource("StyleBoxFlat_j0sdl")
+
+[sub_resource type="LabelSettings" id="LabelSettings_i11ye"]
+font_color = Color(0.486275, 0, 1, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_46ibt"]
+font_color = Color(0.486275, 0, 1, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_7f5g5"]
+font_color = Color(0.486275, 0, 1, 1)
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_t0rf1")
+songtitle = "catnipdealer"
+buy_dialogue = "preesh."
+sell_dialogue = "Don't spend it all in one place."
+buyscreen_dialogue = "That'll run you $---- clams."
+sellscreen_dialogue = "I'm willing to part with $---."
+choosing_dialogue = "Alright, so who's getting paid here?"
+leaving_dialogue = "Don't let the door hit you on the way out."
+
+[node name="BG" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_nnu4b")
+
+[node name="Cat" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 640.0
+offset_bottom = 360.0
+texture = SubResource("AnimatedTexture_xqf5p")
+stretch_mode = 2
+
+[node name="Cardboard" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 640.0
+offset_bottom = 360.0
+texture = ExtResource("11_f371q")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 418.0
+offset_top = 17.0
+offset_right = 506.0
+offset_bottom = 57.0
+texture = ExtResource("23_hli48")
+
+[node name="mode" type="Label" parent="TextureRect"]
+layout_mode = 0
+offset_left = 23.0
+offset_top = 5.0
+offset_right = 78.0
+offset_bottom = 40.0
+text = "SELL"
+label_settings = SubResource("LabelSettings_ec34j")
+
+[node name="invscroller" type="ScrollContainer" parent="."]
+layout_mode = 0
+offset_left = 315.0
+offset_top = 52.0
+offset_right = 676.0
+offset_bottom = 190.0
+scale = Vector2(0.78, 0.78)
+theme = SubResource("Theme_xx5or")
+horizontal_scroll_mode = 0
+
+[node name="inv" type="VBoxContainer" parent="invscroller"]
+layout_mode = 2
+
+[node name="HBoxContainer" parent="invscroller/inv" instance=ExtResource("21_hovm5")]
+layout_mode = 2
+
+[node name="HBoxContainer2" parent="invscroller/inv" instance=ExtResource("21_hovm5")]
+layout_mode = 2
+
+[node name="HBoxContainer3" parent="invscroller/inv" instance=ExtResource("21_hovm5")]
+layout_mode = 2
+
+[node name="HBoxContainer4" parent="invscroller/inv" instance=ExtResource("21_hovm5")]
+layout_mode = 2
+
+[node name="HBoxContainer5" parent="invscroller/inv" instance=ExtResource("21_hovm5")]
+layout_mode = 2
+
+[node name="HBoxContainer6" parent="invscroller/inv" instance=ExtResource("21_hovm5")]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 52.0
+offset_top = 205.0
+offset_right = 596.0
+offset_bottom = 345.0
+
+[node name="dbox" type="TextureRect" parent="HBoxContainer"]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("22_07sfd")
+expand_mode = 2
+
+[node name="dialogue" type="Label" parent="HBoxContainer/dbox"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 30.0
+offset_right = 378.0
+offset_bottom = 110.0
+text = "alright, who's getting paid here?"
+label_settings = SubResource("LabelSettings_i11ye")
+autowrap_mode = 2
+
+[node name="sellbuttons" type="VBoxContainer" parent="HBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(0, 119.58)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+size_flags_stretch_ratio = 2.58
+
+[node name="sell" type="TextureButton" parent="HBoxContainer/sellbuttons"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.35
+texture_normal = ExtResource("25_wwe6y")
+texture_hover = ExtResource("26_t0o76")
+stretch_mode = 4
+
+[node name="Label" type="Label" parent="HBoxContainer/sellbuttons/sell"]
+layout_mode = 0
+offset_left = 48.0
+offset_top = 7.58002
+offset_right = 88.0
+offset_bottom = 30.58
+text = "SELL"
+label_settings = SubResource("LabelSettings_46ibt")
+
+[node name="back" type="TextureButton" parent="HBoxContainer/sellbuttons"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.35
+texture_normal = ExtResource("23_hli48")
+texture_hover = ExtResource("24_h5nn0")
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="HBoxContainer/sellbuttons/back"]
+layout_mode = 0
+offset_left = 45.0
+offset_top = 2.58
+offset_right = 87.0
+offset_bottom = 25.58
+text = "BACK"
+label_settings = SubResource("LabelSettings_7f5g5")
+
+[node name="leave" type="TextureButton" parent="HBoxContainer/sellbuttons"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.35
+texture_normal = ExtResource("23_hli48")
+texture_hover = ExtResource("24_h5nn0")
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="HBoxContainer/sellbuttons/leave"]
+layout_mode = 0
+offset_left = 45.0
+offset_top = 2.58
+offset_right = 87.0
+offset_bottom = 25.58
+text = "LEAVE"
+label_settings = SubResource("LabelSettings_7f5g5")
+
+[node name="buybuttons" type="VBoxContainer" parent="HBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(0, 119.58)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+size_flags_stretch_ratio = 2.58
+
+[node name="buy" type="TextureButton" parent="HBoxContainer/buybuttons"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.35
+texture_normal = ExtResource("25_wwe6y")
+texture_hover = ExtResource("26_t0o76")
+stretch_mode = 4
+
+[node name="Label" type="Label" parent="HBoxContainer/buybuttons/buy"]
+layout_mode = 0
+offset_left = 48.0
+offset_top = 7.58002
+offset_right = 88.0
+offset_bottom = 30.58
+text = "BUY"
+label_settings = SubResource("LabelSettings_46ibt")
+
+[node name="back" type="TextureButton" parent="HBoxContainer/buybuttons"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.35
+texture_normal = ExtResource("23_hli48")
+texture_hover = ExtResource("24_h5nn0")
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="HBoxContainer/buybuttons/back"]
+layout_mode = 0
+offset_left = 45.0
+offset_top = 2.58
+offset_right = 87.0
+offset_bottom = 25.58
+text = "BACK"
+label_settings = SubResource("LabelSettings_7f5g5")
+
+[node name="leave" type="TextureButton" parent="HBoxContainer/buybuttons"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.35
+texture_normal = ExtResource("23_hli48")
+texture_hover = ExtResource("24_h5nn0")
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="HBoxContainer/buybuttons/leave"]
+layout_mode = 0
+offset_left = 45.0
+offset_top = 2.58
+offset_right = 87.0
+offset_bottom = 25.58
+text = "LEAVE"
+label_settings = SubResource("LabelSettings_7f5g5")
+
+[node name="choose" type="VBoxContainer" parent="HBoxContainer"]
+custom_minimum_size = Vector2(0, 119.58)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+size_flags_stretch_ratio = 2.58
+
+[node name="buy" type="TextureButton" parent="HBoxContainer/choose"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.35
+texture_normal = ExtResource("25_wwe6y")
+texture_hover = ExtResource("26_t0o76")
+stretch_mode = 4
+
+[node name="Label" type="Label" parent="HBoxContainer/choose/buy"]
+layout_mode = 0
+offset_left = 48.0
+offset_top = 7.58002
+offset_right = 88.0
+offset_bottom = 30.58
+text = "BUY"
+label_settings = SubResource("LabelSettings_46ibt")
+
+[node name="sell" type="TextureButton" parent="HBoxContainer/choose"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.35
+texture_normal = ExtResource("23_hli48")
+texture_hover = ExtResource("24_h5nn0")
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="HBoxContainer/choose/sell"]
+layout_mode = 0
+offset_left = 45.0
+offset_top = 2.58
+offset_right = 87.0
+offset_bottom = 25.58
+text = "SELL
+"
+label_settings = SubResource("LabelSettings_7f5g5")
+
+[node name="leave" type="TextureButton" parent="HBoxContainer/choose"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.35
+texture_normal = ExtResource("23_hli48")
+texture_hover = ExtResource("24_h5nn0")
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="HBoxContainer/choose/leave"]
+layout_mode = 0
+offset_left = 45.0
+offset_top = 2.58
+offset_right = 87.0
+offset_bottom = 25.58
+text = "LEAVE"
+label_settings = SubResource("LabelSettings_7f5g5")
+
+[connection signal="pressed" from="HBoxContainer/sellbuttons/sell" to="." method="_on_sell_pressed"]
+[connection signal="pressed" from="HBoxContainer/sellbuttons/back" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="HBoxContainer/sellbuttons/leave" to="." method="_on_leave_pressed"]
+[connection signal="pressed" from="HBoxContainer/buybuttons/buy" to="." method="_on_buy_pressed"]
+[connection signal="pressed" from="HBoxContainer/buybuttons/back" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="HBoxContainer/buybuttons/leave" to="." method="_on_leave_pressed"]
+[connection signal="pressed" from="HBoxContainer/choose/buy" to="." method="_on_choose_buy_pressed"]
+[connection signal="pressed" from="HBoxContainer/choose/sell" to="." method="_on_choose_sell_pressed"]
+[connection signal="pressed" from="HBoxContainer/choose/leave" to="." method="_on_leave_pressed"]
