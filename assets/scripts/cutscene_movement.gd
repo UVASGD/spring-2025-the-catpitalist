@@ -5,6 +5,7 @@ class_name CutsceneMovement extends Node2D
 @export var start_time: float
 @export var num_dialogue: int
 @export var animation_override: String
+@export var animation_override_speed: float = 1
 var final_pos: Vector2
 var curr_index = 0
 	

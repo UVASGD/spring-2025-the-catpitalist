@@ -5,7 +5,6 @@ var currIndex: int
 
 var time_elapsed = 0.0
 var elapse_time = false
-var last_dialogue = false
 
 var npc_count = 0
 var npcs_loaded = 0
@@ -26,78 +25,75 @@ func _on_dialogue_finish() -> void:
 	elapse_time = true
 	
 func _on_dialogue(_dialogue) -> void:
-	if _dialogue.is_exhaust:
-		last_dialogue = true
-	else:
-		last_dialogue = false
 	elapse_time = false
 	
 func _physics_process(delta: float) -> void:
 	if elapse_time:
 		time_elapsed += delta
-		for i in npcs_in_scene:
-			var anim_sprite = i.get_node("Sprite2D")
-			
-			var animation_to_play = "idle"
-			var animation_speed = 1.00
-			
-			for j in i.moves:
-				if time_elapsed >= j.start_time:
-					if j.curr_index == j.movement.size():
-						if j.num_dialogue > 0:
-							i.speak()
-							j.num_dialogue -= 1
+	
+	#iterate through each sprite in the cutscene
+	for i in npcs_in_scene:
+		#find animated sprite
+		var anim_sprite = null
+		for j in i.get_children():
+			if j is AnimatedSprite2D:
+				anim_sprite = j
+		
+		#default to idle animation at normal speed
+		var animation_to_play = "idle"
+		var animation_speed = 1.00
+		
+		#iterate through each moveset
+		for j in i.moves:
+			if time_elapsed >= j.start_time:
+				if elapse_time:
+					#play dialogue if movement is finished, otherwise perform movement
+					if j.curr_index == j.movement.size() && j.num_dialogue > 0:
+						i.speak()
+						j.num_dialogue -= 1
 					if j.curr_index < j.movement.size():
 						var next_point = j.movement[j.curr_index]
 						var direction = rad_to_deg((i.position - next_point).angle())
 						
-						#directional animations
+						#set default directional animations
 						if direction <= -45 && direction >= -135:
 							anim_sprite.flip_h = false
-							animation_to_play = "down"
+							animation_to_play = "walk_down"
 						elif direction <= -135 || direction >= 135:
-							if anim_sprite.sprite_frames.get_animation_names().has("right"):
-								anim_sprite.flip_h = false
-								animation_to_play = "right"
-							else:
-								anim_sprite.flip_h = true
-								animation_to_play = "left"
+							animation_to_play = "walk_right"
 						elif direction <= 135 && direction >= 45:
 							anim_sprite.flip_h = false
-							animation_to_play = "up"
+							animation_to_play = "walk_up"
 						elif direction >= -45 && direction <= 45:
-							if anim_sprite.sprite_frames.get_animation_names().has("left"):
-								anim_sprite.flip_h = false
-								animation_to_play = "left"
-							else:
-								anim_sprite.flip_h = true
-								animation_to_play = "right"
-						animation_speed = j.speed/20
+							animation_to_play = "walk_left"
+						#speed of default movement animations (can/should be tweaked)
+						animation_speed = j.speed/35
+						
+						#movement
 						if i.position != next_point:
-							i.position = i.position.move_toward(next_point, delta* j.speed)
+							i.position = i.position.move_toward(next_point, delta*j.speed)
 						else:
 							j.curr_index += 1
-							
-					if j.animation_override:
-						animation_to_play = j.animation_override
-						animation_speed = 1
-			anim_sprite.play(animation_to_play, animation_speed)
-	#conditions when time isn't moving (during dialogue)
-	else:
-		for i in npcs_in_scene:
-			#play idle animation by default at normal speed
-			var animation_to_play = "idle"
-			var animation_speed = 1.00
-			
-			var anim_sprite = i.get_node("Sprite2D")
-			
-			#play override animation if it's there
-			for j in i.moves:
-				if j.animation_override && time_elapsed >= j.start_time:
+						
+				if j.animation_override:
 					animation_to_play = j.animation_override
-					animation_speed = 1
+					animation_speed = j.animation_override_speed
+		#correct directional animations if missing left or right animation
+		if animation_to_play == "walk_left":
+			if anim_sprite.sprite_frames.get_animation_names().has("walk_left"):
+				anim_sprite.flip_h = false
+			else:
+				anim_sprite.flip_h = true
+				animation_to_play = "walk_right"
+		elif animation_to_play == "walk_right":
+			if anim_sprite.sprite_frames.get_animation_names().has("walk_right"):
+				anim_sprite.flip_h = false
+			else:
+				anim_sprite.flip_h = true
+				animation_to_play = "walk_left"
 			
-			anim_sprite.play(animation_to_play, animation_speed)
+		#execute animation
+		anim_sprite.play(animation_to_play, animation_speed)
 			
 	if time_elapsed >= cutscene_length:
 		pass

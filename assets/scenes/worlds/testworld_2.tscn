@@ -1,11 +1,9 @@
-[gd_scene load_steps=19 format=4 uid="uid://hckwrwviojiy"]
+[gd_scene load_steps=17 format=4 uid="uid://hckwrwviojiy"]
 
 [ext_resource type="Script" path="res://assets/scripts/testworld.gd" id="1_uwaa4"]
 [ext_resource type="PackedScene" uid="uid://dbfvkgx1l7l1" path="res://assets/scenes/shade.tscn" id="2_iwth2"]
 [ext_resource type="PackedScene" uid="uid://dwq31u7ekbfjy" path="res://assets/scenes/test_cutscene.tscn" id="2_ojcsu"]
 [ext_resource type="PackedScene" uid="uid://cmcemw1qn4i4q" path="res://assets/scenes/player.tscn" id="4_8vk28"]
-[ext_resource type="PackedScene" uid="uid://8xq2vf0ubh3w" path="res://assets/scenes/drop_item.tscn" id="5_tfguj"]
-[ext_resource type="PackedScene" uid="uid://jfxxedobm6oh" path="res://assets/scenes/items/watercan.tscn" id="6_s8njk"]
 [ext_resource type="Texture2D" uid="uid://ba5emgq6meyok" path="res://assets/sprites/larger_grass_tile_map-Sheet.png" id="8_mfo03"]
 [ext_resource type="Texture2D" uid="uid://cegsvx4fhirh5" path="res://assets/sprites/grass_sprite_sheet-export.png" id="9_40s7c"]
 [ext_resource type="PackedScene" uid="uid://cuts6prbym5ep" path="res://assets/scenes/plantable_tile.tscn" id="10_kicvb"]
@@ -111,16 +109,17 @@ y_sort_enabled = true
 
 [node name="Player" parent="y_sorted" instance=ExtResource("4_8vk28")]
 
+[node name="AnimatedSprite2D" parent="y_sorted/Player" index="1"]
+visible = false
+
 [node name="Control" parent="y_sorted/Player/GameCam" index="0"]
+visible = false
+
+[node name="Hotbar" parent="y_sorted/Player/GameCam" index="1"]
 visible = false
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="y_sorted/Player"]
 remote_path = NodePath("../../../shading")
-
-[node name="DropItem" parent="y_sorted" instance=ExtResource("5_tfguj")]
-position = Vector2(-95.685, 0)
-
-[node name="test" parent="y_sorted/DropItem" instance=ExtResource("6_s8njk")]
 
 [node name="TileMapLayer" type="TileMapLayer" parent="y_sorted"]
 z_index = -5
