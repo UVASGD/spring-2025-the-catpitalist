@@ -443,7 +443,7 @@ position = Vector2(0, 16)
 polygon = PackedVector2Array(-2, -2, 2, -2, 2, 2, -2, 2)
 
 [node name="pos2" type="Polygon2D" parent="NPC/movement"]
-position = Vector2(72, 80)
+position = Vector2(80, 80)
 polygon = PackedVector2Array(-2, -2, 2, -2, 2, 2, -2, 2)
 
 [node name="speech1" type="Node2D" parent="NPC"]
@@ -452,12 +452,13 @@ script = ExtResource("4_d3764")
 speed = 50.0
 start_time = 7.9
 num_dialogue = 1
+animation_override = "right"
 
 [node name="movement2" type="Node2D" parent="NPC"]
 position = Vector2(-32, 160)
 script = ExtResource("4_d3764")
 speed = 100.0
-start_time = 7.9
+start_time = 8.0
 
 [node name="pos1" type="Polygon2D" parent="NPC/movement2"]
 position = Vector2(0, 16)
@@ -505,7 +506,7 @@ text = "I'm doing great"
 [node name="Conversation2" parent="NPC2/Convos" instance=ExtResource("2_g7ffm")]
 
 [node name="Message" parent="NPC2/Convos/Conversation2/Messages" index="0"]
-text = "how are you"
+text = "sorry about him."
 
 [node name="Conversation3" parent="NPC2/Convos" instance=ExtResource("2_g7ffm")]
 
@@ -518,6 +519,14 @@ position = Vector2(-96, -96)
 script = ExtResource("4_d3764")
 speed = 150.0
 start_time = 6.7
+num_dialogue = 1
+
+[node name="speech2" type="Node2D" parent="NPC2"]
+visible = false
+position = Vector2(-96, -96)
+script = ExtResource("4_d3764")
+speed = 150.0
+start_time = 12.0
 num_dialogue = 1
 
 [editable path="NPC/Convos/Conversation"]
