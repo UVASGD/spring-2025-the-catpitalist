@@ -2,62 +2,104 @@ class_name CutsceneController extends Node2D
 
 var moving = false
 var currIndex: int
+
 var time_elapsed = 0.0
+var elapse_time = false
+var last_dialogue = false
 
 var npc_count = 0
 var npcs_loaded = 0
 
 var npcs_in_scene: Array[CutsceneNPC]
-			
-func _on_npc_finished_loading() -> void:
-	if npc_count == 0:
-		for i in get_children():
-			if i is CutsceneNPC:
-				npc_count += 1
+
+@export var cutscene_length: int
+
+func _ready() -> void:
+	SignalBus.connect("dialogue_finished", _on_dialogue_finish)
+	SignalBus.connect("new_dialogue", _on_dialogue)
+	for i in get_children().filter(func(child): return child is CutsceneNPC):
+		i.load_cutscene_npc()
+		npcs_in_scene.append(i)
+	elapse_time = true
+		
+func _on_dialogue_finish() -> void:
+	elapse_time = true
 	
-	npcs_loaded += 1
-	if npcs_loaded == npc_count:
-		for i in get_children().filter(func(child): return child is CutsceneNPC):
-			npcs_in_scene.append(i)
-		moving = true
+func _on_dialogue(_dialogue) -> void:
+	if _dialogue.is_exhaust:
+		last_dialogue = true
+	else:
+		last_dialogue = false
+	elapse_time = false
 	
 func _physics_process(delta: float) -> void:
-	if moving:
+	if elapse_time:
+		#print("running")
 		time_elapsed += delta
 		for i in npcs_in_scene:
+			var anim_sprite = i.get_node("Sprite2D")
+			
+			var animation_to_play = "idle"
+			var animation_speed = 1.00
+			
 			for j in i.moves:
 				if time_elapsed >= j.start_time:
-					var anim_sprite = i.get_node("Sprite2D")
 					
 					if j.curr_index == j.movement.size():
-						anim_sprite.play("idle")
-						i.speak()
-					
+						if j.num_dialogue > 0:
+							i.speak()
+							j.num_dialogue -= 1
+						#anim_sprite.play("idle")
+							
+						#if i.get_next_convo():
+							
+							#i.speak()
 					if j.curr_index < j.movement.size():
 						var next_point = j.movement[j.curr_index]
 						var direction = rad_to_deg((i.position - next_point).angle())
 						
 						if direction <= -45 && direction >= -135:
 							anim_sprite.flip_h = false
-							anim_sprite.play("down", j.speed/20)
-						elif (direction <= -135 || direction >= 135) && direction != -1000:
+							animation_to_play = "down"
+							animation_speed = j.speed/20
+							#anim_sprite.play("down", j.speed/20)
+						elif direction <= -135 || direction >= 135:
 							if anim_sprite.sprite_frames.get_animation_names().has("right"):
 								anim_sprite.flip_h = false
-								anim_sprite.play("right", j.speed/20)
+								animation_to_play = "right"
+								animation_speed = j.speed/20
+								#anim_sprite.play("right", j.speed/20)
 							else:
 								anim_sprite.flip_h = true
-								anim_sprite.play("left", j.speed/20)
+								animation_to_play = "left"
+								animation_speed = j.speed/20
+								#anim_sprite.play("left", j.speed/20)
 						elif direction <= 135 && direction >= 45:
 							anim_sprite.flip_h = false
-							anim_sprite.play("up", j.speed/20)
+							animation_to_play = "up"
+							animation_speed = j.speed/20
+							#anim_sprite.play("up", j.speed/20)
 						elif direction >= -45 && direction <= 45:
 							if anim_sprite.sprite_frames.get_animation_names().has("left"):
 								anim_sprite.flip_h = false
-								anim_sprite.play("left", j.speed/20)
+								animation_to_play = "left"
+								animation_speed = j.speed/20
+								#anim_sprite.play("left", j.speed/20)
 							else:
 								anim_sprite.flip_h = true
-								anim_sprite.play("right", j.speed/20)
+								animation_to_play = "right"
+								animation_speed = j.speed/20
+								#anim_sprite.play("right", j.speed/20)
 						if i.position != next_point:
 							i.position = i.position.move_toward(next_point, delta* j.speed)
 						else:
 							j.curr_index += 1
+			anim_sprite.play(animation_to_play, animation_speed)
+	else:
+		for i in npcs_in_scene:
+			var anim_sprite = i.get_node("Sprite2D")
+			
+			anim_sprite.play("idle")
+			
+	if time_elapsed >= cutscene_length:
+		pass
