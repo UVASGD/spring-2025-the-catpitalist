@@ -419,7 +419,7 @@ shape = SubResource("RectangleShape2D_njb3k")
 [node name="Conversation" parent="NPC/Convos" instance=ExtResource("2_g7ffm")]
 
 [node name="Message" parent="NPC/Convos/Conversation/Messages" index="0"]
-text = "um hi"
+text = "umm hi chubbs"
 
 [node name="Message3" type="Node" parent="NPC/Convos/Conversation/Messages" index="1"]
 script = ExtResource("7_3qnoc")
@@ -516,15 +516,7 @@ shape = SubResource("RectangleShape2D_njb3k")
 [node name="Conversation" parent="NPC2/Convos" instance=ExtResource("2_g7ffm")]
 
 [node name="Message" parent="NPC2/Convos/Conversation/Messages" index="0"]
-text = "shut up"
-
-[node name="Message2" type="Node" parent="NPC2/Convos/Conversation/Messages" index="1"]
-script = ExtResource("7_3qnoc")
-text = "just kidding"
-
-[node name="Message3" type="Node" parent="NPC2/Convos/Conversation/Messages" index="2"]
-script = ExtResource("7_3qnoc")
-text = "I'm doing great"
+text = "I'm doing great!"
 
 [node name="Conversation2" parent="NPC2/Convos" instance=ExtResource("2_g7ffm")]
 
