@@ -1,22 +1,14 @@
-[gd_scene load_steps=25 format=4 uid="uid://hckwrwviojiy"]
+[gd_scene load_steps=17 format=4 uid="uid://hckwrwviojiy"]
 
 [ext_resource type="Script" path="res://assets/scripts/overworldarea.gd" id="1_uwaa4"]
 [ext_resource type="PackedScene" uid="uid://dbfvkgx1l7l1" path="res://assets/scenes/shade.tscn" id="2_iwth2"]
 [ext_resource type="PackedScene" uid="uid://dwq31u7ekbfjy" path="res://assets/scenes/test_cutscene.tscn" id="2_ojcsu"]
-[ext_resource type="PackedScene" uid="uid://rwurml76tnqs" path="res://assets/scenes/npcs/sign.tscn" id="3_mny8k"]
 [ext_resource type="PackedScene" uid="uid://cmcemw1qn4i4q" path="res://assets/scenes/player.tscn" id="4_8vk28"]
-[ext_resource type="PackedScene" uid="uid://8xq2vf0ubh3w" path="res://assets/scenes/drop_item.tscn" id="5_tfguj"]
-[ext_resource type="PackedScene" uid="uid://jfxxedobm6oh" path="res://assets/scenes/items/watercan.tscn" id="6_s8njk"]
-[ext_resource type="PackedScene" uid="uid://tpn3u80c1bsx" path="res://assets/scenes/npcs/blurbo.tscn" id="7_jfy1f"]
 [ext_resource type="Texture2D" uid="uid://ba5emgq6meyok" path="res://assets/sprites/larger_grass_tile_map-Sheet.png" id="8_mfo03"]
 [ext_resource type="Texture2D" uid="uid://cegsvx4fhirh5" path="res://assets/sprites/grass_sprite_sheet-export.png" id="9_40s7c"]
 [ext_resource type="PackedScene" uid="uid://cuts6prbym5ep" path="res://assets/scenes/plantable_tile.tscn" id="10_kicvb"]
 [ext_resource type="Texture2D" uid="uid://demaw21ocpurs" path="res://assets/sprites/dirt_sprites.png" id="11_pddbr"]
 [ext_resource type="Texture2D" uid="uid://rwlroq3ou1el" path="res://assets/sprites/farmland.png" id="12_s3mg5"]
-[ext_resource type="PackedScene" uid="uid://bpeq3yds8qnt1" path="res://assets/scenes/npcs/washingmashing.tscn" id="13_un5kb"]
-[ext_resource type="PackedScene" uid="uid://b7hk1uss3cmvs" path="res://assets/scenes/npcs/mozzie.tscn" id="14_pny07"]
-[ext_resource type="PackedScene" uid="uid://b42c4mrfgwcvt" path="res://assets/scenes/npcs/dealer.tscn" id="15_1r8py"]
-[ext_resource type="PackedScene" uid="uid://c7bpitve6lom3" path="res://assets/scenes/npcs/fatcat.tscn" id="16_uybup"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7ivjj"]
 texture = ExtResource("8_mfo03")
@@ -98,7 +90,7 @@ y_sort_enabled = true
 script = ExtResource("1_uwaa4")
 
 [node name="test_cutscene" parent="." instance=ExtResource("2_ojcsu")]
-position = Vector2(-264, -152)
+position = Vector2(-264, -176)
 
 [node name="shading" type="Node2D" parent="."]
 position = Vector2(0, 14)
@@ -115,21 +107,19 @@ mouse_filter = 2
 [node name="y_sorted" type="Node2D" parent="."]
 y_sort_enabled = true
 
-[node name="NPC2" parent="y_sorted" instance=ExtResource("3_mny8k")]
-position = Vector2(-18, -80)
-
 [node name="Player" parent="y_sorted" instance=ExtResource("4_8vk28")]
+
+[node name="AnimatedSprite2D" parent="y_sorted/Player" index="1"]
+visible = false
+
+[node name="Control" parent="y_sorted/Player/GameCam" index="0"]
+visible = false
+
+[node name="Hotbar" parent="y_sorted/Player/GameCam" index="1"]
+visible = false
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="y_sorted/Player"]
 remote_path = NodePath("../../../shading")
-
-[node name="DropItem" parent="y_sorted" instance=ExtResource("5_tfguj")]
-position = Vector2(-95.685, 0)
-
-[node name="test" parent="y_sorted/DropItem" instance=ExtResource("6_s8njk")]
-
-[node name="NPC" parent="y_sorted" instance=ExtResource("7_jfy1f")]
-position = Vector2(168, -1)
 
 [node name="TileMapLayer" type="TileMapLayer" parent="y_sorted"]
 z_index = -5
@@ -174,16 +164,5 @@ rotation = 1.5708
 position = Vector2(-392, 24)
 shape = SubResource("WorldBoundaryShape2D_bdq3j")
 
-[node name="NPC3" parent="y_sorted" instance=ExtResource("13_un5kb")]
-position = Vector2(-124, -76)
-scale = Vector2(1, 1)
-
-[node name="NPC4" parent="y_sorted" instance=ExtResource("14_pny07")]
-position = Vector2(-85, 54)
-
-[node name="NPC" parent="." instance=ExtResource("15_1r8py")]
-position = Vector2(-176, 28)
-
-[node name="NPC2" parent="." instance=ExtResource("16_uybup")]
-position = Vector2(86, 53)
-scale = Vector2(1.33, 1.33)
+[editable path="y_sorted/Player"]
+[editable path="y_sorted/Player/GameCam"]

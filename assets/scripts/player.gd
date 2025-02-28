@@ -112,7 +112,6 @@ func play_directional_anim(obj, action:String):
 func held_item():
 	return inventory[held_item_index]
 
-
 func _on_interactzone_area_entered(area: Area2D) -> void:
 	if area.get_parent() is DropItem:
 		pickup(area.get_parent())
