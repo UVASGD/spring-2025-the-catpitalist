@@ -10,6 +10,7 @@ class_name NPC extends Interactable
 var current_convo_index = 0
 var requested_item_id
 var is_speaking = false
+@onready var hitbox: Area2D = $hitbox
 
 var inventory = [] # list of items the NPC can sell 
 
@@ -24,10 +25,10 @@ func _ready() -> void:
 	pass # Replace with function body.
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-
+func setup_input():
+	set_process_input(true)
+	hitbox.input_pickable = true
+	
 func get_convos():
 	return convos.get_children()
 

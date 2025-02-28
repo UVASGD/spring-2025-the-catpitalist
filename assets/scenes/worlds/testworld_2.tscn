@@ -1,6 +1,6 @@
 [gd_scene load_steps=25 format=4 uid="uid://hckwrwviojiy"]
 
-[ext_resource type="Script" path="res://assets/scripts/testworld.gd" id="1_uwaa4"]
+[ext_resource type="Script" path="res://assets/scripts/overworldarea.gd" id="1_uwaa4"]
 [ext_resource type="PackedScene" uid="uid://dbfvkgx1l7l1" path="res://assets/scenes/shade.tscn" id="2_iwth2"]
 [ext_resource type="PackedScene" uid="uid://dwq31u7ekbfjy" path="res://assets/scenes/test_cutscene.tscn" id="2_ojcsu"]
 [ext_resource type="PackedScene" uid="uid://rwurml76tnqs" path="res://assets/scenes/npcs/sign.tscn" id="3_mny8k"]

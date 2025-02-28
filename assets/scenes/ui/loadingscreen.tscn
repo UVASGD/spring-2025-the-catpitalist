@@ -1,0 +1,246 @@
+[gd_scene load_steps=22 format=3 uid="uid://cwafaqasmg3n4"]
+
+[ext_resource type="Texture2D" uid="uid://cwxnfwuoqs0pw" path="res://assets/sprites/UI/loadingpaw_back.png" id="1_0ue1k"]
+[ext_resource type="Script" path="res://assets/scripts/UI/loadingscreen.gd" id="1_q3oh0"]
+[ext_resource type="Texture2D" uid="uid://b5uklr41s1oiy" path="res://assets/sprites/UI/loadingpaw_front.png" id="2_3xjjt"]
+[ext_resource type="Texture2D" uid="uid://brhvumn6xggrr" path="res://assets/sprites/World NPCs/phat_cat-Sheet.png" id="3_5l00q"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_3jk3b"]
+font_color = Color(0.252609, 0.116502, 0.692529, 1)
+outline_size = 4
+outline_color = Color(0.824069, 0.826824, 0.826142, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hh0vm"]
+atlas = ExtResource("3_5l00q")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dwvth"]
+atlas = ExtResource("3_5l00q")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l6ar8"]
+atlas = ExtResource("3_5l00q")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sfuk7"]
+atlas = ExtResource("3_5l00q")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v2vwu"]
+atlas = ExtResource("3_5l00q")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s3y7e"]
+atlas = ExtResource("3_5l00q")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_srl21"]
+atlas = ExtResource("3_5l00q")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hyucp"]
+atlas = ExtResource("3_5l00q")
+region = Rect2(448, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qlty8"]
+atlas = ExtResource("3_5l00q")
+region = Rect2(512, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_23vxi"]
+atlas = ExtResource("3_5l00q")
+region = Rect2(576, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wowq5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hh0vm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dwvth")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l6ar8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sfuk7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v2vwu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s3y7e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_srl21")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hyucp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qlty8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_23vxi")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="Animation" id="Animation_s1cg8"]
+resource_name = "fade_in"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_4j1tq"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ColorRect/MarginContainer/VBoxContainer/TextureProgressBar:value")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_4s23e"]
+resource_name = "fade_out"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_wa5vn"]
+resource_name = "fake"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"end"
+}]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ColorRect/MarginContainer/VBoxContainer/TextureProgressBar:value")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 100.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3caw1"]
+_data = {
+"RESET": SubResource("Animation_4j1tq"),
+"fade_in": SubResource("Animation_s1cg8"),
+"fade_out": SubResource("Animation_4s23e"),
+"fake": SubResource("Animation_wa5vn")
+}
+
+[node name="Control" type="CanvasLayer"]
+script = ExtResource("1_q3oh0")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+color = Color(0.10998, 0.096739, 0.159644, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = -77.0
+offset_right = 416.0
+offset_bottom = -17.0
+grow_vertical = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="ColorRect/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Loading..."
+label_settings = SubResource("LabelSettings_3jk3b")
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="ColorRect/MarginContainer/VBoxContainer"]
+layout_mode = 2
+texture_under = ExtResource("1_0ue1k")
+texture_progress = ExtResource("2_3xjjt")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="ColorRect"]
+position = Vector2(303, 165)
+sprite_frames = SubResource("SpriteFrames_wowq5")
+autoplay = "default"
+frame_progress = 0.424638
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_3caw1")
+}

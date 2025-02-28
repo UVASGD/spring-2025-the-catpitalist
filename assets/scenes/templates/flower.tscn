@@ -21,7 +21,7 @@ outline_color = Color(0, 0, 0, 1)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oduee"]
 size = Vector2(32, 32)
 
-[node name="Flower" type="Node2D"]
+[node name="Flower" type="Node2D" groups=["crops"]]
 script = ExtResource("1_81xt4")
 growth_time = 1
 hardiness = 3
