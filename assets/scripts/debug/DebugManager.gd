@@ -1,12 +1,14 @@
 extends Node
-@onready var debugmenu = preload("res://assets/scenes/debug/debugmenu.tscn").instantiate()
+@onready var debugmenu = null
 var camera = null
 var debug_menu_open = false
 var Blurbo = null
 var cooldown = false
+var cam_fired = false
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	SignalBus.connect("cam_ready", _on_camera_ready)
+	debugmenu = load("res://assets/scenes/debug/debugmenu.tscn").instantiate()
 	pass # Replace with function body.
 
 
@@ -36,7 +38,9 @@ func close_menu():
 	debug_menu_open = false
 	return
 
-func _on_camera_ready(cam): # wait until the main scene's camera is loaded, since this script is autoload and might load before the camera is ready
-	camera = cam
-	camera.add_child(debugmenu)
+func _on_camera_ready(cam):
+	if not cam_fired: # wait until the main scene's camera is loaded, since this script is autoload and might load before the camera is ready
+		camera = cam
+		camera.add_child(debugmenu)
+		cam_fired = true
 	return

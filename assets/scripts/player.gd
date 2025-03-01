@@ -1,24 +1,43 @@
-extends CharacterBody2D
+class_name Player extends CharacterBody2D
 
 @export var speed := 200
 @onready var animated_sprite: AnimatedSprite2D = $"AnimatedSprite2D"
+@onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
 
 var money = 0
-var actionable = true
+var actionable = false
 var inventory = [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null]
 var inv_showing = false
 var inv_cooldown = false
 var can_pickup = true
 var held_item_index = 0
+var last_pos_timer
+var pos_stack = []
 func _ready() -> void:
+	flash_actionable()
 	SignalBus.connect("interact", interact)
 	#SignalBus.connect("items_ready", _on_items_ready)
 	inventory[0] = Items.get_item(1) # debug watercan 
 	inventory[1] = Items.get_item(1) #stack test
 	inventory[2] = Items.get_item(2) # seeds test
 	SignalBus.emit_signal("player_ready", self)
+	last_pos_timer = Timer.new()
+	last_pos_timer.wait_time = 0.1
+	last_pos_timer.connect("timeout", on_pos_timer_timeout)
+	add_child(last_pos_timer)
+	last_pos_timer.start()
+	pos_stack.push_front(position)
+	flash_collision()
 	
-
+	
+func flash_collision():
+	collision_shape_2d.disabled = true
+	await get_tree().create_timer(0.5).timeout
+	collision_shape_2d.disabled = false
+func flash_actionable():
+	actionable = false
+	await get_tree().create_timer(0.5).timeout
+	actionable = true
 func _physics_process(delta):
 	if actionable:
 		var direction = Input.get_vector("left", "right", "up", "down")
@@ -30,7 +49,9 @@ func _on_items_ready():
 	inventory[0] = Items.get_item(1) # debug watercan 
 	SignalBus.emit_signal("player_ready", self)
 
-
+func restore_pos():
+	pos_stack.pop_front()
+	position = pos_stack.pop_front() # call twice because push happens twice per cloning
 
 
 func drop(item):
@@ -79,11 +100,13 @@ func interact(obj):
 	pass
 
 func plant_on(obj:PlantableTile):
+	if held_item() == null:
+		return
 	if held_item() is Plantable and obj.can_hold_plant():
 		held_item().plant_at(obj)
 	
 func water(obj):
-	if held_item() is Watercan:
+	if held_item() != null and held_item() is Watercan:
 		if held_item().use():
 			SignalBus.emit_signal("plant_watered", obj)
 			play_directional_anim(obj, "water")
@@ -116,3 +139,8 @@ func _on_interactzone_area_entered(area: Area2D) -> void:
 	if area.get_parent() is DropItem:
 		pickup(area.get_parent())
 	pass # Replace with function body.
+
+func on_pos_timer_timeout():
+	#print("current pos: ",pos_stack[0])
+	pos_stack[0] = position
+	last_pos_timer.start()

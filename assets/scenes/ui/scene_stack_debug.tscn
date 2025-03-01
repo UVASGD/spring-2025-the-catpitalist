@@ -1,0 +1,19 @@
+[gd_scene load_steps=2 format=3 uid="uid://d0tno18jv3mxv"]
+
+[ext_resource type="Script" path="res://assets/scripts/Globals/scene_stack_debug.gd" id="1_pmmgv"]
+
+[node name="SceneStackDebug" type="CanvasLayer"]
+layer = 10
+script = ExtResource("1_pmmgv")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+offset_left = -2.0
+offset_top = 48.0
+offset_right = 433.0
+offset_bottom = 88.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+custom_minimum_size = Vector2(0, 57.675)
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2

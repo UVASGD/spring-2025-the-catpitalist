@@ -1,7 +1,7 @@
 #class to store player data to savefile, and for other classes to globally access the player's data 
 extends Node
-var player
-
+var player:Player
+var playerpacked = preload("res://assets/scenes/player.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -13,6 +13,22 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 
 	pass
+
+func clone_and_kill(): # removes reference to old plaeyr
+	if player:
+		var newplayer = clone()
+		player.queue_free()
+		player = newplayer
+		return newplayer
+
+func clone():
+	if player:
+		var newplayer:Player = playerpacked.instantiate()
+		newplayer.money = player.money
+		newplayer.inventory = player.inventory
+		newplayer.held_item_index = player.held_item_index
+		newplayer.pos_stack = player.pos_stack
+		return newplayer
 
 func drop(index):
 	var item = player.inventory[index]

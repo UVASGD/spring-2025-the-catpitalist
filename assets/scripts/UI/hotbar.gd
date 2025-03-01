@@ -45,25 +45,45 @@ func flash_label():
 	$AnimationPlayer.play("flash")
 	
 func sync(slot:TextureRect):
-	var item = PlayerData.inventory(slot.get_index())
+	var item_index = slot.get_index()
+	var item = PlayerData.inventory(item_index)
 	slot.get_child(2).hide()
-	if item:
-		var image = load(item.sprite_path)
+	
+	# Create local copies of needed data
+	var item_data = null
+	var i = 0
+	while(i<100):
+		if item:
+			if item:
+				if item != null:
+					item_data = {
+						"sprite_path": item.sprite_path,
+						"stackable": item.stackable,
+						"count": item.count,
+						"item_name": item.item_name
+					}
+		i=i+1
+	
+	# Now use item_data instead of item
+	if item_data:
+		var image = load(item_data.sprite_path)
 		var texture = ImageTexture.create_from_image(image)
 		slot.get_child(0).texture = texture
+		
 		var text
-		if item.stackable:
-			if item.count < 10:
-				text = "0" + str(item.count)
+		if item_data.stackable:
+			if item_data.count < 10:
+				text = "0" + str(item_data.count)
 			else:
-				text = str(item.count)
+				text = str(item_data.count)
 			slot.get_child(1).text = text
 	else:
 		slot.get_child(0).texture = null
 		slot.get_child(1).text = ""
+		
 	if slot.get_index() == active_index:
-		if item:
-			$Control/VBoxContainer/Label.text = PlayerData.inventory(active_index).item_name
+		if item_data:
+			$Control/VBoxContainer/Label.text = item_data.item_name
 		slot.get_child(2).show()
 	else:
 		slot.get_child(2).hide()
