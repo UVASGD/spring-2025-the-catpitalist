@@ -78,16 +78,18 @@ offset_right = 40.0
 offset_bottom = 40.0
 texture = ExtResource("1_nnu4b")
 
-[node name="Portrait" type="TextureRect" parent="."]
-offset_right = 640.0
-offset_bottom = 360.0
-texture = SubResource("AnimatedTexture_xqf5p")
-stretch_mode = 2
-
 [node name="Cardboard" type="TextureRect" parent="."]
 offset_right = 640.0
 offset_bottom = 360.0
 texture = ExtResource("11_f371q")
+
+[node name="Portrait" type="TextureRect" parent="."]
+offset_left = -9.0
+offset_top = -16.0
+offset_right = 631.0
+offset_bottom = 344.0
+texture = SubResource("AnimatedTexture_xqf5p")
+stretch_mode = 2
 
 [node name="choose" type="HBoxContainer" parent="."]
 offset_left = 337.0
