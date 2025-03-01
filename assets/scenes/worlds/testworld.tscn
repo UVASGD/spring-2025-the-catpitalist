@@ -114,11 +114,6 @@ y_sort_enabled = true
 [node name="NPC2" parent="y_sorted" instance=ExtResource("3_23kby")]
 position = Vector2(-18, -80)
 
-[node name="Player" parent="y_sorted" instance=ExtResource("4_53jsm")]
-
-[node name="RemoteTransform2D" type="RemoteTransform2D" parent="y_sorted/Player"]
-remote_path = NodePath("../../../shading")
-
 [node name="DropItem" parent="y_sorted" instance=ExtResource("5_acpoq")]
 position = Vector2(-95.685, 0)
 
@@ -177,9 +172,14 @@ scale = Vector2(1, 1)
 [node name="NPC4" parent="y_sorted" instance=ExtResource("14_284tg")]
 position = Vector2(-85, 54)
 
-[node name="NPC" parent="." instance=ExtResource("13_jnkin")]
+[node name="NPC5" parent="y_sorted" instance=ExtResource("13_jnkin")]
 position = Vector2(-176, 28)
 
-[node name="NPC2" parent="." instance=ExtResource("14_xuub3")]
+[node name="NPC6" parent="y_sorted" instance=ExtResource("14_xuub3")]
 position = Vector2(86, 53)
 scale = Vector2(1.33, 1.33)
+
+[node name="Player" parent="y_sorted" instance=ExtResource("4_53jsm")]
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="y_sorted/Player"]
+remote_path = NodePath("../../../shading")

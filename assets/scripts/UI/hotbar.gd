@@ -1,5 +1,5 @@
-extends Node2D
-@onready var slots: HBoxContainer = $VBoxContainer/slots
+extends CanvasLayer
+@onready var slots: HBoxContainer = $Control/VBoxContainer/slots
 
 var active_index = 0
 var green = Color(0.031,0.5,0.0376)
@@ -46,25 +46,27 @@ func flash_label():
 	
 func sync(slot:TextureRect):
 	var item = PlayerData.inventory(slot.get_index())
-	slot.get_child(1).color = grey
+	slot.get_child(2).hide()
 	if item:
 		var image = load(item.sprite_path)
 		var texture = ImageTexture.create_from_image(image)
-		slot.texture = texture
+		slot.get_child(0).texture = texture
 		var text
 		if item.stackable:
 			if item.count < 10:
 				text = "0" + str(item.count)
 			else:
 				text = str(item.count)
-			slot.get_child(0).text = text
+			slot.get_child(1).text = text
 	else:
-		slot.texture = null
-		slot.get_child(0).text = ""
+		slot.get_child(0).texture = null
+		slot.get_child(1).text = ""
 	if slot.get_index() == active_index:
 		if item:
-			$VBoxContainer/Label.text = PlayerData.inventory(active_index).item_name
-		slot.get_child(1).color = green
+			$Control/VBoxContainer/Label.text = PlayerData.inventory(active_index).item_name
+		slot.get_child(2).show()
+	else:
+		slot.get_child(2).hide()
 
 func _on_new_dialogue(_dialogue):
 	self.hide()

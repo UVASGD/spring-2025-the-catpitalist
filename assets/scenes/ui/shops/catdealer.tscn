@@ -62,14 +62,9 @@ VScrollBar/styles/grabber = SubResource("StyleBoxFlat_j0sdl")
 [sub_resource type="LabelSettings" id="LabelSettings_i11ye"]
 font_color = Color(0.486275, 0, 1, 1)
 
-[node name="Control" type="Control"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="Control" type="CanvasLayer"]
 script = ExtResource("1_t0rf1")
+npc_name = "Catnip Dealer"
 songtitle = "catnipdealer"
 buy_dialogue = "preesh."
 sell_dialogue = "Don't spend it all in one place."
@@ -79,26 +74,22 @@ choosing_dialogue = "Alright, so who's getting paid here?"
 leaving_dialogue = "Don't let the door hit you on the way out."
 
 [node name="BG" type="TextureRect" parent="."]
-layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 texture = ExtResource("1_nnu4b")
 
-[node name="Cat" type="TextureRect" parent="."]
-layout_mode = 0
+[node name="Portrait" type="TextureRect" parent="."]
 offset_right = 640.0
 offset_bottom = 360.0
 texture = SubResource("AnimatedTexture_xqf5p")
 stretch_mode = 2
 
 [node name="Cardboard" type="TextureRect" parent="."]
-layout_mode = 0
 offset_right = 640.0
 offset_bottom = 360.0
 texture = ExtResource("11_f371q")
 
 [node name="choose" type="HBoxContainer" parent="."]
-layout_mode = 0
 offset_left = 337.0
 offset_top = 47.0
 offset_right = 589.0
@@ -143,7 +134,6 @@ label_settings = SubResource("LabelSettings_7f5g5")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 visible = false
-layout_mode = 0
 offset_left = 418.0
 offset_top = 17.0
 offset_right = 506.0
@@ -161,7 +151,6 @@ label_settings = SubResource("LabelSettings_ec34j")
 
 [node name="invscroller" type="ScrollContainer" parent="."]
 visible = false
-layout_mode = 0
 offset_left = 315.0
 offset_top = 52.0
 offset_right = 676.0
@@ -192,7 +181,6 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
-layout_mode = 0
 offset_left = 52.0
 offset_top = 205.0
 offset_right = 596.0

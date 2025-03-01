@@ -25,9 +25,6 @@ func _ready() -> void:
 	pass # Replace with function body.
 
 
-func setup_input():
-	set_process_input(true)
-	hitbox.input_pickable = true
 	
 func get_convos():
 	return convos.get_children()

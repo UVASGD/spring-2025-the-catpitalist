@@ -8,3 +8,13 @@ func _on_continue_pressed() -> void:
 
 func _on_quit_pressed() -> void:
 	get_tree().quit()
+
+func hide_self():
+	hide()
+	for child:Control in $VBoxContainer.get_children():
+		child.mouse_filter = Control.MOUSE_FILTER_PASS 
+
+func show_self():
+	show()
+	for child:Control in $VBoxContainer.get_children():
+		child.mouse_filter = Control.MOUSE_FILTER_STOP 

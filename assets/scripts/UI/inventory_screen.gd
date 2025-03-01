@@ -1,4 +1,4 @@
-extends Node2D
+extends Control
 var current_hovered = null
 var last_hovered = null
 var dragging = false

@@ -6,7 +6,6 @@ class_name Overworld_area extends Node2D
 func _ready() -> void:
 	#Music.play_random()
 	Music.set_mode(Music.INFINITE)
-	setup_input()
 	pass # Replace with function body.
 
 
@@ -34,8 +33,3 @@ func load_save_data(save_data: Dictionary) -> void:
 		var child = self.get_node(child_data["name"])
 		if child and child.is_in_group("Saveable"):
 			child.load_save_data(child_data)
-
-func setup_input():
-	for npc in get_tree().get_nodes_in_group("NPCs"):
-		if npc.has_method("setup_input"):
-			npc.setup_input()

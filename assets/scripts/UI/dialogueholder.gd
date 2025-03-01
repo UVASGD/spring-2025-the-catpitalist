@@ -1,4 +1,4 @@
-extends Node2D
+extends Control
 
 @onready var textbox: Label = $textbox
 @onready var speakerlabel: Label = $speakerlabel

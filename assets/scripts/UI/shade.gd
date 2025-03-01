@@ -7,6 +7,7 @@ func _ready() -> void:
 	SignalBus.connect("dawn_end", _on_daytime)
 	SignalBus.connect("dusk_start", _on_nighttime)
 	SignalBus.connect("midnight_debug", _on_midnight)
+	animation_player.play("day") # remove for non-testing
 	pass # Replace with function body.
 
 

@@ -33,13 +33,17 @@ func change_scene_from_path(old_scene, scene_path):
 
 func private_change_scene(new_scene:Node): # not meant to be called by other scripts. how we actually change scenes under the hood
 	var loading_screen = load("res://assets/scenes/ui/loadingscreen.tscn").instantiate()
-	get_tree().current_scene.add_child(loading_screen)
+	get_tree().root.add_child(loading_screen)
 	loading_screen.fake()
-	peek().hide()
-	get_tree().current_scene = new_scene
-	if permloads.has(new_scene.name) and new_scene.is_in_group("Saveable"):
-		new_scene.load(permloads[new_scene.name])
+	if peek().has_method("hide_self"):
+		peek().hide_self()
+	else:
+		peek().hide()
+	if permloads.has(new_scene.name):
+		new_scene = permloads[new_scene.name]
 	if new_scene.get_parent() == get_tree().root:
+		if new_scene.has_method("show_self"):
+			new_scene.show_self()
 		new_scene.show()
 	else: 
 		get_tree().root.add_child(new_scene)
@@ -58,9 +62,11 @@ func push(newscene):
 	
 	if newscene is String:
 		newscene = load(newscene)
-	newscene = newscene.instantiate()
+	if newscene is PackedScene:
+		newscene = newscene.instantiate()
 	await private_change_scene(newscene)
 	scene_stack.push_front(newscene)
+	return
 	#newscene.set_process_input(true)
 	#newscene.set_process_unhandled_input(true)
 	#newscene.set_process_unhandled_key_input(true)
@@ -71,7 +77,7 @@ func pop():
 	#current_scene.set_process_input(false)
 	#current_scene.set_process_unhandled_input(false)
 	#current_scene.set_process_unhandled_key_input(false)
-	get_tree().root.remove_child(scene_stack.pop_front())
+	get_tree().root.remove_child(current_scene)
 	var returning_scene = peek()
 	await private_change_scene(returning_scene)
 	#returning_scene.set_process_input(true)
@@ -82,8 +88,8 @@ func pop():
 func peek():
 	if scene_stack.size() < 1:
 		return Node2D.new() # should do nothing
-	return scene_stack[-1]
+	return scene_stack[0]
 	
 func save_current():
 	if peek().is_in_group("Saveable"):
-		permloads[peek().name] = peek().get_savedata()
+		permloads[peek().name] = peek()
