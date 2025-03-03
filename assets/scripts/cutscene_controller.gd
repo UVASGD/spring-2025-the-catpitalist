@@ -38,16 +38,7 @@ func _physics_process(delta: float) -> void:
 	PlayerData.player.actionable = false
 	#iterate through each sprite in the cutscene
 	for npc in npcs_in_scene:
-		#find animated sprite
-<<<<<<< HEAD
-		var anim_sprite = null
-		for j in i.get_children():
-			if j is AnimatedSprite2D:
-				anim_sprite = j
-				break
-=======
 		var anim_sprite = npc.sprite
->>>>>>> 59713ee2edd29a8d936e838d7df13d20b948a55b
 		
 		#default to idle animation at normal speed
 		var animation_to_play = "idle"

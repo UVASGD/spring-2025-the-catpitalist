@@ -112,10 +112,10 @@ y_sort_enabled = true
 [node name="AnimatedSprite2D" parent="y_sorted/Player" index="1"]
 visible = false
 
-[node name="Control" parent="y_sorted/Player/GameCam" index="0"]
+[node name="Control" parent="y_sorted/Player/GameCam" index="1"]
 visible = false
 
-[node name="Hotbar" parent="y_sorted/Player/GameCam" index="1"]
+[node name="Hotbar" parent="y_sorted/Player/GameCam" index="2"]
 visible = false
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="y_sorted/Player"]
