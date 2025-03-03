@@ -30,12 +30,14 @@ func _process(delta: float) -> void:
 	return 
 	
 func get_convos():
-	return convos.get_children()
+	if convos:
+		return convos.get_children()
 
 func sign_messages():
-	for convo in get_convos():
-		for message in convo.get_messages():
-			message.speaker = npc_name
+	if get_convos() != null:
+		for convo in get_convos():
+			for message in convo.get_messages():
+				message.speaker = npc_name
 
 func get_next_convo():
 	if is_world_object:

@@ -1,14 +1,15 @@
-[gd_scene load_steps=18 format=4 uid="uid://cjdgereercutf"]
+[gd_scene load_steps=19 format=4 uid="uid://cjdgereercutf"]
 
 [ext_resource type="Script" path="res://assets/scenes/worlds/tutorial.gd" id="1_y4adi"]
-[ext_resource type="PackedScene" uid="uid://8xq2vf0ubh3w" path="res://assets/scenes/drop_item.tscn" id="4_4arvh"]
-[ext_resource type="PackedScene" uid="uid://jfxxedobm6oh" path="res://assets/scenes/items/watercan.tscn" id="5_2kyco"]
 [ext_resource type="Texture2D" uid="uid://ba5emgq6meyok" path="res://assets/sprites/larger_grass_tile_map-Sheet.png" id="7_3klku"]
 [ext_resource type="Texture2D" uid="uid://cegsvx4fhirh5" path="res://assets/sprites/grass_sprite_sheet-export.png" id="8_1mdqc"]
 [ext_resource type="PackedScene" uid="uid://cuts6prbym5ep" path="res://assets/scenes/plantable_tile.tscn" id="9_t0ml6"]
 [ext_resource type="Texture2D" uid="uid://demaw21ocpurs" path="res://assets/sprites/dirt_sprites.png" id="10_pd3jv"]
 [ext_resource type="PackedScene" uid="uid://b0soifuxkoqwx" path="res://assets/scenes/babyplayer.tscn" id="10_pff6u"]
+[ext_resource type="PackedScene" uid="uid://c1bryu24gdkpd" path="res://assets/scenes/cutscenes/tut_cutscene.tscn" id="10_pi7pl"]
 [ext_resource type="Texture2D" uid="uid://rwlroq3ou1el" path="res://assets/sprites/farmland.png" id="11_4dsun"]
+[ext_resource type="PackedScene" uid="uid://byxam7udt4dw3" path="res://assets/scenes/farmhouse.tscn" id="11_pcbsd"]
+[ext_resource type="PackedScene" uid="uid://bebmk5px6idgj" path="res://assets/scenes/npcs/dad.tscn" id="11_s4l5j"]
 [ext_resource type="PackedScene" uid="uid://bmw6wxkk4jdhu" path="res://assets/scenes/transportzone.tscn" id="11_v8qyd"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7ivjj"]
@@ -106,12 +107,23 @@ tile_set = SubResource("TileSet_mx1gn")
 [node name="y_sorted" type="Node2D" parent="."]
 y_sort_enabled = true
 
-[node name="DropItem" parent="y_sorted" instance=ExtResource("4_4arvh")]
-position = Vector2(-95.685, 0)
+[node name="Dad" parent="y_sorted" instance=ExtResource("11_s4l5j")]
+position = Vector2(56, 102)
 
-[node name="test" parent="y_sorted/DropItem" instance=ExtResource("5_2kyco")]
+[node name="Farmhouse" parent="y_sorted" instance=ExtResource("11_pcbsd")]
+position = Vector2(97, -171)
 
 [node name="Player" parent="y_sorted" instance=ExtResource("10_pff6u")]
+position = Vector2(-60, 100)
+
+[node name="AnimatedSprite2D" parent="y_sorted/Player" index="1"]
+position = Vector2(-1, 2)
+animation = &"walk_right"
+
+[node name="tut_cutscene" parent="y_sorted" node_paths=PackedStringArray("hidden_things") instance=ExtResource("10_pi7pl")]
+position = Vector2(0, 8)
+hides_things = true
+hidden_things = [NodePath("../Player"), NodePath("../Dad")]
 
 [node name="worldbounds" type="Node" parent="."]
 
@@ -147,3 +159,6 @@ shape = SubResource("WorldBoundaryShape2D_bdq3j")
 position = Vector2(377, 10)
 scale = Vector2(1, 5.04)
 path_to_new_scene = "res://assets/scenes/worlds/city.tscn"
+
+[editable path="y_sorted/Player"]
+[editable path="y_sorted/Player/GameCam"]

@@ -1,0 +1,148 @@
+[gd_scene load_steps=18 format=3 uid="uid://bebmk5px6idgj"]
+
+[ext_resource type="Script" path="res://assets/scripts/npc.gd" id="1_5o3n0"]
+[ext_resource type="PackedScene" uid="uid://wfajuc7nk6w6" path="res://assets/scenes/templates/conversation.tscn" id="2_dts3n"]
+[ext_resource type="Texture2D" uid="uid://dsqdmp5yxmgsr" path="res://assets/sprites/CATDAD_sideways_view.png" id="2_uwpoi"]
+[ext_resource type="Texture2D" uid="uid://bxpn40vj5qo76" path="res://assets/sprites/CATDAD_walk-Sheet.png" id="3_du83j"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wkvuh"]
+atlas = ExtResource("3_du83j")
+region = Rect2(0, 0, 64, 70)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bescf"]
+atlas = ExtResource("2_uwpoi")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1ftt3"]
+atlas = ExtResource("3_du83j")
+region = Rect2(0, 0, 64, 70)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lcp1p"]
+atlas = ExtResource("3_du83j")
+region = Rect2(64, 0, 64, 70)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j06ea"]
+atlas = ExtResource("3_du83j")
+region = Rect2(128, 0, 64, 70)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v4pqc"]
+atlas = ExtResource("3_du83j")
+region = Rect2(192, 0, 64, 70)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_je2op"]
+atlas = ExtResource("3_du83j")
+region = Rect2(256, 0, 64, 70)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ypoh1"]
+atlas = ExtResource("3_du83j")
+region = Rect2(320, 0, 64, 70)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pkv7v"]
+atlas = ExtResource("3_du83j")
+region = Rect2(384, 0, 64, 70)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q2xee"]
+atlas = ExtResource("3_du83j")
+region = Rect2(448, 0, 64, 70)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6vibn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wkvuh")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bescf")
+}],
+"loop": true,
+"name": &"side",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1ftt3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lcp1p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j06ea")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v4pqc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_je2op")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ypoh1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pkv7v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q2xee")
+}],
+"loop": true,
+"name": &"walk_down",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pmeq2"]
+radius = 32.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_njb3k"]
+size = Vector2(20, 24)
+
+[node name="NPC" type="Node2D" groups=["NPCs"]]
+script = ExtResource("1_5o3n0")
+npc_name = "Dad"
+exhaust_dialogue_text = "Hey kiddo, I'll always be here to lend an ear when you need it. Yer mom and I believe in you!"
+voice_pitch = 0.6
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_6vibn")
+animation = &"side"
+autoplay = "side"
+flip_h = true
+
+[node name="hitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox"]
+shape = SubResource("CircleShape2D_pmeq2")
+
+[node name="collisionbox" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="collisionbox"]
+position = Vector2(0, 12)
+shape = SubResource("RectangleShape2D_njb3k")
+
+[node name="Convos" type="Node" parent="."]
+
+[node name="Conversation" parent="Convos" instance=ExtResource("2_dts3n")]
+
+[node name="Message" parent="Convos/Conversation/Messages" index="0"]
+text = "um hi"
+
+[node name="Conversation2" parent="Convos" instance=ExtResource("2_dts3n")]
+
+[node name="Message" parent="Convos/Conversation2/Messages" index="0"]
+text = "how are you"
+
+[node name="Conversation3" parent="Convos" instance=ExtResource("2_dts3n")]
+
+[node name="Message" parent="Convos/Conversation3/Messages" index="0"]
+text = "deez nust"
+
+[node name="start" type="Marker2D" parent="."]
+
+[node name="end" type="Marker2D" parent="."]
+
+[editable path="Convos/Conversation"]
+[editable path="Convos/Conversation2"]
+[editable path="Convos/Conversation3"]

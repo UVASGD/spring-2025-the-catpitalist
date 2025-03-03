@@ -3,6 +3,7 @@ class_name CutsceneNPC extends NPC
 var moves: Array[CutsceneMovement]
 var move_count = 0
 var moves_loaded = 0
+@onready var sprite: AnimatedSprite2D = $Sprite2D
 
 var last_pos: Vector2
 				

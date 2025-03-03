@@ -1,103 +1,103 @@
 [gd_scene load_steps=45 format=3 uid="uid://dwq31u7ekbfjy"]
 
-[ext_resource type="Script" path="res://assets/scripts/cutscene_controller.gd" id="1_nvs65"]
-[ext_resource type="PackedScene" uid="uid://wfajuc7nk6w6" path="res://assets/scenes/templates/conversation.tscn" id="2_g7ffm"]
-[ext_resource type="Texture2D" uid="uid://brmvgg4xkuwa5" path="res://assets/sprites/goblin-sheet.png" id="2_p17fc"]
-[ext_resource type="Script" path="res://assets/scripts/cutscene_npc.gd" id="2_qimum"]
-[ext_resource type="Texture2D" uid="uid://brhvumn6xggrr" path="res://assets/sprites/World NPCs/phat_cat-Sheet.png" id="3_fi81e"]
-[ext_resource type="Script" path="res://assets/scripts/cutscene_movement.gd" id="4_d3764"]
-[ext_resource type="Script" path="res://assets/scripts/message.gd" id="7_3qnoc"]
+[ext_resource type="Script" path="res://assets/scripts/cutscene_controller.gd" id="1_r8d2e"]
+[ext_resource type="Script" path="res://assets/scripts/cutscene_npc.gd" id="2_jaca7"]
+[ext_resource type="Texture2D" uid="uid://brmvgg4xkuwa5" path="res://assets/sprites/goblin-sheet.png" id="3_udkwj"]
+[ext_resource type="PackedScene" uid="uid://wfajuc7nk6w6" path="res://assets/scenes/templates/conversation.tscn" id="4_tuull"]
+[ext_resource type="Script" path="res://assets/scripts/message.gd" id="5_lj6vm"]
+[ext_resource type="Script" path="res://assets/scripts/cutscene_movement.gd" id="6_6lgrs"]
+[ext_resource type="Texture2D" uid="uid://brhvumn6xggrr" path="res://assets/sprites/World NPCs/phat_cat-Sheet.png" id="7_c0xtd"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qoyww"]
-atlas = ExtResource("2_p17fc")
+atlas = ExtResource("3_udkwj")
 region = Rect2(384, 0, 64, 72)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cyxbf"]
-atlas = ExtResource("2_p17fc")
+atlas = ExtResource("3_udkwj")
 region = Rect2(320, 0, 64, 72)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tyeps"]
-atlas = ExtResource("2_p17fc")
+atlas = ExtResource("3_udkwj")
 region = Rect2(128, 0, 64, 72)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tx6ta"]
-atlas = ExtResource("2_p17fc")
+atlas = ExtResource("3_udkwj")
 region = Rect2(0, 288, 64, 72)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_51c8o"]
-atlas = ExtResource("2_p17fc")
+atlas = ExtResource("3_udkwj")
 region = Rect2(64, 288, 64, 72)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_w2xi0"]
-atlas = ExtResource("2_p17fc")
+atlas = ExtResource("3_udkwj")
 region = Rect2(128, 288, 64, 72)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yk4ca"]
-atlas = ExtResource("2_p17fc")
+atlas = ExtResource("3_udkwj")
 region = Rect2(192, 288, 64, 72)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nxheb"]
-atlas = ExtResource("2_p17fc")
+atlas = ExtResource("3_udkwj")
 region = Rect2(256, 288, 64, 72)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_axpc8"]
-atlas = ExtResource("2_p17fc")
+atlas = ExtResource("3_udkwj")
 region = Rect2(0, 72, 64, 72)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_skgk5"]
-atlas = ExtResource("2_p17fc")
+atlas = ExtResource("3_udkwj")
 region = Rect2(64, 72, 64, 72)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_m771j"]
-atlas = ExtResource("2_p17fc")
+atlas = ExtResource("3_udkwj")
 region = Rect2(128, 72, 64, 72)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_sxf7p"]
-atlas = ExtResource("2_p17fc")
+atlas = ExtResource("3_udkwj")
 region = Rect2(192, 72, 64, 72)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2ay2x"]
-atlas = ExtResource("2_p17fc")
+atlas = ExtResource("3_udkwj")
 region = Rect2(256, 72, 64, 72)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_t31gt"]
-atlas = ExtResource("2_p17fc")
+atlas = ExtResource("3_udkwj")
 region = Rect2(320, 72, 64, 72)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4n5xb"]
-atlas = ExtResource("2_p17fc")
+atlas = ExtResource("3_udkwj")
 region = Rect2(384, 72, 64, 72)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1u7e6"]
-atlas = ExtResource("2_p17fc")
+atlas = ExtResource("3_udkwj")
 region = Rect2(0, 144, 64, 72)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hf4j4"]
-atlas = ExtResource("2_p17fc")
+atlas = ExtResource("3_udkwj")
 region = Rect2(64, 144, 64, 72)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_debdn"]
-atlas = ExtResource("2_p17fc")
+atlas = ExtResource("3_udkwj")
 region = Rect2(128, 144, 64, 72)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yhs40"]
-atlas = ExtResource("2_p17fc")
+atlas = ExtResource("3_udkwj")
 region = Rect2(192, 144, 64, 72)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1sbq7"]
-atlas = ExtResource("2_p17fc")
+atlas = ExtResource("3_udkwj")
 region = Rect2(256, 144, 64, 72)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wxrc5"]
-atlas = ExtResource("2_p17fc")
+atlas = ExtResource("3_udkwj")
 region = Rect2(320, 144, 64, 72)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6lnr3"]
-atlas = ExtResource("2_p17fc")
+atlas = ExtResource("3_udkwj")
 region = Rect2(384, 144, 64, 72)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xq5qc"]
-atlas = ExtResource("2_p17fc")
+atlas = ExtResource("3_udkwj")
 region = Rect2(448, 144, 64, 72)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_taqc1"]
@@ -208,43 +208,43 @@ radius = 32.0
 size = Vector2(20, 24)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_sdkdl"]
-atlas = ExtResource("3_fi81e")
+atlas = ExtResource("7_c0xtd")
 region = Rect2(0, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_eq4b7"]
-atlas = ExtResource("3_fi81e")
+atlas = ExtResource("7_c0xtd")
 region = Rect2(64, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_w71dg"]
-atlas = ExtResource("3_fi81e")
+atlas = ExtResource("7_c0xtd")
 region = Rect2(128, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3xck4"]
-atlas = ExtResource("3_fi81e")
+atlas = ExtResource("7_c0xtd")
 region = Rect2(192, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_v31hp"]
-atlas = ExtResource("3_fi81e")
+atlas = ExtResource("7_c0xtd")
 region = Rect2(256, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_p8l3o"]
-atlas = ExtResource("3_fi81e")
+atlas = ExtResource("7_c0xtd")
 region = Rect2(320, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_sosom"]
-atlas = ExtResource("3_fi81e")
+atlas = ExtResource("7_c0xtd")
 region = Rect2(384, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ey64x"]
-atlas = ExtResource("3_fi81e")
+atlas = ExtResource("7_c0xtd")
 region = Rect2(448, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_deavs"]
-atlas = ExtResource("3_fi81e")
+atlas = ExtResource("7_c0xtd")
 region = Rect2(512, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_c6b6h"]
-atlas = ExtResource("3_fi81e")
+atlas = ExtResource("7_c0xtd")
 region = Rect2(576, 0, 64, 64)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_bcgiy"]
@@ -391,12 +391,12 @@ animations = [{
 }]
 
 [node name="test_cutscene" type="Node2D"]
-script = ExtResource("1_nvs65")
+script = ExtResource("1_r8d2e")
 cutscene_length = 60
 
 [node name="NPC" type="Node2D" parent="."]
 position = Vector2(152, -32)
-script = ExtResource("2_qimum")
+script = ExtResource("2_jaca7")
 npc_name = "Blurbo"
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="NPC"]
@@ -416,32 +416,32 @@ shape = SubResource("RectangleShape2D_njb3k")
 
 [node name="Convos" type="Node" parent="NPC"]
 
-[node name="Conversation" parent="NPC/Convos" instance=ExtResource("2_g7ffm")]
+[node name="Conversation" parent="NPC/Convos" instance=ExtResource("4_tuull")]
 
 [node name="Message" parent="NPC/Convos/Conversation/Messages" index="0"]
 text = "umm hi chubbs"
 
 [node name="Message3" type="Node" parent="NPC/Convos/Conversation/Messages" index="1"]
-script = ExtResource("7_3qnoc")
+script = ExtResource("5_lj6vm")
 text = "..."
 
 [node name="Message2" type="Node" parent="NPC/Convos/Conversation/Messages" index="2"]
-script = ExtResource("7_3qnoc")
+script = ExtResource("5_lj6vm")
 text = "how are you"
 
-[node name="Conversation2" parent="NPC/Convos" instance=ExtResource("2_g7ffm")]
+[node name="Conversation2" parent="NPC/Convos" instance=ExtResource("4_tuull")]
 
 [node name="Message" parent="NPC/Convos/Conversation2/Messages" index="0"]
 text = "okay, bye"
 
-[node name="Conversation3" parent="NPC/Convos" instance=ExtResource("2_g7ffm")]
+[node name="Conversation3" parent="NPC/Convos" instance=ExtResource("4_tuull")]
 
 [node name="Message" parent="NPC/Convos/Conversation3/Messages" index="0"]
 text = "I can hear you!"
 
 [node name="movement" type="Node2D" parent="NPC"]
 position = Vector2(0, 96)
-script = ExtResource("4_d3764")
+script = ExtResource("6_6lgrs")
 speed = 50.0
 start_time = 2.0
 num_dialogue = 1
@@ -456,7 +456,7 @@ polygon = PackedVector2Array(-2, -2, 2, -2, 2, 2, -2, 2)
 
 [node name="speech1" type="Node2D" parent="NPC"]
 position = Vector2(0, 96)
-script = ExtResource("4_d3764")
+script = ExtResource("6_6lgrs")
 speed = 50.0
 start_time = 7.9
 num_dialogue = 1
@@ -464,7 +464,7 @@ animation_override = "walk_left"
 
 [node name="animation1" type="Node2D" parent="NPC"]
 position = Vector2(0, 96)
-script = ExtResource("4_d3764")
+script = ExtResource("6_6lgrs")
 speed = 50.0
 start_time = 8.0
 animation_override = "walk_left"
@@ -472,7 +472,7 @@ animation_override_speed = 3.0
 
 [node name="movement2" type="Node2D" parent="NPC"]
 position = Vector2(-32, 160)
-script = ExtResource("4_d3764")
+script = ExtResource("6_6lgrs")
 speed = 200.0
 start_time = 9.0
 
@@ -486,14 +486,14 @@ polygon = PackedVector2Array(-2, -2, 2, -2, 2, 2, -2, 2)
 
 [node name="movement3" type="Node2D" parent="NPC"]
 position = Vector2(-32, 160)
-script = ExtResource("4_d3764")
+script = ExtResource("6_6lgrs")
 speed = 200.0
 start_time = 13.0
 num_dialogue = 1
 
 [node name="NPC2" type="Node2D" parent="."]
 position = Vector2(328, 144)
-script = ExtResource("2_qimum")
+script = ExtResource("2_jaca7")
 npc_name = "chubbs"
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="NPC2"]
@@ -513,17 +513,17 @@ shape = SubResource("RectangleShape2D_njb3k")
 
 [node name="Convos" type="Node" parent="NPC2"]
 
-[node name="Conversation" parent="NPC2/Convos" instance=ExtResource("2_g7ffm")]
+[node name="Conversation" parent="NPC2/Convos" instance=ExtResource("4_tuull")]
 
 [node name="Message" parent="NPC2/Convos/Conversation/Messages" index="0"]
 text = "I'm doing great!"
 
-[node name="Conversation2" parent="NPC2/Convos" instance=ExtResource("2_g7ffm")]
+[node name="Conversation2" parent="NPC2/Convos" instance=ExtResource("4_tuull")]
 
 [node name="Message" parent="NPC2/Convos/Conversation2/Messages" index="0"]
 text = "sorry about him."
 
-[node name="Conversation3" parent="NPC2/Convos" instance=ExtResource("2_g7ffm")]
+[node name="Conversation3" parent="NPC2/Convos" instance=ExtResource("4_tuull")]
 
 [node name="Message" parent="NPC2/Convos/Conversation3/Messages" index="0"]
 text = "deez nust"
@@ -531,7 +531,7 @@ text = "deez nust"
 [node name="speech1" type="Node2D" parent="NPC2"]
 visible = false
 position = Vector2(-96, -96)
-script = ExtResource("4_d3764")
+script = ExtResource("6_6lgrs")
 speed = 150.0
 start_time = 6.7
 num_dialogue = 1
@@ -539,7 +539,7 @@ num_dialogue = 1
 [node name="speech2" type="Node2D" parent="NPC2"]
 visible = false
 position = Vector2(-96, -96)
-script = ExtResource("4_d3764")
+script = ExtResource("6_6lgrs")
 speed = 150.0
 start_time = 12.0
 num_dialogue = 1

@@ -419,4 +419,9 @@ script = ExtResource("8_gosx5")
 
 [node name="GameCam" parent="." instance=ExtResource("9_jbulh")]
 
+[node name="shade" parent="GameCam/weather" index="2"]
+visible = false
+
 [connection signal="area_entered" from="interactzone" to="." method="_on_interactzone_area_entered"]
+
+[editable path="GameCam"]
