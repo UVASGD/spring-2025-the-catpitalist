@@ -162,6 +162,7 @@ position = Vector2(-160, 144)
 scale = Vector2(2, 2)
 
 [node name="ColorRect" type="ColorRect" parent="Control"]
+layout_mode = 0
 offset_left = -75.0
 offset_top = -38.0
 offset_right = 757.0

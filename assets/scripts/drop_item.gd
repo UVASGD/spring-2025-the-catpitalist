@@ -15,7 +15,7 @@ func _process(delta: float) -> void:
 
 func set_item(item):
 	real_item = item
-	if item.get_parent() != self:
+	if item != null and item.get_parent() != self:
 		add_child(item)
 
 

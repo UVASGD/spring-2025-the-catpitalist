@@ -23,6 +23,7 @@ mouse_filter = 1
 script = ExtResource("1_n8eg0")
 
 [node name="textbox" type="Label" parent="Control"]
+layout_mode = 0
 offset_left = 7.0
 offset_top = 240.0
 offset_right = 631.0
@@ -43,6 +44,7 @@ grow_vertical = 2
 color = Color(0, 0, 0, 0.372549)
 
 [node name="speakerlabel" type="Label" parent="Control"]
+layout_mode = 0
 offset_left = 7.0
 offset_top = 216.0
 offset_right = 107.0

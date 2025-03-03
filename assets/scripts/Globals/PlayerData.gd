@@ -20,6 +20,9 @@ func clone_and_kill(): # removes reference to old plaeyr
 		player.queue_free()
 		player = newplayer
 		return newplayer
+	else:
+		player = playerpacked.instantiate()
+		return player
 
 func clone():
 	if player:

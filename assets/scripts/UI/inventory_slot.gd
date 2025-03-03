@@ -31,7 +31,7 @@ func add_stack(other):
 func split_stack():
 	@warning_ignore("shadowed_variable")
 	var item = item()
-	if item and item.stackable and item.count > 1:
+	if item!= null and item.stackable and item.count > 1:
 		var new_item = Items.clone(item)
 		
 		new_item.count = item.count - floor(item.count /2.0)

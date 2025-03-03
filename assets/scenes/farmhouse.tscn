@@ -1,20 +1,15 @@
-[gd_scene load_steps=5 format=3 uid="uid://byxam7udt4dw3"]
+[gd_scene load_steps=4 format=3 uid="uid://byxam7udt4dw3"]
 
 [ext_resource type="Texture2D" uid="uid://bgwuiw5yg474t" path="res://assets/sprites/farmhouse.png" id="1_mpqld"]
-[ext_resource type="Script" path="res://assets/scripts/building.gd" id="2_hj1sq"]
+[ext_resource type="PackedScene" uid="uid://bmw6wxkk4jdhu" path="res://assets/scenes/transportzone.tscn" id="2_x7jet"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h4i4f"]
 size = Vector2(193.097, 94.5848)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_t35qx"]
-size = Vector2(28.2857, 20)
 
 [node name="Farmhouse" type="Sprite2D"]
 position = Vector2(84, -132)
 scale = Vector2(1.36719, 1.33594)
 texture = ExtResource("1_mpqld")
-script = ExtResource("2_hj1sq")
-path_to_indoor_scene = "res://assets/scenes/farmhouse_indoors.tscn"
 
 [node name="collision" type="StaticBody2D" parent="."]
 
@@ -22,11 +17,8 @@ path_to_indoor_scene = "res://assets/scenes/farmhouse_indoors.tscn"
 position = Vector2(-16.0914, 37.2924)
 shape = SubResource("RectangleShape2D_h4i4f")
 
-[node name="enterzone" type="Area2D" parent="."]
+[node name="transportzone" parent="." instance=ExtResource("2_x7jet")]
+position = Vector2(-32.1828, 89.8244)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="enterzone"]
-position = Vector2(-31.6971, 89.076)
-shape = SubResource("RectangleShape2D_t35qx")
-
-[connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
-[connection signal="body_entered" from="enterzone" to="." method="_on_enterzone_body_entered"]
+[connection signal="visibility_changed" from="." to="transportzone" method="_on_visibility_changed"]
+[connection signal="visibility_changed" from="." to="transportzone" method="_on_farmhouse_visibility_changed"]

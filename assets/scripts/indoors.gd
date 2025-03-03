@@ -1,6 +1,6 @@
 class_name Indoors extends Node2D
 
-@onready var spawnpoint: Node2D = $spawnpoint
+@onready var spawnpoint: Node2D = $y_sorted/spawnpoint
 var can_transport = true
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

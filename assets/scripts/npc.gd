@@ -11,9 +11,8 @@ var current_convo_index = 0
 var requested_item_id
 var is_speaking = false
 @onready var hitbox: Area2D = $hitbox
-
 var inventory = [] # list of items the NPC can sell 
-
+@export var has_idle_walk:bool = false
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	super()
@@ -22,9 +21,13 @@ func _ready() -> void:
 	if npc_name == "Blurbo":
 		DebugManager.Blurbo = self
 	setup_exhaust_dialogue()
+	if has_idle_walk:
+		$AnimationPlayer2D.play("idle_walk")
 	pass # Replace with function body.
 
-
+func _process(delta: float) -> void:
+	
+	return 
 	
 func get_convos():
 	return convos.get_children()

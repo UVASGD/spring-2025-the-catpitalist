@@ -42,6 +42,10 @@ text = "how are you"
 [node name="Message" parent="Convos/Conversation3/Messages" index="0"]
 text = "deez nust"
 
+[node name="start" type="Marker2D" parent="."]
+
+[node name="end" type="Marker2D" parent="."]
+
 [editable path="Convos/Conversation"]
 [editable path="Convos/Conversation2"]
 [editable path="Convos/Conversation3"]
