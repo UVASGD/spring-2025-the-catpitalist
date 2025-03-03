@@ -38,6 +38,7 @@ func _physics_process(delta: float) -> void:
 		for j in i.get_children():
 			if j is AnimatedSprite2D:
 				anim_sprite = j
+				break
 		
 		#default to idle animation at normal speed
 		var animation_to_play = "idle"
