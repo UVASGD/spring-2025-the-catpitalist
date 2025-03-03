@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=3 uid="uid://dwq31u7ekbfjy"]
+[gd_scene load_steps=45 format=3 uid="uid://xvctbkycd1a8"]
 
 [ext_resource type="Script" path="res://assets/scripts/cutscene_controller.gd" id="1_nvs65"]
 [ext_resource type="PackedScene" uid="uid://wfajuc7nk6w6" path="res://assets/scenes/templates/conversation.tscn" id="2_g7ffm"]

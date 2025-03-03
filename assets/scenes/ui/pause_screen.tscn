@@ -2,10 +2,21 @@
 
 [ext_resource type="Script" path="res://assets/scripts/UI/pause_screen.gd" id="1_2yt53"]
 
-[node name="Node2D" type="Node2D"]
+[node name="pause_screen" type="CanvasLayer"]
 script = ExtResource("1_2yt53")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control"]
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -18,17 +29,20 @@ offset_bottom = 50.5
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="backtogame" type="Button" parent="VBoxContainer"]
+[node name="backtogame" type="Button" parent="Control/VBoxContainer"]
 layout_mode = 2
+mouse_filter = 1
 text = "back to game"
 
-[node name="Button2" type="Button" parent="VBoxContainer"]
+[node name="Button2" type="Button" parent="Control/VBoxContainer"]
 layout_mode = 2
+mouse_filter = 1
 text = "settings (no settings yet lmao)"
 
-[node name="quitgame" type="Button" parent="VBoxContainer"]
+[node name="quitgame" type="Button" parent="Control/VBoxContainer"]
 layout_mode = 2
+mouse_filter = 1
 text = "exit game"
 
-[connection signal="pressed" from="VBoxContainer/backtogame" to="." method="_on_backtogame_pressed"]
-[connection signal="pressed" from="VBoxContainer/quitgame" to="." method="_on_quitgame_pressed"]
+[connection signal="pressed" from="Control/VBoxContainer/backtogame" to="." method="_on_backtogame_pressed"]
+[connection signal="pressed" from="Control/VBoxContainer/quitgame" to="." method="_on_quitgame_pressed"]

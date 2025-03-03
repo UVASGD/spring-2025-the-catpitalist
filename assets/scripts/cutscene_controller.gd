@@ -11,8 +11,9 @@ var npcs_loaded = 0
 
 var npcs_in_scene: Array[CutsceneNPC]
 
+@export var hides_things:bool = false
 @export var cutscene_length: int
-
+@export var hidden_things:Array[Node2D]
 func _ready() -> void:
 	SignalBus.connect("dialogue_finished", _on_dialogue_finish)
 	SignalBus.connect("new_dialogue", _on_dialogue)
@@ -20,6 +21,10 @@ func _ready() -> void:
 		i.load_cutscene_npc()
 		npcs_in_scene.append(i)
 	elapse_time = true
+	if hides_things:
+		for node in hidden_things:
+			node.call_deferred("hide")
+	
 		
 func _on_dialogue_finish() -> void:
 	elapse_time = true
@@ -30,31 +35,35 @@ func _on_dialogue(_dialogue) -> void:
 func _physics_process(delta: float) -> void:
 	if elapse_time:
 		time_elapsed += delta
-	
+	PlayerData.player.actionable = false
 	#iterate through each sprite in the cutscene
-	for i in npcs_in_scene:
+	for npc in npcs_in_scene:
 		#find animated sprite
+<<<<<<< HEAD
 		var anim_sprite = null
 		for j in i.get_children():
 			if j is AnimatedSprite2D:
 				anim_sprite = j
 				break
+=======
+		var anim_sprite = npc.sprite
+>>>>>>> 59713ee2edd29a8d936e838d7df13d20b948a55b
 		
 		#default to idle animation at normal speed
 		var animation_to_play = "idle"
 		var animation_speed = 1.00
 		
 		#iterate through each moveset
-		for j in i.moves:
-			if time_elapsed >= j.start_time:
+		for move in npc.moves:
+			if time_elapsed >= move.start_time:
 				if elapse_time:
 					#play dialogue if movement is finished, otherwise perform movement
-					if j.curr_index == j.movement.size() && j.num_dialogue > 0:
-						i.speak()
-						j.num_dialogue -= 1
-					if j.curr_index < j.movement.size():
-						var next_point = j.movement[j.curr_index]
-						var direction = rad_to_deg((i.position - next_point).angle())
+					if move.curr_index == move.movement.size() && move.num_dialogue > 0:
+						npc.speak()
+						move.num_dialogue -= 1
+					if move.curr_index < move.movement.size():
+						var next_point = move.movement[move.curr_index]
+						var direction = rad_to_deg((npc.position - next_point).angle())
 						
 						#set default directional animations
 						if direction <= -45 && direction >= -135:
@@ -68,17 +77,17 @@ func _physics_process(delta: float) -> void:
 						elif direction >= -45 && direction <= 45:
 							animation_to_play = "walk_left"
 						#speed of default movement animations (can/should be tweaked)
-						animation_speed = j.speed/35
+						animation_speed = move.speed/35
 						
 						#movement
-						if i.position != next_point:
-							i.position = i.position.move_toward(next_point, delta*j.speed)
+						if npc.position != next_point:
+							npc.position = npc.position.move_toward(next_point, delta*move.speed)
 						else:
-							j.curr_index += 1
+							move.curr_index += 1
 						
-				if j.animation_override:
-					animation_to_play = j.animation_override
-					animation_speed = j.animation_override_speed
+				if move.animation_override:
+					animation_to_play = move.animation_override
+					animation_speed = move.animation_override_speed
 		#correct directional animations if missing left or right animation
 		if animation_to_play == "walk_left":
 			if anim_sprite.sprite_frames.get_animation_names().has("walk_left"):
@@ -97,4 +106,16 @@ func _physics_process(delta: float) -> void:
 		anim_sprite.play(animation_to_play, animation_speed)
 			
 	if time_elapsed >= cutscene_length:
+		end_cutscene()
 		pass
+
+
+
+func end_cutscene():
+	if hides_things:
+		for node in hidden_things:
+			
+			node.show()
+	PlayerData.player.actionable = true
+	queue_free()
+	pass # Replace with function body.

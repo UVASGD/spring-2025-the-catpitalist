@@ -1,8 +1,9 @@
-extends Control
+class_name Shop extends CanvasLayer
 
+@export var npc_name:String
 @export var songtitle: String
 @onready var bg: TextureRect = $BG
-@onready var portrait: TextureRect = $Cat
+@onready var portrait: TextureRect = $Portrait
 @onready var cardboard: TextureRect = $Cardboard
 @onready var mode: Label = $TextureRect/mode
 @onready var texture_rect: TextureRect = $TextureRect
@@ -27,7 +28,7 @@ extends Control
 
 var cart = {} # Player's shopping cart. key value pairs where key = item ID, and value = count
 var sellercart = {} # like cart, but for stuff the player is selling
-
+var inventory = []
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	dialogue.text = choosing_dialogue
@@ -41,8 +42,9 @@ func _process(delta: float) -> void:
 	pass
 
 func close():
+	UI.close_shop()
 	return
-
+	
 
 func _on_leave_pressed() -> void:
 	dialogue.text = leaving_dialogue

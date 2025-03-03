@@ -4,8 +4,8 @@ extends Camera2D
 @onready var money: Label = $Control/VBoxContainer/HBoxContainer2/money
 @onready var season_label: Label = $Control/VBoxContainer/HBoxContainer2/Season
 
-@onready var rain: ColorRect = $rain
-@onready var snow: ColorRect = $snow
+@onready var rain: ColorRect = $weather/rain
+@onready var snow: ColorRect = $weather/snow
 
 
 var inv = null

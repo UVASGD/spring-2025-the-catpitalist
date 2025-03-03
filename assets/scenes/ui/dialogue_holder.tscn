@@ -10,19 +10,29 @@ outline_color = Color(0, 0, 0, 1)
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_evgku"]
 shader = ExtResource("3_y3wfs")
 
-[node name="DialogueHolder" type="Node2D"]
+[node name="DialogueHolder" type="CanvasLayer"]
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
 script = ExtResource("1_n8eg0")
 
-[node name="textbox" type="Label" parent="."]
-offset_left = -312.0
-offset_top = 64.0
-offset_right = 312.0
-offset_bottom = 176.0
+[node name="textbox" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 240.0
+offset_right = 631.0
+offset_bottom = 352.0
 label_settings = SubResource("LabelSettings_ru74g")
 autowrap_mode = 3
 max_lines_visible = 4
 
-[node name="ColorRect" type="ColorRect" parent="textbox"]
+[node name="ColorRect" type="ColorRect" parent="Control/textbox"]
 z_index = -1
 material = SubResource("ShaderMaterial_evgku")
 layout_mode = 1
@@ -33,14 +43,15 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.372549)
 
-[node name="speakerlabel" type="Label" parent="."]
-offset_left = -312.0
-offset_top = 40.0
-offset_right = -212.0
-offset_bottom = 64.0
+[node name="speakerlabel" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 216.0
+offset_right = 107.0
+offset_bottom = 240.0
 label_settings = SubResource("LabelSettings_ru74g")
 
-[node name="ColorRect" type="ColorRect" parent="speakerlabel"]
+[node name="ColorRect" type="ColorRect" parent="Control/speakerlabel"]
 z_index = -1
 layout_mode = 1
 anchors_preset = 15

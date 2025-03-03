@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://assets/scripts/overworldarea.gd" id="1_uwaa4"]
 [ext_resource type="PackedScene" uid="uid://dbfvkgx1l7l1" path="res://assets/scenes/shade.tscn" id="2_iwth2"]
-[ext_resource type="PackedScene" uid="uid://dwq31u7ekbfjy" path="res://assets/scenes/test_cutscene.tscn" id="2_ojcsu"]
+[ext_resource type="PackedScene" uid="uid://dwq31u7ekbfjy" path="res://assets/scenes/cutscenes/test_cutscene.tscn" id="2_ojcsu"]
 [ext_resource type="PackedScene" uid="uid://cmcemw1qn4i4q" path="res://assets/scenes/player.tscn" id="4_8vk28"]
 [ext_resource type="Texture2D" uid="uid://ba5emgq6meyok" path="res://assets/sprites/larger_grass_tile_map-Sheet.png" id="8_mfo03"]
 [ext_resource type="Texture2D" uid="uid://cegsvx4fhirh5" path="res://assets/sprites/grass_sprite_sheet-export.png" id="9_40s7c"]

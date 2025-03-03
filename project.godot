@@ -26,6 +26,11 @@ Dialogue="*res://assets/scripts/Globals/Dialogue.gd"
 NPCS="*res://assets/scripts/Globals/NPCS.gd"
 Music="*res://assets/scripts/Globals/music.gd"
 UI="*res://assets/scripts/Globals/UI.gd"
+<<<<<<< HEAD
+=======
+SceneSwapper="*res://assets/scripts/scene_swapper.gd"
+SceneStackDebug="*res://assets/scenes/ui/scene_stack_debug.tscn"
+>>>>>>> 59713ee2edd29a8d936e838d7df13d20b948a55b
 
 [display]
 

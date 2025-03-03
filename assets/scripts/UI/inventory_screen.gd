@@ -1,4 +1,4 @@
-extends Node2D
+extends Control
 var current_hovered = null
 var last_hovered = null
 var dragging = false
@@ -65,7 +65,7 @@ func swap(current, other):
 		return
 	var selected_item = current.item()
 	var other_item = other.item()
-	if other_item and selected_item.ID == other_item.ID:
+	if other_item != null and selected_item != null and selected_item.ID == other_item.ID:
 		if selected_item.stackable and (selected_item.count + other_item.count <= selected_item.max_stack):
 			other.add_stack(current)
 			return
