@@ -10,30 +10,30 @@ func _ready() -> void:
 	if get_tree().current_scene.name in ["testworld", "StartScreen", "tutorial"]:
 		scene_stack.push_front(get_tree().current_scene)
 
-func change_scene_from_path(old_scene, scene_path):
-	var progress = []
-	var loading_screen = load("res://assets/scenes/ui/loadingscreen.tscn").instantiate()
-	get_tree().current_scene.add_child(loading_screen)
-	await get_tree().create_timer(0.3).timeout
-	ResourceLoader.load_threaded_request(scene_path)
-	var status = ResourceLoader.load_threaded_get_status(scene_path)
-	ResourceLoader.load_threaded_get_status(scene_path, progress) # passing progress into the function should make it put the progress ratio into the progress array
-	while status != 3:
-		if status == 0 or status == 2:
-			print("error with resourceloader")
-			break
-		
-		status = ResourceLoader.load_threaded_get_status(scene_path)
-		ResourceLoader.load_threaded_get_status(scene_path, progress)
-		loading_screen.update(progress)
-	print("b")
-	var resource = ResourceLoader.load_threaded_get(scene_path)
-		   
-	get_tree().root.add_child(resource.instantiate())
-	loading_screen.end()
+#func change_scene_from_path(old_scene, scene_path):
+	#var progress = []
+	#var loading_screen = load("res://assets/scenes/ui/loadingscreen.tscn").instantiate()
+	#get_tree().current_scene.add_child(loading_screen)
+	#await get_tree().create_timer(0.3).timeout
+	#ResourceLoader.load_threaded_request(scene_path)
+	#var status = ResourceLoader.load_threaded_get_status(scene_path)
+	#ResourceLoader.load_threaded_get_status(scene_path, progress) # passing progress into the function should make it put the progress ratio into the progress array
+	#while status != 3:
+		#if status == 0 or status == 2:
+			#print("error with resourceloader")
+			#break
+		#
+		#status = ResourceLoader.load_threaded_get_status(scene_path)
+		#ResourceLoader.load_threaded_get_status(scene_path, progress)
+		#loading_screen.update(progress)
+	#print("b")
+	#var resource = ResourceLoader.load_threaded_get(scene_path)
+		   #
+	#get_tree().root.add_child(resource.instantiate())
+	#loading_screen.end()
 
-func private_change_scene(new_scene:Node, pushing:bool = true): # not meant to be called by other scripts. how we actually change scenes under the hood
-	var loading_screen = load("res://assets/scenes/ui/loadingscreen.tscn").instantiate()
+func private_change_scene(new_scene:Node, loading_screen_path:String="res://assets/scenes/ui/loadingscreen.tscn", pushing:bool = true): # not meant to be called by other scripts. how we actually change scenes under the hood
+	var loading_screen = load(loading_screen_path).instantiate()
 	get_tree().root.add_child(loading_screen)
 	loading_screen.fake()
 	if pushing:
@@ -54,12 +54,12 @@ func private_change_scene(new_scene:Node, pushing:bool = true): # not meant to b
 		get_tree().root.add_child(new_scene)
 	return
 
-func change_scene(new_scene):
+func change_scene(new_scene, loading_screen_path:String="res://assets/scenes/ui/loadingscreen.tscn"):
 	cooldown() # for ease of use outside of this script, no need to know anything about the stack implementation
-	push(new_scene)
+	push(new_scene, loading_screen_path)
 	
 
-func push(newscene):
+func push(newscene, loading_screen_path:String="res://assets/scenes/ui/loadingscreen.tscn"):
 	save_current() # may be unnecessary - test if this has performance impact
 	if scene_stack.size() > 0:
 		var current_scene = peek()
@@ -71,14 +71,14 @@ func push(newscene):
 		newscene = load(newscene)
 	if newscene is PackedScene:
 		newscene = newscene.instantiate()
-	await private_change_scene(newscene)
+	await private_change_scene(newscene, loading_screen_path)
 	scene_stack.push_front(newscene)
 	return
 	#newscene.set_process_input(true)
 	#newscene.set_process_unhandled_input(true)
 	#newscene.set_process_unhandled_key_input(true)
 
-func pop():
+func pop(loading_screen_path:String="res://assets/scenes/ui/loadingscreen.tscn"):
 	cooldown()
 	save_current()
 	var current_scene = scene_stack.pop_front()
@@ -88,19 +88,21 @@ func pop():
 	get_tree().root.remove_child(current_scene)
 	current_scene.queue_free()
 	var returning_scene = peek()
-	await private_change_scene(returning_scene, false)
+	await private_change_scene(returning_scene, loading_screen_path, false)
 	#returning_scene.set_process_input(true)
 	#returning_scene.set_process_unhandled_input(true)
 	#returning_scene.set_process_unhandled_key_input(true)
 	return
 
-func pop_and_return():
+func pop_and_return(context:Dictionary={},loading_screen_path:String="res://assets/scenes/ui/loadingscreen.tscn"):
 	cooldown() # pos current scene and returns player to where they were before
-	pop()
+	pop(loading_screen_path)
 	var newplayer = PlayerData.clone_and_kill()
 	#newplayer.flash_collision()
 	newplayer.restore_pos()
 	peek().add_child(newplayer,true)
+	if not context.is_empty():
+		SignalBus.emit_signal("context",context)
 
 func peek():
 	if scene_stack.size() < 1:

@@ -49,6 +49,11 @@ signal dusk_start
 signal midnight_debug
 signal pause_opened
 signal pause_closed
+signal tutorial_planted
+signal tutorial_watered
+signal tutorial_pickup
+signal spawn_seeds
+signal mom_dialogue_done
 
 func emit(string):
 	emit_signal(string)

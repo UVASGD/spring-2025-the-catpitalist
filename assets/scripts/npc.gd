@@ -7,7 +7,7 @@ class_name NPC extends Interactable
 @onready var exhaust_convo
 @export_range(-1, 2, 0.1) var voice_pitch: float = 1
 @export var shopkeeper = false
-var current_convo_index = 0
+@export var current_convo_index = 0
 var requested_item_id
 var is_speaking = false
 @onready var hitbox: Area2D = $hitbox
@@ -83,9 +83,11 @@ func speak():
 		elif convo.requests_signal:
 			SignalBus.connect(convo.request_signal_name, unlock_current_convo)
 			lock_next_convo()
+		
+		Dialogue.start_dialogue(convo)
+		await SignalBus.dialogue_finished
 		if convo.signals_on_finish:
 			SignalBus.emit_signal(convo.finish_signal)
-		Dialogue.start_dialogue(convo)
 		current_convo_index += 1
 	else:
 		play_exhaust_dialogue()

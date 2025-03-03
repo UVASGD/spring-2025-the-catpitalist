@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=4 uid="uid://cjdgereercutf"]
+[gd_scene load_steps=23 format=4 uid="uid://cjdgereercutf"]
 
 [ext_resource type="Script" path="res://assets/scenes/worlds/tutorial.gd" id="1_y4adi"]
 [ext_resource type="Texture2D" uid="uid://ba5emgq6meyok" path="res://assets/sprites/larger_grass_tile_map-Sheet.png" id="7_3klku"]
@@ -87,6 +87,46 @@ sources/4 = SubResource("TileSetAtlasSource_s4msx")
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_bdq3j"]
 normal = Vector2(1, 0)
 
+[sub_resource type="Animation" id="Animation_wn35v"]
+resource_name = "transition"
+length = 2.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/Control:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_tk4gb"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/Control:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0egxe"]
+_data = {
+"RESET": SubResource("Animation_tk4gb"),
+"transition": SubResource("Animation_wn35v")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3650l"]
+size = Vector2(38, 20)
+
 [node name="tutorial" type="Node2D" groups=["Saveable"]]
 script = ExtResource("1_y4adi")
 
@@ -107,7 +147,7 @@ tile_set = SubResource("TileSet_mx1gn")
 [node name="y_sorted" type="Node2D" parent="."]
 y_sort_enabled = true
 
-[node name="Dad" parent="y_sorted" instance=ExtResource("11_s4l5j")]
+[node name="TutDad" parent="y_sorted" instance=ExtResource("11_s4l5j")]
 position = Vector2(56, 102)
 
 [node name="Farmhouse" parent="y_sorted" instance=ExtResource("11_pcbsd")]
@@ -123,7 +163,7 @@ animation = &"walk_right"
 [node name="tut_cutscene" parent="y_sorted" node_paths=PackedStringArray("hidden_things") instance=ExtResource("10_pi7pl")]
 position = Vector2(0, 8)
 hides_things = true
-hidden_things = [NodePath("../Player"), NodePath("../Dad")]
+hidden_things = [NodePath("../Player"), NodePath("../TutDad")]
 
 [node name="worldbounds" type="Node" parent="."]
 
@@ -159,6 +199,57 @@ shape = SubResource("WorldBoundaryShape2D_bdq3j")
 position = Vector2(377, 10)
 scale = Vector2(1, 5.04)
 path_to_new_scene = "res://assets/scenes/worlds/city.tscn"
+loading_screen_path = "res://assets/scenes/ui/cityloadingscreen.tscn"
+
+[node name="seedspawnpoint" type="Node2D" parent="."]
+position = Vector2(55, 152)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.144063, 0.144063, 0.144063, 1)
+
+[node name="Label" type="Label" parent="CanvasLayer/Control"]
+custom_minimum_size = Vector2(0, 49.185)
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -11.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "12 years later..."
+horizontal_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_0egxe")
+}
+
+[node name="dadkiller" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="dadkiller"]
+position = Vector2(53, -47)
+shape = SubResource("RectangleShape2D_3650l")
+
+[connection signal="body_entered" from="dadkiller" to="." method="_on_dadkiller_body_entered"]
 
 [editable path="y_sorted/Player"]
 [editable path="y_sorted/Player/GameCam"]

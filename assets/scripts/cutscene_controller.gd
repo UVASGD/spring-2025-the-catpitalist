@@ -24,8 +24,12 @@ func _ready() -> void:
 	if hides_things:
 		for node in hidden_things:
 			node.call_deferred("hide")
+	if $Player:
+		align_player()
 	
-		
+func align_player(): # assumes we want to use real player's location as a start point for fake player, to prevent odd position jumping when cutscene ends
+	$Player.position = PlayerData.player.position
+
 func _on_dialogue_finish() -> void:
 	elapse_time = true
 	
@@ -61,7 +65,7 @@ func _physics_process(delta: float) -> void:
 						if direction <= -45 && direction >= -135:
 							anim_sprite.flip_h = false
 							animation_to_play = "walk_down"
-						elif direction <= -135 || direction >= 135:
+						elif direction <= -135 && direction >= 135:
 							animation_to_play = "walk_right"
 						elif direction <= 135 && direction >= 45:
 							anim_sprite.flip_h = false

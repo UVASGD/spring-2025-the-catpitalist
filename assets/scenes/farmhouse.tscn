@@ -19,6 +19,8 @@ shape = SubResource("RectangleShape2D_h4i4f")
 
 [node name="transportzone" parent="." instance=ExtResource("2_x7jet")]
 position = Vector2(-32.1828, 89.8244)
+can_transport = true
+debug = true
 
-[connection signal="visibility_changed" from="." to="transportzone" method="_on_visibility_changed"]
 [connection signal="visibility_changed" from="." to="transportzone" method="_on_farmhouse_visibility_changed"]
+[connection signal="visibility_changed" from="." to="transportzone" method="_on_visibility_changed"]

@@ -31,6 +31,7 @@ func clone():
 		newplayer.inventory = player.inventory
 		newplayer.held_item_index = player.held_item_index
 		newplayer.pos_stack = player.pos_stack
+		newplayer.alter_scale = player.alter_scale
 		return newplayer
 
 func drop(index):
