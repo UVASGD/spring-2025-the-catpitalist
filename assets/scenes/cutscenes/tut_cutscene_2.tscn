@@ -240,7 +240,7 @@ shape = SubResource("CircleShape2D_83h80")
 
 [node name="NPC3" type="Node2D" parent="."]
 position = Vector2(126, 162)
-scale = Vector2(0.845, 0.845)
+scale = Vector2(1.2, 1.2)
 script = ExtResource("2_46hqj")
 npc_name = "Mom"
 

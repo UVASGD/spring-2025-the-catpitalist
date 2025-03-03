@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=4 uid="uid://cjdgereercutf"]
+[gd_scene load_steps=24 format=4 uid="uid://cjdgereercutf"]
 
 [ext_resource type="Script" path="res://assets/scenes/worlds/tutorial.gd" id="1_y4adi"]
 [ext_resource type="Texture2D" uid="uid://ba5emgq6meyok" path="res://assets/sprites/larger_grass_tile_map-Sheet.png" id="7_3klku"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://rwlroq3ou1el" path="res://assets/sprites/farmland.png" id="11_4dsun"]
 [ext_resource type="PackedScene" uid="uid://byxam7udt4dw3" path="res://assets/scenes/farmhouse.tscn" id="11_pcbsd"]
 [ext_resource type="PackedScene" uid="uid://bebmk5px6idgj" path="res://assets/scenes/npcs/dad.tscn" id="11_s4l5j"]
+[ext_resource type="PackedScene" uid="uid://8fevb4e0phm7" path="res://assets/scenes/npcs/CITYSIGN.tscn" id="11_safe8"]
 [ext_resource type="PackedScene" uid="uid://bmw6wxkk4jdhu" path="res://assets/scenes/transportzone.tscn" id="11_v8qyd"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7ivjj"]
@@ -87,6 +88,21 @@ sources/4 = SubResource("TileSetAtlasSource_s4msx")
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_bdq3j"]
 normal = Vector2(1, 0)
 
+[sub_resource type="Animation" id="Animation_tk4gb"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/Control:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
 [sub_resource type="Animation" id="Animation_wn35v"]
 resource_name = "transition"
 length = 2.5
@@ -101,21 +117,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_tk4gb"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("CanvasLayer/Control:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_0egxe"]
@@ -164,6 +165,9 @@ animation = &"walk_right"
 position = Vector2(0, 8)
 hides_things = true
 hidden_things = [NodePath("../Player"), NodePath("../TutDad")]
+
+[node name="NPC" parent="y_sorted" instance=ExtResource("11_safe8")]
+position = Vector2(305, -80)
 
 [node name="worldbounds" type="Node" parent="."]
 
@@ -214,6 +218,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 1
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer/Control"]
 layout_mode = 1
@@ -222,6 +227,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 1
 color = Color(0.144063, 0.144063, 0.144063, 1)
 
 [node name="Label" type="Label" parent="CanvasLayer/Control"]

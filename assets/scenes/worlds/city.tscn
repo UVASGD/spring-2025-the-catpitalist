@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=4 uid="uid://cd74drdf1jwsh"]
+[gd_scene load_steps=16 format=4 uid="uid://cd74drdf1jwsh"]
 
 [ext_resource type="Script" path="res://assets/scripts/indoors.gd" id="1_608q5"]
 [ext_resource type="Texture2D" uid="uid://dd4wsteki2cb7" path="res://assets/sprites/road tiles.png" id="2_b2ujj"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://c7bpitve6lom3" path="res://assets/scenes/npcs/fatcat.tscn" id="7_e1vv1"]
 [ext_resource type="PackedScene" uid="uid://b7hk1uss3cmvs" path="res://assets/scenes/npcs/mozzie.tscn" id="8_lb8e2"]
 [ext_resource type="PackedScene" uid="uid://bpeq3yds8qnt1" path="res://assets/scenes/npcs/washingmashing.tscn" id="9_x5xyi"]
+[ext_resource type="Texture2D" uid="uid://dm3swmredtw6w" path="res://assets/sprites/triange shadow.png" id="10_y7yqb"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ljycj"]
 texture = ExtResource("2_b2ujj")
@@ -41,6 +42,9 @@ texture_region_size = Vector2i(32, 32)
 [sub_resource type="TileSet" id="TileSet_bmgic"]
 tile_size = Vector2i(32, 32)
 sources/0 = SubResource("TileSetAtlasSource_ljycj")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y8us7"]
+size = Vector2(98, 141)
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_o7f2n"]
 normal = Vector2(1, 0)
@@ -104,6 +108,33 @@ scale = Vector2(1.605, 1.605)
 position = Vector2(192, -10)
 texture = ExtResource("4_08swj")
 
+[node name="StaticBody2D" type="StaticBody2D" parent="y_sorted/Cityhouse"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="y_sorted/Cityhouse/StaticBody2D"]
+position = Vector2(-31, 15.5)
+shape = SubResource("RectangleShape2D_y8us7")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="y_sorted/Cityhouse"]
+position = Vector2(157, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="y_sorted/Cityhouse/StaticBody2D2"]
+position = Vector2(-31, 15.5)
+shape = SubResource("RectangleShape2D_y8us7")
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="y_sorted/Cityhouse"]
+position = Vector2(-341, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="y_sorted/Cityhouse/StaticBody2D3"]
+position = Vector2(-31, 15.5)
+shape = SubResource("RectangleShape2D_y8us7")
+
+[node name="StaticBody2D4" type="StaticBody2D" parent="y_sorted/Cityhouse"]
+position = Vector2(-469, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="y_sorted/Cityhouse/StaticBody2D4"]
+position = Vector2(-31, 15.5)
+shape = SubResource("RectangleShape2D_y8us7")
+
 [node name="Cityhouse4" type="Sprite2D" parent="y_sorted"]
 position = Vector2(350, -10)
 texture = ExtResource("4_08swj")
@@ -115,6 +146,46 @@ texture = ExtResource("4_08swj")
 [node name="Cityhouse3" type="Sprite2D" parent="y_sorted"]
 position = Vector2(-150, -16)
 texture = ExtResource("4_08swj")
+
+[node name="NPC" parent="y_sorted" instance=ExtResource("5_r7nvx")]
+position = Vector2(-176, 195)
+
+[node name="NPC2" parent="y_sorted" instance=ExtResource("6_ppav0")]
+position = Vector2(241, -11)
+
+[node name="NPC3" parent="y_sorted" instance=ExtResource("7_e1vv1")]
+position = Vector2(63, -156)
+
+[node name="NPC4" parent="y_sorted" instance=ExtResource("8_lb8e2")]
+position = Vector2(-245, 61)
+
+[node name="NPC5" parent="y_sorted" instance=ExtResource("9_x5xyi")]
+position = Vector2(221, 186)
+scale = Vector2(1, 1)
+
+[node name="building shadow" type="Sprite2D" parent="y_sorted"]
+modulate = Color(1, 1, 1, 0.733333)
+position = Vector2(267.5, -21)
+scale = Vector2(2.14, 0.931579)
+texture = ExtResource("10_y7yqb")
+
+[node name="building shadow2" type="Sprite2D" parent="y_sorted"]
+modulate = Color(1, 1, 1, 0.733333)
+position = Vector2(409.25, -21)
+scale = Vector2(1.39, 0.931579)
+texture = ExtResource("10_y7yqb")
+
+[node name="building shadow3" type="Sprite2D" parent="y_sorted"]
+modulate = Color(1, 1, 1, 0.733333)
+position = Vector2(-97.375, -25)
+scale = Vector2(1.135, 0.931579)
+texture = ExtResource("10_y7yqb")
+
+[node name="building shadow4" type="Sprite2D" parent="y_sorted"]
+modulate = Color(1, 1, 1, 0.733333)
+position = Vector2(-233, -23)
+scale = Vector2(1.135, 0.931579)
+texture = ExtResource("10_y7yqb")
 
 [node name="worldbounds" type="Node" parent="."]
 
@@ -152,21 +223,5 @@ position = Vector2(-380, 141)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(-3, 3)
 shape = SubResource("RectangleShape2D_w2a1x")
-
-[node name="NPC" parent="." instance=ExtResource("5_r7nvx")]
-position = Vector2(-176, 195)
-
-[node name="NPC2" parent="." instance=ExtResource("6_ppav0")]
-position = Vector2(241, -11)
-
-[node name="NPC3" parent="." instance=ExtResource("7_e1vv1")]
-position = Vector2(63, -156)
-
-[node name="NPC4" parent="." instance=ExtResource("8_lb8e2")]
-position = Vector2(-245, 61)
-
-[node name="NPC5" parent="." instance=ExtResource("9_x5xyi")]
-position = Vector2(221, 186)
-scale = Vector2(1, 1)
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
