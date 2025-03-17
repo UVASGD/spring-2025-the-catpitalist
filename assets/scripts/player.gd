@@ -1,6 +1,7 @@
 class_name Player extends CharacterBody2D
 
 @export var speed := 200
+@export var alter_scale:Vector2 = Vector2(1,1)
 @onready var animated_sprite: AnimatedSprite2D = $"AnimatedSprite2D"
 @onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
 
@@ -14,12 +15,13 @@ var held_item_index = 0
 var last_pos_timer
 var pos_stack = []
 func _ready() -> void:
+	animated_sprite.scale = alter_scale
 	flash_actionable()
 	SignalBus.connect("interact", interact)
 	#SignalBus.connect("items_ready", _on_items_ready)
-	inventory[0] = Items.get_item(1) # debug watercan 
-	inventory[1] = Items.get_item(1) #stack test
-	inventory[2] = Items.get_item(2) # seeds test
+	inventory[8] = Items.get_item(1) # debug watercan 
+	#inventory[1] = Items.get_item(1) #stack test
+	#inventory[2] = Items.get_item(2) # seeds test
 	SignalBus.emit_signal("player_ready", self)
 	last_pos_timer = Timer.new()
 	last_pos_timer.wait_time = 0.1

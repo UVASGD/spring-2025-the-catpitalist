@@ -1,0 +1,275 @@
+[gd_scene load_steps=33 format=3 uid="uid://djr413r6vhlvq"]
+
+[ext_resource type="Script" path="res://assets/scripts/cutscene_controller.gd" id="1_fbuv1"]
+[ext_resource type="Script" path="res://assets/scripts/cutscene_npc.gd" id="2_46hqj"]
+[ext_resource type="Texture2D" uid="uid://bxpn40vj5qo76" path="res://assets/sprites/CATDAD_walk-Sheet.png" id="3_w56bo"]
+[ext_resource type="Texture2D" uid="uid://dsqdmp5yxmgsr" path="res://assets/sprites/CATDAD_sideways_view.png" id="4_atw4r"]
+[ext_resource type="PackedScene" uid="uid://wfajuc7nk6w6" path="res://assets/scenes/templates/conversation.tscn" id="5_6wsdv"]
+[ext_resource type="Script" path="res://assets/scripts/cutscene_movement.gd" id="6_2mi1c"]
+[ext_resource type="Script" path="res://assets/scripts/message.gd" id="6_66yq0"]
+[ext_resource type="Texture2D" uid="uid://cm8mnvo8sh28h" path="res://assets/sprites/baby-balling.png" id="7_i33kc"]
+[ext_resource type="Texture2D" uid="uid://vcbcsn3oqixk" path="res://assets/sprites/cat_animations.png" id="8_23sqh"]
+[ext_resource type="Texture2D" uid="uid://cf6euux6bvxvt" path="res://assets/sprites/World NPCs/catmom.png" id="10_gdq6s"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5iyjt"]
+atlas = ExtResource("3_w56bo")
+region = Rect2(0, 0, 64, 70)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a5h6a"]
+atlas = ExtResource("4_atw4r")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6bd0g"]
+atlas = ExtResource("3_w56bo")
+region = Rect2(0, 0, 64, 70)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m2kco"]
+atlas = ExtResource("3_w56bo")
+region = Rect2(64, 0, 64, 70)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wmquu"]
+atlas = ExtResource("3_w56bo")
+region = Rect2(128, 0, 64, 70)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dibkt"]
+atlas = ExtResource("3_w56bo")
+region = Rect2(192, 0, 64, 70)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yowls"]
+atlas = ExtResource("3_w56bo")
+region = Rect2(256, 0, 64, 70)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2s5we"]
+atlas = ExtResource("3_w56bo")
+region = Rect2(320, 0, 64, 70)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ygdmv"]
+atlas = ExtResource("3_w56bo")
+region = Rect2(384, 0, 64, 70)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cmuaj"]
+atlas = ExtResource("3_w56bo")
+region = Rect2(448, 0, 64, 70)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_taqc1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5iyjt")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"invis",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a5h6a")
+}],
+"loop": true,
+"name": &"side",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6bd0g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m2kco")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wmquu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dibkt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yowls")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2s5we")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ygdmv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cmuaj")
+}],
+"loop": true,
+"name": &"walk_down",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_80utt"]
+atlas = ExtResource("7_i33kc")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yqy1h"]
+atlas = ExtResource("7_i33kc")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3phtb"]
+atlas = ExtResource("7_i33kc")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tbjmi"]
+atlas = ExtResource("7_i33kc")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oh0gi"]
+atlas = ExtResource("7_i33kc")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5n1yo"]
+atlas = ExtResource("7_i33kc")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y170r"]
+atlas = ExtResource("8_23sqh")
+region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_luf3k"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_80utt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yqy1h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3phtb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tbjmi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oh0gi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5n1yo")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y170r")
+}],
+"loop": true,
+"name": &"stand",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_83h80"]
+radius = 32.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y7eie"]
+atlas = ExtResource("10_gdq6s")
+region = Rect2(0, 0, 764, 764)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_a6smt"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y7eie")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[node name="tut_cutscene_2" type="Node2D"]
+script = ExtResource("1_fbuv1")
+cutscene_length = 3
+
+[node name="NPC" type="Node2D" parent="."]
+position = Vector2(297, 338)
+script = ExtResource("2_46hqj")
+npc_name = "Dad"
+voice_pitch = 0.2
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="NPC"]
+position = Vector2(-202, -135)
+scale = Vector2(0.775, 0.775)
+sprite_frames = SubResource("SpriteFrames_taqc1")
+animation = &"side"
+autoplay = "side"
+
+[node name="Convos" type="Node" parent="NPC"]
+
+[node name="Conversation" parent="NPC/Convos" instance=ExtResource("5_6wsdv")]
+
+[node name="Message" parent="NPC/Convos/Conversation/Messages" index="0"]
+text = " Child, it’s time for you to take over the farm."
+
+[node name="Message2" type="Node" parent="NPC/Convos/Conversation/Messages" index="1"]
+script = ExtResource("6_66yq0")
+text = "You still don’t think you can do it? Yer mother and I have taught you all that we can teach you, we know you’re ready."
+
+[node name="Message3" type="Node" parent="NPC/Convos/Conversation/Messages" index="2"]
+script = ExtResource("6_66yq0")
+text = "We try not to ask you for much, but this we must. Love this farm like we love you, take care of this farm like we took care of you."
+
+[node name="speech1" type="Node2D" parent="NPC"]
+position = Vector2(0, 96)
+script = ExtResource("6_2mi1c")
+speed = 50.0
+start_time = 1.0
+num_dialogue = 1
+animation_override = "side"
+
+[node name="Player" type="Node2D" parent="."]
+position = Vector2(-36, 237)
+script = ExtResource("2_46hqj")
+npc_name = "chubbs"
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="Player"]
+sprite_frames = SubResource("SpriteFrames_luf3k")
+animation = &"stand"
+
+[node name="hitbox" type="Area2D" parent="Player"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/hitbox"]
+shape = SubResource("CircleShape2D_83h80")
+
+[node name="NPC3" type="Node2D" parent="."]
+position = Vector2(126, 162)
+scale = Vector2(1.2, 1.2)
+script = ExtResource("2_46hqj")
+npc_name = "Mom"
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="NPC3"]
+scale = Vector2(0.07, 0.07)
+sprite_frames = SubResource("SpriteFrames_a6smt")
+animation = &"idle"
+
+[node name="hitbox" type="Area2D" parent="NPC3"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NPC3/hitbox"]
+shape = SubResource("CircleShape2D_83h80")
+
+[node name="Convos" type="Node" parent="NPC3"]
+
+[node name="Conversation" parent="NPC3/Convos" instance=ExtResource("5_6wsdv")]
+
+[node name="Message" parent="NPC3/Convos/Conversation/Messages" index="0"]
+text = "We know you can do it, we love you. As you know, we've fallen on hard times, but you are all we still have."
+
+[node name="speech1" type="Node2D" parent="NPC3"]
+position = Vector2(0, 96)
+script = ExtResource("6_2mi1c")
+speed = 50.0
+start_time = 2.0
+num_dialogue = 1
+
+[connection signal="tree_entered" from="." to="." method="_on_tree_entered"]
+[connection signal="tree_exited" from="." to="." method="_on_tree_exited"]
+
+[editable path="NPC/Convos/Conversation"]
+[editable path="NPC3/Convos/Conversation"]

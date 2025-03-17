@@ -48,6 +48,7 @@ func close():
 
 func _on_leave_pressed() -> void:
 	dialogue.text = leaving_dialogue
+	await get_tree().create_timer(1).timeout
 	close()
 	DayManager.unfreeze()
 	pass # Replace with function body.

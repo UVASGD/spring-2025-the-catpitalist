@@ -1,9 +1,10 @@
-[gd_scene load_steps=18 format=3 uid="uid://bebmk5px6idgj"]
+[gd_scene load_steps=19 format=3 uid="uid://bebmk5px6idgj"]
 
 [ext_resource type="Script" path="res://assets/scripts/npc.gd" id="1_5o3n0"]
 [ext_resource type="PackedScene" uid="uid://wfajuc7nk6w6" path="res://assets/scenes/templates/conversation.tscn" id="2_dts3n"]
 [ext_resource type="Texture2D" uid="uid://dsqdmp5yxmgsr" path="res://assets/sprites/CATDAD_sideways_view.png" id="2_uwpoi"]
 [ext_resource type="Texture2D" uid="uid://bxpn40vj5qo76" path="res://assets/sprites/CATDAD_walk-Sheet.png" id="3_du83j"]
+[ext_resource type="Script" path="res://assets/scripts/message.gd" id="5_nca85"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wkvuh"]
 atlas = ExtResource("3_du83j")
@@ -103,7 +104,7 @@ size = Vector2(20, 24)
 script = ExtResource("1_5o3n0")
 npc_name = "Dad"
 exhaust_dialogue_text = "Hey kiddo, I'll always be here to lend an ear when you need it. Yer mom and I believe in you!"
-voice_pitch = 0.6
+voice_pitch = 0.4
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_6vibn")
@@ -127,17 +128,58 @@ shape = SubResource("RectangleShape2D_njb3k")
 [node name="Conversation" parent="Convos" instance=ExtResource("2_dts3n")]
 
 [node name="Message" parent="Convos/Conversation/Messages" index="0"]
-text = "um hi"
+text = "Are you in trouble? Course not,  it’s time I taught you the way of the farm, you’re about the age I was when my father taught me."
 
 [node name="Conversation2" parent="Convos" instance=ExtResource("2_dts3n")]
+requests_signal = true
+request_signal_name = "tutorial_pickup"
+signals_on_finish = true
+finish_signal = "spawn_seeds"
 
 [node name="Message" parent="Convos/Conversation2/Messages" index="0"]
-text = "how are you"
+text = "You don’t think you can do it? I’ll walk you through it. First, pick up these seeds."
 
 [node name="Conversation3" parent="Convos" instance=ExtResource("2_dts3n")]
+requests_signal = true
+request_signal_name = "tutorial_planted"
+locked = true
 
 [node name="Message" parent="Convos/Conversation3/Messages" index="0"]
-text = "deez nust"
+text = "Great. Now Plant ‘em on that there dirt patch, the one that looks smoother than the rest."
+
+[node name="Message2" type="Node" parent="Convos/Conversation3/Messages" index="1"]
+script = ExtResource("5_nca85")
+text = "If you don't have your seeds in your hand, press '1'  to hold them. Then click on that dirt."
+
+[node name="Conversation4" parent="Convos" instance=ExtResource("2_dts3n")]
+requests_signal = true
+request_signal_name = "tutorial_watered"
+locked = true
+
+[node name="Message" parent="Convos/Conversation4/Messages" index="0"]
+text = "‘Attaboy! Now all you gotta do is water it."
+
+[node name="Message2" type="Node" parent="Convos/Conversation4/Messages" index="1"]
+script = ExtResource("5_nca85")
+text = "Open your inventory with 'I' and drag that watercan into one of your bottom 5 slots. Then close it with 'I' or 'esc'."
+
+[node name="Message3" type="Node" parent="Convos/Conversation4/Messages" index="2"]
+script = ExtResource("5_nca85")
+text = "Then, just click on those seeds ya just planted."
+
+[node name="Conversation5" parent="Convos" instance=ExtResource("2_dts3n")]
+locked = true
+
+[node name="Message" parent="Convos/Conversation5/Messages" index="0"]
+text = "Now ya got a working farm and a profit to keep yer belly full at night."
+
+[node name="Message2" type="Node" parent="Convos/Conversation5/Messages" index="1"]
+script = ExtResource("5_nca85")
+text = "But you can’t give those green beans too much water, and roses require a lot of care, but not every day – I choose every even Wednesday or odd Sunday to care for em-"
+
+[node name="Message3" type="Node" parent="Convos/Conversation5/Messages" index="2"]
+script = ExtResource("5_nca85")
+text = " heh, you look a lil confused, I forget yer still a youngin. How bout you run in the house and ask yer mama to show you her books on how to take care of the farm. "
 
 [node name="start" type="Marker2D" parent="."]
 
@@ -146,3 +188,5 @@ text = "deez nust"
 [editable path="Convos/Conversation"]
 [editable path="Convos/Conversation2"]
 [editable path="Convos/Conversation3"]
+[editable path="Convos/Conversation4"]
+[editable path="Convos/Conversation5"]

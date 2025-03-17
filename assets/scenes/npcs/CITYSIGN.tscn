@@ -1,0 +1,42 @@
+[gd_scene load_steps=6 format=3 uid="uid://8fevb4e0phm7"]
+
+[ext_resource type="Script" path="res://assets/scripts/npc.gd" id="1_18afg"]
+[ext_resource type="Texture2D" uid="uid://lsoaa2v0vkur" path="res://assets/sprites/NPC portraits/ims06c64idb91-removebg-preview.png" id="2_8opoi"]
+[ext_resource type="PackedScene" uid="uid://wfajuc7nk6w6" path="res://assets/scenes/templates/conversation.tscn" id="3_xxwjr"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0amcf"]
+radius = 32.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dpvfd"]
+
+[node name="NPC" type="Node2D"]
+script = ExtResource("1_18afg")
+is_world_object = true
+npc_name = "unc bart"
+voice_pitch = -1.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.105, 0.105)
+texture = ExtResource("2_8opoi")
+region_rect = Rect2(16, 224, 32, 56)
+
+[node name="hitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox"]
+shape = SubResource("CircleShape2D_0amcf")
+
+[node name="Convos" type="Node" parent="."]
+
+[node name="Conversation" parent="Convos" instance=ExtResource("3_xxwjr")]
+debugname = "askforwater"
+
+[node name="Message" parent="Convos/Conversation/Messages" index="0"]
+text = "wsg gang city over there -> , get on going lil bro"
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, 16)
+shape = SubResource("RectangleShape2D_dpvfd")
+
+[editable path="Convos/Conversation"]

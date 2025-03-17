@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://c1bryu24gdkpd"]
+[gd_scene load_steps=29 format=3 uid="uid://c1bryu24gdkpd"]
 
 [ext_resource type="Script" path="res://assets/scripts/cutscene_controller.gd" id="1_usam1"]
 [ext_resource type="Script" path="res://assets/scripts/cutscene_npc.gd" id="2_q7n6k"]
@@ -102,9 +102,6 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_pmeq2"]
-radius = 32.0
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_80utt"]
 atlas = ExtResource("7_kwfha")
 region = Rect2(0, 0, 64, 64)
@@ -186,11 +183,6 @@ animation = &"walk_down"
 frame = 5
 frame_progress = 0.176922
 flip_h = true
-
-[node name="hitbox" type="Area2D" parent="NPC"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="NPC/hitbox"]
-shape = SubResource("CircleShape2D_pmeq2")
 
 [node name="Convos" type="Node" parent="NPC"]
 

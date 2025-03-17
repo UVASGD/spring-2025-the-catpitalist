@@ -1,0 +1,60 @@
+[gd_scene load_steps=7 format=3 uid="uid://c8t53va2ko46x"]
+
+[ext_resource type="Script" path="res://assets/scripts/npc.gd" id="1_icq1v"]
+[ext_resource type="Texture2D" uid="uid://cf6euux6bvxvt" path="res://assets/sprites/World NPCs/catmom.png" id="2_rj10u"]
+[ext_resource type="PackedScene" uid="uid://wfajuc7nk6w6" path="res://assets/scenes/templates/conversation.tscn" id="2_vwbq5"]
+[ext_resource type="Script" path="res://assets/scripts/message.gd" id="4_dud2m"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pmeq2"]
+radius = 32.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_njb3k"]
+size = Vector2(20, 24)
+
+[node name="NPC" type="Node2D" groups=["NPCs"]]
+script = ExtResource("1_icq1v")
+npc_name = "Mom"
+voice_pitch = 1.1
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -4)
+scale = Vector2(0.07, 0.07)
+texture = ExtResource("2_rj10u")
+
+[node name="hitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox"]
+shape = SubResource("CircleShape2D_pmeq2")
+
+[node name="collisionbox" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="collisionbox"]
+position = Vector2(0, 12)
+shape = SubResource("RectangleShape2D_njb3k")
+
+[node name="Convos" type="Node" parent="."]
+
+[node name="Conversation" parent="Convos" instance=ExtResource("2_vwbq5")]
+signals_on_finish = true
+finish_signal = "mom_dialogue_done"
+
+[node name="Message" parent="Convos/Conversation/Messages" index="0"]
+text = "Hello my dear, are you hungry already? "
+
+[node name="Message2" type="Node" parent="Convos/Conversation/Messages" index="1"]
+script = ExtResource("4_dud2m")
+text = "No? Then what is it? "
+
+[node name="Message3" type="Node" parent="Convos/Conversation/Messages" index="2"]
+script = ExtResource("4_dud2m")
+text = "Your father said that, did he? I told him I thought you were too young for this, that we should wait just a little longer, at least until all yer baby teeth drop. "
+
+[node name="Message4" type="Node" parent="Convos/Conversation/Messages" index="3"]
+script = ExtResource("4_dud2m")
+text = "(*Sighs) But I suppose we couldn’t avoid the inevitable, but your father can be such an old Tom, how does he expect you to read my books if you don’t know how to read? Take my paw, I’ll teach you."
+
+[node name="start" type="Marker2D" parent="."]
+
+[node name="end" type="Marker2D" parent="."]
+
+[editable path="Convos/Conversation"]
