@@ -1,8 +1,8 @@
-[gd_scene load_steps=14 format=4 uid="uid://cd74drdf1jwsh"]
+[gd_scene load_steps=14 format=4 uid="uid://dc267jlti1u6w"]
 
 [ext_resource type="Script" path="res://assets/scripts/indoors.gd" id="1_608q5"]
 [ext_resource type="Texture2D" uid="uid://dd4wsteki2cb7" path="res://assets/sprites/road tiles.png" id="2_b2ujj"]
-[ext_resource type="PackedScene" uid="uid://ddsp4cqnwtxx5" path="res://assets/scenes/lamp.tscn" id="3_sasq6"]
+[ext_resource type="PackedScene" path="res://assets/scenes/lamp.tscn" id="3_sasq6"]
 [ext_resource type="Texture2D" uid="uid://d1w2frld1gp3q" path="res://assets/sprites/cityhouse.png" id="4_08swj"]
 [ext_resource type="PackedScene" uid="uid://tpn3u80c1bsx" path="res://assets/scenes/npcs/blurbo.tscn" id="5_r7nvx"]
 [ext_resource type="PackedScene" uid="uid://b42c4mrfgwcvt" path="res://assets/scenes/npcs/dealer.tscn" id="6_ppav0"]
