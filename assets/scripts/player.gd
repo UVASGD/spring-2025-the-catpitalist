@@ -84,6 +84,24 @@ func find_available_inv_slot(item):
 			if inventory[i].stackable and inventory[i].count + item.count <= item.max_stack:
 				return i
 	return -1
+	
+func can_sell():
+	for i in inventory:
+		if i != null && i.sellable:
+			return true
+	return false
+	
+func find_available_selling_inv_slot(item):
+	var lowest_stack_item = -1
+	
+	for i in range(0, 24):
+		if inventory[i] != null && inventory[i].ID == item.ID:
+			if lowest_stack_item != -1:
+				if inventory[i].count < inventory[lowest_stack_item].count:
+					lowest_stack_item = i
+			if lowest_stack_item == -1:
+				lowest_stack_item = i
+	return lowest_stack_item
 		
 func add_to_inv(item): # returns false if you cannot currently fit the item in your inventory
 	var ind = find_available_inv_slot(item)
@@ -95,6 +113,16 @@ func add_to_inv(item): # returns false if you cannot currently fit the item in y
 		return true
 	else:
 		return false
+		
+func remove_from_inv(item):
+	while item.count > 0:
+		var ind = find_available_selling_inv_slot(item)
+		if inventory[ind] != null and inventory[ind].ID == item.ID:
+			inventory[ind].count -= 1
+			item.count -= 1
+			if inventory[ind].count == 0:
+				inventory[ind] = null
+
 func interact(obj):
 	if not actionable:
 		return

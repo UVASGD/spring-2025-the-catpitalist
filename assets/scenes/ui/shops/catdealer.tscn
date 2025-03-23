@@ -72,6 +72,7 @@ buyscreen_dialogue = "That'll run you $---- clams."
 sellscreen_dialogue = "I'm willing to part with $---."
 choosing_dialogue = "Alright, so who's getting paid here?"
 leaving_dialogue = "Don't let the door hit you on the way out."
+shop_items_sold = Array[int]([1, 2, 3])
 
 [node name="BG" type="TextureRect" parent="."]
 offset_right = 40.0
@@ -166,21 +167,33 @@ layout_mode = 2
 
 [node name="HBoxContainer" parent="invscroller/inv" instance=ExtResource("21_hovm5")]
 layout_mode = 2
+item_id = 2
+is_buy_item = true
 
 [node name="HBoxContainer2" parent="invscroller/inv" instance=ExtResource("21_hovm5")]
 layout_mode = 2
+item_id = 1
+is_buy_item = true
 
 [node name="HBoxContainer3" parent="invscroller/inv" instance=ExtResource("21_hovm5")]
 layout_mode = 2
+item_id = 2
+is_buy_item = true
 
 [node name="HBoxContainer4" parent="invscroller/inv" instance=ExtResource("21_hovm5")]
 layout_mode = 2
+item_id = 2
+is_buy_item = true
 
 [node name="HBoxContainer5" parent="invscroller/inv" instance=ExtResource("21_hovm5")]
 layout_mode = 2
+item_id = 2
+is_buy_item = true
 
 [node name="HBoxContainer6" parent="invscroller/inv" instance=ExtResource("21_hovm5")]
 layout_mode = 2
+item_id = 2
+is_buy_item = true
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 offset_left = 52.0

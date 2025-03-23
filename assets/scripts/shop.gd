@@ -25,6 +25,8 @@ class_name Shop extends CanvasLayer
 @export var choosing_dialogue: String
 @export var leaving_dialogue: String
 
+@export var shop_items_sold: Array[int]
+
 
 var cart = {} # Player's shopping cart. key value pairs where key = item ID, and value = count
 var sellercart = {} # like cart, but for stuff the player is selling
@@ -56,17 +58,43 @@ func _on_leave_pressed() -> void:
 
 
 func _on_choose_sell_pressed() -> void:
-	texture_rect.show()
-	sellbuttons.show()
-	invscroller.show()
-	choose.hide()
-	leave.hide()
-	dialogue.text = sellscreen_dialogue
-	mode.text = "SELL"
+	sellercart = {}
+	if PlayerData.player.can_sell():
+		var player_items = []
+		for n in inv.get_children():
+			inv.remove_child(n)
+			n.queue_free()
+		for n in PlayerData.player.inventory:
+			if n is Item && n.sellable && !player_items.has(n.ID):
+				player_items.append(n.ID)
+				var x = preload("res://shopitemrow.tscn").instantiate()
+				x.item_id = n.ID
+				x.is_buy_item = false
+				inv.add_child(x)
+		texture_rect.show()
+		sellbuttons.show()
+		invscroller.show()
+		choose.hide()
+		leave.hide()
+		dialogue.text = sellscreen_dialogue
+		mode.text = "SELL"
+	else:
+		dialogue.text = "You have nothing to sell."
 	pass # Replace with function body.
 
 
 func _on_choose_buy_pressed() -> void:
+	cart = {}
+	for n in inv.get_children():
+		inv.remove_child(n)
+		n.queue_free()
+	for n in shop_items_sold:
+		var x = preload("res://shopitemrow.tscn").instantiate()
+		x.item_id = n
+		x.is_buy_item = true
+		inv.add_child(x)
+		#x.item_id = n
+		#x.is_buy_item = true
 	texture_rect.show()
 	buybuttons.show()
 	invscroller.show()
@@ -89,11 +117,16 @@ func _on_back_pressed() -> void:
 
 
 func _on_buy_pressed() -> void:
-	if cart.is_empty:
+	PlayerData.player.money = 100
+	if cart.is_empty():
 		return
-	dialogue.text = buy_dialogue
-	Items.buy(cart)
-	cart = {}
+	var buy_check = can_buy()
+	if buy_check.has(true):
+		dialogue.text = buy_check[true]
+		Items.buy(cart)
+		cart = {}
+	elif buy_check.has(false):
+		dialogue.text = buy_check[false]
 	pass # Replace with function body.
 
 
@@ -103,4 +136,29 @@ func _on_sell_pressed() -> void:
 	dialogue.text = sell_dialogue
 	Items.sell(sellercart)
 	sellercart = {}
+	await get_tree().create_timer(1).timeout
+	
+	if !PlayerData.player.can_sell():
+		_on_back_pressed()
 	pass # Replace with function body.
+	
+# checks if the player can buy what's in the cart
+# returns a dictionary of true/false and an error message if applicable
+func can_buy() -> Dictionary:
+	if get_cart_cost() > PlayerData.player.money:
+		return {false: "Yer too broke. Put some things away!"}
+	elif !can_fit_items():
+		return {false: "You can't hold all that!"}
+	return {true: buy_dialogue}
+	
+func can_fit_items() -> bool:
+	return true
+	
+func get_cart_cost() -> float:
+	var cost = 0.00
+	
+	for item in cart:
+		#add price * quantity
+		cost += Items.get_item(item).buy_price * cart[item]
+	
+	return cost

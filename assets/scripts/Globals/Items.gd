@@ -71,7 +71,17 @@ func create_drop_item(item):
 		return newdrop
 
 func buy(cart:Dictionary):
+	for item in cart:
+		print(item, ": ", cart[item])
+		#print(Items.get_item(cart[item]).item_name)
+		#repeat for the amount being bought
+		for i in range(0, cart[item]):
+			PlayerData.player.add_to_inv(Items.get_item(item))
 	return
 	
 func sell(sellercart:Dictionary):
+	for item in sellercart:
+		var to_remove = Items.get_item(item)
+		to_remove.count = sellercart[item]
+		PlayerData.player.remove_from_inv(to_remove)
 	return
