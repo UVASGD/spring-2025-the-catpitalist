@@ -85,11 +85,42 @@ func find_available_inv_slot(item):
 				return i
 	return -1
 	
+func find_best_insert_slot(item):
+	var lowest_stack_item = -1
+	
+	for i in range(0, 24):
+		if inventory[i] == null && !item.stackable:
+			return i
+		if inventory[i] != null && inventory[i].ID == item.ID && item.stackable:
+			if inventory[i].count < item.max_stack:
+				if lowest_stack_item != -1 && inventory[i].count < inventory[lowest_stack_item].count:
+					lowest_stack_item = i
+				if lowest_stack_item == -1:
+					lowest_stack_item = i
+	print(lowest_stack_item)
+	if lowest_stack_item != -1:
+		return lowest_stack_item
+	else:
+		for i in range(0, 24):
+			if inventory[i] == null:
+				return i
+		
+	
 func can_sell():
 	for i in inventory:
 		if i != null && i.sellable:
 			return true
 	return false
+	
+#total number of a certain item that the player has
+func get_total_item_count(item) -> int:
+	var count = 0
+	
+	for n in inventory:
+		if n != null && n.ID == item.ID:
+			count += n.count
+		
+	return count
 	
 func find_available_selling_inv_slot(item):
 	var lowest_stack_item = -1
@@ -104,15 +135,27 @@ func find_available_selling_inv_slot(item):
 	return lowest_stack_item
 		
 func add_to_inv(item): # returns false if you cannot currently fit the item in your inventory
-	var ind = find_available_inv_slot(item)
-	if ind >= 0:
-		if inventory[ind] != null and inventory[ind].ID == item.ID:
-			inventory[ind].count += item.count
+	print(item.count)
+	var item_dup = item.duplicate()
+	while item_dup.count > 0:
+		print("iterating")
+		var ind = find_best_insert_slot(item_dup)
+		if ind >= 0:
+			#print("index:",ind)
+			if inventory[ind] != null and inventory[ind].ID == item.ID:
+				#print("????")
+				item_dup.count -= 1
+				inventory[ind].count += 1
+			else:
+				var item_dup_2 = item_dup.duplicate()
+				item_dup_2.count = 1
+				item_dup.count -= 1
+				inventory[ind] = item_dup_2
+				#print(item_dup.count)
+				
 		else:
-			inventory[ind] = item
-		return true
-	else:
-		return false
+			return false
+	return true
 		
 func remove_from_inv(item):
 	while item.count > 0:

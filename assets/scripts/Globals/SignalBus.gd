@@ -54,6 +54,7 @@ signal tutorial_watered
 signal tutorial_pickup
 signal spawn_seeds
 signal mom_dialogue_done
+signal shop_price_change
 
 func emit(string):
 	emit_signal(string)
