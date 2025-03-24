@@ -201,4 +201,10 @@ func get_cart_cost() -> float:
 	return cost
 	
 func get_sellercart_cost() -> float:
-	return 0.00
+	var cost = 0.00
+	
+	for item in sellercart:
+		#add price * quantity
+		cost += Items.get_item(item).sell_price * sellercart[item]
+	
+	return cost

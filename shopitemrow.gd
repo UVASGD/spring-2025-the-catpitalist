@@ -37,7 +37,7 @@ func _process(delta: float) -> void:
 			cart = get_parent().get_parent().get_parent().cart
 	else:
 		if owner:
-			cart = owner.cart
+			cart = owner.sellercart
 		else:
 			cart = get_parent().get_parent().get_parent().sellercart
 	if cart.has(item_id):
@@ -54,7 +54,7 @@ func additem():
 	# edge case, when purchasing stacks of things, player could already have a few, so be careful with that
 	
 	#countlabel.text = str(int(countlabel.text)+1)
-	if can_add_item():
+	if !is_buy_item || can_add_item() == "good":
 		if cart.has(item_id):
 			#print(PlayerData.player.get_total_item_count(shop_item))
 			if is_buy_item || (!is_buy_item && cart[item_id] < PlayerData.player.get_total_item_count(shop_item)):
@@ -62,6 +62,7 @@ func additem():
 		else:
 			cart[item_id] = 1
 		SignalBus.emit("shop_price_change")
+	
 	#owner.buy_dialogue = str("That'll run you $", owner.get_cart_cost(), " clams.")
 	#owner.dialogue.text = owner.buy_dialogue
 
@@ -75,17 +76,32 @@ func can_add_item():
 		cart2[item_id] = 1
 	
 	var empty_slots_amount = PlayerData.player.inventory.filter(func(slot): return slot == null).size()
-	print(empty_slots_amount)
+	#print(empty_slots_amount)
 	var potential_slots_amount = 0
 	for i in cart2:
 		if !Items.get_item(i).stackable:
 			potential_slots_amount += cart2[i]
 		else:
-			print(ceil(Items.get_item(i).count * cart2[i] * 1.00 / Items.get_item(i).max_stack))
+			#print(ceil(Items.get_item(i).count * cart2[i] * 1.00 / Items.get_item(i).max_stack))
 			potential_slots_amount += ceil(Items.get_item(i).count * cart2[i] * 1.00 / Items.get_item(i).max_stack)
-	if potential_slots_amount <= empty_slots_amount:
-		return true
-	return false
+	#print(get_parent().get_parent().get_parent().get_cart_cost() + shop_item.buy_price)
+	if PlayerData.player.money >= get_parent().get_parent().get_parent().get_cart_cost() + shop_item.buy_price:
+		if potential_slots_amount < empty_slots_amount:
+			return "good"
+		else:
+			for i in cart2:
+				if Items.get_item(i).stackable:
+					var this_item_slots_amount = PlayerData.player.inventory.filter(func(slot): return slot != null && slot.ID == i).size()
+					var total_this_item = 0
+					print(this_item_slots_amount, " ", cart2[i], " ")
+					print(PlayerData.player.get_total_item_count(Items.get_item(i)))
+					
+					if cart2[i] * Items.get_item(i).count + PlayerData.player.get_total_item_count(Items.get_item(i)) > this_item_slots_amount * Items.get_item(i).max_stack:
+						return "Too much of this item!"
+					else:
+						return "good"
+					
+	return "You can't buy that!"
 
 func removeitem():
 	#countlabel.text = str(int(countlabel.text)-1)
