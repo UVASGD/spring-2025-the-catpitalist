@@ -27,7 +27,6 @@ class_name Shop extends CanvasLayer
 
 @export var shop_items_sold: Array[int]
 
-
 var cart = {} # Player's shopping cart. key value pairs where key = item ID, and value = count
 var sellercart = {} # like cart, but for stuff the player is selling
 var inventory = []
@@ -36,6 +35,8 @@ func _ready() -> void:
 	dialogue.text = choosing_dialogue
 	Music.play(songtitle)
 	DayManager.freeze()
+	
+	SignalBus.connect("shop_price_change", _on_price_change)
 	pass # Replace with function body.
 
 
@@ -47,6 +48,17 @@ func close():
 	UI.close_shop()
 	return
 	
+func get_buyscreen_dialogue() -> String:
+	var part1 = buyscreen_dialogue.substr(0, buyscreen_dialogue.find("*"))
+	var part2 = buyscreen_dialogue.substr(buyscreen_dialogue.find("*") + 1)
+	
+	return str(part1, get_cart_cost(), part2)
+	
+func get_sellscreen_dialogue() -> String:
+	var part1 = sellscreen_dialogue.substr(0, sellscreen_dialogue.find("*"))
+	var part2 = sellscreen_dialogue.substr(sellscreen_dialogue.find("*") + 1)
+	
+	return str(part1, get_sellercart_cost(), part2)
 
 func _on_leave_pressed() -> void:
 	dialogue.text = leaving_dialogue
@@ -55,7 +67,11 @@ func _on_leave_pressed() -> void:
 	DayManager.unfreeze()
 	pass # Replace with function body.
 
-
+func _on_price_change():
+	if dialogue.text.substr(0,4) == buyscreen_dialogue.substr(0,4):
+		dialogue.text = get_buyscreen_dialogue()
+	elif dialogue.text.substr(0,4) == sellscreen_dialogue.substr(0,4):
+		dialogue.text = get_sellscreen_dialogue()
 
 func _on_choose_sell_pressed() -> void:
 	sellercart = {}
@@ -76,10 +92,14 @@ func _on_choose_sell_pressed() -> void:
 		invscroller.show()
 		choose.hide()
 		leave.hide()
-		dialogue.text = sellscreen_dialogue
+		dialogue.text = get_sellscreen_dialogue()
 		mode.text = "SELL"
 	else:
 		dialogue.text = "You have nothing to sell."
+		
+		await get_tree().create_timer(1.5).timeout
+		if dialogue.text == "You have nothing to sell.":
+			dialogue.text = choosing_dialogue
 	pass # Replace with function body.
 
 
@@ -100,7 +120,7 @@ func _on_choose_buy_pressed() -> void:
 	invscroller.show()
 	choose.hide()
 	leave.hide()
-	dialogue.text = buyscreen_dialogue
+	dialogue.text = get_buyscreen_dialogue()
 	mode.text = "BUY"
 	pass # Replace with function body.
 
@@ -127,6 +147,9 @@ func _on_buy_pressed() -> void:
 		cart = {}
 	elif buy_check.has(false):
 		dialogue.text = buy_check[false]
+	await get_tree().create_timer(1.5).timeout
+	if (buy_check.has(true) && dialogue.text == buy_check[true]) || (buy_check.has(false) && dialogue.text == buy_check[false]):
+		dialogue.text = get_buyscreen_dialogue()
 	pass # Replace with function body.
 
 
@@ -136,8 +159,22 @@ func _on_sell_pressed() -> void:
 	dialogue.text = sell_dialogue
 	Items.sell(sellercart)
 	sellercart = {}
-	await get_tree().create_timer(1).timeout
 	
+	var player_items = []
+	for n in inv.get_children():
+		inv.remove_child(n)
+		n.queue_free()
+	for n in PlayerData.player.inventory:
+		if n is Item && n.sellable && !player_items.has(n.ID):
+			player_items.append(n.ID)
+			var x = preload("res://shopitemrow.tscn").instantiate()
+			x.item_id = n.ID
+			x.is_buy_item = false
+			inv.add_child(x)
+	
+	await get_tree().create_timer(1.5).timeout
+	if dialogue.text == sell_dialogue:
+		dialogue.text = get_sellscreen_dialogue()
 	if !PlayerData.player.can_sell():
 		_on_back_pressed()
 	pass # Replace with function body.
@@ -160,5 +197,14 @@ func get_cart_cost() -> float:
 	for item in cart:
 		#add price * quantity
 		cost += Items.get_item(item).buy_price * cart[item]
+	
+	return cost
+	
+func get_sellercart_cost() -> float:
+	var cost = 0.00
+	
+	for item in sellercart:
+		#add price * quantity
+		cost += Items.get_item(item).sell_price * sellercart[item]
 	
 	return cost
