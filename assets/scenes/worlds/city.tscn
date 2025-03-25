@@ -1,8 +1,8 @@
-[gd_scene load_steps=16 format=4 uid="uid://cd74drdf1jwsh"]
+[gd_scene load_steps=17 format=4 uid="uid://cd74drdf1jwsh"]
 
 [ext_resource type="Script" path="res://assets/scripts/indoors.gd" id="1_608q5"]
 [ext_resource type="Texture2D" uid="uid://dd4wsteki2cb7" path="res://assets/sprites/road tiles.png" id="2_b2ujj"]
-[ext_resource type="PackedScene" path="res://assets/scenes/lamp.tscn" id="3_sasq6"]
+[ext_resource type="PackedScene" uid="uid://ddsp4cqnwtxx5" path="res://assets/scenes/lamp.tscn" id="3_sasq6"]
 [ext_resource type="Texture2D" uid="uid://d1w2frld1gp3q" path="res://assets/sprites/cityhouse.png" id="4_08swj"]
 [ext_resource type="PackedScene" uid="uid://tpn3u80c1bsx" path="res://assets/scenes/npcs/blurbo.tscn" id="5_r7nvx"]
 [ext_resource type="PackedScene" uid="uid://b42c4mrfgwcvt" path="res://assets/scenes/npcs/dealer.tscn" id="6_ppav0"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://b7hk1uss3cmvs" path="res://assets/scenes/npcs/mozzie.tscn" id="8_lb8e2"]
 [ext_resource type="PackedScene" uid="uid://bpeq3yds8qnt1" path="res://assets/scenes/npcs/washingmashing.tscn" id="9_x5xyi"]
 [ext_resource type="Texture2D" uid="uid://dm3swmredtw6w" path="res://assets/sprites/triange shadow.png" id="10_y7yqb"]
+[ext_resource type="PackedScene" uid="uid://bvkqnjchqy427" path="res://assets/scenes/npcs/goober_npc.tscn" id="11_0206h"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ljycj"]
 texture = ExtResource("2_b2ujj")
@@ -223,5 +224,9 @@ position = Vector2(-380, 141)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(-3, 3)
 shape = SubResource("RectangleShape2D_w2a1x")
+
+[node name="NPC" parent="." instance=ExtResource("11_0206h")]
+position = Vector2(-15, 257)
+voice_pitch = 2.0
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

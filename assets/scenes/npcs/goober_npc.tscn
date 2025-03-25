@@ -1,0 +1,185 @@
+[gd_scene load_steps=24 format=3 uid="uid://bvkqnjchqy427"]
+
+[ext_resource type="Script" path="res://assets/scripts/npc.gd" id="1_o1iy0"]
+[ext_resource type="Texture2D" uid="uid://cuinwxnbr73xj" path="res://assets/sprites/World NPCs/goober_animations-Sheet.png" id="2_7op8h"]
+[ext_resource type="Script" path="res://assets/scripts/conversation.gd" id="2_j7htm"]
+[ext_resource type="Script" path="res://assets/scripts/message.gd" id="3_3dssf"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m3s4v"]
+atlas = ExtResource("2_7op8h")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_47r74"]
+atlas = ExtResource("2_7op8h")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5m8ew"]
+atlas = ExtResource("2_7op8h")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rb2bq"]
+atlas = ExtResource("2_7op8h")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mwmag"]
+atlas = ExtResource("2_7op8h")
+region = Rect2(512, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1yf52"]
+atlas = ExtResource("2_7op8h")
+region = Rect2(640, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kl7yy"]
+atlas = ExtResource("2_7op8h")
+region = Rect2(768, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_30ugr"]
+atlas = ExtResource("2_7op8h")
+region = Rect2(896, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vhx5u"]
+atlas = ExtResource("2_7op8h")
+region = Rect2(1024, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4qrjn"]
+atlas = ExtResource("2_7op8h")
+region = Rect2(1152, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vms2k"]
+atlas = ExtResource("2_7op8h")
+region = Rect2(1280, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i5nc4"]
+atlas = ExtResource("2_7op8h")
+region = Rect2(1408, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6dlvq"]
+atlas = ExtResource("2_7op8h")
+region = Rect2(1536, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qkvoi"]
+atlas = ExtResource("2_7op8h")
+region = Rect2(1664, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fih5a"]
+atlas = ExtResource("2_7op8h")
+region = Rect2(1792, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i2o7e"]
+atlas = ExtResource("2_7op8h")
+region = Rect2(1920, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_yw7md"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m3s4v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_47r74")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5m8ew")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rb2bq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mwmag")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1yf52")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kl7yy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_30ugr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vhx5u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4qrjn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vms2k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i5nc4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6dlvq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qkvoi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fih5a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i2o7e")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 8.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_d300x"]
+radius = 44.0
+height = 132.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_njb3k"]
+size = Vector2(40, 27)
+
+[node name="NPC" type="Node2D"]
+script = ExtResource("1_o1iy0")
+npc_name = "Goober"
+exhaust_dialogue_text = "Ever heard of Weezer?"
+voice_pitch = -0.5
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-1, -36)
+sprite_frames = SubResource("SpriteFrames_yw7md")
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.814259
+
+[node name="hitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox"]
+position = Vector2(0, -35)
+shape = SubResource("CapsuleShape2D_d300x")
+
+[node name="collisionbox" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="collisionbox"]
+position = Vector2(-1, 10.5)
+shape = SubResource("RectangleShape2D_njb3k")
+
+[node name="Convos" type="Node" parent="."]
+
+[node name="Conversation" type="Node" parent="Convos"]
+script = ExtResource("2_j7htm")
+
+[node name="Messages" type="Node" parent="Convos/Conversation"]
+
+[node name="Message" type="Node" parent="Convos/Conversation/Messages"]
+script = ExtResource("3_3dssf")
+text = "Look im gonna cut straight to the point"
+
+[node name="Message2" type="Node" parent="Convos/Conversation/Messages"]
+script = ExtResource("3_3dssf")
+text = "Im looking for something very specific. And I have a feeling that you are the type of fella to help me find it."
+
+[node name="Message4" type="Node" parent="Convos/Conversation/Messages"]
+script = ExtResource("3_3dssf")
+text = "I have been deprived of one of my basic human rights... to buy and consume chicken at my leisure! "
+
+[node name="Message5" type="Node" parent="Convos/Conversation/Messages"]
+script = ExtResource("3_3dssf")
+text = "Point is I need chicken. Any way, any how. And for whatever reason there's not a single chicken joint in this whole city."
+
+[node name="Message6" type="Node" parent="Convos/Conversation/Messages"]
+script = ExtResource("3_3dssf")
+text = "Chicken. Bring me some chicken and I will reward you handsomely."
