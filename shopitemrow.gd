@@ -54,7 +54,9 @@ func additem():
 	# edge case, when purchasing stacks of things, player could already have a few, so be careful with that
 	
 	#countlabel.text = str(int(countlabel.text)+1)
-	if !is_buy_item || can_add_item() == "good":
+	var addability = can_add_item()
+	
+	if !is_buy_item || addability == "good":
 		if cart.has(item_id):
 			#print(PlayerData.player.get_total_item_count(shop_item))
 			if is_buy_item || (!is_buy_item && cart[item_id] < PlayerData.player.get_total_item_count(shop_item)):
@@ -62,6 +64,8 @@ func additem():
 		else:
 			cart[item_id] = 1
 		SignalBus.emit("shop_price_change")
+	elif is_buy_item:
+		SignalBus.emit(addability)
 	
 	#owner.buy_dialogue = str("That'll run you $", owner.get_cart_cost(), " clams.")
 	#owner.dialogue.text = owner.buy_dialogue
@@ -97,11 +101,13 @@ func can_add_item():
 					print(PlayerData.player.get_total_item_count(Items.get_item(i)))
 					
 					if cart2[i] * Items.get_item(i).count + PlayerData.player.get_total_item_count(Items.get_item(i)) > this_item_slots_amount * Items.get_item(i).max_stack:
-						return "Too much of this item!"
-					else:
-						return "good"
-					
-	return "You can't buy that!"
+						return "cant_hold_item"
+				else:
+					return "cant_hold_item"
+		return "good"
+	else:
+		return "cant_afford_item"
+	return "cant_hold_item"
 
 func removeitem():
 	#countlabel.text = str(int(countlabel.text)-1)

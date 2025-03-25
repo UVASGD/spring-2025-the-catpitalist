@@ -17,6 +17,7 @@ class_name Shop extends CanvasLayer
 @onready var buybuttons: VBoxContainer = $HBoxContainer/buybuttons
 @onready var choose: HBoxContainer = $choose
 @onready var leave: TextureButton = $HBoxContainer/leave
+@onready var wallet: Label = $wallet/Label
 
 @export var buy_dialogue: String
 @export var sell_dialogue: String
@@ -32,11 +33,15 @@ var sellercart = {} # like cart, but for stuff the player is selling
 var inventory = []
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	wallet.text = str("$", PlayerData.player.money)
 	dialogue.text = choosing_dialogue
 	Music.play(songtitle)
 	DayManager.freeze()
 	
 	SignalBus.connect("shop_price_change", _on_price_change)
+	
+	SignalBus.connect("cant_afford_item", _on_cant_afford)
+	SignalBus.connect("cant_hold_item", _on_cant_hold)
 	pass # Replace with function body.
 
 
@@ -59,6 +64,20 @@ func get_sellscreen_dialogue() -> String:
 	var part2 = sellscreen_dialogue.substr(sellscreen_dialogue.find("*") + 1)
 	
 	return str(part1, get_sellercart_cost(), part2)
+	
+func _on_cant_afford():
+	var old_dialogue = dialogue.text
+	dialogue.text = "Yer too broke!"
+	await get_tree().create_timer(1.5).timeout
+	if (dialogue.text == "Yer too broke!"):
+		dialogue.text = old_dialogue
+	
+func _on_cant_hold():
+	var old_dialogue = dialogue.text
+	dialogue.text = "You can't hold all that!"
+	await get_tree().create_timer(1.5).timeout
+	if (dialogue.text == "You can't hold all that!"):
+		dialogue.text = old_dialogue
 
 func _on_leave_pressed() -> void:
 	dialogue.text = leaving_dialogue
@@ -137,13 +156,15 @@ func _on_back_pressed() -> void:
 
 
 func _on_buy_pressed() -> void:
-	PlayerData.player.money = 100
+	#PlayerData.player.money = 100
 	if cart.is_empty():
 		return
 	var buy_check = can_buy()
 	if buy_check.has(true):
 		dialogue.text = buy_check[true]
 		Items.buy(cart)
+		PlayerData.player.money -= get_cart_cost()
+		wallet.text = str("$", PlayerData.player.money)
 		cart = {}
 	elif buy_check.has(false):
 		dialogue.text = buy_check[false]
@@ -158,6 +179,8 @@ func _on_sell_pressed() -> void:
 		return
 	dialogue.text = sell_dialogue
 	Items.sell(sellercart)
+	PlayerData.player.money += get_sellercart_cost()
+	wallet.text = str("$", PlayerData.player.money)
 	sellercart = {}
 	
 	var player_items = []

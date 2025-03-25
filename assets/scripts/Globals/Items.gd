@@ -72,7 +72,6 @@ func create_drop_item(item):
 
 func buy(cart:Dictionary):
 	for item in cart:
-		print(item, ": ", cart[item])
 		#print(Items.get_item(cart[item]).item_name)
 		#repeat for the amount being bought
 		for i in range(0, cart[item]):
