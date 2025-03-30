@@ -51,6 +51,14 @@ func age():
 	watered = false
 	return
 	
+func harvest():
+	if dead:
+		pass#remove
+	if bloomed:
+		pass#add flower to inventory
+	else:
+		pass#drop seeds
+	
 func get_watered(body):
 	if body == self and not watered and not dead:
 		watered = true

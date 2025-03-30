@@ -3,6 +3,7 @@ var frozen = false
 var day_num = 1
 var time = (6 * 3600) / TIME_SCALE # 6 am scaled to game time
 const DAY_LENGTH = 600 #num of seconds (real life) in a day (game)
+#const DAY_LENGTH = 5
 const TIME_SCALE = 86400 / DAY_LENGTH
 
 # Time thresholds in game seconds
