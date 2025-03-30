@@ -3,7 +3,8 @@ var is_hovered = false
 @export var index:int
 @export var is_overflow:bool
 
-@onready var sprite = $Sprite2D
+@onready var sprite = $buttonskin/itemskin
+
 var cached_sprite_path = null
 var selected = false
 var hovercolor = Color(0.53,0.53,0.53,0.5)

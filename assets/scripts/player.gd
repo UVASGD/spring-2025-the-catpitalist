@@ -107,13 +107,12 @@ func find_best_insert_slot(item):
 			if inventory[i] == null:
 				return i
 		
-	
 func can_sell():
 	for i in inventory:
 		if i != null && i.sellable:
 			return true
 	return false
-	
+
 #total number of a certain item that the player has
 func get_total_item_count(item) -> int:
 	var count = 0
@@ -179,6 +178,7 @@ func interact(obj):
 		obj.speak()
 	elif obj is PlantableTile:
 		plant_on(obj)
+	
 	pass
 
 func plant_on(obj:PlantableTile):
