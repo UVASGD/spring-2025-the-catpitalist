@@ -1,8 +1,9 @@
-[gd_scene load_steps=17 format=3 uid="uid://c7bpitve6lom3"]
+[gd_scene load_steps=18 format=3 uid="uid://c7bpitve6lom3"]
 
 [ext_resource type="Script" path="res://assets/scripts/npc.gd" id="1_bmgk6"]
 [ext_resource type="Texture2D" uid="uid://brhvumn6xggrr" path="res://assets/sprites/World NPCs/phat_cat-Sheet.png" id="2_avyt0"]
 [ext_resource type="PackedScene" uid="uid://wfajuc7nk6w6" path="res://assets/scenes/templates/conversation.tscn" id="2_lb0i5"]
+[ext_resource type="Script" path="res://assets/scripts/message.gd" id="4_ihgvc"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ab7j1"]
 atlas = ExtResource("2_avyt0")
@@ -91,7 +92,7 @@ size = Vector2(20, 24)
 [node name="NPC" type="Node2D"]
 script = ExtResource("1_bmgk6")
 npc_name = "chubbs"
-exhaust_dialogue_text = "ughhhh"
+exhaust_dialogue_text = "Zzzzzzzzzzzzzz….."
 voice_pitch = -0.8
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -116,6 +117,18 @@ shape = SubResource("RectangleShape2D_njb3k")
 [node name="Conversation" parent="Convos" instance=ExtResource("2_lb0i5")]
 
 [node name="Message" parent="Convos/Conversation/Messages" index="0"]
-text = "hiiiiiii"
+text = "*soils trousers*"
+
+[node name="Message2" type="Node" parent="Convos/Conversation/Messages" index="1"]
+script = ExtResource("4_ihgvc")
+text = "Oh. A normie. Great. What, did you stumble in here because you couldn’t handle basic game mechanics? Classic"
+
+[node name="Message3" type="Node" parent="Convos/Conversation/Messages" index="2"]
+script = ExtResource("4_ihgvc")
+text = "Wow. You come in here expecting free lore dumps and you don’t even bring me a snack? Do you even know how transactions work? Basic barter systems? No? Figures"
+
+[node name="Message4" type="Node" parent="Convos/Conversation/Messages" index="3"]
+script = ExtResource("4_ihgvc")
+text = "Bring me something epic like corn and then I might reconsider handing down my precious knowledge to a noob like you."
 
 [editable path="Convos/Conversation"]
