@@ -21,7 +21,7 @@ func _ready() -> void:
 	#SignalBus.connect("items_ready", _on_items_ready)
 	inventory[8] = Items.get_item(1) # debug watercan 
 	#inventory[1] = Items.get_item(1) #stack test
-	#inventory[2] = Items.get_item(2) # seeds test
+	inventory[2] = Items.get_item(2) # seeds test
 	SignalBus.emit_signal("player_ready", self)
 	last_pos_timer = Timer.new()
 	last_pos_timer.wait_time = 0.1
@@ -106,13 +106,12 @@ func find_best_insert_slot(item):
 			if inventory[i] == null:
 				return i
 		
-	
 func can_sell():
 	for i in inventory:
 		if i != null && i.sellable:
 			return true
 	return false
-	
+
 #total number of a certain item that the player has
 func get_total_item_count(item) -> int:
 	var count = 0
@@ -176,6 +175,7 @@ func interact(obj):
 		obj.speak()
 	elif obj is PlantableTile:
 		plant_on(obj)
+	
 	pass
 
 func plant_on(obj:PlantableTile):

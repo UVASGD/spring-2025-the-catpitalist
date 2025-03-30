@@ -1,8 +1,19 @@
-[gd_resource type="AudioBusLayout" load_steps=2 format=3 uid="uid://do210kvcnbh55"]
+[gd_resource type="AudioBusLayout" load_steps=3 format=3 uid="uid://do210kvcnbh55"]
 
 [sub_resource type="AudioEffectAmplify" id="AudioEffectAmplify_ycfqq"]
 resource_name = "Amplify"
 volume_db = 3.78
+
+[sub_resource type="AudioEffectEQ21" id="AudioEffectEQ21_0ignm"]
+resource_name = "EQ21"
+band_db/2000_hz = -26.3
+band_db/2800_hz = -25.9
+band_db/4000_hz = -29.7
+band_db/5600_hz = -30.5
+band_db/8000_hz = -42.2
+band_db/11000_hz = -36.4
+band_db/16000_hz = -34.8
+band_db/22000_hz = -34.4
 
 [resource]
 bus/1/name = &"voice"
@@ -13,6 +24,8 @@ bus/1/volume_db = 0.0
 bus/1/send = &"Master"
 bus/1/effect/0/effect = SubResource("AudioEffectAmplify_ycfqq")
 bus/1/effect/0/enabled = true
+bus/1/effect/1/effect = SubResource("AudioEffectEQ21_0ignm")
+bus/1/effect/1/enabled = true
 bus/2/name = &"music"
 bus/2/solo = false
 bus/2/mute = false

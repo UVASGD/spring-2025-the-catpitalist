@@ -19,9 +19,9 @@ func play(char:String, npc:NPC):
 		not_breathing = true
 		return
 	var sound:AudioStreamPlayer2D = letters.get(char)
-	if sound and not_breathing:
+	if sound:
 		if npc.voice_pitch != -1: # npcs with no voice will have a voice pitch of -1
-			sound.pitch_scale = npc.voice_pitch
+			sound.pitch_scale = npc.voice_pitch * 0.9
 			sound.play()
-			await get_tree().create_timer(0.15).timeout
+			await get_tree().create_timer(0.25).timeout
 			sound.stop()
