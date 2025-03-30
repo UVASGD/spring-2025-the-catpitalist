@@ -166,11 +166,11 @@ script = ExtResource("2_j7htm")
 
 [node name="Message" type="Node" parent="Convos/Conversation/Messages"]
 script = ExtResource("3_3dssf")
-text = "Look im gonna cut straight to the point"
+text = "Look i'm gonna cut straight to the point."
 
 [node name="Message2" type="Node" parent="Convos/Conversation/Messages"]
 script = ExtResource("3_3dssf")
-text = "Im looking for something very specific. And I have a feeling that you are the type of fella to help me find it."
+text = "I'm looking for something very specific. And I have a feeling that you are the type of fella to help me find it."
 
 [node name="Message4" type="Node" parent="Convos/Conversation/Messages"]
 script = ExtResource("3_3dssf")

@@ -38,6 +38,7 @@ func flash_collision():
 	collision_shape_2d.disabled = true
 	await get_tree().create_timer(0.5).timeout
 	collision_shape_2d.disabled = false
+
 func flash_actionable():
 	actionable = false
 	await get_tree().create_timer(0.5).timeout
@@ -60,7 +61,7 @@ func restore_pos():
 
 func drop(item):
 	if item != null:
-		if item.ID == 1:
+		if not item is DropItem and item.ID == 1:
 			SignalBus.emit_signal("tutorial_dropped")
 		can_pickup = false
 		get_tree().root.add_child(item)
