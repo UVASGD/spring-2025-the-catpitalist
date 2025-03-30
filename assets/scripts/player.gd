@@ -201,7 +201,8 @@ func play_directional_anim(obj, action:String):
 					animated_sprite.flip_h = false
 					animation += "right"
 				else:
-					animation += "left"
+					animated_sprite.flip_h = true
+					animation += "right"
 			else:
 				if direction.y > 0:
 					animation += "down"
