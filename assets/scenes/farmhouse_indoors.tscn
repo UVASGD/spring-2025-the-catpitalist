@@ -281,7 +281,7 @@ y_sort_enabled = true
 [node name="mom" parent="y_sorted" instance=ExtResource("8_fns02")]
 z_index = -2
 position = Vector2(126, 166)
-scale = Vector2(0.845, 0.845)
+scale = Vector2(1.2, 1.2)
 
 [node name="spawnpoint" type="Node2D" parent="y_sorted"]
 position = Vector2(287, 281)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=4 uid="uid://cjdgereercutf"]
+[gd_scene load_steps=24 format=4 uid="uid://cjdgereercutf"]
 
 [ext_resource type="Script" path="res://assets/scenes/worlds/tutorial.gd" id="1_y4adi"]
 [ext_resource type="Texture2D" uid="uid://ba5emgq6meyok" path="res://assets/sprites/larger_grass_tile_map-Sheet.png" id="7_3klku"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://rwlroq3ou1el" path="res://assets/sprites/farmland.png" id="11_4dsun"]
 [ext_resource type="PackedScene" uid="uid://byxam7udt4dw3" path="res://assets/scenes/farmhouse.tscn" id="11_pcbsd"]
 [ext_resource type="PackedScene" uid="uid://bebmk5px6idgj" path="res://assets/scenes/npcs/dad.tscn" id="11_s4l5j"]
+[ext_resource type="PackedScene" uid="uid://8fevb4e0phm7" path="res://assets/scenes/npcs/CITYSIGN.tscn" id="11_safe8"]
 [ext_resource type="PackedScene" uid="uid://bmw6wxkk4jdhu" path="res://assets/scenes/transportzone.tscn" id="11_v8qyd"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7ivjj"]
@@ -164,6 +165,9 @@ animation = &"walk_right"
 position = Vector2(0, 8)
 hides_things = true
 hidden_things = [NodePath("../Player"), NodePath("../TutDad")]
+
+[node name="NPC" parent="y_sorted" instance=ExtResource("11_safe8")]
+position = Vector2(305, -80)
 
 [node name="worldbounds" type="Node" parent="."]
 

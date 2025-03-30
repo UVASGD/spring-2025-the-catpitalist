@@ -179,7 +179,9 @@ voice_pitch = 0.2
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="NPC"]
 sprite_frames = SubResource("SpriteFrames_taqc1")
-animation = &"invis"
+animation = &"walk_down"
+frame = 5
+frame_progress = 0.176922
 flip_h = true
 
 [node name="Convos" type="Node" parent="NPC"]
@@ -239,6 +241,7 @@ npc_name = "chubbs"
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_luf3k")
 animation = &"stand"
+frame_progress = 0.839167
 
 [node name="hitbox" type="Area2D" parent="NPC2"]
 

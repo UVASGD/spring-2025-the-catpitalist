@@ -68,10 +68,11 @@ npc_name = "Catnip Dealer"
 songtitle = "catnipdealer"
 buy_dialogue = "preesh."
 sell_dialogue = "Don't spend it all in one place."
-buyscreen_dialogue = "That'll run you $---- clams."
-sellscreen_dialogue = "I'm willing to part with $---."
+buyscreen_dialogue = "That'll run you $* clams."
+sellscreen_dialogue = "I'm willing to part with $*."
 choosing_dialogue = "Alright, so who's getting paid here?"
 leaving_dialogue = "Don't let the door hit you on the way out."
+shop_items_sold = Array[int]([1, 2, 3])
 
 [node name="BG" type="TextureRect" parent="."]
 offset_right = 40.0
@@ -166,21 +167,33 @@ layout_mode = 2
 
 [node name="HBoxContainer" parent="invscroller/inv" instance=ExtResource("21_hovm5")]
 layout_mode = 2
+item_id = 2
+is_buy_item = true
 
 [node name="HBoxContainer2" parent="invscroller/inv" instance=ExtResource("21_hovm5")]
 layout_mode = 2
+item_id = 1
+is_buy_item = true
 
 [node name="HBoxContainer3" parent="invscroller/inv" instance=ExtResource("21_hovm5")]
 layout_mode = 2
+item_id = 2
+is_buy_item = true
 
 [node name="HBoxContainer4" parent="invscroller/inv" instance=ExtResource("21_hovm5")]
 layout_mode = 2
+item_id = 2
+is_buy_item = true
 
 [node name="HBoxContainer5" parent="invscroller/inv" instance=ExtResource("21_hovm5")]
 layout_mode = 2
+item_id = 2
+is_buy_item = true
 
 [node name="HBoxContainer6" parent="invscroller/inv" instance=ExtResource("21_hovm5")]
 layout_mode = 2
+item_id = 2
+is_buy_item = true
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 offset_left = 52.0
@@ -339,6 +352,39 @@ offset_right = 69.0
 offset_bottom = 26.0
 text = "LEAVE"
 label_settings = SubResource("LabelSettings_7f5g5")
+
+[node name="wallet" type="NinePatchRect" parent="."]
+anchors_preset = -1
+anchor_left = 0.407
+anchor_top = 0.174
+anchor_right = 0.407
+anchor_bottom = 0.174
+offset_left = -58.48
+offset_top = -19.64
+offset_right = 58.52
+offset_bottom = 19.36
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+size_flags_stretch_ratio = 0.35
+texture = ExtResource("11_f371q")
+region_rect = Rect2(301, 1.75, 268.5, 183)
+
+[node name="Label" type="Label" parent="wallet"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "$10"
+label_settings = SubResource("LabelSettings_46ibt")
 
 [connection signal="pressed" from="choose/buy" to="." method="_on_choose_buy_pressed"]
 [connection signal="pressed" from="choose/sell" to="." method="_on_choose_sell_pressed"]

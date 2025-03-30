@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://qwhtsacl6bie"]
+
+[ext_resource type="Script" path="res://assets/scripts/plantable.gd" id="1_l6nj7"]
+[ext_resource type="Texture2D" uid="uid://83seggajxrdm" path="res://assets/sprites/World NPCs/catnip dealer.png" id="2_18m0a"]
+
+[node name="dealer" type="Node2D"]
+script = ExtResource("1_l6nj7")
+path_to_flower = "res://assets/scenes/templates/flower.tscn"
+ID = 3
+item_name = "catnip dealer"
+stackable = true
+max_stack = 4
+count = 1
+description = "who said you could buy me??"
+sellable = true
+sell_price = 50
+buy_price = 100
+sprite_path = "res://assets/sprites/World NPCs/catnip dealer.png"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_18m0a")
+region_enabled = true
+region_rect = Rect2(15, 0, 32, 32)

@@ -1,11 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://1q5o1mr5w3yt"]
+[gd_scene load_steps=9 format=3 uid="uid://1q5o1mr5w3yt"]
 
 [ext_resource type="Script" path="res://assets/scripts/UI/game_cam.gd" id="1_oq746"]
 [ext_resource type="PackedScene" uid="uid://ck5jhxl01b266" path="res://assets/scenes/ui/hotbar.tscn" id="2_8311a"]
 [ext_resource type="Script" path="res://assets/scripts/UI/cam_controls.gd" id="3_4pcax"]
 [ext_resource type="PackedScene" uid="uid://c1hucaw7oqrll" path="res://assets/scenes/ui/dialogue_holder.tscn" id="4_nar68"]
 [ext_resource type="Shader" path="res://assets/scenes/rain.gdshader" id="5_7h2bh"]
-[ext_resource type="PackedScene" uid="uid://bb4nw4kkvht2k" path="res://assets/scenes/ui/flasher.tscn" id="6_gldgv"]
 [ext_resource type="PackedScene" uid="uid://dbfvkgx1l7l1" path="res://assets/scenes/shade.tscn" id="7_yfvp3"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_kllsx"]
@@ -102,5 +101,3 @@ horizontal_alignment = 2
 script = ExtResource("3_4pcax")
 
 [node name="DialogueHolder" parent="." instance=ExtResource("4_nar68")]
-
-[node name="flasher" parent="." instance=ExtResource("6_gldgv")]
