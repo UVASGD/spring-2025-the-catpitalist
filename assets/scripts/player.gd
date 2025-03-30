@@ -38,6 +38,7 @@ func flash_collision():
 	collision_shape_2d.disabled = true
 	await get_tree().create_timer(0.5).timeout
 	collision_shape_2d.disabled = false
+
 func flash_actionable():
 	actionable = false
 	await get_tree().create_timer(0.5).timeout
@@ -60,7 +61,7 @@ func restore_pos():
 
 func drop(item):
 	if item != null:
-		if item.ID == 1:
+		if not item is DropItem and item.ID == 1:
 			SignalBus.emit_signal("tutorial_dropped")
 		can_pickup = false
 		get_tree().root.add_child(item)
@@ -95,6 +96,7 @@ func add_to_inv(item): # returns false if you cannot currently fit the item in y
 		return true
 	else:
 		return false
+		
 func interact(obj):
 	if not actionable:
 		return
@@ -122,24 +124,24 @@ func water(obj):
 
 func play_directional_anim(obj, action:String):
 	# Calculate the direction from the player to the object
-			var direction = (obj.global_position - global_position).normalized()
-			# Determine the animation to play based on the direction
-			var animation = action + "_"
-			if abs(direction.x) > abs(direction.y):
-				if direction.x > 0:
-					animated_sprite.flip_h = false
-					animation += "right"
-				else:
-					animation += "left"
-			else:
-				if direction.y > 0:
-					animation += "down"
-				else:
-					animation += "up"
-			actionable = false
-			animated_sprite.play(animation)
-			await animated_sprite.animation_finished
-			actionable = true
+	var direction = (obj.global_position - global_position).normalized()
+	# Determine the animation to play based on the direction
+	var animation = action + "_"
+	if abs(direction.x) > abs(direction.y):
+		if direction.x > 0:
+			animated_sprite.flip_h = false
+			animation += "right"
+		else:
+			animation += "left"
+	else:
+		if direction.y > 0:
+			animation += "down"
+		else:
+			animation += "up"
+	actionable = false
+	animated_sprite.play(animation)
+	await animated_sprite.animation_finished
+	actionable = true
 
 func held_item():
 	if inventory[held_item_index] != null and inventory[held_item_index].ID == 1:
