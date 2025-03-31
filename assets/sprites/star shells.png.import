@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b27qipy3lg8og"
-path="res://.godot/imported/SAND TILES.png-9134f03f37d5cc1e6df44f641d8c1e84.ctex"
+uid="uid://ch641n8mqkxrf"
+path="res://.godot/imported/star shells.png-1e3676237436694d869110903bb7d81d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/SAND TILES.png"
-dest_files=["res://.godot/imported/SAND TILES.png-9134f03f37d5cc1e6df44f641d8c1e84.ctex"]
+source_file="res://assets/sprites/star shells.png"
+dest_files=["res://.godot/imported/star shells.png-1e3676237436694d869110903bb7d81d.ctex"]
 
 [params]
 
