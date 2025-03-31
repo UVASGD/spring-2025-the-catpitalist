@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=4 uid="uid://cd74drdf1jwsh"]
+[gd_scene load_steps=18 format=4 uid="uid://cd74drdf1jwsh"]
 
 [ext_resource type="Script" path="res://assets/scripts/indoors.gd" id="1_608q5"]
 [ext_resource type="Texture2D" uid="uid://dd4wsteki2cb7" path="res://assets/sprites/road tiles.png" id="2_b2ujj"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://bpeq3yds8qnt1" path="res://assets/scenes/npcs/washingmashing.tscn" id="9_x5xyi"]
 [ext_resource type="Texture2D" uid="uid://dm3swmredtw6w" path="res://assets/sprites/triange shadow.png" id="10_y7yqb"]
 [ext_resource type="PackedScene" uid="uid://bvkqnjchqy427" path="res://assets/scenes/npcs/goober_npc.tscn" id="11_0206h"]
+[ext_resource type="PackedScene" uid="uid://bmw6wxkk4jdhu" path="res://assets/scenes/transportzone.tscn" id="12_10djo"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ljycj"]
 texture = ExtResource("2_b2ujj")
@@ -228,5 +229,9 @@ shape = SubResource("RectangleShape2D_w2a1x")
 [node name="NPC" parent="." instance=ExtResource("11_0206h")]
 position = Vector2(-15, 257)
 voice_pitch = 2.0
+
+[node name="transportzone" parent="." instance=ExtResource("12_10djo")]
+position = Vector2(336, 499)
+scale = Vector2(2.8351, 1.80528)
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
