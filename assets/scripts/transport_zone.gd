@@ -1,4 +1,5 @@
 class_name TransportZone extends Node2D
+@export var returns:bool = false
 @export var path_to_new_scene:String
 @onready var enterzone: Area2D = $enterzone
 @export var can_transport:bool = false # this gets automatically set to true on ready
@@ -11,8 +12,10 @@ func _process(delta: float) -> void:
 
 func _on_enterzone_body_entered(body: Node2D) -> void:
 	if body == PlayerData.player and can_transport and not SceneSwapper.busy:
-		
-		SceneSwapper.change_scene(path_to_new_scene, loading_screen_path)
+		if returns:
+			SceneSwapper.call_deferred("pop_and_return")
+		else:
+			SceneSwapper.change_scene(path_to_new_scene, loading_screen_path)
 	pass # Replace with function body.
 
 func _on_visibility_changed() -> void:

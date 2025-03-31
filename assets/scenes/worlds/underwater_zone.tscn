@@ -1,7 +1,10 @@
-[gd_scene load_steps=5 format=4 uid="uid://bavavb6ds3kmh"]
+[gd_scene load_steps=12 format=4 uid="uid://bavavb6ds3kmh"]
 
 [ext_resource type="Script" path="res://underwater_zone.gd" id="1_okbly"]
 [ext_resource type="Texture2D" uid="uid://byu0iqluw1lhy" path="res://assets/sprites/SAND TILES.png" id="2_0s50q"]
+[ext_resource type="PackedScene" uid="uid://bmw6wxkk4jdhu" path="res://assets/scenes/transportzone.tscn" id="3_e6po4"]
+[ext_resource type="Texture2D" uid="uid://djc4uwjngre8u" path="res://assets/sprites/world objects/rock_house.png" id="4_cu26o"]
+[ext_resource type="Shader" path="res://assets/scenes/worlds/underwater_zone.gdshader" id="5_eel0k"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4dhk7"]
 texture = ExtResource("2_0s50q")
@@ -15,14 +18,68 @@ texture_region_size = Vector2i(32, 32)
 tile_size = Vector2i(32, 32)
 sources/0 = SubResource("TileSetAtlasSource_4dhk7")
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_774us"]
+radius = 14.0
+height = 104.018
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_nnjql"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_8uh64"]
+seamless = true
+noise = SubResource("FastNoiseLite_nnjql")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_15xqq"]
+shader = ExtResource("5_eel0k")
+shader_parameter/direction = Vector2(3, 2)
+shader_parameter/water_color = Color(0.139825, 0.429499, 1, 1)
+shader_parameter/distortion_strength = 0.015
+shader_parameter/water_opacity = 0.3
+shader_parameter/distortion_noise = SubResource("NoiseTexture2D_8uh64")
+
 [node name="underwater zone" type="Node2D"]
 script = ExtResource("1_okbly")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
+position = Vector2(60, -18)
 tile_map_data = PackedByteArray("AAAAAP//AAAAAAAAAFAAAAAAAAAAAAAAADD//wAAAAAAAAAAAAD/////AAAAAAAAAGABAP//AAAAAAAAAGABAAAAAAAAAAAAAAD+/wAAAAAAAAAAADD+////AAAAAAAAAFD///7/AAAAAAAAAAAAAP7/AAAAAAAAADABAP7/AAAAAAAAAAACAP7/AAAAAAAAADACAP//AAAAAAAAAFACAAAAAAAAAAAAADD+//7/AAAAAAAAADACAAEAAAAAAAAAAGD+/wEAAAAAAAAAAAD//wEAAAAAAAAAADAAAAEAAAAAAAAAAAABAAEAAAAAAAAAADACAAIAAAACAAAAAAABAAIAAAACAAAAAAAAAAIAAAACAAAAAAD//wIAAAACAAAAAAD+/wIAAAACAAAAAAADAAIAAAADAAAAAAD9//3/AAADAAAAADADAP3/AAACAAAAADD9/wIAAAADAAAAAFADAAEAAAACAAAAAGADAAAAAAACAAAAAGADAP//AAAAAAAAAAADAP7/AAAAAAAAAGACAP3/AAACAAAAADABAP3/AAACAAAAADAAAP3/AAACAAAAADD///3/AAACAAAAADD+//3/AAACAAAAADD9//7/AAACAAAAAFD9////AAACAAAAAFD9/wAAAAACAAAAAFD9/wEAAAACAAAAAFAEAP//AAABAAAAAAAEAP7/AAAAAAAAADAEAP3/AAACAAAAADAFAP7/AAADAAAAAAAFAP3/AAADAAAAAGA=")
 tile_set = SubResource("TileSet_uf0jk")
 
 [node name="y_sorted" type="Node2D" parent="."]
 y_sort_enabled = true
 
-[node name="spawnpoint" type="Node2D" parent="."]
+[node name="spawnpoint" type="Node2D" parent="y_sorted"]
+position = Vector2(87, -62)
+
+[node name="rockhouse" type="StaticBody2D" parent="y_sorted"]
+position = Vector2(133, -1)
+
+[node name="Sprite2D" type="Sprite2D" parent="y_sorted/rockhouse"]
+position = Vector2(1, -59)
+texture = ExtResource("4_cu26o")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="y_sorted/rockhouse"]
+position = Vector2(1, 15)
+rotation = 1.566
+shape = SubResource("CapsuleShape2D_774us")
+
+[node name="transportzone" parent="y_sorted/rockhouse" instance=ExtResource("3_e6po4")]
+position = Vector2(4, 22)
+path_to_new_scene = "res://assets/scenes/rockhouse_indoors.tscn"
+
+[node name="transportzone" parent="." instance=ExtResource("3_e6po4")]
+position = Vector2(88, -101)
+returns = true
+path_to_new_scene = ""
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+z_index = -1
+z_as_relative = false
+material = SubResource("ShaderMaterial_15xqq")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.765139, 0.542018, 0.87471, 1)

@@ -65,7 +65,7 @@ y_sort_enabled = true
 [node name="spawnpoint" type="Node2D" parent="y_sorted"]
 position = Vector2(-287, 141)
 
-[node name="lamps" type="Node2D" parent="y_sorted"]
+[node name="lamps" type="Node" parent="y_sorted"]
 
 [node name="lamp" parent="y_sorted/lamps" instance=ExtResource("3_sasq6")]
 position = Vector2(16, 188)
@@ -224,12 +224,9 @@ position = Vector2(-15, 257)
 voice_pitch = 2.0
 
 [node name="waterentrance" parent="." instance=ExtResource("12_10djo")]
-position = Vector2(333, 369)
+position = Vector2(336, 499)
 scale = Vector2(2.8351, 1.80528)
 path_to_new_scene = "res://assets/scenes/worlds/underwater_zone.tscn"
-
-[node name="CollisionShape2D" parent="waterentrance/enterzone" index="0"]
-position = Vector2(0.352707, 0)
 
 [node name="backhome" parent="." instance=ExtResource("12_10djo")]
 position = Vector2(-366, 120)
@@ -242,6 +239,4 @@ position = Vector2(-7.95322, 12.7258)
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 
-[editable path="y_sorted/lamps/lamp"]
-[editable path="waterentrance"]
 [editable path="backhome"]
