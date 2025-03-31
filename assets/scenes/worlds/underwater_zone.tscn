@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=4 uid="uid://bavavb6ds3kmh"]
+
+[ext_resource type="Script" path="res://underwater_zone.gd" id="1_okbly"]
+[ext_resource type="Texture2D" uid="uid://byu0iqluw1lhy" path="res://assets/sprites/SAND TILES.png" id="2_0s50q"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4dhk7"]
+texture = ExtResource("2_0s50q")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_uf0jk"]
+tile_size = Vector2i(32, 32)
+sources/0 = SubResource("TileSetAtlasSource_4dhk7")
+
+[node name="underwater zone" type="Node2D"]
+script = ExtResource("1_okbly")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAAAAP//AAAAAAAAAFAAAAAAAAAAAAAAADD//wAAAAAAAAAAAAD/////AAAAAAAAAGABAP//AAAAAAAAAGABAAAAAAAAAAAAAAD+/wAAAAAAAAAAADD+////AAAAAAAAAFD///7/AAAAAAAAAAAAAP7/AAAAAAAAADABAP7/AAAAAAAAAAACAP7/AAAAAAAAADACAP//AAAAAAAAAFACAAAAAAAAAAAAADD+//7/AAAAAAAAADACAAEAAAAAAAAAAGD+/wEAAAAAAAAAAAD//wEAAAAAAAAAADAAAAEAAAAAAAAAAAABAAEAAAAAAAAAADACAAIAAAACAAAAAAABAAIAAAACAAAAAAAAAAIAAAACAAAAAAD//wIAAAACAAAAAAD+/wIAAAACAAAAAAADAAIAAAADAAAAAAD9//3/AAADAAAAADADAP3/AAACAAAAADD9/wIAAAADAAAAAFADAAEAAAACAAAAAGADAAAAAAACAAAAAGADAP//AAAAAAAAAAADAP7/AAAAAAAAAGACAP3/AAACAAAAADABAP3/AAACAAAAADAAAP3/AAACAAAAADD///3/AAACAAAAADD+//3/AAACAAAAADD9//7/AAACAAAAAFD9////AAACAAAAAFD9/wAAAAACAAAAAFD9/wEAAAACAAAAAFAEAP//AAABAAAAAAAEAP7/AAAAAAAAADAEAP3/AAACAAAAADAFAP7/AAADAAAAAAAFAP3/AAADAAAAAGA=")
+tile_set = SubResource("TileSet_uf0jk")
+
+[node name="y_sorted" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="spawnpoint" type="Node2D" parent="."]
