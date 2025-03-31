@@ -12,6 +12,9 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	update_shading()
 	pass
+	
+func harvest():
+	print("harvesting")
 
 func plant(obj:flower):
 	held_plant = obj

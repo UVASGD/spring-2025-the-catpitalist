@@ -2,7 +2,7 @@ extends Control
 
 @onready var textbox: Label = $textbox
 @onready var speakerlabel: Label = $speakerlabel
-@export var TEXT_SPEED:int = 1
+@export var TEXT_SPEED:int = 2.3
 
 var conversation = null
 var is_skipping = false
@@ -32,7 +32,8 @@ func write(message: Message) -> void:
 			textbox.text = text
 			break
 		textbox.text += text[index]
-		Dialogue.play_voice(text[index],speaker)
+		if index>1 and text[index-1] == " ":
+			Dialogue.play_voice(text[index],speaker)
 		index += 1
 		await get_tree().create_timer(0.05 / TEXT_SPEED).timeout # Adjust the delay as needed
 	return

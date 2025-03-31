@@ -1,8 +1,7 @@
-[gd_scene load_steps=17 format=4 uid="uid://hckwrwviojiy"]
+[gd_scene load_steps=16 format=4 uid="uid://hckwrwviojiy"]
 
 [ext_resource type="Script" path="res://assets/scripts/overworldarea.gd" id="1_uwaa4"]
 [ext_resource type="PackedScene" uid="uid://dbfvkgx1l7l1" path="res://assets/scenes/shade.tscn" id="2_iwth2"]
-[ext_resource type="PackedScene" uid="uid://dwq31u7ekbfjy" path="res://assets/scenes/cutscenes/test_cutscene.tscn" id="2_ojcsu"]
 [ext_resource type="PackedScene" uid="uid://cmcemw1qn4i4q" path="res://assets/scenes/player.tscn" id="4_8vk28"]
 [ext_resource type="Texture2D" uid="uid://ba5emgq6meyok" path="res://assets/sprites/larger_grass_tile_map-Sheet.png" id="8_mfo03"]
 [ext_resource type="Texture2D" uid="uid://cegsvx4fhirh5" path="res://assets/sprites/grass_sprite_sheet-export.png" id="9_40s7c"]
@@ -89,9 +88,6 @@ normal = Vector2(1, 0)
 y_sort_enabled = true
 script = ExtResource("1_uwaa4")
 
-[node name="test_cutscene" parent="." instance=ExtResource("2_ojcsu")]
-position = Vector2(-264, -176)
-
 [node name="shading" type="Node2D" parent="."]
 position = Vector2(0, 14)
 
@@ -108,15 +104,6 @@ mouse_filter = 2
 y_sort_enabled = true
 
 [node name="Player" parent="y_sorted" instance=ExtResource("4_8vk28")]
-
-[node name="AnimatedSprite2D" parent="y_sorted/Player" index="1"]
-visible = false
-
-[node name="Control" parent="y_sorted/Player/GameCam" index="1"]
-visible = false
-
-[node name="Hotbar" parent="y_sorted/Player/GameCam" index="2"]
-visible = false
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="y_sorted/Player"]
 remote_path = NodePath("../../../shading")
