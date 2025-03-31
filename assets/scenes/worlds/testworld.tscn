@@ -16,7 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://b42c4mrfgwcvt" path="res://assets/scenes/npcs/dealer.tscn" id="13_jnkin"]
 [ext_resource type="PackedScene" uid="uid://b7hk1uss3cmvs" path="res://assets/scenes/npcs/mozzie.tscn" id="14_284tg"]
 [ext_resource type="PackedScene" uid="uid://c7bpitve6lom3" path="res://assets/scenes/npcs/fatcat.tscn" id="14_xuub3"]
-[ext_resource type="PackedScene" path="res://assets/scenes/npcs/alien.tscn" id="17_04x41"]
+[ext_resource type="PackedScene" uid="uid://r1gkmux58rxo" path="res://assets/scenes/npcs/alien.tscn" id="17_04x41"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7ivjj"]
 texture = ExtResource("8_2d8hv")
