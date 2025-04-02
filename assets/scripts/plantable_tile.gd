@@ -12,9 +12,6 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	update_shading()
 	pass
-	
-func harvest():
-	print("harvesting")
 
 func plant(obj:flower):
 	held_plant = obj
@@ -26,4 +23,8 @@ func can_hold_plant():
 
 func update_shading():
 	if held_plant:
-		$shading.visible = held_plant.watered
+		if is_instance_valid(held_plant):
+			$shading.visible = held_plant.watered
+		else:
+			held_plant = null
+			$hitbox.input_pickable = true

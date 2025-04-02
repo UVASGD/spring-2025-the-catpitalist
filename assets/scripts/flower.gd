@@ -15,6 +15,9 @@ var bloomed = false
 @onready var dsglabel: Label = $debugHolder/Control/HBoxContainer/dsg
 @onready var water_indicator: ColorRect = $debugHolder/Control/waterIndicator
 
+@export var seed_item_id: int
+@export var flower_item_id: int
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	super()
@@ -52,12 +55,18 @@ func age():
 	return
 	
 func harvest():
+	var to_drop
 	if dead:
-		pass#remove
-	if bloomed:
-		pass#add flower to inventory
+		pass
+	elif bloomed:
+		to_drop = Items.get_item(flower_item_id)
 	else:
-		pass#drop seeds
+		to_drop = Items.get_item(seed_item_id)
+	if to_drop:
+		to_drop.count = 1
+		var dropped = Items.create_drop_item(to_drop)
+		PlayerData.player.drop(dropped)
+	self.queue_free()
 	
 func get_watered(body):
 	if body == self and not watered and not dead:

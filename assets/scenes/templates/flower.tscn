@@ -25,6 +25,8 @@ size = Vector2(32, 32)
 script = ExtResource("1_81xt4")
 growth_time = 1
 hardiness = 3
+seed_item_id = 2
+flower_item_id = 1
 
 [node name="debugHolder" type="Node2D" parent="."]
 visible = false
