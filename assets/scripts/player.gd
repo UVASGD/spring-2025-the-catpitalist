@@ -66,11 +66,8 @@ func drop(item):
 			SignalBus.emit_signal("tutorial_dropped")
 		can_pickup = false
 		get_tree().root.add_child(item)
-		print(position)
-		print(item.global_position)
 		item.global_position = position
-		print(item.global_position)
-		await get_tree().create_timer(5).timeout
+		await get_tree().create_timer(3).timeout
 		can_pickup = true
 
 func pickup(item:DropItem):
@@ -170,16 +167,26 @@ func remove_from_inv(item):
 func interact(obj):
 	if not actionable:
 		return
-	if obj is flower && held_item().ID != 4:
-		water(obj)
-	elif obj is flower && held_item().ID == 4:
-		obj.harvest()
+	if obj is flower:
+		water_or_harvest(obj)
 	elif obj is NPC:
 		obj.speak()
 	elif obj is PlantableTile:
 		plant_on(obj)
 	
 	pass
+
+func water_or_harvest(obj:flower):
+	if held_item() == null:
+		return
+	elif held_item() is Scythe:
+		obj.harvest()
+	elif held_item() is Watercan:
+		if held_item().use():
+			SignalBus.emit_signal("plant_watered", obj)
+			play_directional_anim(obj, "water")
+			SignalBus.emit_signal("tutorial_watered")
+
 
 func plant_on(obj:PlantableTile):
 	if held_item() == null:
@@ -188,12 +195,6 @@ func plant_on(obj:PlantableTile):
 		held_item().plant_at(obj)
 		SignalBus.emit_signal("tutorial_planted")
 	
-func water(obj):
-	if held_item() != null and held_item() is Watercan:
-		if held_item().use():
-			SignalBus.emit_signal("plant_watered", obj)
-			play_directional_anim(obj, "water")
-			SignalBus.emit_signal("tutorial_watered")
 
 func play_directional_anim(obj, action:String):
 	# Calculate the direction from the player to the object
@@ -223,8 +224,8 @@ func held_item():
 	return inventory[held_item_index]
 
 func _on_interactzone_area_entered(area: Area2D) -> void:
-	if area.get_parent() is DropItem:
-		pickup(area.get_parent())
+	if area.get_parent().get_parent() is DropItem:
+		pickup(area.get_parent().get_parent())
 	pass # Replace with function body.
 
 func on_pos_timer_timeout():

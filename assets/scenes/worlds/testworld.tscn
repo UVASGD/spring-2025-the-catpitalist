@@ -118,7 +118,7 @@ position = Vector2(-18, -80)
 [node name="DropItem" parent="y_sorted" instance=ExtResource("5_acpoq")]
 position = Vector2(-95.685, 0)
 
-[node name="test" parent="y_sorted/DropItem" instance=ExtResource("6_yo54m")]
+[node name="test" parent="y_sorted/DropItem/DropItem" index="1" instance=ExtResource("6_yo54m")]
 
 [node name="NPC" parent="y_sorted" instance=ExtResource("7_55jqa")]
 position = Vector2(168, -1)
@@ -187,3 +187,5 @@ remote_path = NodePath("../../../shading")
 
 [node name="NPC" parent="." instance=ExtResource("17_04x41")]
 position = Vector2(82, 152)
+
+[editable path="y_sorted/DropItem"]
