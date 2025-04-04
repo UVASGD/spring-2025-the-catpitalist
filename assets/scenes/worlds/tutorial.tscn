@@ -11,7 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://byxam7udt4dw3" path="res://assets/scenes/farmhouse.tscn" id="11_pcbsd"]
 [ext_resource type="PackedScene" uid="uid://bebmk5px6idgj" path="res://assets/scenes/npcs/dad.tscn" id="11_s4l5j"]
 [ext_resource type="PackedScene" uid="uid://8fevb4e0phm7" path="res://assets/scenes/npcs/CITYSIGN.tscn" id="11_safe8"]
-[ext_resource type="PackedScene" path="res://assets/scenes/transportzone.tscn" id="11_v8qyd"]
+[ext_resource type="PackedScene" uid="uid://bmw6wxkk4jdhu" path="res://assets/scenes/transportzone.tscn" id="11_v8qyd"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7ivjj"]
 texture = ExtResource("7_3klku")

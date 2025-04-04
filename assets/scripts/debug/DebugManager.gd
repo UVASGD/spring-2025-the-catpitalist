@@ -14,13 +14,13 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if Input.is_action_pressed("debugmenu") and not debug_menu_open and not cooldown:
+	if Input.is_action_just_released("debugmenu") and not debug_menu_open:
 		open_menu()
 		cooldown = true
 		await get_tree().create_timer(0.3).timeout
 		cooldown = false
 		return
-	if Input.is_action_pressed("closedebugmenu") and debug_menu_open and not cooldown:
+	if Input.is_action_just_released("closedebugmenu") and debug_menu_open:
 		close_menu()
 		cooldown = true
 		await get_tree().create_timer(0.3).timeout
