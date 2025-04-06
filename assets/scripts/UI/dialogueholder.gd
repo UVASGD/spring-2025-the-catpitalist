@@ -2,10 +2,14 @@ extends Control
 
 @onready var textbox: Label = $textbox
 @onready var speakerlabel: Label = $speakerlabel
+@onready var choices: VBoxContainer = $choices
 @export var TEXT_SPEED:int = 2.3
 
 var conversation = null
 var is_skipping = false
+
+var awaiting_choice
+var dialogue_choice
 
 func _ready() -> void:
 	SignalBus.connect("new_dialogue", _on_dialogue)
@@ -53,12 +57,49 @@ func _on_dialogue(convo: Conversation) -> void:
 
 func show_conversation() -> void:
 	if conversation:
+		var run_message
 		for message in conversation.get_messages():
-			await  write(message)
-			await  wait_for_user_input()
-			await get_tree().create_timer(0.1).timeout
+			run_message = true
+			var cond = message.item_condition
+			var cond_item
+			if cond != -1:
+				cond_item = Items.get_item(cond)
+				cond_item.count = message.item_amount
+				var cond_action = message.condition_action
+				var num_conditioned_item = PlayerData.player.get_total_item_count(cond_item)
+				if cond_action == 1 && num_conditioned_item >= cond_item.count:
+					run_message = false
+				elif cond_action == 2 && num_conditioned_item < cond_item.count:
+					run_message = false
+			if run_message:
+				if message.is_request:
+					choices.visible = true
+				await  write(message)
+				if !message.is_request:
+					await  wait_for_user_input()
+				else:
+					awaiting_choice = true
+					await wait_for_choice()
+				await get_tree().create_timer(0.1).timeout
+				if dialogue_choice == "yes":
+					PlayerData.player.remove_from_inv(cond_item)
+					SignalBus.emit_signal("item_given_to_npc", cond_item, NPCS.get_npc("Blurbo").instantiate())
+				dialogue_choice = ""
+				choices.visible = false
 	return
 
 func wait_for_user_input() -> void:
 	while not Input.is_action_just_released("skipdialogue"):
 		await get_tree().process_frame
+
+func wait_for_choice() -> void:
+	while awaiting_choice:
+		await get_tree().process_frame
+
+func _on_yes_pressed() -> void:
+	awaiting_choice = false
+	dialogue_choice = "yes"
+	
+func _on_no_pressed() -> void:
+	awaiting_choice = false
+	dialogue_choice = "no"

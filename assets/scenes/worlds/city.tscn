@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://assets/scripts/indoors.gd" id="1_608q5"]
 [ext_resource type="Texture2D" uid="uid://dd4wsteki2cb7" path="res://assets/sprites/road tiles.png" id="2_b2ujj"]
-[ext_resource type="PackedScene" uid="uid://ddsp4cqnwtxx5" path="res://assets/scenes/lamp.tscn" id="3_sasq6"]
+[ext_resource type="PackedScene" path="res://assets/scenes/lamp.tscn" id="3_sasq6"]
 [ext_resource type="Texture2D" uid="uid://d1w2frld1gp3q" path="res://assets/sprites/cityhouse.png" id="4_08swj"]
 [ext_resource type="PackedScene" uid="uid://tpn3u80c1bsx" path="res://assets/scenes/npcs/blurbo.tscn" id="5_r7nvx"]
 [ext_resource type="PackedScene" uid="uid://b42c4mrfgwcvt" path="res://assets/scenes/npcs/dealer.tscn" id="6_ppav0"]
@@ -11,7 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://bpeq3yds8qnt1" path="res://assets/scenes/npcs/washingmashing.tscn" id="9_x5xyi"]
 [ext_resource type="Texture2D" uid="uid://dm3swmredtw6w" path="res://assets/sprites/triange shadow.png" id="10_y7yqb"]
 [ext_resource type="PackedScene" uid="uid://bvkqnjchqy427" path="res://assets/scenes/npcs/goober_npc.tscn" id="11_0206h"]
-[ext_resource type="PackedScene" uid="uid://bmw6wxkk4jdhu" path="res://assets/scenes/transportzone.tscn" id="12_10djo"]
+[ext_resource type="PackedScene" path="res://assets/scenes/transportzone.tscn" id="12_10djo"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ljycj"]
 texture = ExtResource("2_b2ujj")

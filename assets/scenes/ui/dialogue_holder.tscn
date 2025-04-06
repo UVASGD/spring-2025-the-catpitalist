@@ -60,3 +60,30 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.372549)
+
+[node name="choices" type="VBoxContainer" parent="Control"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 510.0
+offset_top = 170.0
+offset_right = -40.0
+offset_bottom = 26.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="yes" type="Button" parent="Control/choices"]
+layout_mode = 2
+focus_mode = 0
+text = "yes"
+
+[node name="no" type="Button" parent="Control/choices"]
+layout_mode = 2
+focus_mode = 0
+text = "no
+"
+
+[connection signal="pressed" from="Control/choices/yes" to="Control" method="_on_yes_pressed"]
+[connection signal="pressed" from="Control/choices/no" to="Control" method="_on_no_pressed"]

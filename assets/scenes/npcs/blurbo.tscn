@@ -40,11 +40,37 @@ text = "um hi"
 script = ExtResource("3_f6jaq")
 text = "gimme that watercan boy"
 
+[node name="Message3" type="Node" parent="Convos/Conversation/Messages" index="2"]
+script = ExtResource("3_f6jaq")
+text = "nevermind, you don't have a watercan"
+item_condition = 1
+item_amount = 1
+condition_action = 1
+
+[node name="Message4" type="Node" parent="Convos/Conversation/Messages" index="3"]
+script = ExtResource("3_f6jaq")
+text = "I know you have one...."
+item_condition = 1
+item_amount = 1
+condition_action = 2
+
+[node name="Message5" type="Node" parent="Convos/Conversation/Messages" index="4"]
+script = ExtResource("3_f6jaq")
+text = "* give watercan? *"
+item_condition = 1
+item_amount = 1
+condition_action = 2
+is_request = true
+
 [node name="Conversation2" parent="Convos" instance=ExtResource("2_qeda2")]
 debugname = "thanks"
 
 [node name="Message" parent="Convos/Conversation2/Messages" index="0"]
 text = "thanks"
+
+[node name="Message2" type="Node" parent="Convos/Conversation2/Messages" index="1"]
+script = ExtResource("3_f6jaq")
+text = "so much"
 
 [node name="Conversation3" parent="Convos" instance=ExtResource("2_qeda2")]
 debugname = "asks for signal"
