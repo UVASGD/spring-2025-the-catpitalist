@@ -99,6 +99,7 @@ radius = 32.0
 size = Vector2(20, 24)
 
 [node name="NPC" type="Node2D" groups=["NPCs"]]
+scale = Vector2(2, 2)
 script = ExtResource("1_kq3vf")
 npc_name = "Dad"
 exhaust_dialogue_text = "Hey kiddo, I'll always be here to lend an ear when you need it. Yer mom and I believe in you!"

@@ -11,7 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://byxam7udt4dw3" path="res://assets/scenes/farmhouse.tscn" id="11_pcbsd"]
 [ext_resource type="PackedScene" uid="uid://bebmk5px6idgj" path="res://assets/scenes/npcs/dad.tscn" id="11_s4l5j"]
 [ext_resource type="PackedScene" uid="uid://8fevb4e0phm7" path="res://assets/scenes/npcs/CITYSIGN.tscn" id="11_safe8"]
-[ext_resource type="PackedScene" path="res://assets/scenes/transportzone.tscn" id="11_v8qyd"]
+[ext_resource type="PackedScene" uid="uid://bmw6wxkk4jdhu" path="res://assets/scenes/transportzone.tscn" id="11_v8qyd"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7ivjj"]
 texture = ExtResource("7_3klku")
@@ -129,6 +129,7 @@ _data = {
 size = Vector2(38, 20)
 
 [node name="tutorial" type="Node2D" groups=["Saveable"]]
+scale = Vector2(2, 2)
 script = ExtResource("1_y4adi")
 
 [node name="grass" type="TileMapLayer" parent="."]
@@ -150,6 +151,7 @@ y_sort_enabled = true
 
 [node name="TutDad" parent="y_sorted" instance=ExtResource("11_s4l5j")]
 position = Vector2(56, 102)
+scale = Vector2(1, 1)
 
 [node name="Farmhouse" parent="y_sorted" instance=ExtResource("11_pcbsd")]
 position = Vector2(97, -171)
@@ -168,8 +170,9 @@ hidden_things = [NodePath("../Player"), NodePath("../TutDad")]
 
 [node name="NPC" parent="y_sorted" instance=ExtResource("11_safe8")]
 position = Vector2(305, -80)
+scale = Vector2(1, 1)
 
-[node name="worldbounds" type="Node" parent="."]
+[node name="worldbounds" type="Node2D" parent="."]
 
 [node name="StaticBody2D" type="StaticBody2D" parent="worldbounds"]
 

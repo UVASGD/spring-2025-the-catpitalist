@@ -42,6 +42,7 @@ _data = {
 }
 
 [node name="dropitemholder" type="Node2D"]
+scale = Vector2(2, 2)
 script = ExtResource("1_tugto")
 
 [node name="DropItem" type="Node2D" parent="."]

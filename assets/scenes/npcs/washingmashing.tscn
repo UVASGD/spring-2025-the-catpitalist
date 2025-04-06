@@ -11,7 +11,7 @@ radius = 32.0
 size = Vector2(20, 24)
 
 [node name="NPC" type="Node2D"]
-scale = Vector2(1.25828, 1.46734)
+scale = Vector2(2.516, 2.934)
 script = ExtResource("1_opetf")
 npc_name = "Washing Mashing"
 exhaust_dialogue_text = "Before you ask… no, I don’t want to do your laundry! That’s nasty!"

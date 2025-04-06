@@ -11,6 +11,7 @@ radius = 32.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dpvfd"]
 
 [node name="NPC" type="Node2D"]
+scale = Vector2(2, 2)
 script = ExtResource("1_y11g8")
 is_world_object = true
 npc_name = "Sign"

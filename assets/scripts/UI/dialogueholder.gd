@@ -2,7 +2,7 @@ extends Control
 
 @onready var textbox: Label = $textbox
 @onready var speakerlabel: Label = $speakerlabel
-@export var TEXT_SPEED:int = 2.3
+@export var TEXT_SPEED:int = 3
 
 var conversation = null
 var is_skipping = false

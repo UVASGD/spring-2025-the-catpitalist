@@ -235,7 +235,8 @@ texture_under = ExtResource("1_0ue1k")
 texture_progress = ExtResource("2_3xjjt")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="ColorRect"]
-position = Vector2(303, 165)
+position = Vector2(617, 348)
+scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_wowq5")
 autoplay = "default"
 frame_progress = 0.424638

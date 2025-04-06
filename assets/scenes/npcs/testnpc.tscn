@@ -12,6 +12,7 @@ radius = 32.0
 size = Vector2(20, 24)
 
 [node name="NPC" type="Node2D"]
+scale = Vector2(2, 2)
 script = ExtResource("1_f2cbg")
 npc_name = "billy"
 exhaust_dialogue_text = "bruh"

@@ -271,6 +271,7 @@ _data = {
 }
 
 [node name="indoors" type="Node2D"]
+scale = Vector2(2, 2)
 script = ExtResource("1_mdxdg")
 
 [node name="y_sorted" type="Node2D" parent="."]
@@ -293,7 +294,7 @@ position = Vector2(-1, -3)
 animation = &"side"
 flip_h = false
 
-[node name="furniture" type="Node" parent="y_sorted"]
+[node name="furniture" type="Node2D" parent="y_sorted"]
 
 [node name="bookcase" type="Sprite2D" parent="y_sorted/furniture"]
 z_index = -1
@@ -302,6 +303,7 @@ scale = Vector2(0.18, 0.18)
 texture = ExtResource("3_m8wf0")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="y_sorted/furniture/bookcase"]
+position = Vector2(8.33333, 77.7778)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="y_sorted/furniture/bookcase/StaticBody2D"]
 position = Vector2(350, 27.7778)

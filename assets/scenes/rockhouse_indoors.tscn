@@ -232,15 +232,16 @@ size = Vector2(20, 218)
 size = Vector2(194, 68)
 
 [node name="indoors" type="Node2D"]
+scale = Vector2(2, 2)
 script = ExtResource("1_r3u6b")
 
 [node name="y_sorted" type="Node2D" parent="."]
 y_sort_enabled = true
 
 [node name="spawnpoint" type="Node2D" parent="y_sorted"]
-position = Vector2(287, 281)
+position = Vector2(286.5, 298.5)
 
-[node name="furniture" type="Node" parent="y_sorted"]
+[node name="furniture" type="Node2D" parent="y_sorted"]
 
 [node name="bookcase" type="Sprite2D" parent="y_sorted/furniture"]
 z_index = -1

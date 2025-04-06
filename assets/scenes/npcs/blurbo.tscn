@@ -11,6 +11,7 @@ radius = 32.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dpvfd"]
 
 [node name="NPC" type="Node2D"]
+scale = Vector2(2, 2)
 script = ExtResource("1_t5f2b")
 npc_name = "Blurbo"
 exhaust_dialogue_text = "im out of stuff to say, so go away. I dont even like cats. I used you for my own personal gain."

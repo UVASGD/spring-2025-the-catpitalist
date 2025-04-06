@@ -15,7 +15,7 @@ var held_item_index = 0
 var last_pos_timer
 var pos_stack = []
 func _ready() -> void:
-	animated_sprite.scale = alter_scale
+	scale = alter_scale
 	flash_actionable()
 	SignalBus.connect("interact", interact)
 	#SignalBus.connect("items_ready", _on_items_ready)

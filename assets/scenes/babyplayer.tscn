@@ -11,8 +11,8 @@
 [ext_resource type="PackedScene" uid="uid://1q5o1mr5w3yt" path="res://assets/scenes/ui/game_cam.tscn" id="9_jbulh"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wb534"]
-radius = 17.0
-height = 38.0
+radius = 8.0
+height = 18.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_iug8j"]
 atlas = ExtResource("2_xjtne")

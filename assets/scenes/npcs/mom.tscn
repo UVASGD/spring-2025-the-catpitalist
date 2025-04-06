@@ -12,6 +12,7 @@ radius = 32.0
 size = Vector2(20, 24)
 
 [node name="NPC" type="Node2D" groups=["NPCs"]]
+scale = Vector2(2, 2)
 script = ExtResource("1_icq1v")
 npc_name = "Mom"
 voice_pitch = 0.7

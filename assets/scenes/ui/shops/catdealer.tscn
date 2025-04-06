@@ -63,6 +63,8 @@ VScrollBar/styles/grabber = SubResource("StyleBoxFlat_j0sdl")
 font_color = Color(0.486275, 0, 1, 1)
 
 [node name="Control" type="CanvasLayer"]
+scale = Vector2(2, 2)
+transform = Transform2D(2, 0, 0, 2, 0, 0)
 script = ExtResource("1_t0rf1")
 npc_name = "Catnip Dealer"
 songtitle = "catnipdealer"
@@ -359,10 +361,10 @@ anchor_left = 0.407
 anchor_top = 0.174
 anchor_right = 0.407
 anchor_bottom = 0.174
-offset_left = -58.48
-offset_top = -19.64
-offset_right = 58.52
-offset_bottom = 19.36
+offset_left = -509.46
+offset_top = -116.78
+offset_right = -392.46
+offset_bottom = -77.78
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 4

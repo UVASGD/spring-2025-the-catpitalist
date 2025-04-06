@@ -35,7 +35,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if frozen:
 		return
-		
+
 	prev_time = time
 	time += delta
 	
