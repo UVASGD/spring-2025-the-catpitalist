@@ -58,6 +58,13 @@ func unlock_current_convo():
 			convo.locked = false
 			print("unlocked ", convo.debugname)
 
+func unlock_next_convo():
+	if current_convo_index + 1 < convos.get_child_count():
+		var convo = convos.get_child(current_convo_index + 1)
+		if convo:
+			convo.locked = false
+			print("unlocked ", convo.debugname)
+
 func lock_next_convo():
 	if current_convo_index + 1 < convos.get_child_count():
 		var convo = convos.get_child(current_convo_index +1)
@@ -113,9 +120,9 @@ func play_exhaust_dialogue():
 	Dialogue.start_dialogue(exhaust_convo)
 	
 func _on_item_given(item, npc):
-	if item.ID == requested_item_id and npc == self:
+	if item.ID == requested_item_id and npc.npc_name == self.npc_name:
 		requested_item_id = null
-		unlock_current_convo()
+		unlock_next_convo()
 
 func open_shop():
 	UI.open_shop(inventory, self)
