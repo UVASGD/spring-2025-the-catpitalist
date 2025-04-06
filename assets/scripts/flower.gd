@@ -17,6 +17,8 @@ var bloomed = false
 
 @export var seed_item_id: int
 @export var flower_item_id: int
+@export var seeds_dropped_on_harvest: int = 0
+@export var flowers_dropped_on_harvest: int = 1
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -60,12 +62,21 @@ func harvest():
 		pass
 	elif bloomed:
 		to_drop = Items.get_item(flower_item_id)
+		to_drop.count = flowers_dropped_on_harvest
+		
+		#drop seeds from a bloom (if applicable)
+		if seeds_dropped_on_harvest:
+			var seed_item = Items.get_item(seed_item_id)
+			seed_item.count = seeds_dropped_on_harvest
+			var seed_drop = Items.create_drop_item(seed_item)
+			PlayerData.player.drop(seed_drop)
 	else:
 		to_drop = Items.get_item(seed_item_id)
-	if to_drop:
 		to_drop.count = 1
+	if to_drop:
 		var dropped = Items.create_drop_item(to_drop)
 		PlayerData.player.drop(dropped)
+	#delete self
 	self.queue_free()
 	
 func get_watered(body):
