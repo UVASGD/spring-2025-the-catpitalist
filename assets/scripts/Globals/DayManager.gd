@@ -71,6 +71,9 @@ func end_day():
 	prev_time = 0
 	day_num += 1 
 	SignalBus.emit_signal("day_end")
+	
+	#on_dawn_end()
+	
 	determine_season()
 	reset_weather()
 	print("day ended")

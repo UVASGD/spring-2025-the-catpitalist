@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=4 uid="uid://ckgy8s3ficfqw"]
+[gd_scene load_steps=23 format=4 uid="uid://ckgy8s3ficfqw"]
 
 [ext_resource type="Script" path="res://assets/scenes/farmhouse_indoors.gd" id="1_mdxdg"]
 [ext_resource type="Texture2D" uid="uid://dog82rwp4um5p" path="res://assets/sprites/wood_tiles.png" id="2_8uqx6"]
@@ -9,7 +9,8 @@
 [ext_resource type="Texture2D" uid="uid://chasce66yjlj0" path="res://assets/sprites/world objects/upholstery.png" id="7_vha7r"]
 [ext_resource type="PackedScene" uid="uid://c8t53va2ko46x" path="res://assets/scenes/npcs/mom.tscn" id="8_fns02"]
 [ext_resource type="PackedScene" uid="uid://dy0dw10fu38wf" path="res://assets/scenes/npcs/normaldad.tscn" id="9_2rfny"]
-[ext_resource type="PackedScene" uid="uid://bmw6wxkk4jdhu" path="res://assets/scenes/transportzone.tscn" id="10_x8kts"]
+[ext_resource type="PackedScene" uid="uid://caraohecg8kjn" path="res://assets/scenes/bed.tscn" id="9_l7gog"]
+[ext_resource type="PackedScene" path="res://assets/scenes/transportzone.tscn" id="10_x8kts"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_48lco"]
 size = Vector2(1055.56, 177.778)
@@ -366,6 +367,9 @@ region_rect = Rect2(0, 336, 64, 32)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="y_sorted/furniture/couch/StaticBody2D"]
 position = Vector2(0.682587, 3.63484)
 shape = SubResource("RectangleShape2D_qxikj")
+
+[node name="bed" parent="y_sorted" instance=ExtResource("9_l7gog")]
+position = Vector2(450, 200)
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 z_index = -5
