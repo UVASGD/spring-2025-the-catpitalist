@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=4 uid="uid://b2133ovj0k7io"]
+[gd_scene load_steps=26 format=4 uid="uid://b2133ovj0k7io"]
 
 [ext_resource type="Script" path="res://assets/scripts/overworldarea.gd" id="1_dsj35"]
 [ext_resource type="PackedScene" uid="uid://dbfvkgx1l7l1" path="res://assets/scenes/shade.tscn" id="2_yfgcp"]
@@ -17,6 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://b7hk1uss3cmvs" path="res://assets/scenes/npcs/mozzie.tscn" id="14_284tg"]
 [ext_resource type="PackedScene" uid="uid://c7bpitve6lom3" path="res://assets/scenes/npcs/fatcat.tscn" id="14_xuub3"]
 [ext_resource type="PackedScene" uid="uid://r1gkmux58rxo" path="res://assets/scenes/npcs/alien.tscn" id="17_04x41"]
+[ext_resource type="PackedScene" uid="uid://byxam7udt4dw3" path="res://assets/scenes/farmhouse.tscn" id="17_g5ug5"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7ivjj"]
 texture = ExtResource("8_2d8hv")
@@ -190,6 +191,10 @@ position = Vector2(294, 141)
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="y_sorted/Player"]
 remote_path = NodePath("../../../shading")
+
+[node name="Farmhouse" parent="y_sorted" instance=ExtResource("17_g5ug5")]
+position = Vector2(-631, -160)
+scale = Vector2(2.734, 2.672)
 
 [node name="NPC" parent="." instance=ExtResource("17_04x41")]
 position = Vector2(75, 262)

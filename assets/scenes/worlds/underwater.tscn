@@ -44,9 +44,9 @@ noise = SubResource("FastNoiseLite_drlvg")
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ysec4"]
 shader = ExtResource("6_pyg0k")
 shader_parameter/direction = Vector2(3, 2)
-shader_parameter/water_color = Color(0.1, 0.4, 0.6, 0.3)
-shader_parameter/distortion_strength = 0.015
-shader_parameter/water_opacity = 0.3
+shader_parameter/water_color = Color(0, 0.25098, 0.803922, 0.74902)
+shader_parameter/distortion_strength = 0.02
+shader_parameter/water_opacity = 0.4
 shader_parameter/distortion_noise = SubResource("NoiseTexture2D_1vm05")
 
 [node name="City" type="Node2D"]

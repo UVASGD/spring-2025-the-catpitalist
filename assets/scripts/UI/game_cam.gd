@@ -1,9 +1,13 @@
 extends Camera2D
-@onready var day: Label = $Control/VBoxContainer/HBoxContainer/day
-@onready var time: Label = $Control/VBoxContainer/HBoxContainer/time
-@onready var money: Label = $Control/VBoxContainer/HBoxContainer2/money
-@onready var season_label: Label = $Control/VBoxContainer/HBoxContainer2/Season
+@onready var day: Label = $Info/bg/HBoxContainer/VBoxContainer/dayinfoholder/daylabel
+@onready var time: Label = $Info/bg/HBoxContainer/VBoxContainer/timeholder/timelabel
+@onready var money: Label = $Info/bg/HBoxContainer/moneylabel
+@onready var season_label: TextureRect = $Info/bg
 
+var springtexture = preload("res://assets/sprites/UI/info/spring icon.png")
+var falltexture = preload("res://assets/sprites/UI/info/fall icon.png")
+var summertexture = preload("res://assets/sprites/UI/info/summer icon.png")
+var wintertexture = preload("res://assets/sprites/UI/info/winter icon.png")
 @onready var rain: ColorRect = $weather/rain
 @onready var snow: ColorRect = $weather/snow
 
@@ -43,20 +47,17 @@ func set_day_label():
 	day.text = "Day: " + str(DayManager.day_num)
 
 func set_time_label():
-	time.text = "Time: " + DayManager.get_time_string()
+	time.text = DayManager.get_time_string()
 
 func set_money_label():
 	var currentMoney = PlayerData.get_current_money()
 	if currentMoney != null:
-		if currentMoney < 1:
-			money.text = "Money: broke AF LMAO"
-		else:
-			money.text = "Money: " + str(currentMoney)
+		money.text = "$" + str(currentMoney)
 
 func set_season_label():
 	var season = DayManager.season
-	var seasons = ["Spring", "Summer", "Fall", "Winter"]
-	season_label.text = "Season: " + seasons[season]
+	var seasons = [springtexture, summertexture, falltexture, wintertexture]
+	season_label.texture = seasons[season]
 	
 func open_inv():
 	if inv_cooldown:
