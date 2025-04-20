@@ -2,12 +2,12 @@
 
 [ext_resource type="Script" path="res://assets/scripts/cutscene_controller.gd" id="1_usam1"]
 [ext_resource type="Script" path="res://assets/scripts/cutscene_npc.gd" id="2_q7n6k"]
-[ext_resource type="Texture2D" uid="uid://bxpn40vj5qo76" path="res://assets/sprites/CATDAD_walk-Sheet.png" id="3_fo26d"]
-[ext_resource type="Texture2D" uid="uid://dsqdmp5yxmgsr" path="res://assets/sprites/CATDAD_sideways_view.png" id="4_rjgug"]
+[ext_resource type="Texture2D" uid="uid://bxpn40vj5qo76" path="res://assets/sprites/World NPCs/CATDAD_walk-Sheet.png" id="3_fo26d"]
+[ext_resource type="Texture2D" uid="uid://dsqdmp5yxmgsr" path="res://assets/sprites/World NPCs/CATDAD_sideways_view.png" id="4_rjgug"]
 [ext_resource type="PackedScene" uid="uid://wfajuc7nk6w6" path="res://assets/scenes/templates/conversation.tscn" id="4_ucd5h"]
 [ext_resource type="Script" path="res://assets/scripts/cutscene_movement.gd" id="6_j2kcx"]
-[ext_resource type="Texture2D" uid="uid://cm8mnvo8sh28h" path="res://assets/sprites/baby-balling.png" id="7_kwfha"]
-[ext_resource type="Texture2D" uid="uid://vcbcsn3oqixk" path="res://assets/sprites/cat_animations.png" id="8_0v0ke"]
+[ext_resource type="Texture2D" uid="uid://cm8mnvo8sh28h" path="res://assets/sprites/Player Sprites/baby-balling.png" id="7_kwfha"]
+[ext_resource type="Texture2D" uid="uid://vcbcsn3oqixk" path="res://assets/sprites/Player Sprites/cat_animations.png" id="8_0v0ke"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5iyjt"]
 atlas = ExtResource("3_fo26d")

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://assets/scripts/cutscene_controller.gd" id="1_r8d2e"]
 [ext_resource type="Script" path="res://assets/scripts/cutscene_npc.gd" id="2_jaca7"]
-[ext_resource type="Texture2D" uid="uid://brmvgg4xkuwa5" path="res://assets/sprites/goblin-sheet.png" id="3_udkwj"]
+[ext_resource type="Texture2D" uid="uid://brmvgg4xkuwa5" path="res://assets/sprites/World NPCs/goblin-sheet.png" id="3_udkwj"]
 [ext_resource type="PackedScene" uid="uid://wfajuc7nk6w6" path="res://assets/scenes/templates/conversation.tscn" id="4_tuull"]
 [ext_resource type="Script" path="res://assets/scripts/message.gd" id="5_lj6vm"]
 [ext_resource type="Script" path="res://assets/scripts/cutscene_movement.gd" id="6_6lgrs"]

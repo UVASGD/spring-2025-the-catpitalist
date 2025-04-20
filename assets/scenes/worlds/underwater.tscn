@@ -1,9 +1,9 @@
 [gd_scene load_steps=16 format=4 uid="uid://cauh4a088iphm"]
 
 [ext_resource type="Script" path="res://assets/scripts/indoors.gd" id="1_ki6vb"]
-[ext_resource type="Texture2D" uid="uid://b27qipy3lg8og" path="res://assets/sprites/SAND TILES.png" id="2_4ho4k"]
-[ext_resource type="Texture2D" uid="uid://ch641n8mqkxrf" path="res://assets/sprites/star shells.png" id="3_pfh2g"]
-[ext_resource type="Texture2D" uid="uid://djc4uwjngre8u" path="res://assets/sprites/world objects/rock_house.png" id="4_uhroo"]
+[ext_resource type="Texture2D" uid="uid://b27qipy3lg8og" path="res://assets/sprites/tilesets/SAND TILES.png" id="2_4ho4k"]
+[ext_resource type="Texture2D" uid="uid://ch641n8mqkxrf" path="res://assets/sprites/tilesets/star shells.png" id="3_pfh2g"]
+[ext_resource type="Texture2D" uid="uid://djc4uwjngre8u" path="res://assets/sprites/world objects/underwater/rock_house.png" id="4_uhroo"]
 [ext_resource type="Shader" path="res://assets/scenes/worlds/underwater_zone.gdshader" id="6_pyg0k"]
 [ext_resource type="PackedScene" uid="uid://bmw6wxkk4jdhu" path="res://assets/scenes/transportzone.tscn" id="12_oodse"]
 
