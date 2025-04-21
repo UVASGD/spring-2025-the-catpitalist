@@ -1,7 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://du4hcw432ewtn"]
+[gd_scene load_steps=5 format=3 uid="uid://bvsrhivhx5avn"]
 
 [ext_resource type="Script" path="res://assets/scripts/npc.gd" id="1_dod63"]
-[ext_resource type="Texture2D" uid="uid://cqjoorc7an3ai" path="res://assets/sprites/World NPCs/Mozzie.png" id="2_w4omg"]
+[ext_resource type="Texture2D" uid="uid://blv4ms71l3kv6" path="res://assets/sprites/World NPCs/tralalerito.png" id="2_ipmor"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_pmeq2"]
 radius = 32.0
@@ -17,7 +17,7 @@ exhaust_dialogue_text = "DuDe, i don’t even know where am i. What im ah doing 
 voice_pitch = 0.6
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_w4omg")
+texture = ExtResource("2_ipmor")
 
 [node name="hitbox" type="Area2D" parent="."]
 

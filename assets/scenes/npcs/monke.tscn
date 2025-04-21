@@ -1,7 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://b2s5brugrft1g"]
+[gd_scene load_steps=5 format=3 uid="uid://du4hcw432ewtn"]
 
-[ext_resource type="Script" path="res://assets/scripts/npc.gd" id="1_cobko"]
-[ext_resource type="Texture2D" uid="uid://cqjoorc7an3ai" path="res://assets/sprites/World NPCs/Mozzie.png" id="2_ejam2"]
+[ext_resource type="Script" path="res://assets/scripts/npc.gd" id="1_dod63"]
+[ext_resource type="Texture2D" uid="uid://dfjvfc71dls2l" path="res://assets/sprites/World NPCs/cherrimonke.png" id="2_kbold"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_pmeq2"]
 radius = 32.0
@@ -11,13 +11,13 @@ size = Vector2(20, 24)
 
 [node name="NPC" type="Node2D"]
 scale = Vector2(2, 2)
-script = ExtResource("1_cobko")
+script = ExtResource("1_dod63")
 npc_name = "Mozzie"
 exhaust_dialogue_text = "DuDe, i don’t even know where am i. What im ah doing bo."
 voice_pitch = 0.6
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_ejam2")
+texture = ExtResource("2_kbold")
 
 [node name="hitbox" type="Area2D" parent="."]
 

@@ -1,0 +1,44 @@
+[gd_scene load_steps=7 format=3 uid="uid://bo8sh8mjix7w5"]
+
+[ext_resource type="Script" path="res://assets/scripts/npc.gd" id="1_ql43h"]
+[ext_resource type="Texture2D" uid="uid://dhnnlb2br2upe" path="res://assets/sprites/World NPCs/hood_phish.png" id="2_qr5oj"]
+[ext_resource type="Script" path="res://assets/scripts/conversation.gd" id="3_22rb1"]
+[ext_resource type="Script" path="res://assets/scripts/message.gd" id="4_064th"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pmeq2"]
+radius = 32.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_njb3k"]
+size = Vector2(20, 24)
+
+[node name="NPC" type="Node2D"]
+scale = Vector2(2, 2)
+script = ExtResource("1_ql43h")
+npc_name = "Evil Ass Fucking Fish"
+exhaust_dialogue_text = "FUCK YOU"
+voice_pitch = 0.6
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_qr5oj")
+
+[node name="hitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox"]
+shape = SubResource("CircleShape2D_pmeq2")
+
+[node name="collisionbox" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="collisionbox"]
+position = Vector2(0, 12)
+shape = SubResource("RectangleShape2D_njb3k")
+
+[node name="Convos" type="Node" parent="."]
+
+[node name="Conversation" type="Node" parent="Convos"]
+script = ExtResource("3_22rb1")
+
+[node name="Messages" type="Node" parent="Convos/Conversation"]
+
+[node name="Message" type="Node" parent="Convos/Conversation/Messages"]
+script = ExtResource("4_064th")
+text = "I'M AN EVIL ASS FUCKING FISH. LIKE IM LITERALLY EVIL AS SHIT. I EXIST SOLELY TO MAKE THIS GAME RATED M."

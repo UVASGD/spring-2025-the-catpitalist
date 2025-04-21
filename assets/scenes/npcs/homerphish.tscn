@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://gpf1xb2f44y"]
 
 [ext_resource type="Script" path="res://assets/scripts/npc.gd" id="1_c8swa"]
-[ext_resource type="Texture2D" uid="uid://cqjoorc7an3ai" path="res://assets/sprites/World NPCs/Mozzie.png" id="2_fsoiv"]
+[ext_resource type="Texture2D" uid="uid://dpt2omymq61mx" path="res://assets/sprites/World NPCs/phish_dude_alter.png" id="2_x6s0s"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_pmeq2"]
 radius = 32.0
@@ -17,7 +17,7 @@ exhaust_dialogue_text = "DuDe, i don’t even know where am i. What im ah doing 
 voice_pitch = 0.6
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_fsoiv")
+texture = ExtResource("2_x6s0s")
 
 [node name="hitbox" type="Area2D" parent="."]
 
