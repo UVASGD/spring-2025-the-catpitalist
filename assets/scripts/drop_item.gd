@@ -23,23 +23,3 @@ func give():
 	$DropItem.remove_child(real_item)
 	self.queue_free()
 	return real_item
-
-func _on_uptween_finish():
-	make_downtween()
-	return
-
-func _on_downtween_finish():
-	make_uptween()
-	return
-
-func make_uptween():
-	var uptween = get_tree().create_tween()
-	uptween.tween_property(self, "position", position + Vector2.UP * 5, 1)
-	uptween.connect("finished", _on_uptween_finish)
-	return
-
-func make_downtween():
-	var downtween = get_tree().create_tween()
-	downtween.tween_property(self, "position", position + Vector2.DOWN * 5, 1)
-	downtween.connect("finished", _on_downtween_finish)
-	return

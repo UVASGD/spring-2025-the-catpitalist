@@ -1,7 +1,6 @@
-[gd_scene load_steps=26 format=4 uid="uid://b2133ovj0k7io"]
+[gd_scene load_steps=25 format=4 uid="uid://b2133ovj0k7io"]
 
 [ext_resource type="Script" path="res://assets/scripts/overworldarea.gd" id="1_dsj35"]
-[ext_resource type="PackedScene" uid="uid://dbfvkgx1l7l1" path="res://assets/scenes/shade.tscn" id="2_yfgcp"]
 [ext_resource type="PackedScene" uid="uid://rwurml76tnqs" path="res://assets/scenes/npcs/sign.tscn" id="3_23kby"]
 [ext_resource type="PackedScene" uid="uid://cmcemw1qn4i4q" path="res://assets/scenes/player.tscn" id="4_53jsm"]
 [ext_resource type="PackedScene" uid="uid://8xq2vf0ubh3w" path="res://assets/scenes/drop_item.tscn" id="5_acpoq"]
@@ -98,19 +97,6 @@ normal = Vector2(1, 0)
 y_sort_enabled = true
 script = ExtResource("1_dsj35")
 
-[node name="shading" type="Node2D" parent="."]
-position = Vector2(0, 14)
-scale = Vector2(2, 2)
-
-[node name="shade" parent="shading" instance=ExtResource("2_yfgcp")]
-visible = false
-offset_left = -363.0
-offset_top = -213.0
-offset_right = -362.585
-offset_bottom = 60.515
-scale = Vector2(1749.01, 1.60413)
-mouse_filter = 2
-
 [node name="y_sorted" type="Node2D" parent="."]
 y_sort_enabled = true
 
@@ -190,7 +176,6 @@ position = Vector2(294, 141)
 [node name="Player" parent="y_sorted" instance=ExtResource("4_53jsm")]
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="y_sorted/Player"]
-remote_path = NodePath("../../../shading")
 
 [node name="Farmhouse" parent="y_sorted" instance=ExtResource("17_g5ug5")]
 position = Vector2(-631, -160)
