@@ -1,0 +1,76 @@
+[gd_scene load_steps=7 format=3 uid="uid://c8qbsnejl0gv3"]
+
+[ext_resource type="Script" path="res://assets/scripts/npc.gd" id="1_go6tc"]
+[ext_resource type="Texture2D" uid="uid://b8hjt7hknb1ym" path="res://assets/sprites/World NPCs/vincent.png" id="2_8wle0"]
+[ext_resource type="Script" path="res://assets/scripts/conversation.gd" id="2_20fju"]
+[ext_resource type="Script" path="res://assets/scripts/message.gd" id="4_jktln"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pmeq2"]
+radius = 32.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_njb3k"]
+size = Vector2(20, 24)
+
+[node name="NPC" type="Node2D" groups=["NPCs"]]
+script = ExtResource("1_go6tc")
+npc_name = "Vincent"
+exhaust_dialogue_text = "what the helly "
+voice_pitch = 0.4
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_8wle0")
+
+[node name="hitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox"]
+shape = SubResource("CircleShape2D_pmeq2")
+
+[node name="collisionbox" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="collisionbox"]
+position = Vector2(0, 12)
+shape = SubResource("RectangleShape2D_njb3k")
+
+[node name="Convos" type="Node" parent="."]
+
+[node name="Conversation" type="Node" parent="Convos"]
+script = ExtResource("2_20fju")
+
+[node name="Messages" type="Node" parent="Convos/Conversation"]
+
+[node name="Message" type="Node" parent="Convos/Conversation/Messages"]
+script = ExtResource("4_jktln")
+text = "You made it."
+
+[node name="Message2" type="Node" parent="Convos/Conversation/Messages"]
+script = ExtResource("4_jktln")
+text = "I shouldn't be surprised. I *made* you to make it."
+
+[node name="Message3" type="Node" parent="Convos/Conversation/Messages"]
+script = ExtResource("4_jktln")
+text = "Every plant you cultivated, every step you took, every decision you thought was yours... I wrote it."
+
+[node name="Message4" type="Node" parent="Convos/Conversation/Messages"]
+script = ExtResource("4_jktln")
+text = "You ever wonder why the world bends to your will? Why doors open only after *you* arrive?"
+
+[node name="Message5" type="Node" parent="Convos/Conversation/Messages"]
+script = ExtResource("4_jktln")
+text = "Why NPCs repeat themselves like broken record players with polite smiles?"
+
+[node name="Message6" type="Node" parent="Convos/Conversation/Messages"]
+script = ExtResource("4_jktln")
+text = "It's not fate. It's not destiny. It's me."
+
+[node name="Message7" type="Node" parent="Convos/Conversation/Messages"]
+script = ExtResource("4_jktln")
+text = "Your mobility? Designed. Your memories? Variables. Your free will? If-else branches."
+
+[node name="Message8" type="Node" parent="Convos/Conversation/Messages"]
+script = ExtResource("4_jktln")
+text = "You are an algorithm wearing skin."
+
+[node name="start" type="Marker2D" parent="."]
+
+[node name="end" type="Marker2D" parent="."]

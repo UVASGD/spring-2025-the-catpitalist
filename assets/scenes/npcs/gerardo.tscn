@@ -1,0 +1,79 @@
+[gd_scene load_steps=13 format=3 uid="uid://bf25le0d607b1"]
+
+[ext_resource type="Script" path="res://assets/scripts/npc.gd" id="1_kkpw5"]
+[ext_resource type="Texture2D" uid="uid://ccghp0ttwcaci" path="res://assets/sprites/World NPCs/g1.png" id="2_rpceo"]
+[ext_resource type="Texture2D" uid="uid://dcowcdjrc3o8u" path="res://assets/sprites/World NPCs/g3.png" id="3_tu0s2"]
+[ext_resource type="Texture2D" uid="uid://dbsllol337o44" path="res://assets/sprites/World NPCs/g2.png" id="4_incx5"]
+[ext_resource type="Texture2D" uid="uid://dsunxaobsqx8u" path="res://assets/sprites/World NPCs/g4.png" id="5_28yga"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gv1nk"]
+atlas = ExtResource("2_rpceo")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iw6gx"]
+atlas = ExtResource("3_tu0s2")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cjjqg"]
+atlas = ExtResource("4_incx5")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_epxbf"]
+atlas = ExtResource("5_28yga")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5b2ti"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gv1nk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iw6gx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cjjqg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_epxbf")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pmeq2"]
+radius = 32.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_njb3k"]
+size = Vector2(20, 24)
+
+[node name="NPC" type="Node2D" groups=["NPCs"]]
+script = ExtResource("1_kkpw5")
+npc_name = "Gerardo"
+exhaust_dialogue_text = "Yoooooooo"
+shopkeeper = true
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_5b2ti")
+autoplay = "default"
+frame_progress = 0.572125
+speed_scale = 2.0
+
+[node name="hitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox"]
+shape = SubResource("CircleShape2D_pmeq2")
+
+[node name="collisionbox" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="collisionbox"]
+position = Vector2(0, 12)
+shape = SubResource("RectangleShape2D_njb3k")
+
+[node name="Convos" type="Node" parent="."]
+
+[node name="start" type="Marker2D" parent="."]
+
+[node name="end" type="Marker2D" parent="."]

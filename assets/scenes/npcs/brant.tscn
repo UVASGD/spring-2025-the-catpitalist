@@ -1,0 +1,55 @@
+[gd_scene load_steps=7 format=3 uid="uid://dtoud256wysab"]
+
+[ext_resource type="Script" path="res://assets/scripts/npc.gd" id="1_j83yx"]
+[ext_resource type="Texture2D" uid="uid://dj1uygdiey4qq" path="res://assets/sprites/World NPCs/brant.png" id="2_hwetb"]
+[ext_resource type="Script" path="res://assets/scripts/conversation.gd" id="2_mtw6l"]
+[ext_resource type="Script" path="res://assets/scripts/message.gd" id="4_6o3hj"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pmeq2"]
+radius = 32.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_njb3k"]
+size = Vector2(20, 24)
+
+[node name="NPC" type="Node2D" groups=["NPCs"]]
+script = ExtResource("1_j83yx")
+npc_name = "Brant"
+exhaust_dialogue_text = "hi"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_hwetb")
+
+[node name="hitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox"]
+shape = SubResource("CircleShape2D_pmeq2")
+
+[node name="collisionbox" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="collisionbox"]
+position = Vector2(0, 12)
+shape = SubResource("RectangleShape2D_njb3k")
+
+[node name="Convos" type="Node" parent="."]
+
+[node name="Conversation" type="Node" parent="Convos"]
+script = ExtResource("2_mtw6l")
+
+[node name="Messages" type="Node" parent="Convos/Conversation"]
+
+[node name="Message" type="Node" parent="Convos/Conversation/Messages"]
+script = ExtResource("4_6o3hj")
+text = "Hi, I'm Brant. I gave you the power of harvest. "
+
+[node name="Message2" type="Node" parent="Convos/Conversation/Messages"]
+script = ExtResource("4_6o3hj")
+text = "I'm also the reason you can sleep at night, and I gave your parents the ability to move and speak."
+
+[node name="Message3" type="Node" parent="Convos/Conversation/Messages"]
+script = ExtResource("4_6o3hj")
+text = "You're welcome."
+
+[node name="start" type="Marker2D" parent="."]
+
+[node name="end" type="Marker2D" parent="."]

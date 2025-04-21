@@ -1,4 +1,4 @@
-[gd_scene load_steps=52 format=4 uid="uid://cauh4a088iphm"]
+[gd_scene load_steps=67 format=4 uid="uid://cauh4a088iphm"]
 
 [ext_resource type="Script" path="res://assets/scripts/indoors.gd" id="1_ki6vb"]
 [ext_resource type="Texture2D" uid="uid://b27qipy3lg8og" path="res://assets/sprites/tilesets/SAND TILES.png" id="2_4ho4k"]
@@ -24,6 +24,8 @@
 [ext_resource type="PackedScene" uid="uid://dujtpjdngcog6" path="res://assets/scenes/npcs/angler.tscn" id="20_io6nb"]
 [ext_resource type="PackedScene" uid="uid://gpf1xb2f44y" path="res://assets/scenes/npcs/homerphish.tscn" id="21_7pjtb"]
 [ext_resource type="PackedScene" uid="uid://c8k72ifx1fmob" path="res://assets/scenes/npcs/jonnyoranghands.tscn" id="23_sjuul"]
+[ext_resource type="Script" path="res://assets/scenes/worlds/bubblemaker.gd" id="24_2q3ei"]
+[ext_resource type="Texture2D" uid="uid://ds025a6nglfiy" path="res://assets/sprites/world objects/underwater/BUBBLES-Sheet.png" id="26_3y8ct"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0i4su"]
 texture = ExtResource("2_4ho4k")
@@ -225,6 +227,98 @@ shader_parameter/distortion_strength = 0.022
 shader_parameter/water_opacity = 0.4
 shader_parameter/distortion_noise = SubResource("NoiseTexture2D_1c5ri")
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_bvpkx"]
+atlas = ExtResource("26_3y8ct")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oia7f"]
+atlas = ExtResource("26_3y8ct")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_trjmf"]
+atlas = ExtResource("26_3y8ct")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0tfl6"]
+atlas = ExtResource("26_3y8ct")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6efve"]
+atlas = ExtResource("26_3y8ct")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_42qnf"]
+atlas = ExtResource("26_3y8ct")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hukk0"]
+atlas = ExtResource("26_3y8ct")
+region = Rect2(96, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ecrei"]
+atlas = ExtResource("26_3y8ct")
+region = Rect2(112, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k7jf2"]
+atlas = ExtResource("26_3y8ct")
+region = Rect2(128, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8n7d6"]
+atlas = ExtResource("26_3y8ct")
+region = Rect2(144, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8r3ni"]
+atlas = ExtResource("26_3y8ct")
+region = Rect2(160, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_516lk"]
+atlas = ExtResource("26_3y8ct")
+region = Rect2(176, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_u8lmi"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bvpkx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oia7f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_trjmf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0tfl6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6efve")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_42qnf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hukk0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ecrei")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k7jf2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8n7d6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8r3ni")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_516lk")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
 [node name="City" type="Node2D"]
 script = ExtResource("1_ki6vb")
 
@@ -239,13 +333,18 @@ tile_map_data = PackedByteArray("AADM/9n/AAACAAAAAADM/9//AAAAAAAAAADM/wYAAAACAAA
 tile_set = SubResource("TileSet_w4e3b")
 
 [node name="y_sorted" type="Node2D" parent="."]
+z_index = -1
+z_as_relative = false
 y_sort_enabled = true
 scale = Vector2(2, 2)
 
 [node name="spawnpoint" type="Node2D" parent="y_sorted"]
+z_index = 1
+y_sort_enabled = true
 position = Vector2(-404.5, -206.5)
 
 [node name="houses" type="Node2D" parent="y_sorted"]
+z_as_relative = false
 y_sort_enabled = true
 
 [node name="rockhouse" type="Sprite2D" parent="y_sorted/houses"]
@@ -326,11 +425,14 @@ position = Vector2(3.875, 51)
 shape = SubResource("RectangleShape2D_vcvng")
 
 [node name="Sewerentrance" type="Sprite2D" parent="y_sorted"]
+z_index = 1
+y_sort_enabled = true
 position = Vector2(-406, -352.5)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("7_lqy8f")
 
 [node name="coral_border" type="Node2D" parent="y_sorted"]
+z_as_relative = false
 y_sort_enabled = true
 
 [node name="SecondCoral" type="Sprite2D" parent="y_sorted/coral_border"]
@@ -502,9 +604,11 @@ position = Vector2(1225, 830)
 texture = ExtResource("14_rs3xy")
 
 [node name="coral" type="Node2D" parent="y_sorted"]
+z_as_relative = false
 y_sort_enabled = true
 
 [node name="AlternateCoral24" type="Sprite2D" parent="y_sorted/coral"]
+y_sort_enabled = true
 position = Vector2(393.5, 478.5)
 texture = ExtResource("14_rs3xy")
 
@@ -515,6 +619,7 @@ position = Vector2(1.375, 34.5)
 shape = SubResource("RectangleShape2D_g3p0u")
 
 [node name="AlternateCoral26" type="Sprite2D" parent="y_sorted/coral"]
+y_sort_enabled = true
 position = Vector2(443, 36)
 texture = ExtResource("14_rs3xy")
 
@@ -525,46 +630,59 @@ position = Vector2(1.375, 34.5)
 shape = SubResource("RectangleShape2D_g3p0u")
 
 [node name="AlternateCoral27" type="Sprite2D" parent="y_sorted/coral"]
+y_sort_enabled = true
 position = Vector2(-346, 43)
 texture = ExtResource("14_rs3xy")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="y_sorted/coral/AlternateCoral27"]
+y_sort_enabled = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="y_sorted/coral/AlternateCoral27/StaticBody2D"]
+y_sort_enabled = true
 position = Vector2(1.375, 34.5)
 shape = SubResource("RectangleShape2D_g3p0u")
 
 [node name="AlternateCoral25" type="Sprite2D" parent="y_sorted/coral"]
+y_sort_enabled = true
 position = Vector2(1106.5, 574)
 texture = ExtResource("14_rs3xy")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="y_sorted/coral/AlternateCoral25"]
+y_sort_enabled = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="y_sorted/coral/AlternateCoral25/StaticBody2D"]
+y_sort_enabled = true
 position = Vector2(1.375, 34.5)
 shape = SubResource("RectangleShape2D_g3p0u")
 
 [node name="SecondCoral20" type="Sprite2D" parent="y_sorted/coral"]
+y_sort_enabled = true
 position = Vector2(-202, 488.5)
 texture = ExtResource("13_q3ja5")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="y_sorted/coral/SecondCoral20"]
+y_sort_enabled = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="y_sorted/coral/SecondCoral20/StaticBody2D"]
+y_sort_enabled = true
 position = Vector2(1.375, 34.5)
 shape = SubResource("RectangleShape2D_g3p0u")
 
 [node name="SecondCoral21" type="Sprite2D" parent="y_sorted/coral"]
+y_sort_enabled = true
 position = Vector2(954, 290.5)
 texture = ExtResource("13_q3ja5")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="y_sorted/coral/SecondCoral21"]
+y_sort_enabled = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="y_sorted/coral/SecondCoral21/StaticBody2D"]
+y_sort_enabled = true
 position = Vector2(1.375, 34.5)
 shape = SubResource("RectangleShape2D_g3p0u")
 
 [node name="SecondCoral22" type="Sprite2D" parent="y_sorted/coral"]
+y_sort_enabled = true
 position = Vector2(137.5, -162)
 texture = ExtResource("13_q3ja5")
 
@@ -575,15 +693,18 @@ position = Vector2(1.375, 34.5)
 shape = SubResource("RectangleShape2D_g3p0u")
 
 [node name="kelp" type="Node2D" parent="y_sorted"]
+z_as_relative = false
 y_sort_enabled = true
 
 [node name="hugekelp" type="AnimatedSprite2D" parent="y_sorted/kelp"]
+y_sort_enabled = true
 scale = Vector2(2, 4)
 sprite_frames = SubResource("SpriteFrames_lvdm7")
 autoplay = "default"
 frame_progress = 0.614223
 
 [node name="hugekelp2" type="AnimatedSprite2D" parent="y_sorted/kelp"]
+y_sort_enabled = true
 position = Vector2(-206, 77)
 scale = Vector2(2, 4)
 sprite_frames = SubResource("SpriteFrames_lvdm7")
@@ -591,6 +712,7 @@ autoplay = "default"
 frame_progress = 0.360604
 
 [node name="hugekelp3" type="AnimatedSprite2D" parent="y_sorted/kelp"]
+y_sort_enabled = true
 position = Vector2(-416, 322)
 scale = Vector2(2, 4)
 sprite_frames = SubResource("SpriteFrames_lvdm7")
@@ -598,6 +720,7 @@ autoplay = "default"
 frame_progress = 0.360604
 
 [node name="hugekelp4" type="AnimatedSprite2D" parent="y_sorted/kelp"]
+y_sort_enabled = true
 position = Vector2(-343, 604)
 scale = Vector2(2, 4)
 sprite_frames = SubResource("SpriteFrames_lvdm7")
@@ -605,6 +728,7 @@ autoplay = "default"
 frame_progress = 0.360604
 
 [node name="hugekelp5" type="AnimatedSprite2D" parent="y_sorted/kelp"]
+y_sort_enabled = true
 position = Vector2(-546, 603)
 scale = Vector2(2, 4)
 sprite_frames = SubResource("SpriteFrames_lvdm7")
@@ -612,6 +736,7 @@ autoplay = "default"
 frame_progress = 0.360604
 
 [node name="hugekelp6" type="AnimatedSprite2D" parent="y_sorted/kelp"]
+y_sort_enabled = true
 position = Vector2(136, 676)
 scale = Vector2(2, 4)
 sprite_frames = SubResource("SpriteFrames_lvdm7")
@@ -619,6 +744,7 @@ autoplay = "default"
 frame_progress = 0.360604
 
 [node name="hugekelp7" type="AnimatedSprite2D" parent="y_sorted/kelp"]
+y_sort_enabled = true
 position = Vector2(-30, 673)
 scale = Vector2(2, 4)
 sprite_frames = SubResource("SpriteFrames_lvdm7")
@@ -626,6 +752,7 @@ autoplay = "default"
 frame_progress = 0.360604
 
 [node name="hugekelp8" type="AnimatedSprite2D" parent="y_sorted/kelp"]
+y_sort_enabled = true
 position = Vector2(917, 634)
 scale = Vector2(2, 4)
 sprite_frames = SubResource("SpriteFrames_lvdm7")
@@ -633,6 +760,7 @@ autoplay = "default"
 frame_progress = 0.360604
 
 [node name="hugekelp9" type="AnimatedSprite2D" parent="y_sorted/kelp"]
+y_sort_enabled = true
 position = Vector2(757, 631)
 scale = Vector2(2, 4)
 sprite_frames = SubResource("SpriteFrames_lvdm7")
@@ -640,6 +768,7 @@ autoplay = "default"
 frame_progress = 0.360604
 
 [node name="hugekelp10" type="AnimatedSprite2D" parent="y_sorted/kelp"]
+y_sort_enabled = true
 position = Vector2(597, 342)
 scale = Vector2(2, 4)
 sprite_frames = SubResource("SpriteFrames_lvdm7")
@@ -647,6 +776,7 @@ autoplay = "default"
 frame_progress = 0.360604
 
 [node name="hugekelp11" type="AnimatedSprite2D" parent="y_sorted/kelp"]
+y_sort_enabled = true
 position = Vector2(405, 340)
 scale = Vector2(2, 4)
 sprite_frames = SubResource("SpriteFrames_lvdm7")
@@ -654,6 +784,7 @@ autoplay = "default"
 frame_progress = 0.360604
 
 [node name="hugekelp12" type="AnimatedSprite2D" parent="y_sorted/kelp"]
+y_sort_enabled = true
 position = Vector2(1058, 129)
 scale = Vector2(2, 4)
 sprite_frames = SubResource("SpriteFrames_lvdm7")
@@ -661,6 +792,7 @@ autoplay = "default"
 frame_progress = 0.360604
 
 [node name="hugekelp13" type="AnimatedSprite2D" parent="y_sorted/kelp"]
+y_sort_enabled = true
 position = Vector2(1281, 135)
 scale = Vector2(2, 4)
 sprite_frames = SubResource("SpriteFrames_lvdm7")
@@ -668,6 +800,7 @@ autoplay = "default"
 frame_progress = 0.360604
 
 [node name="hugekelp14" type="AnimatedSprite2D" parent="y_sorted/kelp"]
+y_sort_enabled = true
 position = Vector2(779, -182)
 scale = Vector2(2, 4)
 sprite_frames = SubResource("SpriteFrames_lvdm7")
@@ -675,6 +808,7 @@ autoplay = "default"
 frame_progress = 0.360604
 
 [node name="hugekelp15" type="AnimatedSprite2D" parent="y_sorted/kelp"]
+y_sort_enabled = true
 position = Vector2(830, -142)
 scale = Vector2(2, 4)
 sprite_frames = SubResource("SpriteFrames_lvdm7")
@@ -682,6 +816,7 @@ autoplay = "default"
 frame_progress = 0.360604
 
 [node name="hugekelp16" type="AnimatedSprite2D" parent="y_sorted/kelp"]
+y_sort_enabled = true
 position = Vector2(840, -215)
 scale = Vector2(2, 4)
 sprite_frames = SubResource("SpriteFrames_lvdm7")
@@ -689,6 +824,7 @@ autoplay = "default"
 frame_progress = 0.360604
 
 [node name="hugekelp17" type="AnimatedSprite2D" parent="y_sorted/kelp"]
+y_sort_enabled = true
 position = Vector2(884, -252)
 scale = Vector2(2, 4)
 sprite_frames = SubResource("SpriteFrames_lvdm7")
@@ -696,6 +832,7 @@ autoplay = "default"
 frame_progress = 0.360604
 
 [node name="hugekelp18" type="AnimatedSprite2D" parent="y_sorted/kelp"]
+y_sort_enabled = true
 position = Vector2(893, -188)
 scale = Vector2(2, 4)
 sprite_frames = SubResource("SpriteFrames_lvdm7")
@@ -703,6 +840,7 @@ autoplay = "default"
 frame_progress = 0.360604
 
 [node name="hugekelp19" type="AnimatedSprite2D" parent="y_sorted/kelp"]
+y_sort_enabled = true
 position = Vector2(581, -198)
 scale = Vector2(2, 4)
 sprite_frames = SubResource("SpriteFrames_lvdm7")
@@ -710,6 +848,7 @@ autoplay = "default"
 frame_progress = 0.360604
 
 [node name="hugekelp20" type="AnimatedSprite2D" parent="y_sorted/kelp"]
+y_sort_enabled = true
 position = Vector2(565, -134)
 scale = Vector2(2, 4)
 sprite_frames = SubResource("SpriteFrames_lvdm7")
@@ -717,6 +856,7 @@ autoplay = "default"
 frame_progress = 0.360604
 
 [node name="hugekelp21" type="AnimatedSprite2D" parent="y_sorted/kelp"]
+y_sort_enabled = true
 position = Vector2(533, -188.5)
 scale = Vector2(2, 4)
 sprite_frames = SubResource("SpriteFrames_lvdm7")
@@ -724,6 +864,7 @@ autoplay = "default"
 frame_progress = 0.360604
 
 [node name="hugekelp22" type="AnimatedSprite2D" parent="y_sorted/kelp"]
+y_sort_enabled = true
 position = Vector2(488, -226.5)
 scale = Vector2(2, 4)
 sprite_frames = SubResource("SpriteFrames_lvdm7")
@@ -731,6 +872,7 @@ autoplay = "default"
 frame_progress = 0.360604
 
 [node name="hugekelp23" type="AnimatedSprite2D" parent="y_sorted/kelp"]
+y_sort_enabled = true
 position = Vector2(478, -165.5)
 scale = Vector2(2, 4)
 sprite_frames = SubResource("SpriteFrames_lvdm7")
@@ -738,6 +880,7 @@ autoplay = "default"
 frame_progress = 0.360604
 
 [node name="hugekelp24" type="AnimatedSprite2D" parent="y_sorted/kelp"]
+y_sort_enabled = true
 position = Vector2(437, -250.5)
 scale = Vector2(2, 4)
 sprite_frames = SubResource("SpriteFrames_lvdm7")
@@ -745,6 +888,7 @@ autoplay = "default"
 frame_progress = 0.360604
 
 [node name="hugekelp25" type="AnimatedSprite2D" parent="y_sorted/kelp"]
+y_sort_enabled = true
 position = Vector2(226, 50.5)
 scale = Vector2(2, 4)
 sprite_frames = SubResource("SpriteFrames_lvdm7")
@@ -752,6 +896,7 @@ autoplay = "default"
 frame_progress = 0.360604
 
 [node name="hugekelp26" type="AnimatedSprite2D" parent="y_sorted/kelp"]
+y_sort_enabled = true
 position = Vector2(-203, -183.5)
 scale = Vector2(2, 4)
 sprite_frames = SubResource("SpriteFrames_lvdm7")
@@ -759,6 +904,7 @@ autoplay = "default"
 frame_progress = 0.360604
 
 [node name="hugekelp27" type="AnimatedSprite2D" parent="y_sorted/kelp"]
+y_sort_enabled = true
 position = Vector2(-31, -180.5)
 scale = Vector2(2, 4)
 sprite_frames = SubResource("SpriteFrames_lvdm7")
@@ -766,6 +912,7 @@ autoplay = "default"
 frame_progress = 0.360604
 
 [node name="hugekelp28" type="AnimatedSprite2D" parent="y_sorted/kelp"]
+y_sort_enabled = true
 position = Vector2(962.5, -9.5)
 scale = Vector2(2, 4)
 sprite_frames = SubResource("SpriteFrames_lvdm7")
@@ -773,6 +920,7 @@ autoplay = "default"
 frame_progress = 0.360604
 
 [node name="hugekelp29" type="AnimatedSprite2D" parent="y_sorted/kelp"]
+y_sort_enabled = true
 position = Vector2(1147, -149)
 scale = Vector2(2, 4)
 sprite_frames = SubResource("SpriteFrames_lvdm7")
@@ -780,6 +928,7 @@ autoplay = "default"
 frame_progress = 0.360604
 
 [node name="hugekelp30" type="AnimatedSprite2D" parent="y_sorted/kelp"]
+y_sort_enabled = true
 position = Vector2(1193.5, -51.5)
 scale = Vector2(2, 4)
 sprite_frames = SubResource("SpriteFrames_lvdm7")
@@ -787,6 +936,7 @@ autoplay = "default"
 frame_progress = 0.360604
 
 [node name="hugekelp31" type="AnimatedSprite2D" parent="y_sorted/kelp"]
+y_sort_enabled = true
 position = Vector2(1087, -44)
 scale = Vector2(2, 4)
 sprite_frames = SubResource("SpriteFrames_lvdm7")
@@ -794,156 +944,182 @@ autoplay = "default"
 frame_progress = 0.360604
 
 [node name="bigkelp2" type="AnimatedSprite2D" parent="y_sorted/kelp"]
+y_sort_enabled = true
 position = Vector2(-44.5, 100)
 sprite_frames = SubResource("SpriteFrames_rqbkp")
 autoplay = "default"
 frame_progress = 0.340556
 
 [node name="bigkelp3" type="AnimatedSprite2D" parent="y_sorted/kelp"]
+y_sort_enabled = true
 position = Vector2(34, 283)
 sprite_frames = SubResource("SpriteFrames_rqbkp")
 autoplay = "default"
 frame_progress = 0.763646
 
 [node name="bigkelp4" type="AnimatedSprite2D" parent="y_sorted/kelp"]
+y_sort_enabled = true
 position = Vector2(-307.5, 347)
 sprite_frames = SubResource("SpriteFrames_rqbkp")
 autoplay = "default"
 frame_progress = 0.763646
 
 [node name="bigkelp5" type="AnimatedSprite2D" parent="y_sorted/kelp"]
+y_sort_enabled = true
 position = Vector2(-451.5, 143.5)
 sprite_frames = SubResource("SpriteFrames_rqbkp")
 autoplay = "default"
 frame_progress = 0.763646
 
 [node name="bigkelp6" type="AnimatedSprite2D" parent="y_sorted/kelp"]
+y_sort_enabled = true
 position = Vector2(-261, -198)
 sprite_frames = SubResource("SpriteFrames_rqbkp")
 autoplay = "default"
 frame_progress = 0.763646
 
 [node name="bigkelp7" type="AnimatedSprite2D" parent="y_sorted/kelp"]
+y_sort_enabled = true
 position = Vector2(355, 71)
 sprite_frames = SubResource("SpriteFrames_rqbkp")
 autoplay = "default"
 frame_progress = 0.763646
 
 [node name="bigkelp8" type="AnimatedSprite2D" parent="y_sorted/kelp"]
+y_sort_enabled = true
 position = Vector2(370.5, 235)
 sprite_frames = SubResource("SpriteFrames_rqbkp")
 autoplay = "default"
 frame_progress = 0.763646
 
 [node name="bigkelp9" type="AnimatedSprite2D" parent="y_sorted/kelp"]
+y_sort_enabled = true
 position = Vector2(295.5, 157.5)
 sprite_frames = SubResource("SpriteFrames_rqbkp")
 autoplay = "default"
 frame_progress = 0.763646
 
 [node name="bigkelp10" type="AnimatedSprite2D" parent="y_sorted/kelp"]
+y_sort_enabled = true
 position = Vector2(212.5, 569)
 sprite_frames = SubResource("SpriteFrames_rqbkp")
 autoplay = "default"
 frame_progress = 0.763646
 
 [node name="bigkelp11" type="AnimatedSprite2D" parent="y_sorted/kelp"]
+y_sort_enabled = true
 position = Vector2(196, 696)
 sprite_frames = SubResource("SpriteFrames_rqbkp")
 autoplay = "default"
 frame_progress = 0.763646
 
 [node name="bigkelp12" type="AnimatedSprite2D" parent="y_sorted/kelp"]
+y_sort_enabled = true
 position = Vector2(-182, 603)
 sprite_frames = SubResource("SpriteFrames_rqbkp")
 autoplay = "default"
 frame_progress = 0.763646
 
 [node name="bigkelp13" type="AnimatedSprite2D" parent="y_sorted/kelp"]
+y_sort_enabled = true
 position = Vector2(628, 564)
 sprite_frames = SubResource("SpriteFrames_rqbkp")
 autoplay = "default"
 frame_progress = 0.763646
 
 [node name="bigkelp14" type="AnimatedSprite2D" parent="y_sorted/kelp"]
+y_sort_enabled = true
 position = Vector2(523.5, 686.5)
 sprite_frames = SubResource("SpriteFrames_rqbkp")
 autoplay = "default"
 frame_progress = 0.763646
 
 [node name="bigkelp15" type="AnimatedSprite2D" parent="y_sorted/kelp"]
+y_sort_enabled = true
 position = Vector2(807.5, 358.5)
 sprite_frames = SubResource("SpriteFrames_rqbkp")
 autoplay = "default"
 frame_progress = 0.763646
 
 [node name="bigkelp16" type="AnimatedSprite2D" parent="y_sorted/kelp"]
+y_sort_enabled = true
 position = Vector2(611.5, 124)
 sprite_frames = SubResource("SpriteFrames_rqbkp")
 autoplay = "default"
 frame_progress = 0.763646
 
 [node name="bigkelp17" type="AnimatedSprite2D" parent="y_sorted/kelp"]
+y_sort_enabled = true
 position = Vector2(796, 46.5)
 sprite_frames = SubResource("SpriteFrames_rqbkp")
 autoplay = "default"
 frame_progress = 0.763646
 
 [node name="bigkelp18" type="AnimatedSprite2D" parent="y_sorted/kelp"]
+y_sort_enabled = true
 position = Vector2(1141, 261.5)
 sprite_frames = SubResource("SpriteFrames_rqbkp")
 autoplay = "default"
 frame_progress = 0.763646
 
 [node name="bigkelp19" type="AnimatedSprite2D" parent="y_sorted/kelp"]
+y_sort_enabled = true
 position = Vector2(1239.5, 472)
 sprite_frames = SubResource("SpriteFrames_rqbkp")
 autoplay = "default"
 frame_progress = 0.763646
 
 [node name="bigkelp20" type="AnimatedSprite2D" parent="y_sorted/kelp"]
+y_sort_enabled = true
 position = Vector2(1198, 661)
 sprite_frames = SubResource("SpriteFrames_rqbkp")
 autoplay = "default"
 frame_progress = 0.763646
 
 [node name="bigkelp21" type="AnimatedSprite2D" parent="y_sorted/kelp"]
+y_sort_enabled = true
 position = Vector2(1011.5, 432.5)
 sprite_frames = SubResource("SpriteFrames_rqbkp")
 autoplay = "default"
 frame_progress = 0.763646
 
 [node name="bigkelp22" type="AnimatedSprite2D" parent="y_sorted/kelp"]
+y_sort_enabled = true
 position = Vector2(975, -69)
 sprite_frames = SubResource("SpriteFrames_rqbkp")
 autoplay = "default"
 frame_progress = 0.763646
 
 [node name="bigkelp23" type="AnimatedSprite2D" parent="y_sorted/kelp"]
+y_sort_enabled = true
 position = Vector2(864, -177.5)
 sprite_frames = SubResource("SpriteFrames_rqbkp")
 autoplay = "default"
 frame_progress = 0.763646
 
 [node name="bigkelp24" type="AnimatedSprite2D" parent="y_sorted/kelp"]
+y_sort_enabled = true
 position = Vector2(588, -143.5)
 sprite_frames = SubResource("SpriteFrames_rqbkp")
 autoplay = "default"
 frame_progress = 0.763646
 
 [node name="bigkelp25" type="AnimatedSprite2D" parent="y_sorted/kelp"]
+y_sort_enabled = true
 position = Vector2(304.5, -215.5)
 sprite_frames = SubResource("SpriteFrames_rqbkp")
 autoplay = "default"
 frame_progress = 0.763646
 
 [node name="bigkelp26" type="AnimatedSprite2D" parent="y_sorted/kelp"]
+y_sort_enabled = true
 position = Vector2(1316, -55.5)
 sprite_frames = SubResource("SpriteFrames_rqbkp")
 autoplay = "default"
 frame_progress = 0.763646
 
 [node name="npcs" type="Node2D" parent="y_sorted"]
+z_as_relative = false
 y_sort_enabled = true
 
 [node name="NPC" parent="y_sorted/npcs" instance=ExtResource("16_ifrp4")]
@@ -1019,19 +1195,225 @@ path_to_new_scene = ""
 position = Vector2(-7.95322, 12.7258)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+script = ExtResource("24_2q3ei")
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
 material = SubResource("ShaderMaterial_ysec4")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -2064.0
-offset_top = -1273.0
-offset_right = -2064.0
-offset_bottom = -1273.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(10, 10)
 mouse_filter = 2
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CanvasLayer/Control"]
+position = Vector2(36, 39)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_u8lmi")
+autoplay = "default"
+frame = 11
+frame_progress = 1.0
+speed_scale = 3.0
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="CanvasLayer/Control"]
+position = Vector2(326, 118)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_u8lmi")
+frame_progress = 0.902718
+speed_scale = 3.0
+
+[node name="AnimatedSprite2D3" type="AnimatedSprite2D" parent="CanvasLayer/Control"]
+position = Vector2(265, 299)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_u8lmi")
+frame_progress = 0.902718
+speed_scale = 3.0
+
+[node name="AnimatedSprite2D4" type="AnimatedSprite2D" parent="CanvasLayer/Control"]
+position = Vector2(161, 418)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_u8lmi")
+frame_progress = 0.902718
+speed_scale = 3.0
+
+[node name="AnimatedSprite2D5" type="AnimatedSprite2D" parent="CanvasLayer/Control"]
+position = Vector2(122, 545)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_u8lmi")
+frame_progress = 0.902718
+speed_scale = 3.0
+
+[node name="AnimatedSprite2D6" type="AnimatedSprite2D" parent="CanvasLayer/Control"]
+position = Vector2(263, 643)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_u8lmi")
+frame_progress = 0.902718
+speed_scale = 3.0
+
+[node name="AnimatedSprite2D7" type="AnimatedSprite2D" parent="CanvasLayer/Control"]
+position = Vector2(445, 605)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_u8lmi")
+frame_progress = 0.902718
+speed_scale = 3.0
+
+[node name="AnimatedSprite2D8" type="AnimatedSprite2D" parent="CanvasLayer/Control"]
+position = Vector2(566, 559)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_u8lmi")
+frame_progress = 0.902718
+speed_scale = 3.0
+
+[node name="AnimatedSprite2D9" type="AnimatedSprite2D" parent="CanvasLayer/Control"]
+position = Vector2(459, 449)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_u8lmi")
+frame_progress = 0.902718
+speed_scale = 3.0
+
+[node name="AnimatedSprite2D10" type="AnimatedSprite2D" parent="CanvasLayer/Control"]
+position = Vector2(568, 348)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_u8lmi")
+frame_progress = 0.902718
+speed_scale = 3.0
+
+[node name="AnimatedSprite2D11" type="AnimatedSprite2D" parent="CanvasLayer/Control"]
+position = Vector2(689, 421)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_u8lmi")
+frame_progress = 0.902718
+speed_scale = 3.0
+
+[node name="AnimatedSprite2D12" type="AnimatedSprite2D" parent="CanvasLayer/Control"]
+position = Vector2(759, 524)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_u8lmi")
+frame_progress = 0.902718
+speed_scale = 3.0
+
+[node name="AnimatedSprite2D13" type="AnimatedSprite2D" parent="CanvasLayer/Control"]
+position = Vector2(827, 641)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_u8lmi")
+frame_progress = 0.902718
+speed_scale = 3.0
+
+[node name="AnimatedSprite2D14" type="AnimatedSprite2D" parent="CanvasLayer/Control"]
+position = Vector2(968, 626)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_u8lmi")
+frame_progress = 0.902718
+speed_scale = 3.0
+
+[node name="AnimatedSprite2D15" type="AnimatedSprite2D" parent="CanvasLayer/Control"]
+position = Vector2(1105, 664)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_u8lmi")
+frame_progress = 0.902718
+speed_scale = 3.0
+
+[node name="AnimatedSprite2D16" type="AnimatedSprite2D" parent="CanvasLayer/Control"]
+position = Vector2(1186, 592)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_u8lmi")
+frame_progress = 0.902718
+speed_scale = 3.0
+
+[node name="AnimatedSprite2D17" type="AnimatedSprite2D" parent="CanvasLayer/Control"]
+position = Vector2(1036, 464)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_u8lmi")
+frame_progress = 0.902718
+speed_scale = 3.0
+
+[node name="AnimatedSprite2D18" type="AnimatedSprite2D" parent="CanvasLayer/Control"]
+position = Vector2(1116, 383)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_u8lmi")
+frame_progress = 0.902718
+speed_scale = 3.0
+
+[node name="AnimatedSprite2D19" type="AnimatedSprite2D" parent="CanvasLayer/Control"]
+position = Vector2(1022, 280)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_u8lmi")
+frame_progress = 0.902718
+speed_scale = 3.0
+
+[node name="AnimatedSprite2D20" type="AnimatedSprite2D" parent="CanvasLayer/Control"]
+position = Vector2(912, 255)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_u8lmi")
+frame_progress = 0.902718
+speed_scale = 3.0
+
+[node name="AnimatedSprite2D21" type="AnimatedSprite2D" parent="CanvasLayer/Control"]
+position = Vector2(759, 245)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_u8lmi")
+frame_progress = 0.902718
+speed_scale = 3.0
+
+[node name="AnimatedSprite2D22" type="AnimatedSprite2D" parent="CanvasLayer/Control"]
+position = Vector2(896, 154)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_u8lmi")
+frame_progress = 0.902718
+speed_scale = 3.0
+
+[node name="AnimatedSprite2D23" type="AnimatedSprite2D" parent="CanvasLayer/Control"]
+position = Vector2(1080, 145)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_u8lmi")
+frame_progress = 0.902718
+speed_scale = 3.0
+
+[node name="AnimatedSprite2D24" type="AnimatedSprite2D" parent="CanvasLayer/Control"]
+position = Vector2(1148, 203)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_u8lmi")
+frame_progress = 0.902718
+speed_scale = 3.0
+
+[node name="AnimatedSprite2D25" type="AnimatedSprite2D" parent="CanvasLayer/Control"]
+position = Vector2(1161, 59)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_u8lmi")
+frame_progress = 0.902718
+speed_scale = 3.0
+
+[node name="AnimatedSprite2D26" type="AnimatedSprite2D" parent="CanvasLayer/Control"]
+position = Vector2(822, 57)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_u8lmi")
+frame_progress = 0.902718
+speed_scale = 3.0
+
+[node name="AnimatedSprite2D27" type="AnimatedSprite2D" parent="CanvasLayer/Control"]
+position = Vector2(522, 61)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_u8lmi")
+frame_progress = 0.902718
+speed_scale = 3.0
+
+[node name="AnimatedSprite2D28" type="AnimatedSprite2D" parent="CanvasLayer/Control"]
+position = Vector2(396, 269)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_u8lmi")
+frame_progress = 0.902718
+speed_scale = 3.0
+
+[node name="bubbletimer" type="Timer" parent="CanvasLayer"]
+autostart = true
+
+[connection signal="timeout" from="CanvasLayer/bubbletimer" to="CanvasLayer" method="_on_bubbletimer_timeout"]
 
 [editable path="backhome"]

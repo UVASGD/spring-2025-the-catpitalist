@@ -1,0 +1,48 @@
+[gd_scene load_steps=7 format=3 uid="uid://d4ai7u107548e"]
+
+[ext_resource type="Script" path="res://assets/scripts/npc.gd" id="1_2n3ap"]
+[ext_resource type="Texture2D" uid="uid://cnwmi6l0x0ufl" path="res://assets/sprites/World NPCs/kedfu.png" id="2_71vll"]
+[ext_resource type="Script" path="res://assets/scripts/conversation.gd" id="2_tx76v"]
+[ext_resource type="Script" path="res://assets/scripts/message.gd" id="4_lnmya"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pmeq2"]
+radius = 32.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_njb3k"]
+size = Vector2(20, 24)
+
+[node name="NPC" type="Node2D" groups=["NPCs"]]
+script = ExtResource("1_2n3ap")
+npc_name = "Kedrick"
+exhaust_dialogue_text = "You will die in 42 days."
+voice_pitch = 0.3
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_71vll")
+
+[node name="hitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox"]
+shape = SubResource("CircleShape2D_pmeq2")
+
+[node name="collisionbox" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="collisionbox"]
+position = Vector2(0, 12)
+shape = SubResource("RectangleShape2D_njb3k")
+
+[node name="Convos" type="Node" parent="."]
+
+[node name="Conversation" type="Node" parent="Convos"]
+script = ExtResource("2_tx76v")
+
+[node name="Messages" type="Node" parent="Convos/Conversation"]
+
+[node name="Message" type="Node" parent="Convos/Conversation/Messages"]
+script = ExtResource("4_lnmya")
+text = "My name is Kedrick. I'm the VP of SGD. I ordered your world to be created. Ultimately, I am the judge of your quality. Your purpose."
+
+[node name="start" type="Marker2D" parent="."]
+
+[node name="end" type="Marker2D" parent="."]
