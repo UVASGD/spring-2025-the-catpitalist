@@ -1,10 +1,13 @@
-[gd_scene load_steps=16 format=4 uid="uid://cauh4a088iphm"]
+[gd_scene load_steps=19 format=4 uid="uid://cauh4a088iphm"]
 
 [ext_resource type="Script" path="res://assets/scripts/indoors.gd" id="1_ki6vb"]
-[ext_resource type="Texture2D" uid="uid://b27qipy3lg8og" path="res://assets/sprites/SAND TILES.png" id="2_4ho4k"]
-[ext_resource type="Texture2D" uid="uid://ch641n8mqkxrf" path="res://assets/sprites/star shells.png" id="3_pfh2g"]
-[ext_resource type="Texture2D" uid="uid://djc4uwjngre8u" path="res://assets/sprites/world objects/rock_house.png" id="4_uhroo"]
+[ext_resource type="Texture2D" uid="uid://b27qipy3lg8og" path="res://assets/sprites/tilesets/SAND TILES.png" id="2_4ho4k"]
+[ext_resource type="Texture2D" uid="uid://ch641n8mqkxrf" path="res://assets/sprites/tilesets/star shells.png" id="3_pfh2g"]
+[ext_resource type="Texture2D" uid="uid://djc4uwjngre8u" path="res://assets/sprites/world objects/underwater/rock_house.png" id="4_uhroo"]
+[ext_resource type="Texture2D" uid="uid://ctdhaty1nmbc3" path="res://assets/sprites/world objects/underwater/sunken house.png" id="6_npg7e"]
 [ext_resource type="Shader" path="res://assets/scenes/worlds/underwater_zone.gdshader" id="6_pyg0k"]
+[ext_resource type="Texture2D" uid="uid://2imx5wu6tvll" path="res://assets/sprites/world objects/underwater/sewerentrance.png" id="7_lqy8f"]
+[ext_resource type="Texture2D" uid="uid://cyhw4empbtshg" path="res://assets/sprites/world objects/underwater/tripi tropi tropi tripa.png" id="8_tglqa"]
 [ext_resource type="PackedScene" uid="uid://bmw6wxkk4jdhu" path="res://assets/scenes/transportzone.tscn" id="12_oodse"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0i4su"]
@@ -67,22 +70,39 @@ y_sort_enabled = true
 scale = Vector2(2, 2)
 
 [node name="spawnpoint" type="Node2D" parent="y_sorted"]
-position = Vector2(-2, -214)
+position = Vector2(-404.5, -206.5)
 
-[node name="Sprite2D" type="Sprite2D" parent="y_sorted"]
-position = Vector2(210, -149)
+[node name="houses" type="Node2D" parent="y_sorted"]
+
+[node name="rockhouse" type="Sprite2D" parent="y_sorted/houses"]
+position = Vector2(1169.5, -43)
+scale = Vector2(2, 2)
 texture = ExtResource("4_uhroo")
 
-[node name="StaticBody2D" type="StaticBody2D" parent="y_sorted/Sprite2D"]
+[node name="StaticBody2D" type="StaticBody2D" parent="y_sorted/houses/rockhouse"]
 position = Vector2(1, 69)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="y_sorted/Sprite2D/StaticBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="y_sorted/houses/rockhouse/StaticBody2D"]
 position = Vector2(1, 16)
 shape = SubResource("RectangleShape2D_usq1p")
 
-[node name="transportzone" parent="y_sorted/Sprite2D" instance=ExtResource("12_oodse")]
+[node name="transportzone" parent="y_sorted/houses/rockhouse" instance=ExtResource("12_oodse")]
 position = Vector2(-1, 88)
 path_to_new_scene = "res://assets/scenes/rockhouse_indoors.tscn"
+
+[node name="SunkenHouse" type="Sprite2D" parent="y_sorted/houses"]
+position = Vector2(656.5, -294)
+scale = Vector2(2, 2)
+texture = ExtResource("6_npg7e")
+
+[node name="Sewerentrance" type="Sprite2D" parent="y_sorted"]
+position = Vector2(-406, -352.5)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("7_lqy8f")
+
+[node name="TripiTropiTropiTripa" type="Sprite2D" parent="y_sorted"]
+position = Vector2(82, 65.5)
+texture = ExtResource("8_tglqa")
 
 [node name="worldbounds" type="Node2D" parent="."]
 scale = Vector2(2, 2)
@@ -116,7 +136,7 @@ position = Vector2(-392, 24)
 shape = SubResource("WorldBoundaryShape2D_o7f2n")
 
 [node name="backhome" parent="." instance=ExtResource("12_oodse")]
-position = Vector2(39, -601)
+position = Vector2(-766, -586)
 scale = Vector2(4, 4)
 returns = true
 path_to_new_scene = ""

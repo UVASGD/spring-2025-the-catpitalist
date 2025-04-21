@@ -1,12 +1,12 @@
 [gd_scene load_steps=17 format=4 uid="uid://5bfgh03q0r1w"]
 
 [ext_resource type="Script" path="res://assets/scenes/farmhouse_indoors.gd" id="1_r3u6b"]
-[ext_resource type="Texture2D" uid="uid://c0vmqqvpblax7" path="res://assets/sprites/world objects/bookcase.png" id="4_vnpam"]
-[ext_resource type="Texture2D" uid="uid://vcjyikv4xk4u" path="res://assets/sprites/world objects/WoodenTable.png" id="5_ygcx7"]
-[ext_resource type="Texture2D" uid="uid://c5m1438blrhs" path="res://assets/sprites/world objects/WoodenChair_Rg.png" id="6_f5d2j"]
-[ext_resource type="Texture2D" uid="uid://qo83umq87iob" path="res://assets/sprites/world objects/WoodenChair_Up.png" id="7_eu46t"]
-[ext_resource type="Texture2D" uid="uid://chasce66yjlj0" path="res://assets/sprites/world objects/upholstery.png" id="8_mnwm0"]
-[ext_resource type="Texture2D" uid="uid://dog82rwp4um5p" path="res://assets/sprites/wood_tiles.png" id="9_tswhx"]
+[ext_resource type="Texture2D" uid="uid://c0vmqqvpblax7" path="res://assets/sprites/world objects/indoors/bookcase.png" id="4_vnpam"]
+[ext_resource type="Texture2D" uid="uid://vcjyikv4xk4u" path="res://assets/sprites/world objects/indoors/WoodenTable.png" id="5_ygcx7"]
+[ext_resource type="Texture2D" uid="uid://c5m1438blrhs" path="res://assets/sprites/world objects/indoors/WoodenChair_Rg.png" id="6_f5d2j"]
+[ext_resource type="Texture2D" uid="uid://qo83umq87iob" path="res://assets/sprites/world objects/indoors/WoodenChair_Up.png" id="7_eu46t"]
+[ext_resource type="Texture2D" uid="uid://chasce66yjlj0" path="res://assets/sprites/world objects/indoors/upholstery.png" id="8_mnwm0"]
+[ext_resource type="Texture2D" uid="uid://dog82rwp4um5p" path="res://assets/sprites/tilesets/wood_tiles.png" id="9_tswhx"]
 [ext_resource type="PackedScene" uid="uid://bmw6wxkk4jdhu" path="res://assets/scenes/transportzone.tscn" id="10_tjoyf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_48lco"]

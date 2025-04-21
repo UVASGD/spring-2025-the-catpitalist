@@ -1,16 +1,16 @@
 [gd_scene load_steps=23 format=4 uid="uid://ckgy8s3ficfqw"]
 
 [ext_resource type="Script" path="res://assets/scenes/farmhouse_indoors.gd" id="1_mdxdg"]
-[ext_resource type="Texture2D" uid="uid://dog82rwp4um5p" path="res://assets/sprites/wood_tiles.png" id="2_8uqx6"]
-[ext_resource type="Texture2D" uid="uid://c0vmqqvpblax7" path="res://assets/sprites/world objects/bookcase.png" id="3_m8wf0"]
-[ext_resource type="Texture2D" uid="uid://vcjyikv4xk4u" path="res://assets/sprites/world objects/WoodenTable.png" id="4_25tu5"]
-[ext_resource type="Texture2D" uid="uid://c5m1438blrhs" path="res://assets/sprites/world objects/WoodenChair_Rg.png" id="5_1fdv0"]
-[ext_resource type="Texture2D" uid="uid://qo83umq87iob" path="res://assets/sprites/world objects/WoodenChair_Up.png" id="6_wfqro"]
-[ext_resource type="Texture2D" uid="uid://chasce66yjlj0" path="res://assets/sprites/world objects/upholstery.png" id="7_vha7r"]
+[ext_resource type="Texture2D" uid="uid://dog82rwp4um5p" path="res://assets/sprites/tilesets/wood_tiles.png" id="2_8uqx6"]
+[ext_resource type="Texture2D" uid="uid://c0vmqqvpblax7" path="res://assets/sprites/world objects/indoors/bookcase.png" id="3_m8wf0"]
+[ext_resource type="Texture2D" uid="uid://vcjyikv4xk4u" path="res://assets/sprites/world objects/indoors/WoodenTable.png" id="4_25tu5"]
+[ext_resource type="Texture2D" uid="uid://c5m1438blrhs" path="res://assets/sprites/world objects/indoors/WoodenChair_Rg.png" id="5_1fdv0"]
+[ext_resource type="Texture2D" uid="uid://qo83umq87iob" path="res://assets/sprites/world objects/indoors/WoodenChair_Up.png" id="6_wfqro"]
+[ext_resource type="Texture2D" uid="uid://chasce66yjlj0" path="res://assets/sprites/world objects/indoors/upholstery.png" id="7_vha7r"]
 [ext_resource type="PackedScene" uid="uid://c8t53va2ko46x" path="res://assets/scenes/npcs/mom.tscn" id="8_fns02"]
 [ext_resource type="PackedScene" uid="uid://dy0dw10fu38wf" path="res://assets/scenes/npcs/normaldad.tscn" id="9_2rfny"]
 [ext_resource type="PackedScene" uid="uid://caraohecg8kjn" path="res://assets/scenes/bed.tscn" id="9_l7gog"]
-[ext_resource type="PackedScene" path="res://assets/scenes/transportzone.tscn" id="10_x8kts"]
+[ext_resource type="PackedScene" uid="uid://bmw6wxkk4jdhu" path="res://assets/scenes/transportzone.tscn" id="10_x8kts"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_48lco"]
 size = Vector2(1055.56, 177.778)

@@ -1,0 +1,153 @@
+[gd_scene load_steps=20 format=3 uid="uid://bs15iopm0q724"]
+
+[ext_resource type="Script" path="res://assets/scripts/npc.gd" id="1_57gek"]
+[ext_resource type="Texture2D" uid="uid://cui0n4x70oayk" path="res://assets/sprites/World NPCs/jellyperson-Sheet (1).png" id="2_g4tfd"]
+[ext_resource type="Script" path="res://assets/scripts/conversation.gd" id="2_irwds"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wgwr6"]
+atlas = ExtResource("2_g4tfd")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cjpi3"]
+atlas = ExtResource("2_g4tfd")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_shdrm"]
+atlas = ExtResource("2_g4tfd")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ofgug"]
+atlas = ExtResource("2_g4tfd")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nwxat"]
+atlas = ExtResource("2_g4tfd")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3apju"]
+atlas = ExtResource("2_g4tfd")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jq55l"]
+atlas = ExtResource("2_g4tfd")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_htkrk"]
+atlas = ExtResource("2_g4tfd")
+region = Rect2(448, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x2pol"]
+atlas = ExtResource("2_g4tfd")
+region = Rect2(512, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ochgj"]
+atlas = ExtResource("2_g4tfd")
+region = Rect2(576, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nooa7"]
+atlas = ExtResource("2_g4tfd")
+region = Rect2(640, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tmssv"]
+atlas = ExtResource("2_g4tfd")
+region = Rect2(704, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r80r5"]
+atlas = ExtResource("2_g4tfd")
+region = Rect2(768, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7l7yu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wgwr6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cjpi3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_shdrm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ofgug")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nwxat")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3apju")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jq55l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_htkrk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x2pol")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ochgj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nooa7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tmssv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r80r5")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pmeq2"]
+radius = 32.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_njb3k"]
+size = Vector2(20, 24)
+
+[node name="NPC" type="Node2D" groups=["NPCs"]]
+scale = Vector2(2, 2)
+script = ExtResource("1_57gek")
+npc_name = "The Jelly Lady"
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_7l7yu")
+autoplay = "default"
+frame = 8
+frame_progress = 0.547375
+
+[node name="hitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox"]
+shape = SubResource("CircleShape2D_pmeq2")
+
+[node name="collisionbox" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="collisionbox"]
+position = Vector2(0, 12)
+shape = SubResource("RectangleShape2D_njb3k")
+
+[node name="Convos" type="Node" parent="."]
+
+[node name="Conversation" type="Node" parent="Convos"]
+script = ExtResource("2_irwds")
+
+[node name="Messages" type="Node" parent="Convos/Conversation"]
+
+[node name="Conversation2" type="Node" parent="Convos"]
+script = ExtResource("2_irwds")
+
+[node name="Messages" type="Node" parent="Convos/Conversation2"]
+
+[node name="Conversation3" type="Node" parent="Convos"]
+script = ExtResource("2_irwds")
+
+[node name="Messages" type="Node" parent="Convos/Conversation3"]
+
+[node name="start" type="Marker2D" parent="."]
+
+[node name="end" type="Marker2D" parent="."]

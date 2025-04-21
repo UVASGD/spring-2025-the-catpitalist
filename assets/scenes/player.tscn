@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://assets/scripts/player.gd" id="1_ou4u7"]
 [ext_resource type="Texture2D" uid="uid://tgaj6u2d2ecg" path="res://assets/sprites/Player Sprites/cat alt walk-Sheet.png" id="2_ax5s1"]
-[ext_resource type="Texture2D" uid="uid://brmvgg4xkuwa5" path="res://assets/sprites/goblin-sheet.png" id="2_nlbnv"]
+[ext_resource type="Texture2D" uid="uid://brmvgg4xkuwa5" path="res://assets/sprites/World NPCs/goblin-sheet.png" id="2_nlbnv"]
 [ext_resource type="Script" path="res://assets/scripts/interactzone.gd" id="3_poudk"]
 [ext_resource type="Texture2D" uid="uid://bewl44agtpk20" path="res://assets/sprites/Player Sprites/cat_alt_side_walk-Sheet.png" id="4_5fffy"]
 [ext_resource type="Texture2D" uid="uid://b8dxypesqmv5i" path="res://assets/sprites/Player Sprites/cat_alt_idle_animation-Sheet.png" id="4_862cn"]
