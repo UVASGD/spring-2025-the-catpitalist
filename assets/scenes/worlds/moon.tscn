@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=4 uid="uid://bhvk1gqsqu2yg"]
+[gd_scene load_steps=19 format=4 uid="uid://bhvk1gqsqu2yg"]
 
 [ext_resource type="Script" path="res://assets/scripts/indoors.gd" id="1_hi08k"]
 [ext_resource type="Texture2D" uid="uid://cq7qnrqbno34m" path="res://assets/sprites/tilesets/THE MOON.png" id="2_5l5nu"]
@@ -6,10 +6,13 @@
 [ext_resource type="Texture2D" uid="uid://jtmoaotn811g" path="res://assets/sprites/world objects/moon/evil eye house.png" id="4_7jgso"]
 [ext_resource type="Texture2D" uid="uid://b7jkx6dgxcyyq" path="res://assets/sprites/world objects/moon/radiohut.png" id="5_vcsdm"]
 [ext_resource type="Texture2D" uid="uid://dwxyjvi23i41u" path="res://assets/sprites/world objects/moon/squid house.png" id="6_ejigp"]
+[ext_resource type="Texture2D" uid="uid://cind67fjcfiwe" path="res://assets/sprites/world objects/moon/alien_head_house.png" id="7_bny0h"]
+[ext_resource type="Texture2D" uid="uid://bgvosifucmtwo" path="res://assets/sprites/world objects/moon/moon_house.png" id="8_7j8bj"]
 [ext_resource type="PackedScene" uid="uid://bvo2lai7y4w0v" path="res://assets/scenes/npcs/xyler.tscn" id="8_qhetm"]
 [ext_resource type="PackedScene" uid="uid://bondxjsd82ufl" path="res://assets/scenes/npcs/fergus.tscn" id="9_ydjll"]
 [ext_resource type="PackedScene" uid="uid://bflxv8laf1sq6" path="res://assets/scenes/npcs/garebear.tscn" id="10_p7ptf"]
 [ext_resource type="Texture2D" uid="uid://chh44siovg4h1" path="res://assets/sprites/world objects/moon/moon_tree_v1.png" id="11_0vakq"]
+[ext_resource type="Texture2D" uid="uid://ce36bxf27cob" path="res://assets/sprites/world objects/shared/Half_ROCK.png" id="14_bjsit"]
 [ext_resource type="PackedScene" uid="uid://r1gkmux58rxo" path="res://assets/scenes/npcs/alien.tscn" id="16_5mdmc"]
 [ext_resource type="PackedScene" uid="uid://bmw6wxkk4jdhu" path="res://assets/scenes/transportzone.tscn" id="30_lr2m8"]
 
@@ -72,6 +75,16 @@ texture = ExtResource("5_vcsdm")
 position = Vector2(273, 404)
 scale = Vector2(2, 2)
 texture = ExtResource("6_ejigp")
+
+[node name="AlienHeadHouse" type="Sprite2D" parent="y_sorted/houses"]
+position = Vector2(-232, -155)
+scale = Vector2(2, 2)
+texture = ExtResource("7_bny0h")
+
+[node name="MoonHouse" type="Sprite2D" parent="y_sorted/houses"]
+position = Vector2(260, -692)
+scale = Vector2(2, 2)
+texture = ExtResource("8_7j8bj")
 
 [node name="npcs" type="Node2D" parent="y_sorted"]
 y_sort_enabled = true
@@ -138,6 +151,66 @@ texture = ExtResource("11_0vakq")
 
 [node name="bs" type="Node2D" parent="y_sorted"]
 y_sort_enabled = true
+
+[node name="HalfRock" type="Sprite2D" parent="y_sorted/bs"]
+position = Vector2(-298, 699)
+texture = ExtResource("14_bjsit")
+
+[node name="HalfRock2" type="Sprite2D" parent="y_sorted/bs"]
+position = Vector2(254, 1081)
+texture = ExtResource("14_bjsit")
+
+[node name="HalfRock3" type="Sprite2D" parent="y_sorted/bs"]
+position = Vector2(1097, 494)
+texture = ExtResource("14_bjsit")
+
+[node name="HalfRock4" type="Sprite2D" parent="y_sorted/bs"]
+position = Vector2(900, 1005)
+texture = ExtResource("14_bjsit")
+
+[node name="HalfRock5" type="Sprite2D" parent="y_sorted/bs"]
+position = Vector2(1453, 812)
+texture = ExtResource("14_bjsit")
+
+[node name="HalfRock6" type="Sprite2D" parent="y_sorted/bs"]
+position = Vector2(1672, 531)
+texture = ExtResource("14_bjsit")
+
+[node name="HalfRock7" type="Sprite2D" parent="y_sorted/bs"]
+position = Vector2(1289, 16)
+texture = ExtResource("14_bjsit")
+
+[node name="HalfRock8" type="Sprite2D" parent="y_sorted/bs"]
+position = Vector2(1028, -182)
+texture = ExtResource("14_bjsit")
+
+[node name="HalfRock9" type="Sprite2D" parent="y_sorted/bs"]
+position = Vector2(1152, -464)
+texture = ExtResource("14_bjsit")
+
+[node name="HalfRock10" type="Sprite2D" parent="y_sorted/bs"]
+position = Vector2(1377, -286)
+texture = ExtResource("14_bjsit")
+
+[node name="HalfRock11" type="Sprite2D" parent="y_sorted/bs"]
+position = Vector2(369, -631)
+texture = ExtResource("14_bjsit")
+
+[node name="HalfRock12" type="Sprite2D" parent="y_sorted/bs"]
+position = Vector2(-271, -399)
+texture = ExtResource("14_bjsit")
+
+[node name="HalfRock13" type="Sprite2D" parent="y_sorted/bs"]
+position = Vector2(-484, -465)
+texture = ExtResource("14_bjsit")
+
+[node name="HalfRock14" type="Sprite2D" parent="y_sorted/bs"]
+position = Vector2(-698, 71)
+texture = ExtResource("14_bjsit")
+
+[node name="HalfRock15" type="Sprite2D" parent="y_sorted/bs"]
+position = Vector2(-613, 296)
+texture = ExtResource("14_bjsit")
 
 [node name="dummyhouses" type="Node2D" parent="y_sorted"]
 y_sort_enabled = true
