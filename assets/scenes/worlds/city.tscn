@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=4 uid="uid://cd74drdf1jwsh"]
+[gd_scene load_steps=56 format=4 uid="uid://cd74drdf1jwsh"]
 
 [ext_resource type="Script" path="res://assets/scripts/indoors.gd" id="1_608q5"]
 [ext_resource type="Texture2D" uid="uid://dd4wsteki2cb7" path="res://assets/sprites/tilesets/road tiles.png" id="2_b2ujj"]
@@ -30,6 +30,8 @@
 [ext_resource type="Texture2D" uid="uid://drrsks8u2j4p" path="res://assets/sprites/world objects/city/swingset.png" id="25_wf1em"]
 [ext_resource type="Texture2D" uid="uid://dt0rdeavxwmg1" path="res://assets/sprites/world objects/city/sandbox.png" id="26_xgllw"]
 [ext_resource type="Texture2D" uid="uid://ce36bxf27cob" path="res://assets/sprites/world objects/shared/Half_ROCK.png" id="27_qmurg"]
+[ext_resource type="Texture2D" uid="uid://c30seulpk3ojg" path="res://assets/sprites/world objects/city/crash_dirt.png" id="30_te0eh"]
+[ext_resource type="Texture2D" uid="uid://qh8veeicoho" path="res://assets/sprites/world objects/city/rocketship_broken.png" id="31_raphl"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ljycj"]
 texture = ExtResource("2_b2ujj")
@@ -285,6 +287,9 @@ size = Vector2(162.5, 50)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mk00a"]
 size = Vector2(124.333, 54)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8j4fk"]
+size = Vector2(53.7645, 105.17)
+
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_o7f2n"]
 normal = Vector2(1, 0)
 
@@ -515,11 +520,14 @@ scale = Vector2(5, 5)
 position = Vector2(1152, 794)
 
 [node name="NPC6" parent="y_sorted/npcs" instance=ExtResource("11_0206h")]
-position = Vector2(-143, 794)
+position = Vector2(-114, 666)
 voice_pitch = 2.0
 
 [node name="NPC7" parent="y_sorted/npcs" instance=ExtResource("15_p4dqs")]
 position = Vector2(-611, 1076)
+
+[node name="NPC5" parent="y_sorted/npcs" instance=ExtResource("23_xbpq2")]
+position = Vector2(1521, -569)
 
 [node name="trees" type="Node2D" parent="y_sorted"]
 y_sort_enabled = true
@@ -1073,8 +1081,23 @@ position = Vector2(2278, 1397)
 scale = Vector2(2, 2)
 texture = ExtResource("11_067fl")
 
-[node name="NPC" parent="y_sorted" instance=ExtResource("23_xbpq2")]
-position = Vector2(1521, -569)
+[node name="CrashDirt" type="Sprite2D" parent="y_sorted"]
+position = Vector2(-332, 854)
+scale = Vector2(2, 2)
+texture = ExtResource("30_te0eh")
+
+[node name="RocketshipBroken" type="Sprite2D" parent="y_sorted"]
+position = Vector2(-268, 905)
+rotation = -1.80747
+scale = Vector2(2, 2)
+texture = ExtResource("31_raphl")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="y_sorted/RocketshipBroken"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="y_sorted/RocketshipBroken/StaticBody2D"]
+position = Vector2(-2.02988, -12.4618)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_8j4fk")
 
 [node name="worldbounds" type="Node2D" parent="."]
 
