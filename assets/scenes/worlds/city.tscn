@@ -1096,7 +1096,6 @@ texture = ExtResource("31_raphl")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="y_sorted/RocketshipBroken/StaticBody2D"]
 position = Vector2(-2.02988, -12.4618)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_8j4fk")
 
 [node name="worldbounds" type="Node2D" parent="."]

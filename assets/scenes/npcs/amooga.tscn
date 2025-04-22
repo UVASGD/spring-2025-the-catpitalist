@@ -1,0 +1,34 @@
+[gd_scene load_steps=5 format=3 uid="uid://c52a8010k5en3"]
+
+[ext_resource type="Script" path="res://assets/scripts/npc.gd" id="1_4vlj7"]
+[ext_resource type="Texture2D" uid="uid://dfnoveg0ojndi" path="res://assets/sprites/World NPCs/Amooga Man.png" id="2_kxdot"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pmeq2"]
+radius = 32.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_njb3k"]
+size = Vector2(20, 24)
+
+[node name="NPC" type="Node2D"]
+scale = Vector2(2, 2)
+script = ExtResource("1_4vlj7")
+npc_name = "amooga man"
+exhaust_dialogue_text = "DuDe, i don’t even know where am i. What im ah doing bo."
+voice_pitch = 0.6
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(5.5, 10.5)
+texture = ExtResource("2_kxdot")
+
+[node name="hitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox"]
+shape = SubResource("CircleShape2D_pmeq2")
+
+[node name="collisionbox" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="collisionbox"]
+position = Vector2(0, 12)
+shape = SubResource("RectangleShape2D_njb3k")
+
+[node name="Convos" type="Node" parent="."]

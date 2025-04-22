@@ -1,7 +1,8 @@
-[gd_scene load_steps=19 format=4 uid="uid://bhvk1gqsqu2yg"]
+[gd_scene load_steps=35 format=4 uid="uid://bhvk1gqsqu2yg"]
 
 [ext_resource type="Script" path="res://assets/scripts/indoors.gd" id="1_hi08k"]
 [ext_resource type="Texture2D" uid="uid://cq7qnrqbno34m" path="res://assets/sprites/tilesets/THE MOON.png" id="2_5l5nu"]
+[ext_resource type="PackedScene" uid="uid://w1ojxmmyvs51" path="res://assets/scenes/spacebg.tscn" id="2_alspf"]
 [ext_resource type="Texture2D" uid="uid://qfu4j7u6cttu" path="res://assets/sprites/world objects/city/rocketship.png" id="3_0i6p6"]
 [ext_resource type="Texture2D" uid="uid://jtmoaotn811g" path="res://assets/sprites/world objects/moon/evil eye house.png" id="4_7jgso"]
 [ext_resource type="Texture2D" uid="uid://b7jkx6dgxcyyq" path="res://assets/sprites/world objects/moon/radiohut.png" id="5_vcsdm"]
@@ -33,11 +34,64 @@ texture_region_size = Vector2i(32, 32)
 tile_size = Vector2i(32, 32)
 sources/2 = SubResource("TileSetAtlasSource_yc1pl")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fokho"]
+size = Vector2(187.5, 54.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xkqqj"]
+size = Vector2(167.5, 57.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_owqt0"]
+size = Vector2(180.5, 54)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_05i1b"]
+size = Vector2(101, 90.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_et5ok"]
+size = Vector2(176, 46)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wfoq1"]
+size = Vector2(61.5, 51.5)
+
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_o7f2n"]
 normal = Vector2(1, 0)
+distance = 8.0
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_77mbg"]
+a = Vector2(-74, -70)
+b = Vector2(458, 457)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_kypt4"]
+a = Vector2(701, -171)
+b = Vector2(43, 267)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_owfb1"]
+a = Vector2(-129, -149)
+b = Vector2(483, 388)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_ky4pv"]
+a = Vector2(-253, -703)
+b = Vector2(-782, -176)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bkn4p"]
+size = Vector2(964, 250)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kock8"]
+size = Vector2(474, 192)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n4we1"]
+size = Vector2(703, 258)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tx2g2"]
+size = Vector2(254, 184)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dru5o"]
+size = Vector2(186, 65)
 
 [node name="City" type="Node2D"]
 script = ExtResource("1_hi08k")
+
+[node name="SPACEBG" parent="." instance=ExtResource("2_alspf")]
+position = Vector2(459, 214)
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 modulate = Color(0.800491, 0.800491, 0.800491, 1)
@@ -66,25 +120,55 @@ position = Vector2(1001, 376)
 scale = Vector2(2, 2)
 texture = ExtResource("4_7jgso")
 
+[node name="StaticBody2D" type="StaticBody2D" parent="y_sorted/houses/EvilEyeHouse"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="y_sorted/houses/EvilEyeHouse/StaticBody2D"]
+position = Vector2(1.25, 66.25)
+shape = SubResource("RectangleShape2D_fokho")
+
 [node name="Radiohut" type="Sprite2D" parent="y_sorted/houses"]
 position = Vector2(873, -747)
 scale = Vector2(2, 2)
 texture = ExtResource("5_vcsdm")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="y_sorted/houses/Radiohut"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="y_sorted/houses/Radiohut/StaticBody2D"]
+position = Vector2(0.25, 62.25)
+shape = SubResource("RectangleShape2D_xkqqj")
 
 [node name="SquidHouse" type="Sprite2D" parent="y_sorted/houses"]
 position = Vector2(273, 404)
 scale = Vector2(2, 2)
 texture = ExtResource("6_ejigp")
 
+[node name="StaticBody2D" type="StaticBody2D" parent="y_sorted/houses/SquidHouse"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="y_sorted/houses/SquidHouse/StaticBody2D"]
+position = Vector2(1.75, 68.5)
+shape = SubResource("RectangleShape2D_owqt0")
+
 [node name="AlienHeadHouse" type="Sprite2D" parent="y_sorted/houses"]
 position = Vector2(-232, -155)
 scale = Vector2(2, 2)
 texture = ExtResource("7_bny0h")
 
+[node name="StaticBody2D" type="StaticBody2D" parent="y_sorted/houses/AlienHeadHouse"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="y_sorted/houses/AlienHeadHouse/StaticBody2D"]
+position = Vector2(10, 53.25)
+shape = SubResource("RectangleShape2D_05i1b")
+
 [node name="MoonHouse" type="Sprite2D" parent="y_sorted/houses"]
 position = Vector2(260, -692)
 scale = Vector2(2, 2)
 texture = ExtResource("8_7j8bj")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="y_sorted/houses/MoonHouse"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="y_sorted/houses/MoonHouse/StaticBody2D"]
+position = Vector2(-0.5, 65)
+shape = SubResource("RectangleShape2D_et5ok")
 
 [node name="npcs" type="Node2D" parent="y_sorted"]
 y_sort_enabled = true
@@ -109,45 +193,99 @@ position = Vector2(1361, 555)
 scale = Vector2(2, 2)
 texture = ExtResource("11_0vakq")
 
+[node name="StaticBody2D" type="StaticBody2D" parent="y_sorted/trees/MoonTreeV1"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="y_sorted/trees/MoonTreeV1/StaticBody2D"]
+position = Vector2(1.75, 36.75)
+shape = SubResource("RectangleShape2D_wfoq1")
+
 [node name="MoonTreeV2" type="Sprite2D" parent="y_sorted/trees"]
 position = Vector2(1279, 969)
 scale = Vector2(2, 2)
 texture = ExtResource("11_0vakq")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="y_sorted/trees/MoonTreeV2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="y_sorted/trees/MoonTreeV2/StaticBody2D"]
+position = Vector2(1.75, 36.75)
+shape = SubResource("RectangleShape2D_wfoq1")
 
 [node name="MoonTreeV3" type="Sprite2D" parent="y_sorted/trees"]
 position = Vector2(555, 1051)
 scale = Vector2(2, 2)
 texture = ExtResource("11_0vakq")
 
+[node name="StaticBody2D" type="StaticBody2D" parent="y_sorted/trees/MoonTreeV3"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="y_sorted/trees/MoonTreeV3/StaticBody2D"]
+position = Vector2(1.75, 36.75)
+shape = SubResource("RectangleShape2D_wfoq1")
+
 [node name="MoonTreeV4" type="Sprite2D" parent="y_sorted/trees"]
 position = Vector2(-167, 991)
 scale = Vector2(2, 2)
 texture = ExtResource("11_0vakq")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="y_sorted/trees/MoonTreeV4"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="y_sorted/trees/MoonTreeV4/StaticBody2D"]
+position = Vector2(1.75, 36.75)
+shape = SubResource("RectangleShape2D_wfoq1")
 
 [node name="MoonTreeV5" type="Sprite2D" parent="y_sorted/trees"]
 position = Vector2(-605, 503)
 scale = Vector2(2, 2)
 texture = ExtResource("11_0vakq")
 
+[node name="StaticBody2D" type="StaticBody2D" parent="y_sorted/trees/MoonTreeV5"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="y_sorted/trees/MoonTreeV5/StaticBody2D"]
+position = Vector2(1.75, 36.75)
+shape = SubResource("RectangleShape2D_wfoq1")
+
 [node name="MoonTreeV6" type="Sprite2D" parent="y_sorted/trees"]
 position = Vector2(-633, -145)
 scale = Vector2(2, 2)
 texture = ExtResource("11_0vakq")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="y_sorted/trees/MoonTreeV6"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="y_sorted/trees/MoonTreeV6/StaticBody2D"]
+position = Vector2(1.75, 36.75)
+shape = SubResource("RectangleShape2D_wfoq1")
 
 [node name="MoonTreeV7" type="Sprite2D" parent="y_sorted/trees"]
 position = Vector2(-101, -581)
 scale = Vector2(2, 2)
 texture = ExtResource("11_0vakq")
 
+[node name="StaticBody2D" type="StaticBody2D" parent="y_sorted/trees/MoonTreeV7"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="y_sorted/trees/MoonTreeV7/StaticBody2D"]
+position = Vector2(1.75, 36.75)
+shape = SubResource("RectangleShape2D_wfoq1")
+
 [node name="MoonTreeV8" type="Sprite2D" parent="y_sorted/trees"]
 position = Vector2(317, -345)
 scale = Vector2(2, 2)
 texture = ExtResource("11_0vakq")
 
+[node name="StaticBody2D" type="StaticBody2D" parent="y_sorted/trees/MoonTreeV8"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="y_sorted/trees/MoonTreeV8/StaticBody2D"]
+position = Vector2(1.75, 36.75)
+shape = SubResource("RectangleShape2D_wfoq1")
+
 [node name="MoonTreeV9" type="Sprite2D" parent="y_sorted/trees"]
 position = Vector2(1397, -489)
 scale = Vector2(2, 2)
 texture = ExtResource("11_0vakq")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="y_sorted/trees/MoonTreeV9"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="y_sorted/trees/MoonTreeV9/StaticBody2D"]
+position = Vector2(1.75, 36.75)
+shape = SubResource("RectangleShape2D_wfoq1")
 
 [node name="bs" type="Node2D" parent="y_sorted"]
 y_sort_enabled = true
@@ -225,7 +363,7 @@ position = Vector2(-392, 24)
 shape = SubResource("WorldBoundaryShape2D_o7f2n")
 
 [node name="bottom" type="StaticBody2D" parent="worldbounds"]
-position = Vector2(503, 471)
+position = Vector2(503, 436)
 rotation = -1.57079
 scale = Vector2(2, 2)
 
@@ -234,7 +372,7 @@ position = Vector2(-392, 24)
 shape = SubResource("WorldBoundaryShape2D_o7f2n")
 
 [node name="right" type="StaticBody2D" parent="worldbounds"]
-position = Vector2(1019, 314)
+position = Vector2(1024, 314)
 rotation = -3.14159
 scale = Vector2(2, 2)
 
@@ -243,13 +381,121 @@ position = Vector2(-392, 24)
 shape = SubResource("WorldBoundaryShape2D_o7f2n")
 
 [node name="top" type="StaticBody2D" parent="worldbounds"]
-position = Vector2(89, 24)
+position = Vector2(96, 60)
 rotation = 1.5708
 scale = Vector2(2, 2)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="worldbounds/top"]
 position = Vector2(-392, 24)
 shape = SubResource("WorldBoundaryShape2D_o7f2n")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="worldbounds"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="worldbounds/StaticBody2D"]
+position = Vector2(1341, -641)
+shape = SubResource("SegmentShape2D_77mbg")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="worldbounds"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="worldbounds/StaticBody2D2"]
+position = Vector2(1089, 942)
+shape = SubResource("SegmentShape2D_kypt4")
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="worldbounds"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="worldbounds/StaticBody2D3"]
+position = Vector2(-639, 828)
+shape = SubResource("SegmentShape2D_owfb1")
+
+[node name="StaticBody2D4" type="StaticBody2D" parent="worldbounds"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="worldbounds/StaticBody2D4"]
+shape = SubResource("SegmentShape2D_ky4pv")
+
+[node name="StaticBody2D6" type="StaticBody2D" parent="worldbounds"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="worldbounds/StaticBody2D6"]
+position = Vector2(352, -2)
+shape = SubResource("RectangleShape2D_bkn4p")
+
+[node name="StaticBody2D5" type="StaticBody2D" parent="worldbounds"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="worldbounds/StaticBody2D5"]
+position = Vector2(43, 222)
+shape = SubResource("RectangleShape2D_kock8")
+
+[node name="StaticBody2D7" type="StaticBody2D" parent="worldbounds"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="worldbounds/StaticBody2D7"]
+position = Vector2(610.5, 252)
+shape = SubResource("RectangleShape2D_n4we1")
+
+[node name="StaticBody2D9" type="StaticBody2D" parent="worldbounds"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="worldbounds/StaticBody2D9"]
+position = Vector2(963, 30)
+shape = SubResource("RectangleShape2D_tx2g2")
+
+[node name="StaticBody2D8" type="StaticBody2D" parent="worldbounds"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="worldbounds/StaticBody2D8"]
+position = Vector2(1087, 159)
+shape = SubResource("RectangleShape2D_tx2g2")
+
+[node name="StaticBody2D10" type="StaticBody2D" parent="worldbounds"]
+position = Vector2(-642, 197)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="worldbounds/StaticBody2D10"]
+position = Vector2(1087, 159)
+shape = SubResource("RectangleShape2D_tx2g2")
+
+[node name="StaticBody2D11" type="StaticBody2D" parent="worldbounds"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="worldbounds/StaticBody2D11"]
+position = Vector2(997, 285)
+shape = SubResource("RectangleShape2D_dru5o")
+
+[node name="StaticBody2D12" type="StaticBody2D" parent="worldbounds"]
+position = Vector2(-323, 131)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="worldbounds/StaticBody2D12"]
+position = Vector2(997, 285)
+shape = SubResource("RectangleShape2D_dru5o")
+
+[node name="StaticBody2D13" type="StaticBody2D" parent="worldbounds"]
+position = Vector2(-452, 192)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="worldbounds/StaticBody2D13"]
+position = Vector2(997, 285)
+shape = SubResource("RectangleShape2D_dru5o")
+
+[node name="StaticBody2D14" type="StaticBody2D" parent="worldbounds"]
+position = Vector2(-1093, 65)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="worldbounds/StaticBody2D14"]
+position = Vector2(997, 285)
+shape = SubResource("RectangleShape2D_dru5o")
+
+[node name="StaticBody2D15" type="StaticBody2D" parent="worldbounds"]
+position = Vector2(-1158, 5)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="worldbounds/StaticBody2D15"]
+position = Vector2(997, 285)
+shape = SubResource("RectangleShape2D_dru5o")
+
+[node name="StaticBody2D16" type="StaticBody2D" parent="worldbounds"]
+position = Vector2(-964, -444)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="worldbounds/StaticBody2D16"]
+position = Vector2(997, 285)
+shape = SubResource("RectangleShape2D_dru5o")
+
+[node name="StaticBody2D17" type="StaticBody2D" parent="worldbounds"]
+position = Vector2(59, -251)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="worldbounds/StaticBody2D17"]
+position = Vector2(997, 285)
+shape = SubResource("RectangleShape2D_dru5o")
 
 [node name="backhome" parent="." instance=ExtResource("30_lr2m8")]
 position = Vector2(1655, -68)

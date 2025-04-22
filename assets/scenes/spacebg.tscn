@@ -1,0 +1,210 @@
+[gd_scene load_steps=12 format=3 uid="uid://w1ojxmmyvs51"]
+
+[ext_resource type="Shader" path="res://assets/scenes/spacebg.gdshader" id="1_awqlo"]
+[ext_resource type="Texture2D" uid="uid://67lurlq8cbta" path="res://assets/sprites/world objects/moon/spacebg.png" id="1_g5v7e"]
+[ext_resource type="Script" path="res://assets/scenes/spacebg.gd" id="1_hspqm"]
+[ext_resource type="Texture2D" uid="uid://jytcube55hx1" path="res://assets/sprites/world objects/moon/stars.png" id="4_bi65h"]
+
+[sub_resource type="Animation" id="Animation_13c6v"]
+resource_name = "rotate"
+length = 60.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.0333333, 60),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 6.28319]
+}
+
+[sub_resource type="Animation" id="Animation_cr2qd"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_t7ug1"]
+_data = {
+"RESET": SubResource("Animation_cr2qd"),
+"rotate": SubResource("Animation_13c6v")
+}
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qbj7c"]
+shader = ExtResource("1_awqlo")
+shader_parameter/time = null
+shader_parameter/sparkle_intensity = 2.0
+shader_parameter/sparkle_density = 0.001
+shader_parameter/twinkle_intensity = 0.0
+shader_parameter/hue_shift_speed = 0.5
+shader_parameter/hue_shift_strength = 0.2
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_qw1lt"]
+
+[sub_resource type="Gradient" id="Gradient_k2365"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_kxv76"]
+gradient = SubResource("Gradient_k2365")
+
+[node name="SPACEBG" type="Node2D"]
+script = ExtResource("1_hspqm")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_t7ug1")
+}
+autoplay = "rotate"
+speed_scale = 0.5
+
+[node name="TextureRect" type="TextureRect" parent="."]
+material = SubResource("ShaderMaterial_qbj7c")
+offset_left = -2539.0
+offset_top = -2018.0
+offset_right = 2703.0
+offset_bottom = 1981.0
+texture = ExtResource("1_g5v7e")
+stretch_mode = 1
+
+[node name="stars" type="Node2D" parent="."]
+
+[node name="TextureRect2" type="TextureRect" parent="stars"]
+visible = false
+offset_left = -1955.0
+offset_top = -1560.0
+offset_right = 2092.0
+offset_bottom = 1599.0
+texture = ExtResource("4_bi65h")
+stretch_mode = 1
+
+[node name="TextureRect3" type="TextureRect" parent="stars"]
+visible = false
+offset_left = -285.0
+offset_top = -2433.0
+offset_right = 3762.0
+offset_bottom = 726.0
+rotation = 0.738068
+texture = ExtResource("4_bi65h")
+stretch_mode = 1
+
+[node name="TextureRect4" type="TextureRect" parent="stars"]
+visible = false
+offset_left = 2294.0
+offset_top = -1264.0
+offset_right = 6341.0
+offset_bottom = 1895.0
+rotation = 1.97817
+texture = ExtResource("4_bi65h")
+stretch_mode = 1
+
+[node name="TextureRect5" type="TextureRect" parent="stars"]
+visible = false
+offset_left = 2332.0
+offset_top = 1352.0
+offset_right = 6379.0
+offset_bottom = 4511.0
+rotation = 3.02126
+texture = ExtResource("4_bi65h")
+stretch_mode = 1
+
+[node name="TextureRect6" type="TextureRect" parent="stars"]
+visible = false
+offset_left = 3406.0
+offset_top = 2355.0
+offset_right = 9066.0
+offset_bottom = 7794.0
+rotation = 3.02126
+texture = ExtResource("4_bi65h")
+stretch_mode = 1
+
+[node name="TextureRect7" type="TextureRect" parent="stars"]
+visible = false
+offset_left = 2123.0
+offset_top = 2929.0
+offset_right = 7783.0
+offset_bottom = 8368.0
+rotation = 3.02126
+texture = ExtResource("4_bi65h")
+stretch_mode = 1
+
+[node name="TextureRect8" type="TextureRect" parent="stars"]
+visible = false
+offset_left = -79.9995
+offset_top = 3802.0
+offset_right = 5580.0
+offset_bottom = 9241.0
+rotation = 3.95611
+texture = ExtResource("4_bi65h")
+stretch_mode = 1
+
+[node name="TextureRect12" type="TextureRect" parent="stars"]
+visible = false
+offset_left = -2394.0
+offset_top = 3683.0
+offset_right = 3266.0
+offset_bottom = 9122.0
+rotation = 3.95611
+texture = ExtResource("4_bi65h")
+stretch_mode = 1
+
+[node name="TextureRect13" type="TextureRect" parent="stars"]
+visible = false
+offset_left = 2022.0
+offset_top = 3666.0
+offset_right = 7682.0
+offset_bottom = 9105.0
+rotation = 3.95611
+texture = ExtResource("4_bi65h")
+stretch_mode = 1
+
+[node name="TextureRect9" type="TextureRect" parent="stars"]
+visible = false
+offset_left = -1216.0
+offset_top = 3811.0
+offset_right = 4444.0
+offset_bottom = 9250.0
+rotation = 4.26801
+texture = ExtResource("4_bi65h")
+stretch_mode = 1
+
+[node name="TextureRect10" type="TextureRect" parent="stars"]
+visible = false
+offset_left = 250.0
+offset_top = 2760.0
+offset_right = 5910.0
+offset_bottom = 8199.0
+rotation = 4.26801
+texture = ExtResource("4_bi65h")
+stretch_mode = 1
+
+[node name="TextureRect11" type="TextureRect" parent="stars"]
+visible = false
+offset_left = -3132.0
+offset_top = 4328.0
+offset_right = 2528.0
+offset_bottom = 9767.0
+rotation = 4.26801
+texture = ExtResource("4_bi65h")
+stretch_mode = 1
+
+[node name="filter" type="TextureRect" parent="."]
+modulate = Color(0.807843, 0.639216, 0.803922, 0.156863)
+material = SubResource("CanvasItemMaterial_qw1lt")
+offset_left = -2537.0
+offset_top = -2020.0
+offset_right = 2712.0
+offset_bottom = 1989.0
+texture = SubResource("GradientTexture1D_kxv76")
