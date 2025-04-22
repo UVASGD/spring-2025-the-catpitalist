@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=4 uid="uid://b2133ovj0k7io"]
+[gd_scene load_steps=28 format=4 uid="uid://b2133ovj0k7io"]
 
 [ext_resource type="Script" path="res://assets/scripts/overworldarea.gd" id="1_dsj35"]
 [ext_resource type="PackedScene" uid="uid://rwurml76tnqs" path="res://assets/scenes/npcs/sign.tscn" id="3_23kby"]
@@ -18,6 +18,8 @@
 [ext_resource type="PackedScene" uid="uid://r1gkmux58rxo" path="res://assets/scenes/npcs/alien.tscn" id="17_04x41"]
 [ext_resource type="PackedScene" uid="uid://byxam7udt4dw3" path="res://assets/scenes/farmhouse.tscn" id="17_g5ug5"]
 [ext_resource type="PackedScene" uid="uid://dpgpfvvpkmqe8" path="res://assets/scenes/npcs/tttt.tscn" id="18_08yli"]
+[ext_resource type="PackedScene" uid="uid://bf25le0d607b1" path="res://assets/scenes/npcs/gerardo.tscn" id="19_kvnm2"]
+[ext_resource type="PackedScene" uid="uid://c8qbsnejl0gv3" path="res://assets/scenes/npcs/vincent.tscn" id="20_filv4"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7ivjj"]
 texture = ExtResource("8_2d8hv")
@@ -187,5 +189,13 @@ position = Vector2(75, 262)
 
 [node name="NPC2" parent="." instance=ExtResource("18_08yli")]
 position = Vector2(-85, 215)
+
+[node name="NPC3" parent="." instance=ExtResource("19_kvnm2")]
+position = Vector2(230, 283)
+scale = Vector2(2, 2)
+
+[node name="NPC4" parent="." instance=ExtResource("20_filv4")]
+position = Vector2(418, 272)
+scale = Vector2(2, 2)
 
 [editable path="y_sorted/DropItem"]

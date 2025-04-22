@@ -1,0 +1,112 @@
+[gd_scene load_steps=16 format=3 uid="uid://bvo2lai7y4w0v"]
+
+[ext_resource type="Script" path="res://assets/scripts/npc.gd" id="1_xup1j"]
+[ext_resource type="Texture2D" uid="uid://b2vv5nec3m8vx" path="res://assets/sprites/World NPCs/headsquid-Sheet.png" id="2_chuoe"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i44vl"]
+atlas = ExtResource("2_chuoe")
+region = Rect2(0, 0, 64, 84)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ski83"]
+atlas = ExtResource("2_chuoe")
+region = Rect2(64, 0, 64, 84)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j18xg"]
+atlas = ExtResource("2_chuoe")
+region = Rect2(128, 0, 64, 84)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7hctk"]
+atlas = ExtResource("2_chuoe")
+region = Rect2(192, 0, 64, 84)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4kv41"]
+atlas = ExtResource("2_chuoe")
+region = Rect2(256, 0, 64, 84)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kkn6c"]
+atlas = ExtResource("2_chuoe")
+region = Rect2(320, 0, 64, 84)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2jbn6"]
+atlas = ExtResource("2_chuoe")
+region = Rect2(384, 0, 64, 84)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3e8r4"]
+atlas = ExtResource("2_chuoe")
+region = Rect2(448, 0, 64, 84)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_waqhs"]
+atlas = ExtResource("2_chuoe")
+region = Rect2(512, 0, 64, 84)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iwahb"]
+atlas = ExtResource("2_chuoe")
+region = Rect2(576, 0, 64, 84)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dftlo"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i44vl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ski83")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j18xg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7hctk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4kv41")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kkn6c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2jbn6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3e8r4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_waqhs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iwahb")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pmeq2"]
+radius = 32.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_njb3k"]
+size = Vector2(20, 24)
+
+[node name="NPC" type="Node2D"]
+scale = Vector2(2, 2)
+script = ExtResource("1_xup1j")
+npc_name = "Xyler"
+voice_pitch = 0.6
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_dftlo")
+autoplay = "default"
+frame_progress = 0.140666
+
+[node name="hitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox"]
+shape = SubResource("CircleShape2D_pmeq2")
+
+[node name="collisionbox" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="collisionbox"]
+position = Vector2(0, 12)
+shape = SubResource("RectangleShape2D_njb3k")
+
+[node name="Convos" type="Node" parent="."]

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://chh44siovg4h1"
-path="res://.godot/imported/moon_tree_v1.png-80e938d47ed30218719ce7582eb68bb7.ctex"
+uid="uid://bjryg6al7ebh2"
+path="res://.godot/imported/headset alien-Sheet.png-f932a591b2da9ee36d5e9f087a9897d6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/world objects/moon/moon_tree_v1.png"
-dest_files=["res://.godot/imported/moon_tree_v1.png-80e938d47ed30218719ce7582eb68bb7.ctex"]
+source_file="res://assets/sprites/World NPCs/headset alien-Sheet.png"
+dest_files=["res://.godot/imported/headset alien-Sheet.png-f932a591b2da9ee36d5e9f087a9897d6.ctex"]
 
 [params]
 

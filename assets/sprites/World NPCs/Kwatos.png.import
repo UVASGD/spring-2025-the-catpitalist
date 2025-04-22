@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://chh44siovg4h1"
-path="res://.godot/imported/moon_tree_v1.png-80e938d47ed30218719ce7582eb68bb7.ctex"
+uid="uid://km3kx5y8ge1k"
+path="res://.godot/imported/Kwatos.png-d13b01e1189a515767532d5c2f5750c8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/world objects/moon/moon_tree_v1.png"
-dest_files=["res://.godot/imported/moon_tree_v1.png-80e938d47ed30218719ce7582eb68bb7.ctex"]
+source_file="res://assets/sprites/World NPCs/Kwatos.png"
+dest_files=["res://.godot/imported/Kwatos.png-d13b01e1189a515767532d5c2f5750c8.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://chh44siovg4h1"
-path="res://.godot/imported/moon_tree_v1.png-80e938d47ed30218719ce7582eb68bb7.ctex"
+uid="uid://ddsvb0q8np882"
+path="res://.godot/imported/gurt.png-505f30ca5ebe2eeb2d5de4bddf3ebe07.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/world objects/moon/moon_tree_v1.png"
-dest_files=["res://.godot/imported/moon_tree_v1.png-80e938d47ed30218719ce7582eb68bb7.ctex"]
+source_file="res://assets/sprites/World NPCs/gurt.png"
+dest_files=["res://.godot/imported/gurt.png-505f30ca5ebe2eeb2d5de4bddf3ebe07.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://chh44siovg4h1"
-path="res://.godot/imported/moon_tree_v1.png-80e938d47ed30218719ce7582eb68bb7.ctex"
+uid="uid://b2vv5nec3m8vx"
+path="res://.godot/imported/headsquid-Sheet.png-fb21a0939a226d64a9d53d5f8d366ab5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/world objects/moon/moon_tree_v1.png"
-dest_files=["res://.godot/imported/moon_tree_v1.png-80e938d47ed30218719ce7582eb68bb7.ctex"]
+source_file="res://assets/sprites/World NPCs/headsquid-Sheet.png"
+dest_files=["res://.godot/imported/headsquid-Sheet.png-fb21a0939a226d64a9d53d5f8d366ab5.ctex"]
 
 [params]
 

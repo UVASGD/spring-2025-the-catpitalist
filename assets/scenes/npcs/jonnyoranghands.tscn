@@ -12,7 +12,7 @@ size = Vector2(20, 24)
 [node name="NPC" type="Node2D"]
 scale = Vector2(2, 2)
 script = ExtResource("1_tp7j4")
-npc_name = "Mozzie"
+npc_name = "Jonny OrangeHands"
 exhaust_dialogue_text = "DuDe, i don’t even know where am i. What im ah doing bo."
 voice_pitch = 0.6
 
