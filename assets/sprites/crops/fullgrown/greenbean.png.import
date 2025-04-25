@@ -1,0 +1,14 @@
+[remap]
+
+importer="image"
+type="Image"
+uid="uid://cku448dtvircw"
+path="res://.godot/imported/greenbean.png-03049f8db1baa2147e989cf87a70e65d.image"
+
+[deps]
+
+source_file="res://assets/sprites/crops/fullgrown/greenbean.png"
+dest_files=["res://.godot/imported/greenbean.png-03049f8db1baa2147e989cf87a70e65d.image"]
+
+[params]
+

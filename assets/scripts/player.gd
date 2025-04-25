@@ -5,7 +5,7 @@ class_name Player extends CharacterBody2D
 @onready var animated_sprite: AnimatedSprite2D = $"AnimatedSprite2D"
 @onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
 
-var money = 100
+var money = 0
 var actionable = false
 var inventory = [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null]
 var inv_showing = false
@@ -18,11 +18,12 @@ func _ready() -> void:
 	scale = alter_scale
 	flash_actionable()
 	SignalBus.connect("interact", interact)
+	SignalBus.connect("gift_100", get_100)
 	#SignalBus.connect("items_ready", _on_items_ready)
 	inventory[8] = Items.get_item(1) # debug watercan 
-	inventory[9] = Items.get_item(4) #scythe
+	#inventory[9] = Items.get_item(4) #scythe
 	#inventory[1] = Items.get_item(1) #stack test
-	inventory[2] = Items.get_item(2) # seeds test
+	#inventory[2] = Items.get_item(2) # seeds test
 	SignalBus.emit_signal("player_ready", self)
 	last_pos_timer = Timer.new()
 	last_pos_timer.wait_time = 0.1
@@ -32,7 +33,9 @@ func _ready() -> void:
 	pos_stack.push_front(position)
 	flash_collision()
 	
-	
+
+func get_100():
+	money += 100
 func flash_collision():
 	if collision_shape_2d == null:
 		return
@@ -179,6 +182,8 @@ func interact(obj):
 func water_or_harvest(obj:flower):
 	if held_item() == null:
 		return
+	if not History.has_happened("unlock_watering"):
+		return
 	elif held_item() is Scythe:
 		obj.harvest()
 	elif held_item() is Watercan:
@@ -190,6 +195,8 @@ func water_or_harvest(obj:flower):
 
 func plant_on(obj:PlantableTile):
 	if held_item() == null:
+		return
+	if not History.has_happened("unlock_planting"):
 		return
 	if held_item() is Plantable and obj.can_hold_plant():
 		held_item().plant_at(obj)
@@ -232,3 +239,9 @@ func on_pos_timer_timeout():
 	#print("current pos: ",pos_stack[0])
 	pos_stack[0] = position
 	last_pos_timer.start()
+
+func hide_ui():
+	$GameCam.hide_ui()
+	
+func show_ui():
+	$GameCam.show_ui()

@@ -1,7 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://dloxiff7qqnfa"]
+[gd_scene load_steps=7 format=3 uid="uid://be347i8ueyu6k"]
 
-[ext_resource type="Script" path="res://assets/scripts/flower.gd" id="1_81xt4"]
-[ext_resource type="Texture2D" uid="uid://btyjvdrdn13vg" path="res://assets/sprites/testflower.png" id="1_egtw2"]
+[ext_resource type="Script" path="res://assets/scripts/flower.gd" id="1_rxyem"]
+[ext_resource type="Texture2D" uid="uid://btyjvdrdn13vg" path="res://assets/sprites/testflower.png" id="2_ryrm4"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_4f7iw"]
 font_size = 12
@@ -22,7 +22,7 @@ outline_color = Color(0, 0, 0, 1)
 size = Vector2(32, 32)
 
 [node name="Flower" type="Node2D" groups=["crops"]]
-script = ExtResource("1_81xt4")
+script = ExtResource("1_rxyem")
 growth_time = 1
 hardiness = 3
 seed_item_id = 2
@@ -76,31 +76,31 @@ label_settings = SubResource("LabelSettings_k132j")
 shape = SubResource("RectangleShape2D_oduee")
 
 [node name="seed" type="Sprite2D" parent="."]
-texture = ExtResource("1_egtw2")
+texture = ExtResource("2_ryrm4")
 region_enabled = true
 region_rect = Rect2(0, 0, 32, 32)
 
 [node name="sprout" type="Sprite2D" parent="."]
 visible = false
-texture = ExtResource("1_egtw2")
+texture = ExtResource("2_ryrm4")
 region_enabled = true
 region_rect = Rect2(32, 0, 32, 32)
 
 [node name="bud" type="Sprite2D" parent="."]
 visible = false
-texture = ExtResource("1_egtw2")
+texture = ExtResource("2_ryrm4")
 region_enabled = true
 region_rect = Rect2(64, 0, 32, 32)
 
 [node name="bloom" type="Sprite2D" parent="."]
 visible = false
-texture = ExtResource("1_egtw2")
+texture = ExtResource("2_ryrm4")
 region_enabled = true
 region_rect = Rect2(96, 0, 32, 32)
 
 [node name="dead" type="Sprite2D" parent="."]
 visible = false
-texture = ExtResource("1_egtw2")
+texture = ExtResource("2_ryrm4")
 region_enabled = true
 region_rect = Rect2(128, 0, 32, 32)
 

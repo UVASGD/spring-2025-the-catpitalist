@@ -1,0 +1,14 @@
+[remap]
+
+importer="image"
+type="Image"
+uid="uid://ee6e35t0h8ni"
+path="res://.godot/imported/basil.png-7272e73c29dfe2c8a2735ed51881aaac.image"
+
+[deps]
+
+source_file="res://assets/sprites/crops/fullgrown/basil.png"
+dest_files=["res://.godot/imported/basil.png-7272e73c29dfe2c8a2735ed51881aaac.image"]
+
+[params]
+

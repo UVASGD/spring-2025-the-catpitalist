@@ -1,0 +1,14 @@
+[remap]
+
+importer="image"
+type="Image"
+uid="uid://capqxfn5x1ulr"
+path="res://.godot/imported/pickleseeds.png-b4decbba0761ec74accbcc5f2a58e1b1.image"
+
+[deps]
+
+source_file="res://assets/sprites/crops/seeds/pickleseeds.png"
+dest_files=["res://.godot/imported/pickleseeds.png-b4decbba0761ec74accbcc5f2a58e1b1.image"]
+
+[params]
+

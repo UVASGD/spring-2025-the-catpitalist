@@ -1,0 +1,14 @@
+[remap]
+
+importer="image"
+type="Image"
+uid="uid://b50amvtnoej31"
+path="res://.godot/imported/blue.png-b477911eb4eb7d2260af778ea515e975.image"
+
+[deps]
+
+source_file="res://assets/sprites/crops/fullgrown/blue.png"
+dest_files=["res://.godot/imported/blue.png-b477911eb4eb7d2260af778ea515e975.image"]
+
+[params]
+

@@ -1,0 +1,14 @@
+[remap]
+
+importer="image"
+type="Image"
+uid="uid://dr34ax66qduqo"
+path="res://.godot/imported/breadseeds.png-da4c44d8bea277fb192448ad09acf664.image"
+
+[deps]
+
+source_file="res://assets/sprites/crops/seeds/breadseeds.png"
+dest_files=["res://.godot/imported/breadseeds.png-da4c44d8bea277fb192448ad09acf664.image"]
+
+[params]
+

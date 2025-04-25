@@ -7,9 +7,9 @@ func _ready() -> void:
 	SignalBus.connect("mom_dialogue_done", transition)
 	pass # Replace with function body.
 
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func transition():
+	PlayerData.player.actionable = false
 	$AnimationPlayer.play("transition")
 	await get_tree().create_timer(2.5).timeout
 	grow_player()
@@ -19,8 +19,9 @@ func transition():
 	$y_sorted/normaldad.show()
 	await $AnimationPlayer.animation_finished
 	$y_sorted.add_child(newcutscene)
+	PlayerData.player.remove_from_inv(Items.get_item(1))
 	
 func grow_player():
-	PlayerData.player.animated_sprite.scale = Vector2(1,1)
-	PlayerData.player.alter_scale = Vector2(1,1)
+	PlayerData.player.scale = Vector2(2,2)
+	PlayerData.player.alter_scale = Vector2(2,2)
 	return

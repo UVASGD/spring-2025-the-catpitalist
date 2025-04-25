@@ -99,6 +99,7 @@ normal = Vector2(1, 0)
 [node name="testworld" type="Node2D" groups=["Saveable"]]
 y_sort_enabled = true
 script = ExtResource("1_dsj35")
+debug = true
 
 [node name="y_sorted" type="Node2D" parent="."]
 y_sort_enabled = true

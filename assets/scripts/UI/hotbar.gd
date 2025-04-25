@@ -62,6 +62,7 @@ func sync(slot:TextureRect):
 						"count": item.count,
 						"item_name": item.item_name
 					}
+					break
 		i=i+1
 	
 	# Now use item_data instead of item

@@ -1,0 +1,14 @@
+[remap]
+
+importer="image"
+type="Image"
+uid="uid://bc1vbn6epnsak"
+path="res://.godot/imported/cornseeds.png-790b8e80c03d4007aab6f7553bbe63e3.image"
+
+[deps]
+
+source_file="res://assets/sprites/crops/seeds/cornseeds.png"
+dest_files=["res://.godot/imported/cornseeds.png-790b8e80c03d4007aab6f7553bbe63e3.image"]
+
+[params]
+

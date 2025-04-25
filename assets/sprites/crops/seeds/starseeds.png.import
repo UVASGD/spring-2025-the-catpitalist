@@ -1,0 +1,14 @@
+[remap]
+
+importer="image"
+type="Image"
+uid="uid://dfmronaam5q8y"
+path="res://.godot/imported/starseeds.png-80768c0c53f9e3fba0a611276d32be7d.image"
+
+[deps]
+
+source_file="res://assets/sprites/crops/seeds/starseeds.png"
+dest_files=["res://.godot/imported/starseeds.png-80768c0c53f9e3fba0a611276d32be7d.image"]
+
+[params]
+

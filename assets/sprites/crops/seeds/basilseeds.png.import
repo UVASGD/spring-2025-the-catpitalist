@@ -1,0 +1,14 @@
+[remap]
+
+importer="image"
+type="Image"
+uid="uid://dcpgb3mq7lenl"
+path="res://.godot/imported/basilseeds.png-52e45ab7941b751a03050456226121ce.image"
+
+[deps]
+
+source_file="res://assets/sprites/crops/seeds/basilseeds.png"
+dest_files=["res://.godot/imported/basilseeds.png-52e45ab7941b751a03050456226121ce.image"]
+
+[params]
+

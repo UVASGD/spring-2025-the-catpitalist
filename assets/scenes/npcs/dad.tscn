@@ -144,6 +144,8 @@ text = "You don’t think you can do it? I’ll walk you through it. First, pick
 requests_signal = true
 request_signal_name = "tutorial_planted"
 locked = true
+signals_on_finish = true
+finish_signal = "unlock_planting"
 
 [node name="Message" parent="Convos/Conversation3/Messages" index="0"]
 text = "Great. Now Plant ‘em on that there dirt patch, the one that looks smoother than the rest."
@@ -156,6 +158,8 @@ text = "If you don't have your seeds in your hand, press '1'  to hold them. Then
 requests_signal = true
 request_signal_name = "tutorial_watered"
 locked = true
+signals_on_finish = true
+finish_signal = "unlock_watering"
 
 [node name="Message" parent="Convos/Conversation4/Messages" index="0"]
 text = "‘Attaboy! Now all you gotta do is water it."
@@ -170,6 +174,8 @@ text = "Then, just click on those seeds ya just planted."
 
 [node name="Conversation5" parent="Convos" instance=ExtResource("2_dts3n")]
 locked = true
+signals_on_finish = true
+finish_signal = "unlock_farmhouse"
 
 [node name="Message" parent="Convos/Conversation5/Messages" index="0"]
 text = "Now ya got a working farm and a profit to keep yer belly full at night."

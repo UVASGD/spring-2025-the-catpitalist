@@ -95,6 +95,7 @@ func speak():
 		await SignalBus.dialogue_finished
 		if convo.signals_on_finish:
 			SignalBus.emit_signal(convo.finish_signal)
+			History.mark(convo.finish_signal)
 		current_convo_index += 1
 	else:
 		play_exhaust_dialogue()

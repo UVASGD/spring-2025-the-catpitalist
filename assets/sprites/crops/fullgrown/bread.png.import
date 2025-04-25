@@ -1,0 +1,14 @@
+[remap]
+
+importer="image"
+type="Image"
+uid="uid://cgm5ue4kf7c7l"
+path="res://.godot/imported/bread.png-cf04f1b7dacadbbf19ae46c539f7143c.image"
+
+[deps]
+
+source_file="res://assets/sprites/crops/fullgrown/bread.png"
+dest_files=["res://.godot/imported/bread.png-cf04f1b7dacadbbf19ae46c539f7143c.image"]
+
+[params]
+

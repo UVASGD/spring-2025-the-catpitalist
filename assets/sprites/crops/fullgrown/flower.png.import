@@ -1,0 +1,14 @@
+[remap]
+
+importer="image"
+type="Image"
+uid="uid://d4carq740nmd6"
+path="res://.godot/imported/flower.png-7b2b979f66af5e47b6ce89e7a2462a64.image"
+
+[deps]
+
+source_file="res://assets/sprites/crops/fullgrown/flower.png"
+dest_files=["res://.godot/imported/flower.png-7b2b979f66af5e47b6ce89e7a2462a64.image"]
+
+[params]
+

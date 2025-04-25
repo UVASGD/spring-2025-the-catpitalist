@@ -1,0 +1,108 @@
+[gd_scene load_steps=7 format=3 uid="uid://d2r46y6erdjej"]
+
+[ext_resource type="Script" path="res://assets/scripts/flower.gd" id="1_0hdek"]
+[ext_resource type="Texture2D" uid="uid://cgkod65atc4kc" path="res://assets/sprites/crops/final_breadsprite.png" id="2_lan7n"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_4f7iw"]
+font_size = 12
+outline_size = 1
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_7gpup"]
+font_size = 12
+outline_size = 1
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_k132j"]
+font_size = 12
+outline_size = 1
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oduee"]
+size = Vector2(32, 32)
+
+[node name="Flower" type="Node2D" groups=["crops"]]
+script = ExtResource("1_0hdek")
+growth_time = 1
+hardiness = 3
+seed_item_id = 20
+flower_item_id = 21
+
+[node name="debugHolder" type="Node2D" parent="."]
+visible = false
+
+[node name="Control" type="Control" parent="debugHolder"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -20.0
+offset_top = -24.0
+offset_right = 20.0
+offset_bottom = -10.0
+
+[node name="waterIndicator" type="ColorRect" parent="debugHolder/Control"]
+custom_minimum_size = Vector2(1.76, 0)
+layout_mode = 2
+offset_left = 4.0
+offset_top = 35.0
+offset_right = 9.0
+offset_bottom = 40.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="debugHolder/Control"]
+layout_direction = 3
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = -22.0
+offset_top = -1.0
+offset_right = 24.0
+offset_bottom = 16.0
+grow_horizontal = 2
+
+[node name="stage" type="Label" parent="debugHolder/Control/HBoxContainer"]
+layout_mode = 2
+label_settings = SubResource("LabelSettings_4f7iw")
+
+[node name="dsw" type="Label" parent="debugHolder/Control/HBoxContainer"]
+layout_mode = 2
+label_settings = SubResource("LabelSettings_7gpup")
+
+[node name="dsg" type="Label" parent="debugHolder/Control/HBoxContainer"]
+layout_mode = 2
+label_settings = SubResource("LabelSettings_k132j")
+
+[node name="hitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox"]
+shape = SubResource("RectangleShape2D_oduee")
+
+[node name="seed" type="Sprite2D" parent="."]
+texture = ExtResource("2_lan7n")
+region_enabled = true
+region_rect = Rect2(0, 0, 32, 32)
+
+[node name="sprout" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("2_lan7n")
+region_enabled = true
+region_rect = Rect2(32, 0, 32, 32)
+
+[node name="bud" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("2_lan7n")
+region_enabled = true
+region_rect = Rect2(64, 0, 32, 32)
+
+[node name="bloom" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("2_lan7n")
+region_enabled = true
+region_rect = Rect2(96, 0, 32, 32)
+
+[node name="dead" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("2_lan7n")
+region_enabled = true
+region_rect = Rect2(128, 0, 32, 32)
+
+[connection signal="input_event" from="hitbox" to="." method="_on_area_2d_input_event"]
+[connection signal="mouse_entered" from="hitbox" to="." method="_on_hitbox_mouse_entered"]

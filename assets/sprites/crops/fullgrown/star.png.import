@@ -1,0 +1,14 @@
+[remap]
+
+importer="image"
+type="Image"
+uid="uid://m8q8ojr7rplm"
+path="res://.godot/imported/star.png-a852e0013d91e4537fb4b7b41452557f.image"
+
+[deps]
+
+source_file="res://assets/sprites/crops/fullgrown/star.png"
+dest_files=["res://.godot/imported/star.png-a852e0013d91e4537fb4b7b41452557f.image"]
+
+[params]
+
