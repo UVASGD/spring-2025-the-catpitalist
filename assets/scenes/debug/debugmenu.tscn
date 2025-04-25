@@ -61,6 +61,10 @@ text = "give blurbo water"
 layout_mode = 2
 text = "send convo signal"
 
+[node name="send convo signal2" type="Button" parent="Control/VBoxContainer"]
+layout_mode = 2
+text = "make_1000"
+
 [connection signal="tree_exited" from="." to="." method="_on_tree_exited"]
 [connection signal="tree_exited" from="Control" to="Control" method="_on_tree_exited"]
 [connection signal="pressed" from="Control/VBoxContainer/skipday" to="." method="_on_skipday_pressed"]
@@ -73,3 +77,4 @@ text = "send convo signal"
 [connection signal="pressed" from="Control/VBoxContainer/give blurbo water" to="Control" method="_on_give_blurbo_water_pressed"]
 [connection signal="pressed" from="Control/VBoxContainer/send convo signal" to="." method="_on_send_convo_signal_pressed"]
 [connection signal="pressed" from="Control/VBoxContainer/send convo signal" to="Control" method="_on_send_convo_signal_pressed"]
+[connection signal="pressed" from="Control/VBoxContainer/send convo signal2" to="." method="_on_send_convo_signal_2_pressed"]

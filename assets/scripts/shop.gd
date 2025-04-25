@@ -51,6 +51,7 @@ func _process(delta: float) -> void:
 
 func close():
 	UI.close_shop()
+	DayManager.unfreeze()
 	return
 	
 func get_buyscreen_dialogue() -> String:

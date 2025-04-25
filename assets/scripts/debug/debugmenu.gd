@@ -63,3 +63,9 @@ func _on_send_convo_signal_pressed() -> void:
 	SignalBus.emit_signal("start_loanshark_quest")
 	History.mark("start_loanshark_quest")
 	pass # Replace with function body.
+
+
+func _on_send_convo_signal_2_pressed() -> void:
+	SignalBus.emit_signal("made_1000")
+	History.mark("made_1000")
+	pass # Replace with function body.

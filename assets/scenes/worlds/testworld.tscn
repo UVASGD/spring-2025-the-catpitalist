@@ -20,7 +20,7 @@
 [ext_resource type="PackedScene" uid="uid://dpgpfvvpkmqe8" path="res://assets/scenes/npcs/tttt.tscn" id="18_08yli"]
 [ext_resource type="PackedScene" uid="uid://bf25le0d607b1" path="res://assets/scenes/npcs/gerardo.tscn" id="19_kvnm2"]
 [ext_resource type="PackedScene" uid="uid://c8qbsnejl0gv3" path="res://assets/scenes/npcs/vincent.tscn" id="20_filv4"]
-[ext_resource type="PackedScene" uid="uid://bmw6wxkk4jdhu" path="res://assets/scenes/transportzone.tscn" id="21_1oevx"]
+[ext_resource type="PackedScene" uid="uid://3m50jyt14pbk" path="res://assets/scenes/transportzone.tscn" id="21_1oevx"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7ivjj"]
 texture = ExtResource("8_2d8hv")

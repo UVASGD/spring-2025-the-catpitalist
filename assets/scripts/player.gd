@@ -14,6 +14,15 @@ var can_pickup = true
 var held_item_index = 0
 var last_pos_timer
 var pos_stack = []
+var progression = {
+	1000: "made_1000",
+	10000: "made_10000",
+	100000: "made_100000",
+	1000000: "made_1000000",
+	10000000: "made_10000000",
+	100000000: "made_100000000",
+	
+}
 func _ready() -> void:
 	scale = alter_scale
 	flash_actionable()
@@ -36,6 +45,7 @@ func _ready() -> void:
 
 func get_100():
 	money += 100
+
 func flash_collision():
 	if collision_shape_2d == null:
 		return

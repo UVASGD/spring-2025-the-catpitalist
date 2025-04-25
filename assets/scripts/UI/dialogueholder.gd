@@ -49,6 +49,7 @@ func skip() -> void:
 	await get_tree().create_timer(0.5).timeout
 
 func _on_dialogue(convo: Conversation) -> void:
+	DayManager.freeze()
 	conversation = convo
 	portrait.texture = convo.get_npc().get_portrait()
 	self.show()
@@ -57,6 +58,8 @@ func _on_dialogue(convo: Conversation) -> void:
 	SignalBus.emit_signal("dialogue_finished")
 	if convo.opens_shop:
 		convo.get_npc().open_shop()
+	else:
+		DayManager.unfreeze()
 
 func show_conversation() -> void:
 	if conversation:

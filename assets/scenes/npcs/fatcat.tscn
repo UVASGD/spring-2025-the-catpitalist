@@ -1,8 +1,9 @@
-[gd_scene load_steps=17 format=3 uid="uid://c7bpitve6lom3"]
+[gd_scene load_steps=21 format=3 uid="uid://c7bpitve6lom3"]
 
 [ext_resource type="Script" path="res://assets/scenes/npcs/fatcat.gd" id="1_jy8ke"]
 [ext_resource type="Texture2D" uid="uid://brhvumn6xggrr" path="res://assets/sprites/World NPCs/phat_cat-Sheet.png" id="2_avyt0"]
 [ext_resource type="PackedScene" uid="uid://wfajuc7nk6w6" path="res://assets/scenes/templates/conversation.tscn" id="2_lb0i5"]
+[ext_resource type="Script" path="res://assets/scripts/message.gd" id="4_vjtvu"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ab7j1"]
 atlas = ExtResource("2_avyt0")
@@ -88,6 +89,91 @@ radius = 32.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_njb3k"]
 size = Vector2(20, 24)
 
+[sub_resource type="Animation" id="Animation_xp34g"]
+resource_name = "move"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.96667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-50, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("hitbox:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.96667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-50, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("collisionbox:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1.96667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-50, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_yaywk"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("hitbox:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("collisionbox:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8ub0y"]
+_data = {
+"RESET": SubResource("Animation_yaywk"),
+"move": SubResource("Animation_xp34g")
+}
+
 [node name="NPC" type="Node2D"]
 scale = Vector2(2, 2)
 script = ExtResource("1_jy8ke")
@@ -121,9 +207,44 @@ request_signal_name = "start_loanshark_quest"
 text = "hhhhhhhhhghhh"
 
 [node name="Conversation2" parent="Convos" instance=ExtResource("2_lb0i5")]
+requests_signal = true
+request_signal_name = "made_1000"
 
 [node name="Message" parent="Convos/Conversation2/Messages" index="0"]
-text = "Quest started"
+text = "What's that? Move out the way? Not a chance. "
+
+[node name="Message2" type="Node" parent="Convos/Conversation2/Messages" index="1"]
+script = ExtResource("4_vjtvu")
+text = "A small fry like you has no chance at meeting with the boss."
+
+[node name="Message3" type="Node" parent="Convos/Conversation2/Messages" index="2"]
+script = ExtResource("4_vjtvu")
+text = "But if you really wanna throw your life away, show us you're really about it."
+
+[node name="Message4" type="Node" parent="Convos/Conversation2/Messages" index="3"]
+script = ExtResource("4_vjtvu")
+text = "Go out and make $1000, then we'll talk."
+
+[node name="Conversation3" parent="Convos" instance=ExtResource("2_lb0i5")]
+signals_on_finish = true
+finish_signal = "chubbs_move"
+
+[node name="Message" parent="Convos/Conversation3/Messages" index="0"]
+text = "So you really did it..."
+
+[node name="Message2" type="Node" parent="Convos/Conversation3/Messages" index="1"]
+script = ExtResource("4_vjtvu")
+text = "The boss doesn't mess with just any old flopper. But you've proven yourself to me at least."
+
+[node name="Message3" type="Node" parent="Convos/Conversation3/Messages" index="2"]
+script = ExtResource("4_vjtvu")
+text = "I'll let you by, but the boss might not be so kind."
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_8ub0y")
+}
 
 [editable path="Convos/Conversation"]
 [editable path="Convos/Conversation2"]
+[editable path="Convos/Conversation3"]

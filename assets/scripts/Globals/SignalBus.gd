@@ -60,7 +60,9 @@ signal cant_hold_item
 signal unlock_farmhouse
 signal unlock_city
 signal start_loanshark_quest
+signal made_1000
 signal gift_100
+signal chubbs_move
 func emit(string):
 	emit_signal(string)
 	print("emitted: ", string)
