@@ -2,14 +2,15 @@ extends Node
 var frozen = false
 var day_num = 1
 var time = (6 * 3600) / TIME_SCALE # 6 am scaled to game time
-const DAY_LENGTH = 600 #num of seconds (real life) in a day (game)
-#const DAY_LENGTH = 5 #debug day speed (very fast)
+#const DAY_LENGTH = 600 #num of seconds (real life) in a day (game)
+const DAY_LENGTH = 60 #debug day speed (very fast)
 const TIME_SCALE = 86400 / DAY_LENGTH
 
 # Time thresholds in game seconds
 const DAWN_END_TIME = (6 * 3600) / TIME_SCALE
 const DUSK_START_TIME = (18 * 3600) / TIME_SCALE
 const MIDNIGHT_TIME = (24 * 3600) / TIME_SCALE
+const EXHAUSTED_TIME = (2 * 3600) / TIME_SCALE
 
 # State tracking
 var is_dawn = true
@@ -39,6 +40,8 @@ func _process(delta: float) -> void:
 	prev_time = time
 	time += delta
 	
+	print(time)
+	
 	check_time_thresholds()
 
 func check_time_thresholds():
@@ -48,6 +51,8 @@ func check_time_thresholds():
 		on_dusk_start()
 	if prev_time < MIDNIGHT_TIME && time >= MIDNIGHT_TIME:
 		on_midnight()
+	if prev_time < EXHAUSTED_TIME && time >= EXHAUSTED_TIME:
+		on_exhausted()
 
 func update_day_state(current_time):
 	if current_time < DAWN_END_TIME:
@@ -67,16 +72,24 @@ func update_day_state(current_time):
 		is_night = true
 
 func end_day():
-	time = 0
-	prev_time = 0
 	day_num += 1 
 	SignalBus.emit_signal("day_end")
 	
 	#on_dawn_end()
 	
+	check_time_thresholds()
+	update_day_state(time)
 	determine_season()
 	reset_weather()
 	print("day ended")
+	
+func sleep(exhausted: bool):
+	if exhausted:
+		time = 10 * 3600 / TIME_SCALE #set time to 10am
+	else:
+		time = 8 * 3600 / TIME_SCALE #set time to 8am
+	prev_time = time
+	end_day()
 
 func determine_season():
 	if day_num >= 91 and day_num <= 182:
@@ -140,6 +153,12 @@ func on_dusk_start():
 	print("dusk: transition to night time")
 
 func on_midnight():
+	time = 0
 	is_dawn = true
 	is_dusk = false
 	end_day()
+	
+func on_exhausted():
+	day_num -= 1
+	SceneSwapper.change_scene("res://assets/scenes/farmhouse_indoors.tscn", "res://assets/scenes/ui/loadingscreen.tscn")
+	sleep(true)

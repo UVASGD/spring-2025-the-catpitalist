@@ -14,7 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://rwlroq3ou1el" path="res://assets/sprites/tilesets/farmland.png" id="11_4dsun"]
 [ext_resource type="PackedScene" uid="uid://byxam7udt4dw3" path="res://assets/scenes/farmhouse.tscn" id="11_pcbsd"]
 [ext_resource type="PackedScene" uid="uid://bebmk5px6idgj" path="res://assets/scenes/npcs/dad.tscn" id="11_s4l5j"]
-[ext_resource type="PackedScene" uid="uid://bmw6wxkk4jdhu" path="res://assets/scenes/transportzone.tscn" id="11_v8qyd"]
+[ext_resource type="PackedScene" uid="uid://3m50jyt14pbk" path="res://assets/scenes/transportzone.tscn" id="11_v8qyd"]
 [ext_resource type="Texture2D" uid="uid://b5ysiovgmsvl3" path="res://assets/sprites/world objects/shared/tree_v1.png" id="13_q4m83"]
 [ext_resource type="Texture2D" uid="uid://mfyigq4tl03r" path="res://assets/sprites/world objects/shared/tree_v2.png" id="14_1dq7q"]
 [ext_resource type="Texture2D" uid="uid://ce36bxf27cob" path="res://assets/sprites/world objects/shared/Half_ROCK.png" id="15_3mkh1"]

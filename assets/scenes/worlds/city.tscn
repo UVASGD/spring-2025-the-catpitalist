@@ -19,7 +19,7 @@
 [ext_resource type="Texture2D" uid="uid://dm3swmredtw6w" path="res://assets/sprites/world objects/city/triange shadow.png" id="10_y7yqb"]
 [ext_resource type="Texture2D" uid="uid://bh15g5vydwqd4" path="res://assets/sprites/world objects/city/cityhouse_back (1).png" id="11_067fl"]
 [ext_resource type="PackedScene" uid="uid://bvkqnjchqy427" path="res://assets/scenes/npcs/goober_npc.tscn" id="11_0206h"]
-[ext_resource type="PackedScene" uid="uid://bmw6wxkk4jdhu" path="res://assets/scenes/transportzone.tscn" id="12_10djo"]
+[ext_resource type="PackedScene" uid="uid://3m50jyt14pbk" path="res://assets/scenes/transportzone.tscn" id="12_10djo"]
 [ext_resource type="PackedScene" uid="uid://r1gkmux58rxo" path="res://assets/scenes/npcs/alien.tscn" id="15_p4dqs"]
 [ext_resource type="Texture2D" uid="uid://b5ysiovgmsvl3" path="res://assets/sprites/world objects/shared/tree_v1.png" id="16_cqknu"]
 [ext_resource type="Texture2D" uid="uid://mfyigq4tl03r" path="res://assets/sprites/world objects/shared/tree_v2.png" id="17_710yt"]

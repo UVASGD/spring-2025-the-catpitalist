@@ -97,9 +97,11 @@ func wait_for_choice() -> void:
 		await get_tree().process_frame
 
 func _on_yes_pressed() -> void:
+	print("??")
 	awaiting_choice = false
 	dialogue_choice = "yes"
 	
 func _on_no_pressed() -> void:
+	print("?")
 	awaiting_choice = false
 	dialogue_choice = "no"

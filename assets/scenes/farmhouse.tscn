@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://byxam7udt4dw3"]
 
 [ext_resource type="Texture2D" uid="uid://bgwuiw5yg474t" path="res://assets/sprites/world objects/shared/farmhouse.png" id="1_mpqld"]
-[ext_resource type="PackedScene" uid="uid://bmw6wxkk4jdhu" path="res://assets/scenes/transportzone.tscn" id="2_x7jet"]
+[ext_resource type="PackedScene" uid="uid://3m50jyt14pbk" path="res://assets/scenes/transportzone.tscn" id="2_x7jet"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h4i4f"]
 size = Vector2(193.097, 94.5848)
