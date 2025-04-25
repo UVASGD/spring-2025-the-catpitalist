@@ -1,17 +1,18 @@
 class_name Overworld_area extends Node2D
 
-
+@export var debug:bool
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	Music.play_random()
-	for i in range(0,22):
-		PlayerData.player.inventory[i] = Items.get_item(i)
-	#Music.set_mode(Music.INFINITE)
-	SignalBus.emit_signal("unlock_planting")
-	History.mark("unlock_planting")
-	History.mark("unlock_watering")
-	SignalBus.emit_signal("unlock_watering")
+	if debug:
+		for i in range(0,22):
+			PlayerData.player.inventory[i] = Items.get_item(i)
+		Music.set_mode(Music.INFINITE)
+		SignalBus.emit_signal("unlock_planting")
+		History.mark("unlock_planting")
+		History.mark("unlock_watering")
+		SignalBus.emit_signal("unlock_watering")
 	pass # Replace with function body.
 
 

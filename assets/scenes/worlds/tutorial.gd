@@ -1,12 +1,13 @@
 extends Overworld_area
 @export var play_tutorial = true
 @onready var dadkiller: Area2D = $dadkiller
-
+@onready var seasonals = [$Spring_Summer, $Spring_Summer, $Fall, $Winter]
 func _ready() -> void:
 	super()
 	SignalBus.connect("spawn_seeds", spawn_seeds)
 	SignalBus.connect("context", _on_context)
 	SignalBus.connect("unlock_farmhouse", _enable_dadkiller)
+	seasonals[DayManager.season].show()
 	return
 
 func spawn_seeds():
