@@ -16,6 +16,7 @@ npc_name = "Trippi Troppi"
 exhaust_dialogue_text = "Haiiiii ^_^ I'm Trippi Troppi Troppa Trippa!"
 voice_pitch = 0.6
 shopkeeper = true
+portrait_path = "res://assets/sprites/NPC portraits/tttt_portrait.jpg"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_6albk")

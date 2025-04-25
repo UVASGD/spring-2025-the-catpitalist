@@ -29,6 +29,7 @@ UI="*res://assets/scripts/Globals/UI.gd"
 SceneSwapper="*res://assets/scripts/scene_swapper.gd"
 SceneStackDebug="*res://assets/scenes/ui/scene_stack_debug.tscn"
 History="*res://history.gd"
+NpcCache="*res://npc_cache.gd"
 
 [display]
 

@@ -1,0 +1,105 @@
+[gd_scene load_steps=7 format=3 uid="uid://cbdo28b5jlq6y"]
+
+[ext_resource type="Script" path="res://assets/scripts/npc.gd" id="1_oi2ww"]
+[ext_resource type="Texture2D" uid="uid://cwrhk0stomaml" path="res://assets/sprites/World NPCs/scrappy_2.png" id="2_gqkjj"]
+[ext_resource type="Script" path="res://assets/scripts/conversation.gd" id="3_aocrb"]
+[ext_resource type="Script" path="res://assets/scripts/message.gd" id="4_lrxj8"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pmeq2"]
+radius = 32.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_njb3k"]
+size = Vector2(20, 24)
+
+[node name="NPC" type="Node2D" groups=["NPCs"]]
+script = ExtResource("1_oi2ww")
+npc_name = "Scrappy"
+exhaust_dialogue_text = "I'M A REAL RACCOON!"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-1, -6)
+texture = ExtResource("2_gqkjj")
+
+[node name="hitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox"]
+shape = SubResource("CircleShape2D_pmeq2")
+
+[node name="collisionbox" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="collisionbox"]
+position = Vector2(0, 12)
+shape = SubResource("RectangleShape2D_njb3k")
+
+[node name="Convos" type="Node" parent="."]
+
+[node name="Conversation" type="Node" parent="Convos"]
+script = ExtResource("3_aocrb")
+requests_signal = true
+request_signal_name = "entered_junkyard"
+signals_on_finish = true
+finish_signal = "unlock_junkyard"
+
+[node name="Messages" type="Node" parent="Convos/Conversation"]
+
+[node name="Message" type="Node" parent="Convos/Conversation/Messages"]
+script = ExtResource("4_lrxj8")
+text = "Howdy stranger! I’m Scrappy the raccoon–that and only that >:("
+
+[node name="Message2" type="Node" parent="Convos/Conversation/Messages"]
+script = ExtResource("4_lrxj8")
+text = "and I just love Love LOVE collecting JUNK! Every night I sneak out into the city and go dumpster diving."
+
+[node name="Message3" type="Node" parent="Convos/Conversation/Messages"]
+script = ExtResource("4_lrxj8")
+text = "I always return with the greatest treasures possible for my dear customers. "
+
+[node name="Message4" type="Node" parent="Convos/Conversation/Messages"]
+script = ExtResource("4_lrxj8")
+text = "Head down south from here and I'll open up shop for you!"
+
+[node name="Conversation2" type="Node" parent="Convos"]
+script = ExtResource("3_aocrb")
+requests_signal = true
+request_signal_name = "scrappy_shop_closed"
+
+[node name="Messages" type="Node" parent="Convos/Conversation2"]
+
+[node name="Message" type="Node" parent="Convos/Conversation2/Messages"]
+script = ExtResource("4_lrxj8")
+text = "What's that? How'd I get back here so fast?"
+
+[node name="Message2" type="Node" parent="Convos/Conversation2/Messages"]
+script = ExtResource("4_lrxj8")
+text = "Don't worry about it! see ya! "
+
+[node name="Conversation3" type="Node" parent="Convos"]
+script = ExtResource("3_aocrb")
+signals_on_finish = true
+finish_signal = "Start_loanshark_quest"
+
+[node name="Messages" type="Node" parent="Convos/Conversation3"]
+
+[node name="Message" type="Node" parent="Convos/Conversation3/Messages"]
+script = ExtResource("4_lrxj8")
+text = "Hello valued customer, I'm sorry to say this, but I have to close up shop for now."
+
+[node name="Message2" type="Node" parent="Convos/Conversation3/Messages"]
+script = ExtResource("4_lrxj8")
+text = "Why? Because I'm in deep trouble -- I have a big debt, but not enough money to pay."
+
+[node name="Message3" type="Node" parent="Convos/Conversation3/Messages"]
+script = ExtResource("4_lrxj8")
+text = "I need to go into hiding for now, Or else the Loan Shark will find me!"
+
+[node name="Message4" type="Node" parent="Convos/Conversation3/Messages"]
+script = ExtResource("4_lrxj8")
+text = "Who’s the Loan Shark? Are you kidding me? He’s only the most ruthless and vile creature roaming this city. He practically runs these streets… "
+
+[node name="Message5" type="Node" parent="Convos/Conversation3/Messages"]
+script = ExtResource("4_lrxj8")
+text = "He lives in that giant building on the north side of town. If only someoe would stand up to him..."
+
+[node name="start" type="Marker2D" parent="."]
+
+[node name="end" type="Marker2D" parent="."]

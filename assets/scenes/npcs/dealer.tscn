@@ -16,6 +16,7 @@ script = ExtResource("1_ao7rl")
 npc_name = "Catnip Dealer"
 exhaust_dialogue_text = "Wanna buy some Drugs?"
 shopkeeper = true
+portrait_path = "res://assets/sprites/NPC portraits/catnip_dealer_drawing.jpg"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_hpty6")

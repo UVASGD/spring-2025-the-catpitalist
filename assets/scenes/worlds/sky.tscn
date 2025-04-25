@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=4 uid="uid://cs1grt3mirkh6"]
+[gd_scene load_steps=16 format=4 uid="uid://cs1grt3mirkh6"]
 
 [ext_resource type="Script" path="res://assets/scripts/indoors.gd" id="1_ostpw"]
 [ext_resource type="PackedScene" uid="uid://qoi6u6ftefs2" path="res://assets/scenes/skybg.tscn" id="2_6l8ku"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://b2s5brugrft1g" path="res://assets/scenes/npcs/crystal.tscn" id="8_ffcfi"]
 [ext_resource type="PackedScene" uid="uid://b3pc0t4lcmip8" path="res://assets/scenes/npcs/kwatos.tscn" id="9_g6plp"]
 [ext_resource type="PackedScene" uid="uid://cs1pvgleixkmc" path="res://assets/scenes/npcs/shrod.tscn" id="10_dxitf"]
+[ext_resource type="PackedScene" uid="uid://c8qbsnejl0gv3" path="res://assets/scenes/npcs/vincent.tscn" id="12_trtrc"]
 [ext_resource type="PackedScene" uid="uid://bmw6wxkk4jdhu" path="res://assets/scenes/transportzone.tscn" id="16_bq67p"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xr6c6"]
@@ -144,5 +145,9 @@ path_to_new_scene = ""
 
 [node name="CollisionShape2D" parent="backhome/enterzone" index="0"]
 position = Vector2(-6.96649, 12.9086)
+
+[node name="NPC" parent="." instance=ExtResource("12_trtrc")]
+position = Vector2(418, 481)
+scale = Vector2(2, 2)
 
 [editable path="backhome"]

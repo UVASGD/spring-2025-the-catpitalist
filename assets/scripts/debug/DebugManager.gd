@@ -4,7 +4,8 @@ var camera = null
 var debug_menu_open = false
 var Blurbo = null
 var cooldown = false
-var cam_fired = false
+
+#var cam_fired = false
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	SignalBus.connect("cam_ready", _on_camera_ready)
@@ -39,8 +40,9 @@ func close_menu():
 	return
 
 func _on_camera_ready(cam):
-	if not cam_fired: # wait until the main scene's camera is loaded, since this script is autoload and might load before the camera is ready
-		camera = cam
-		camera.add_child(debugmenu)
-		cam_fired = true
+	#if not cam_fired: # wait until the main scene's camera is loaded, since this script is autoload and might load before the camera is ready
+	camera = cam
+	debugmenu = load("res://assets/scenes/debug/debugmenu.tscn").instantiate()
+	camera.add_child(debugmenu)
+		#cam_fired = true
 	return

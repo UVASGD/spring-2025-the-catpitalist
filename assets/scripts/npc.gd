@@ -8,6 +8,7 @@ class_name NPC extends Interactable
 @export_range(-1, 2, 0.1) var voice_pitch: float = 1
 @export var shopkeeper = false
 @export var current_convo_index = 0
+@export var portrait_path:String
 var requested_item_id
 var is_speaking = false
 @onready var hitbox: Area2D = $hitbox
@@ -23,12 +24,13 @@ func _ready() -> void:
 	setup_exhaust_dialogue()
 	if has_idle_walk:
 		$AnimationPlayer2D.play("idle_walk")
+	NPCS.load_cache(self)
 	pass # Replace with function body.
 
 func _process(delta: float) -> void:
 	
 	return 
-	
+
 func get_convos():
 	if convos:
 		return convos.get_children()
@@ -38,6 +40,12 @@ func sign_messages():
 		for convo in get_convos():
 			for message in convo.get_messages():
 				message.speaker = npc_name
+func get_current_convo():
+	if is_world_object:
+		return convos.get_child(0) # always use the same convo for world objects 
+	if current_convo_index -1 > 0:
+		var convo = convos.get_child(current_convo_index)
+		return convo
 
 func get_next_convo():
 	if is_world_object:
@@ -58,6 +66,12 @@ func unlock_current_convo():
 			convo.locked = false
 			print("unlocked ", convo.debugname)
 
+func lock_current_convo():
+	if current_convo_index < convos.get_child_count():
+		var convo = get_next_convo()
+		if convo:
+			convo.locked = true
+			print("unlocked ", convo.debugname)
 func unlock_next_convo():
 	if current_convo_index + 1 < convos.get_child_count():
 		var convo = convos.get_child(current_convo_index + 1)
@@ -83,13 +97,15 @@ func speak():
 				Dialogue.start_dialogue(convo)
 			else:
 				play_exhaust_dialogue()
+			NPCS.update_cache(self)
 			return
 		elif convo.requests_item:
 			requested_item_id = convo.request_item_id
 			lock_next_convo()
 		elif convo.requests_signal:
-			SignalBus.connect(convo.request_signal_name, unlock_current_convo)
-			lock_next_convo()
+			if not History.has_happened(convo.request_signal_name):
+				SignalBus.connect(convo.request_signal_name, unlock_current_convo)
+				lock_next_convo()
 		
 		Dialogue.start_dialogue(convo)
 		await SignalBus.dialogue_finished
@@ -99,6 +115,7 @@ func speak():
 		current_convo_index += 1
 	else:
 		play_exhaust_dialogue()
+	NPCS.update_cache(self)
 
 func setup_exhaust_dialogue():
 	var convo = Conversation.new()
@@ -127,3 +144,9 @@ func _on_item_given(item, npc):
 
 func open_shop():
 	UI.open_shop(inventory, self)
+
+func get_portrait():
+	if portrait_path:
+		return load(portrait_path)
+	else:
+		return load("res://assets/sprites/NPC portraits/default_portrait.png")

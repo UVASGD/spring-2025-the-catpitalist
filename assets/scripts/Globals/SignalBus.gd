@@ -59,6 +59,7 @@ signal cant_afford_item
 signal cant_hold_item
 signal unlock_farmhouse
 signal unlock_city
+signal start_loanshark_quest
 signal gift_100
 func emit(string):
 	emit_signal(string)

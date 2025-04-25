@@ -1,6 +1,8 @@
 extends Control
 
-@onready var textbox: Label = $textbox
+@onready var textbox: Label = $cardboard/textbox
+@onready var portrait: TextureRect = $cardboard/portrait
+
 @onready var speakerlabel: Label = $speakerlabel
 @onready var choices: VBoxContainer = $choices
 @export var TEXT_SPEED:int = 3
@@ -48,6 +50,7 @@ func skip() -> void:
 
 func _on_dialogue(convo: Conversation) -> void:
 	conversation = convo
+	portrait.texture = convo.get_npc().get_portrait()
 	self.show()
 	await show_conversation()
 	self.hide()

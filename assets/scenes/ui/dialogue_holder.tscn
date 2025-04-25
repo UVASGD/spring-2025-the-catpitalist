@@ -1,16 +1,26 @@
-[gd_scene load_steps=5 format=3 uid="uid://c1hucaw7oqrll"]
+[gd_scene load_steps=8 format=3 uid="uid://c1hucaw7oqrll"]
 
 [ext_resource type="Script" path="res://assets/scripts/UI/dialogueholder.gd" id="1_n8eg0"]
+[ext_resource type="Texture2D" uid="uid://cqaprsletxyj" path="res://assets/sprites/UI/dialogue_box.png" id="2_h54rt"]
+[ext_resource type="Texture2D" uid="uid://beqb5tb4rwe5p" path="res://assets/sprites/NPC portraits/default_portrait.png" id="3_qbgip"]
 [ext_resource type="Shader" path="res://assets/scenes/dialogue_holder.gdshader" id="3_y3wfs"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ru74g"]
-line_spacing = 6.0
-font_size = 32
-outline_size = 4
+line_spacing = 0.0
+font_size = 40
+font_color = Color(0.705882, 0.180392, 1, 1)
+outline_size = 8
 outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_evgku"]
 shader = ExtResource("3_y3wfs")
+
+[sub_resource type="LabelSettings" id="LabelSettings_8175y"]
+line_spacing = 0.0
+font_size = 32
+font_color = Color(0.705882, 0.180392, 1, 1)
+outline_size = 8
+outline_color = Color(0, 0, 0, 1)
 
 [node name="DialogueHolder" type="CanvasLayer"]
 
@@ -24,24 +34,54 @@ grow_vertical = 2
 mouse_filter = 1
 script = ExtResource("1_n8eg0")
 
-[node name="textbox" type="Label" parent="Control"]
-custom_minimum_size = Vector2(0, 280)
+[node name="cardboard" type="TextureRect" parent="Control"]
+z_index = -2
+custom_minimum_size = Vector2(0, 360)
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -23.0
+offset_top = -180.0
 grow_horizontal = 2
 grow_vertical = 0
+texture = ExtResource("2_h54rt")
+
+[node name="portrait" type="TextureRect" parent="Control/cardboard"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0476562
+anchor_top = 0.169444
+anchor_right = 0.239844
+anchor_bottom = 0.833333
+offset_right = -6.0
+offset_bottom = 1.0
+texture = ExtResource("3_qbgip")
+expand_mode = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="textbox" type="Label" parent="Control/cardboard"]
+z_index = 1
+custom_minimum_size = Vector2(0, 280)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.282031
+anchor_top = 0.272222
+anchor_right = 0.945781
+anchor_bottom = 0.894444
+offset_right = 212.4
+offset_bottom = 56.0
+scale = Vector2(0.8, 0.8)
 label_settings = SubResource("LabelSettings_ru74g")
 autowrap_mode = 3
 max_lines_visible = 4
+metadata/_edit_use_anchors_ = true
 
-[node name="ColorRect" type="ColorRect" parent="Control/textbox"]
+[node name="ColorRect" type="ColorRect" parent="Control/cardboard/textbox"]
+visible = false
 z_index = -1
 material = SubResource("ShaderMaterial_evgku")
-custom_minimum_size = Vector2(0, 280)
+custom_minimum_size = Vector2(0, 274.635)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -51,16 +91,20 @@ grow_vertical = 2
 color = Color(0, 0, 0, 0.372549)
 
 [node name="speakerlabel" type="Label" parent="Control"]
-custom_minimum_size = Vector2(280, 60)
+custom_minimum_size = Vector2(200, 60)
 layout_mode = 1
 anchors_preset = -1
-anchor_top = 0.57
-anchor_bottom = 0.57
-offset_top = -30.0
-offset_right = 1.0
-offset_bottom = 30.0
+anchor_left = 0.0445312
+anchor_top = 0.834722
+anchor_right = 0.238281
+anchor_bottom = 0.918056
 grow_vertical = 2
-label_settings = SubResource("LabelSettings_ru74g")
+text = "catnip dealer"
+label_settings = SubResource("LabelSettings_8175y")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+metadata/_edit_use_anchors_ = true
 
 [node name="ColorRect" type="ColorRect" parent="Control/speakerlabel"]
 z_index = -1
@@ -68,9 +112,12 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 1.0
+offset_right = 1.0
+offset_bottom = -1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0, 0, 0.372549)
+color = Color(1, 1, 1, 0.372549)
 
 [node name="choices" type="VBoxContainer" parent="Control"]
 visible = false

@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=4 uid="uid://b2133ovj0k7io"]
+[gd_scene load_steps=29 format=4 uid="uid://b2133ovj0k7io"]
 
 [ext_resource type="Script" path="res://assets/scripts/overworldarea.gd" id="1_dsj35"]
 [ext_resource type="PackedScene" uid="uid://rwurml76tnqs" path="res://assets/scenes/npcs/sign.tscn" id="3_23kby"]
@@ -20,6 +20,7 @@
 [ext_resource type="PackedScene" uid="uid://dpgpfvvpkmqe8" path="res://assets/scenes/npcs/tttt.tscn" id="18_08yli"]
 [ext_resource type="PackedScene" uid="uid://bf25le0d607b1" path="res://assets/scenes/npcs/gerardo.tscn" id="19_kvnm2"]
 [ext_resource type="PackedScene" uid="uid://c8qbsnejl0gv3" path="res://assets/scenes/npcs/vincent.tscn" id="20_filv4"]
+[ext_resource type="PackedScene" uid="uid://bmw6wxkk4jdhu" path="res://assets/scenes/transportzone.tscn" id="21_1oevx"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7ivjj"]
 texture = ExtResource("8_2d8hv")
@@ -198,5 +199,14 @@ scale = Vector2(2, 2)
 [node name="NPC4" parent="." instance=ExtResource("20_filv4")]
 position = Vector2(418, 272)
 scale = Vector2(2, 2)
+
+[node name="transportzone" parent="." instance=ExtResource("21_1oevx")]
+position = Vector2(513, 61)
+path_to_new_scene = "res://assets/scenes/worlds/city.tscn"
+
+[node name="Label" type="Label" parent="transportzone"]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "city"
 
 [editable path="y_sorted/DropItem"]

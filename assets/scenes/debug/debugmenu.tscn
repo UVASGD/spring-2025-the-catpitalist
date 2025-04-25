@@ -9,6 +9,7 @@ outline_size = 4
 outline_color = Color(0, 0, 0, 1)
 
 [node name="CanvasLayer" type="CanvasLayer"]
+layer = 10
 script = ExtResource("1_1ueyc")
 
 [node name="Control" type="Control" parent="."]
@@ -64,11 +65,11 @@ text = "send convo signal"
 [connection signal="tree_exited" from="Control" to="Control" method="_on_tree_exited"]
 [connection signal="pressed" from="Control/VBoxContainer/skipday" to="." method="_on_skipday_pressed"]
 [connection signal="pressed" from="Control/VBoxContainer/skipweek" to="." method="_on_skipweek_pressed"]
-[connection signal="text_submitted" from="Control/VBoxContainer/HBoxContainer/setMoneyInput" to="Control" method="_on_set_money_input_text_submitted"]
 [connection signal="text_submitted" from="Control/VBoxContainer/HBoxContainer/setMoneyInput" to="." method="_on_set_money_input_text_submitted"]
-[connection signal="text_submitted" from="Control/VBoxContainer/HBoxContainer/addMoneyInput" to="Control" method="_on_add_money_input_text_submitted"]
+[connection signal="text_submitted" from="Control/VBoxContainer/HBoxContainer/setMoneyInput" to="Control" method="_on_set_money_input_text_submitted"]
 [connection signal="text_submitted" from="Control/VBoxContainer/HBoxContainer/addMoneyInput" to="." method="_on_add_money_input_text_submitted"]
-[connection signal="pressed" from="Control/VBoxContainer/give blurbo water" to="Control" method="_on_give_blurbo_water_pressed"]
+[connection signal="text_submitted" from="Control/VBoxContainer/HBoxContainer/addMoneyInput" to="Control" method="_on_add_money_input_text_submitted"]
 [connection signal="pressed" from="Control/VBoxContainer/give blurbo water" to="." method="_on_give_blurbo_water_pressed"]
-[connection signal="pressed" from="Control/VBoxContainer/send convo signal" to="Control" method="_on_send_convo_signal_pressed"]
+[connection signal="pressed" from="Control/VBoxContainer/give blurbo water" to="Control" method="_on_give_blurbo_water_pressed"]
 [connection signal="pressed" from="Control/VBoxContainer/send convo signal" to="." method="_on_send_convo_signal_pressed"]
+[connection signal="pressed" from="Control/VBoxContainer/send convo signal" to="Control" method="_on_send_convo_signal_pressed"]

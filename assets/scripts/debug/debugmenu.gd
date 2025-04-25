@@ -60,5 +60,6 @@ func _on_give_blurbo_water_pressed() -> void:
 
 
 func _on_send_convo_signal_pressed() -> void:
-	SignalBus.emit_signal("convotest")
+	SignalBus.emit_signal("start_loanshark_quest")
+	History.mark("start_loanshark_quest")
 	pass # Replace with function body.
