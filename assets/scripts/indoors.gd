@@ -7,7 +7,8 @@ var can_transport = true
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	spawnpoint.add_child(PlayerData.clone_and_kill())
-	seasonals[DayManager.season].show()
+	if seasonals[DayManager.season]:
+		seasonals[DayManager.season].show()
 	#PlayerData.player.reparent(spawnpoint)
 	pass # Replace with function body.
 
