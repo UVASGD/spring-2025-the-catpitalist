@@ -315,7 +315,7 @@ y_sort_enabled = true
 
 [node name="spawnpoint" type="Node2D" parent="y_sorted"]
 y_sort_enabled = true
-position = Vector2(-287, 141)
+position = Vector2(-610, 290)
 
 [node name="houses" type="Node2D" parent="y_sorted"]
 y_sort_enabled = true
@@ -1136,6 +1136,8 @@ shape = SubResource("WorldBoundaryShape2D_o7f2n")
 
 [node name="waterentrance" parent="." instance=ExtResource("12_10djo")]
 position = Vector2(669, 751)
+toggles_on_signal = true
+signal_name = "unlock_water"
 path_to_new_scene = "res://assets/scenes/worlds/underwater.tscn"
 
 [node name="CollisionShape2D" parent="waterentrance/enterzone" index="0"]

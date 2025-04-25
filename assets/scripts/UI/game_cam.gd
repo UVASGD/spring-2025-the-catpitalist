@@ -11,6 +11,8 @@ var wintertexture = preload("res://assets/sprites/UI/info/winter icon.png")
 @onready var rain: ColorRect = $weather/rain
 @onready var snow: ColorRect = $weather/snow
 
+@onready var info: CanvasLayer = $Info
+@onready var hotbar: CanvasLayer = $Hotbar
 
 var inv = null
 var signaled = false
@@ -65,6 +67,8 @@ func open_inv():
 	if inv_showing:
 		close_inv()
 		return
+	if not PlayerData.player.actionable:
+		return
 	SignalBus.emit_signal("inv_opened")
 	inv_showing = true
 	ui_busy = true
@@ -110,7 +114,26 @@ func close_pause():
 		$Hotbar.show()
 		await get_tree().create_timer(0.5).timeout
 		pause_cooldown = false
+func hide_hotbar():
+	hotbar.hide()
 
+func show_hotbar():
+	hotbar.show()
+
+func hide_info():
+	info.hide()
+
+func show_info():
+	info.show()
+
+func hide_ui():
+	hide_info()
+	hide_hotbar()
+
+func show_ui():
+	show_info()
+	show_hotbar()
+	
 func close_all():
 	close_inv()
 	close_pause()

@@ -10,7 +10,8 @@ var npc_count = 0
 var npcs_loaded = 0
 
 var npcs_in_scene: Array[CutsceneNPC]
-
+@export var signals_on_finish:bool
+@export var signal_name:String
 @export var hides_things:bool = false
 @export var cutscene_length: int
 @export var hidden_things:Array[Node2D]
@@ -26,6 +27,8 @@ func _ready() -> void:
 			node.call_deferred("hide")
 	if $Player:
 		align_player()
+	PlayerData.player.hide_ui()
+	
 	
 func align_player(): # assumes we want to use real player's location as a start point for fake player, to prevent odd position jumping when cutscene ends
 	$Player.position = PlayerData.player.position
@@ -112,5 +115,9 @@ func end_cutscene():
 			
 			node.show()
 	PlayerData.player.actionable = true
+	PlayerData.player.show_ui()
+	if signals_on_finish:
+		SignalBus.emit_signal(signal_name)
+		History.mark(signal_name)
 	queue_free()
 	pass # Replace with function body.

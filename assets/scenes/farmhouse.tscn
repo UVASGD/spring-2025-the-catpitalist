@@ -19,6 +19,8 @@ shape = SubResource("RectangleShape2D_h4i4f")
 
 [node name="transportzone" parent="." instance=ExtResource("2_x7jet")]
 position = Vector2(-32.1828, 89.8244)
+toggles_on_signal = true
+signal_name = "unlock_farmhouse"
 can_transport = true
 debug = true
 

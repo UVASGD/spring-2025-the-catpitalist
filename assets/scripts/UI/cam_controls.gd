@@ -12,6 +12,6 @@ func _ready() -> void:
 func _input(_event: InputEvent) -> void:
 	if Input.is_action_just_released("openinventory"):
 		cam.open_inv()
-	elif Input.is_action_just_released("openpause"):
+	elif Input.is_action_just_released("openpause") and PlayerData.player.actionable:
 		cam.open_pause()
 	return

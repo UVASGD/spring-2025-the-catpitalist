@@ -57,7 +57,9 @@ signal mom_dialogue_done
 signal shop_price_change
 signal cant_afford_item
 signal cant_hold_item
-
+signal unlock_farmhouse
+signal unlock_city
+signal gift_100
 func emit(string):
 	emit_signal(string)
 	print("emitted: ", string)
