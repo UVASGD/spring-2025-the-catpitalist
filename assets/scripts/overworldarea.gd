@@ -8,6 +8,10 @@ func _ready() -> void:
 	for i in range(0,22):
 		PlayerData.player.inventory[i] = Items.get_item(i)
 	#Music.set_mode(Music.INFINITE)
+	SignalBus.emit_signal("unlock_planting")
+	History.mark("unlock_planting")
+	History.mark("unlock_watering")
+	SignalBus.emit_signal("unlock_watering")
 	pass # Replace with function body.
 
 

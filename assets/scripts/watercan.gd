@@ -7,9 +7,9 @@ func _ready() -> void:
 var usable = true
 func use():
 	if usable:
-		charges -= 1
-		if charges == 0:
-			usable = false
+		#charges -= 1
+		#if charges == 0:
+			#usable = false
 		return true
 	else:
 		return false

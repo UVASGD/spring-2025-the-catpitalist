@@ -1,5 +1,5 @@
 class_name Plantable extends Item
-@export var path_to_flower:String
+@export var path_to_active_flower:String
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -7,8 +7,9 @@ func _ready() -> void:
 
 
 func plant_at(obj:PlantableTile):
-	obj.plant(get_plant())
+	var plant = get_plant()
+	obj.plant(plant)
 	decrease_count()
 
 func get_plant():
-	return load(path_to_flower).instantiate()
+	return load(path_to_active_flower).instantiate()
