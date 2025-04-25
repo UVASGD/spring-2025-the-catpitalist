@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://tvcxs0mmybp7"]
+
+[ext_resource type="Script" path="res://assets/scripts/plantable.gd" id="1_drefo"]
+[ext_resource type="Texture2D" uid="uid://dr34ax66qduqo" path="res://assets/sprites/crops/seeds/breadseeds.png" id="2_atx5a"]
+
+[node name="seeds" type="Node2D"]
+script = ExtResource("1_drefo")
+path_to_flower = "res://assets/scenes/items/bread.tscn"
+ID = 20
+item_name = "bread seeds"
+stackable = true
+max_stack = 64
+count = 16
+description = "not the kind that go on top..."
+sellable = true
+sell_price = 1
+buy_price = 2
+sprite_path = "res://assets/sprites/crops/seeds/breadseeds.png"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_atx5a")
+region_enabled = true
+region_rect = Rect2(0, 0, 32, 32)

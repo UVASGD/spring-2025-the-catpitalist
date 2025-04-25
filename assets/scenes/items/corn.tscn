@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://bs03cw0fw4typ"]
+
+[ext_resource type="Script" path="res://assets/scripts/item.gd" id="1_el5pd"]
+[ext_resource type="Texture2D" uid="uid://b0eeuvlnk2344" path="res://assets/sprites/crops/fullgrown/corn.png" id="2_kie7w"]
+
+[node name="flower" type="Node2D"]
+script = ExtResource("1_el5pd")
+ID = 5
+item_name = "corn"
+stackable = true
+max_stack = 99
+count = 1
+description = "ball"
+sellable = true
+sell_price = 3
+buy_price = 5
+sprite_path = "res://assets/sprites/crops/fullgrown/corn.png"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_kie7w")

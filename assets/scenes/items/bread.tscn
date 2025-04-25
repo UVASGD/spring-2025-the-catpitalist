@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://n2e10r2ir401"]
+
+[ext_resource type="Script" path="res://assets/scripts/item.gd" id="1_3ilkw"]
+[ext_resource type="Texture2D" uid="uid://cgm5ue4kf7c7l" path="res://assets/sprites/crops/fullgrown/bread.png" id="2_5xv2g"]
+
+[node name="flower" type="Node2D"]
+script = ExtResource("1_3ilkw")
+ID = 21
+item_name = "bread"
+stackable = true
+max_stack = 99
+count = 1
+description = "ok man whatever"
+sellable = true
+sell_price = 3
+buy_price = 5
+sprite_path = "res://assets/sprites/crops/fullgrown/bread.png"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_5xv2g")

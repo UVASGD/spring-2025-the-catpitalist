@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://jxv3liaugsy3"]
+
+[ext_resource type="Script" path="res://assets/scripts/item.gd" id="1_3aoor"]
+[ext_resource type="Texture2D" uid="uid://m8q8ojr7rplm" path="res://assets/sprites/crops/fullgrown/star.png" id="2_5pxiy"]
+
+[node name="flower" type="Node2D"]
+script = ExtResource("1_3aoor")
+ID = 17
+item_name = "star"
+stackable = true
+max_stack = 99
+count = 1
+description = "how did you grow that..."
+sellable = true
+sell_price = 3
+buy_price = 5
+sprite_path = "res://assets/sprites/crops/fullgrown/star.png"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_5pxiy")

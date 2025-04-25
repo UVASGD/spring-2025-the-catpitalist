@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://l1egwrkxtwfy"]
+
+[ext_resource type="Script" path="res://assets/scripts/item.gd" id="1_jx6to"]
+[ext_resource type="Texture2D" uid="uid://crsuyngf105x" path="res://assets/sprites/crops/fullgrown/wheat.png" id="2_tch1j"]
+
+[node name="flower" type="Node2D"]
+script = ExtResource("1_jx6to")
+ID = 19
+item_name = "wheat"
+stackable = true
+max_stack = 99
+count = 1
+description = "woooooo"
+sellable = true
+sell_price = 3
+buy_price = 5
+sprite_path = "res://assets/sprites/crops/fullgrown/wheat.png"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_tch1j")

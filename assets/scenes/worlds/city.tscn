@@ -323,6 +323,7 @@ position = Vector2(-109, 192)
 
 [node name="Cityhouse2" type="Sprite2D" parent="y_sorted/houses"]
 z_index = 1
+y_sort_enabled = true
 position = Vector2(-327, -341)
 scale = Vector2(2, 2)
 texture = ExtResource("4_08swj")
@@ -341,6 +342,7 @@ scale = Vector2(2.14, 0.932)
 texture = ExtResource("10_y7yqb")
 
 [node name="club" type="Sprite2D" parent="y_sorted/houses"]
+y_sort_enabled = true
 position = Vector2(1119, -843)
 scale = Vector2(4, 4)
 texture = ExtResource("6_yd1fw")
@@ -359,22 +361,27 @@ position = Vector2(0.25, 73.25)
 shape = SubResource("RectangleShape2D_2f5re")
 
 [node name="WMhouse" type="Sprite2D" parent="y_sorted/houses"]
+y_sort_enabled = true
 position = Vector2(1602, -440)
 scale = Vector2(2, 2)
 texture = ExtResource("7_do6i3")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="y_sorted/houses/WMhouse"]
+y_sort_enabled = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="y_sorted/houses/WMhouse/StaticBody2D"]
+y_sort_enabled = true
 position = Vector2(0.75, 42)
 shape = SubResource("RectangleShape2D_8sjew")
 
 [node name="LShouse" type="Sprite2D" parent="y_sorted/houses"]
+y_sort_enabled = true
 position = Vector2(659, -1345)
 scale = Vector2(2, 2)
 texture = ExtResource("8_817pb")
 
 [node name="water_entrance_sprite" type="Sprite2D" parent="y_sorted/houses"]
+z_index = -5
 position = Vector2(1490, -738)
 texture = ExtResource("9_r8l54")
 
@@ -533,6 +540,7 @@ position = Vector2(1521, -569)
 y_sort_enabled = true
 
 [node name="tree14" type="Sprite2D" parent="y_sorted/trees"]
+y_sort_enabled = true
 position = Vector2(129, 875)
 scale = Vector2(2, 2)
 texture = ExtResource("16_cqknu")
@@ -544,6 +552,7 @@ position = Vector2(0.125, 40.625)
 shape = SubResource("RectangleShape2D_wk4nv")
 
 [node name="tree15" type="Sprite2D" parent="y_sorted/trees"]
+y_sort_enabled = true
 position = Vector2(1390, 544)
 scale = Vector2(2, 2)
 texture = ExtResource("16_cqknu")
@@ -555,6 +564,7 @@ position = Vector2(0.125, 40.625)
 shape = SubResource("RectangleShape2D_wk4nv")
 
 [node name="tree16" type="Sprite2D" parent="y_sorted/trees"]
+y_sort_enabled = true
 position = Vector2(1125, -73)
 scale = Vector2(2, 2)
 texture = ExtResource("16_cqknu")
@@ -566,6 +576,7 @@ position = Vector2(0.125, 40.625)
 shape = SubResource("RectangleShape2D_wk4nv")
 
 [node name="tree18" type="Sprite2D" parent="y_sorted/trees"]
+y_sort_enabled = true
 position = Vector2(983, 1018)
 scale = Vector2(2, 2)
 texture = ExtResource("16_cqknu")
@@ -577,6 +588,7 @@ position = Vector2(0.125, 40.625)
 shape = SubResource("RectangleShape2D_wk4nv")
 
 [node name="tree21" type="Sprite2D" parent="y_sorted/trees"]
+y_sort_enabled = true
 position = Vector2(1745, 932)
 scale = Vector2(2, 2)
 texture = ExtResource("17_710yt")
@@ -588,6 +600,7 @@ position = Vector2(0.125, 40.625)
 shape = SubResource("RectangleShape2D_wk4nv")
 
 [node name="tree22" type="Sprite2D" parent="y_sorted/trees"]
+y_sort_enabled = true
 position = Vector2(-492, 626)
 scale = Vector2(2, 2)
 texture = ExtResource("17_710yt")
@@ -602,251 +615,301 @@ shape = SubResource("RectangleShape2D_wk4nv")
 y_sort_enabled = true
 
 [node name="tree7" type="Sprite2D" parent="y_sorted/trees/bordering"]
+y_sort_enabled = true
 position = Vector2(-689, -847)
 scale = Vector2(2, 2)
 texture = ExtResource("17_710yt")
 
 [node name="tree32" type="Sprite2D" parent="y_sorted/trees/bordering"]
+y_sort_enabled = true
 position = Vector2(-777, -1316)
 scale = Vector2(2, 2)
 texture = ExtResource("17_710yt")
 
 [node name="tree33" type="Sprite2D" parent="y_sorted/trees/bordering"]
+y_sort_enabled = true
 position = Vector2(-175, -1161)
 scale = Vector2(2, 2)
 texture = ExtResource("17_710yt")
 
 [node name="tree34" type="Sprite2D" parent="y_sorted/trees/bordering"]
+y_sort_enabled = true
 position = Vector2(-1210, -923)
 scale = Vector2(2, 2)
 texture = ExtResource("17_710yt")
 
 [node name="tree35" type="Sprite2D" parent="y_sorted/trees/bordering"]
+y_sort_enabled = true
 position = Vector2(-1170, -305)
 scale = Vector2(2, 2)
 texture = ExtResource("17_710yt")
 
 [node name="tree36" type="Sprite2D" parent="y_sorted/trees/bordering"]
+y_sort_enabled = true
 position = Vector2(-1344, 627)
 scale = Vector2(2, 2)
 texture = ExtResource("17_710yt")
 
 [node name="tree37" type="Sprite2D" parent="y_sorted/trees/bordering"]
+y_sort_enabled = true
 position = Vector2(-1078, 1162)
 scale = Vector2(2, 2)
 texture = ExtResource("17_710yt")
 
 [node name="tree38" type="Sprite2D" parent="y_sorted/trees/bordering"]
+y_sort_enabled = true
 position = Vector2(1285, -1396)
 scale = Vector2(2, 2)
 texture = ExtResource("17_710yt")
 
 [node name="tree39" type="Sprite2D" parent="y_sorted/trees/bordering"]
+y_sort_enabled = true
 position = Vector2(1774, -1073)
 scale = Vector2(2, 2)
 texture = ExtResource("17_710yt")
 
 [node name="tree40" type="Sprite2D" parent="y_sorted/trees/bordering"]
+y_sort_enabled = true
 position = Vector2(2324, -691)
 scale = Vector2(2, 2)
 texture = ExtResource("17_710yt")
 
 [node name="tree41" type="Sprite2D" parent="y_sorted/trees/bordering"]
+y_sort_enabled = true
 position = Vector2(2177, -69)
 scale = Vector2(2, 2)
 texture = ExtResource("17_710yt")
 
 [node name="tree42" type="Sprite2D" parent="y_sorted/trees/bordering"]
+y_sort_enabled = true
 position = Vector2(2212, 1034)
 scale = Vector2(2, 2)
 texture = ExtResource("17_710yt")
 
 [node name="tree14" type="Sprite2D" parent="y_sorted/trees/bordering"]
+y_sort_enabled = true
 position = Vector2(-806, 759)
 scale = Vector2(2, 2)
 texture = ExtResource("17_710yt")
 
 [node name="tree15" type="Sprite2D" parent="y_sorted/trees/bordering"]
+y_sort_enabled = true
 position = Vector2(-795, 1098)
 scale = Vector2(2, 2)
 texture = ExtResource("17_710yt")
 
 [node name="tree16" type="Sprite2D" parent="y_sorted/trees/bordering"]
+y_sort_enabled = true
 position = Vector2(1858, 560)
 scale = Vector2(2, 2)
 texture = ExtResource("17_710yt")
 
 [node name="tree17" type="Sprite2D" parent="y_sorted/trees/bordering"]
+y_sort_enabled = true
 position = Vector2(1875, 1124)
 scale = Vector2(2, 2)
 texture = ExtResource("17_710yt")
 
 [node name="tree18" type="Sprite2D" parent="y_sorted/trees/bordering"]
+y_sort_enabled = true
 position = Vector2(1792, -459)
 scale = Vector2(2, 2)
 texture = ExtResource("17_710yt")
 
 [node name="tree20" type="Sprite2D" parent="y_sorted/trees/bordering"]
+y_sort_enabled = true
 position = Vector2(1718, -830)
 scale = Vector2(2, 2)
 texture = ExtResource("17_710yt")
 
 [node name="tree21" type="Sprite2D" parent="y_sorted/trees/bordering"]
+y_sort_enabled = true
 position = Vector2(1159, -868)
 scale = Vector2(2, 2)
 texture = ExtResource("17_710yt")
 
 [node name="tree23" type="Sprite2D" parent="y_sorted/trees/bordering"]
+y_sort_enabled = true
 position = Vector2(-836, -794)
 scale = Vector2(2, 2)
 texture = ExtResource("17_710yt")
 
 [node name="tree8" type="Sprite2D" parent="y_sorted/trees/bordering"]
+y_sort_enabled = true
 position = Vector2(-426, -848)
 scale = Vector2(2, 2)
 texture = ExtResource("17_710yt")
 
 [node name="tree10" type="Sprite2D" parent="y_sorted/trees/bordering"]
+y_sort_enabled = true
 position = Vector2(-76, -829)
 scale = Vector2(2, 2)
 texture = ExtResource("17_710yt")
 
 [node name="tree6" type="Sprite2D" parent="y_sorted/trees/bordering"]
+y_sort_enabled = true
 position = Vector2(-812, -299)
 scale = Vector2(2, 2)
 texture = ExtResource("17_710yt")
 
 [node name="tree19" type="Sprite2D" parent="y_sorted/trees/bordering"]
+y_sort_enabled = true
 position = Vector2(1760, -46)
 scale = Vector2(2, 2)
 texture = ExtResource("17_710yt")
 
 [node name="tree5" type="Sprite2D" parent="y_sorted/trees/bordering"]
+y_sort_enabled = true
 position = Vector2(-830, -144)
 scale = Vector2(2, 2)
 texture = ExtResource("17_710yt")
 
 [node name="tree11" type="Sprite2D" parent="y_sorted/trees/bordering"]
+y_sort_enabled = true
 position = Vector2(-836, -618)
 scale = Vector2(2, 2)
 texture = ExtResource("17_710yt")
 
 [node name="tpe2tree" type="Sprite2D" parent="y_sorted/trees/bordering"]
+y_sort_enabled = true
 position = Vector2(-819, -465)
 scale = Vector2(2, 2)
 texture = ExtResource("16_cqknu")
 
 [node name="tpe2tree2" type="Sprite2D" parent="y_sorted/trees/bordering"]
+y_sort_enabled = true
 position = Vector2(-1118, -617)
 scale = Vector2(2, 2)
 texture = ExtResource("16_cqknu")
 
 [node name="tpe2tree3" type="Sprite2D" parent="y_sorted/trees/bordering"]
+y_sort_enabled = true
 position = Vector2(-920, -1038)
 scale = Vector2(2, 2)
 texture = ExtResource("16_cqknu")
 
 [node name="tpe2tree4" type="Sprite2D" parent="y_sorted/trees/bordering"]
+y_sort_enabled = true
 position = Vector2(-533, -1142)
 scale = Vector2(2, 2)
 texture = ExtResource("16_cqknu")
 
 [node name="tpe2tree5" type="Sprite2D" parent="y_sorted/trees/bordering"]
+y_sort_enabled = true
 position = Vector2(1149, -1131)
 scale = Vector2(2, 2)
 texture = ExtResource("16_cqknu")
 
 [node name="tpe2tree6" type="Sprite2D" parent="y_sorted/trees/bordering"]
+y_sort_enabled = true
 position = Vector2(2046, -490)
 scale = Vector2(2, 2)
 texture = ExtResource("16_cqknu")
 
 [node name="tpe2tree7" type="Sprite2D" parent="y_sorted/trees/bordering"]
+y_sort_enabled = true
 position = Vector2(2137, 471)
 scale = Vector2(2, 2)
 texture = ExtResource("16_cqknu")
 
 [node name="tpe2tree8" type="Sprite2D" parent="y_sorted/trees/bordering"]
+y_sort_enabled = true
 position = Vector2(-1077, 826)
 scale = Vector2(2, 2)
 texture = ExtResource("16_cqknu")
 
 [node name="tpe2tree9" type="Sprite2D" parent="y_sorted/trees/bordering"]
+y_sort_enabled = true
 position = Vector2(-1077, -23)
 scale = Vector2(2, 2)
 texture = ExtResource("16_cqknu")
 
 [node name="tree22" type="Sprite2D" parent="y_sorted/trees/bordering"]
+y_sort_enabled = true
 position = Vector2(1010, -876)
 scale = Vector2(2, 2)
 texture = ExtResource("16_cqknu")
 
 [node name="tree24" type="Sprite2D" parent="y_sorted/trees/bordering"]
+y_sort_enabled = true
 position = Vector2(1300, -880)
 scale = Vector2(2, 2)
 texture = ExtResource("16_cqknu")
 
 [node name="tree25" type="Sprite2D" parent="y_sorted/trees/bordering"]
+y_sort_enabled = true
 position = Vector2(1512, -905)
 scale = Vector2(2, 2)
 texture = ExtResource("16_cqknu")
 
 [node name="tree26" type="Sprite2D" parent="y_sorted/trees/bordering"]
+y_sort_enabled = true
 position = Vector2(1821, -642)
 scale = Vector2(2, 2)
 texture = ExtResource("16_cqknu")
 
 [node name="tree27" type="Sprite2D" parent="y_sorted/trees/bordering"]
+y_sort_enabled = true
 position = Vector2(1840, -229)
 scale = Vector2(2, 2)
 texture = ExtResource("16_cqknu")
 
 [node name="tree28" type="Sprite2D" parent="y_sorted/trees/bordering"]
+y_sort_enabled = true
 position = Vector2(1874, 788)
 scale = Vector2(2, 2)
 texture = ExtResource("16_cqknu")
 
 [node name="tree29" type="Sprite2D" parent="y_sorted/trees/bordering"]
+y_sort_enabled = true
 position = Vector2(1904, 979)
 scale = Vector2(2, 2)
 texture = ExtResource("16_cqknu")
 
 [node name="tree30" type="Sprite2D" parent="y_sorted/trees/bordering"]
+y_sort_enabled = true
 position = Vector2(-819, 564)
 scale = Vector2(2, 2)
 texture = ExtResource("16_cqknu")
 
 [node name="tree31" type="Sprite2D" parent="y_sorted/trees/bordering"]
+y_sort_enabled = true
 position = Vector2(-836, 956)
 scale = Vector2(2, 2)
 texture = ExtResource("16_cqknu")
 
 [node name="tree3" type="Sprite2D" parent="y_sorted/trees/bordering"]
+y_sort_enabled = true
 position = Vector2(-558, -866)
 scale = Vector2(2, 2)
 texture = ExtResource("16_cqknu")
 
 [node name="tree4" type="Sprite2D" parent="y_sorted/trees/bordering"]
+y_sort_enabled = true
 position = Vector2(-259, -858)
 scale = Vector2(2, 2)
 texture = ExtResource("16_cqknu")
 
 [node name="tree12" type="Sprite2D" parent="y_sorted/trees/bordering"]
+y_sort_enabled = true
 position = Vector2(69, -862)
 scale = Vector2(2, 2)
 texture = ExtResource("16_cqknu")
 
 [node name="tree13" type="Sprite2D" parent="y_sorted/trees/bordering"]
+y_sort_enabled = true
 position = Vector2(237, -869)
 scale = Vector2(2, 2)
 texture = ExtResource("16_cqknu")
 
 [node name="tree2" type="Sprite2D" parent="y_sorted/trees/bordering"]
+y_sort_enabled = true
 position = Vector2(-821, 346)
 scale = Vector2(2, 2)
 texture = ExtResource("17_710yt")
 
 [node name="tree" type="Sprite2D" parent="y_sorted/trees/bordering"]
+y_sort_enabled = true
 position = Vector2(-827, 68)
 scale = Vector2(2, 2)
 texture = ExtResource("16_cqknu")

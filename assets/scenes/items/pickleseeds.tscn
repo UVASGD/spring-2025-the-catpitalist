@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://rp1hk5jx1g2j"]
+
+[ext_resource type="Script" path="res://assets/scripts/plantable.gd" id="1_3b5md"]
+[ext_resource type="Texture2D" uid="uid://capqxfn5x1ulr" path="res://assets/sprites/crops/seeds/pickleseeds.png" id="2_emby7"]
+
+[node name="seeds" type="Node2D"]
+script = ExtResource("1_3b5md")
+path_to_flower = "res://assets/scenes/items/pickle.tscn"
+ID = 12
+item_name = "pickle seeds"
+stackable = true
+max_stack = 64
+count = 16
+sellable = true
+sell_price = 1
+buy_price = 2
+sprite_path = "res://assets/sprites/crops/seeds/pickleseeds.png"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_emby7")
+region_enabled = true
+region_rect = Rect2(0, 0, 32, 32)

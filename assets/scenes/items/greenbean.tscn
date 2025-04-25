@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://dsby7og7fu2lk"]
+
+[ext_resource type="Script" path="res://assets/scripts/item.gd" id="1_860vr"]
+[ext_resource type="Texture2D" uid="uid://cku448dtvircw" path="res://assets/sprites/crops/fullgrown/greenbean.png" id="2_xiaek"]
+
+[node name="flower" type="Node2D"]
+script = ExtResource("1_860vr")
+ID = 11
+item_name = "green bean"
+stackable = true
+max_stack = 99
+count = 1
+description = "yum"
+sellable = true
+sell_price = 3
+buy_price = 5
+sprite_path = "res://assets/sprites/crops/fullgrown/greenbean.png"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_xiaek")

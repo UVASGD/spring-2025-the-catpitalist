@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://clwugnge3aa0t"]
+
+[ext_resource type="Script" path="res://assets/scripts/item.gd" id="1_8060r"]
+[ext_resource type="Texture2D" uid="uid://dm8m7d6p1jlyw" path="res://assets/sprites/crops/fullgrown/pickle.png" id="2_sr3s1"]
+
+[node name="flower" type="Node2D"]
+script = ExtResource("1_8060r")
+ID = 13
+item_name = "pickle"
+stackable = true
+max_stack = 99
+count = 1
+description = "dihhh"
+sellable = true
+sell_price = 3
+buy_price = 5
+sprite_path = "res://assets/sprites/crops/fullgrown/pickle.png"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_sr3s1")

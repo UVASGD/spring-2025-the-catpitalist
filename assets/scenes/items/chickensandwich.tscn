@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://cg60pm475skm"]
+
+[ext_resource type="Script" path="res://assets/scripts/item.gd" id="1_pqe6k"]
+[ext_resource type="Texture2D" uid="uid://md1evrr5dc2k" path="res://assets/sprites/crops/fullgrown/chickensandwich.png" id="2_clbg0"]
+
+[node name="flower" type="Node2D"]
+script = ExtResource("1_pqe6k")
+ID = 9
+item_name = "chicken sandwich"
+stackable = true
+max_stack = 99
+count = 1
+description = "how did you grow that"
+sellable = true
+sell_price = 3
+buy_price = 5
+sprite_path = "res://assets/sprites/crops/fullgrown/chickensandwich.png"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_clbg0")

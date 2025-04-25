@@ -1,0 +1,14 @@
+[remap]
+
+importer="image"
+type="Image"
+uid="uid://dq1psc1fpf6gp"
+path="res://.godot/imported/seeds.png-c8ead3826119bfe0de89bc10276f179f.image"
+
+[deps]
+
+source_file="res://assets/sprites/crops/seeds/seeds.png"
+dest_files=["res://.godot/imported/seeds.png-c8ead3826119bfe0de89bc10276f179f.image"]
+
+[params]
+

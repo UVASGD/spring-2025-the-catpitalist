@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://c5qjngiuwf4sb"]
+
+[ext_resource type="Script" path="res://assets/scripts/item.gd" id="1_jhxhx"]
+[ext_resource type="Texture2D" uid="uid://ee6e35t0h8ni" path="res://assets/sprites/crops/fullgrown/basil.png" id="2_xua82"]
+
+[node name="flower" type="Node2D"]
+script = ExtResource("1_jhxhx")
+ID = 7
+item_name = "basil"
+stackable = true
+max_stack = 99
+count = 1
+description = "for spaghetti"
+sellable = true
+sell_price = 3
+buy_price = 5
+sprite_path = "res://assets/sprites/crops/fullgrown/basil.png"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_xua82")
