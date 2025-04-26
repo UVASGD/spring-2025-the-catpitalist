@@ -52,7 +52,7 @@ func check_time_thresholds():
 	if prev_time < MIDNIGHT_TIME && time >= MIDNIGHT_TIME:
 		on_midnight()
 	if prev_time < EXHAUSTED_TIME && time >= EXHAUSTED_TIME:
-		on_exhausted()
+		sleep()
 
 func update_day_state(current_time):
 	if current_time < DAWN_END_TIME:
@@ -83,13 +83,6 @@ func end_day():
 	reset_weather()
 	print("day ended")
 	
-func sleep(exhausted: bool):
-	if exhausted:
-		time = 10 * 3600 / TIME_SCALE #set time to 10am
-	else:
-		time = 8 * 3600 / TIME_SCALE #set time to 8am
-	prev_time = time
-	end_day()
 
 func determine_season():
 	if day_num >= 91 and day_num <= 182:
@@ -158,7 +151,20 @@ func on_midnight():
 	is_dusk = false
 	end_day()
 	
-func on_exhausted():
+func sleep(exhausted=true):
+	freeze()
+	if exhausted:
+		await PlayerData.player.fall_asleep()
 	day_num -= 1
-	SceneSwapper.change_scene("res://assets/scenes/farmhouse_indoors.tscn", "res://assets/scenes/ui/loadingscreen.tscn")
-	sleep(true)
+	await sleep_screen()
+	SceneSwapper.teleport_home()
+	unfreeze()
+	if exhausted:
+		time = 10 * 3600 / TIME_SCALE #set time to 10am
+	else:
+		time = 8 * 3600 / TIME_SCALE #set time to 8am
+	prev_time = time
+	end_day()
+
+func sleep_screen():
+	return

@@ -100,7 +100,10 @@ func pop_and_return(context:Dictionary={},loading_screen_path:String="res://asse
 	var newplayer = PlayerData.clone_and_kill()
 	#newplayer.flash_collision()
 	newplayer.restore_pos()
-	peek().add_child(newplayer,true)
+	if peek().has_method("spawn_player"):
+		peek().spawn_player(newplayer)
+	else:
+		peek().add_child(newplayer,true)
 	if not context.is_empty():
 		SignalBus.emit_signal("context",context)
 
@@ -117,3 +120,11 @@ func cooldown():
 	busy = true
 	await get_tree().create_timer(1).timeout
 	busy = false
+
+func teleport_home():
+	while not peek() is Overworld_area:
+		pop_and_return()
+	#PlayerData.player.global_position = Vector2(130,25) #hardcoded coords of front of farmhouse in tutorial.tscn
+	PlayerData.player.global_position = Vector2(-717, 196) #hardcode for testworld
+	#push("res://assets/scenes/farmhouse_indoors.tscn")
+	return

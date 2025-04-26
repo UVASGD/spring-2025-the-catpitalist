@@ -568,6 +568,7 @@ animations = [{
 radius = 36.0555
 
 [node name="Player" type="CharacterBody2D"]
+y_sort_enabled = true
 position = Vector2(0, 14)
 scale = Vector2(2, 2)
 motion_mode = 1

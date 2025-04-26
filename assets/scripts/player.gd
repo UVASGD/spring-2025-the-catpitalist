@@ -45,7 +45,13 @@ func _ready() -> void:
 	last_pos_timer.start()
 	pos_stack.push_front(position)
 	flash_collision()
-	
+
+func fall_asleep():
+	actionable = false
+	#play sleep animation
+	actionable = true
+	return
+
 func check_money(): # called when the player gains money in any way
 	for val in progression.keys():
 		if total_money_made >= val:

@@ -191,50 +191,50 @@ signals_on_finish = true
 signal_name = "unlock_city"
 cutscene_length = 4
 
-[node name="NPC" type="Node2D" parent="."]
+[node name="dad" type="Node2D" parent="."]
 position = Vector2(293, 348.5)
 script = ExtResource("2_46hqj")
 npc_name = "Dad"
 voice_pitch = 0.2
 
-[node name="Sprite2D" type="AnimatedSprite2D" parent="NPC"]
+[node name="Sprite2D" type="AnimatedSprite2D" parent="dad"]
 position = Vector2(-202, -135)
 scale = Vector2(0.775, 0.775)
 sprite_frames = SubResource("SpriteFrames_taqc1")
 animation = &"side"
 autoplay = "side"
 
-[node name="Convos" type="Node" parent="NPC"]
+[node name="Convos" type="Node" parent="dad"]
 
-[node name="Conversation" parent="NPC/Convos" instance=ExtResource("5_6wsdv")]
+[node name="Conversation" parent="dad/Convos" instance=ExtResource("5_6wsdv")]
 
-[node name="Message" parent="NPC/Convos/Conversation/Messages" index="0"]
+[node name="Message" parent="dad/Convos/Conversation/Messages" index="0"]
 text = " Child, it’s time for you to take over the farm."
 
-[node name="Message2" type="Node" parent="NPC/Convos/Conversation/Messages" index="1"]
+[node name="Message2" type="Node" parent="dad/Convos/Conversation/Messages" index="1"]
 script = ExtResource("6_66yq0")
 text = "You still don’t think you can do it? Yer mother and I have taught you all that we can teach you, we know you’re ready."
 
-[node name="Message3" type="Node" parent="NPC/Convos/Conversation/Messages" index="2"]
+[node name="Message3" type="Node" parent="dad/Convos/Conversation/Messages" index="2"]
 script = ExtResource("6_66yq0")
 text = "We try not to ask you for much, but this we must. Love this farm like we love you, take care of this farm like we took care of you."
 
-[node name="Conversation2" parent="NPC/Convos" instance=ExtResource("5_6wsdv")]
+[node name="Conversation2" parent="dad/Convos" instance=ExtResource("5_6wsdv")]
 signals_on_finish = true
 finish_signal = "gift_100"
 
-[node name="Message" parent="NPC/Convos/Conversation2/Messages" index="0"]
+[node name="Message" parent="dad/Convos/Conversation2/Messages" index="0"]
 text = "Here, we'll give you some money we've been saving for a rainy day."
 
-[node name="Message2" type="Node" parent="NPC/Convos/Conversation2/Messages" index="1"]
+[node name="Message2" type="Node" parent="dad/Convos/Conversation2/Messages" index="1"]
 script = ExtResource("6_66yq0")
 text = "I suggest you head to Scrappy's Scraps, down south from the city."
 
-[node name="Message3" type="Node" parent="NPC/Convos/Conversation2/Messages" index="2"]
+[node name="Message3" type="Node" parent="dad/Convos/Conversation2/Messages" index="2"]
 script = ExtResource("6_66yq0")
 text = "You should be able to buy some seeds and a watercan there."
 
-[node name="speech1" type="Node2D" parent="NPC"]
+[node name="speech1" type="Node2D" parent="dad"]
 position = Vector2(0, 96)
 script = ExtResource("6_2mi1c")
 speed = 50.0
@@ -242,7 +242,7 @@ start_time = 1.0
 num_dialogue = 1
 animation_override = "side"
 
-[node name="speech2" type="Node2D" parent="NPC"]
+[node name="speech2" type="Node2D" parent="dad"]
 position = Vector2(0, 96)
 script = ExtResource("6_2mi1c")
 speed = 50.0
@@ -264,29 +264,29 @@ animation = &"stand"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player/hitbox"]
 shape = SubResource("CircleShape2D_83h80")
 
-[node name="NPC3" type="Node2D" parent="."]
+[node name="mom" type="Node2D" parent="."]
 position = Vector2(126.5, 160)
 script = ExtResource("2_46hqj")
 npc_name = "Mom"
 
-[node name="Sprite2D" type="AnimatedSprite2D" parent="NPC3"]
+[node name="Sprite2D" type="AnimatedSprite2D" parent="mom"]
 scale = Vector2(0.07, 0.07)
 sprite_frames = SubResource("SpriteFrames_a6smt")
 animation = &"idle"
 
-[node name="hitbox" type="Area2D" parent="NPC3"]
+[node name="hitbox" type="Area2D" parent="mom"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="NPC3/hitbox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="mom/hitbox"]
 shape = SubResource("CircleShape2D_83h80")
 
-[node name="Convos" type="Node" parent="NPC3"]
+[node name="Convos" type="Node" parent="mom"]
 
-[node name="Conversation" parent="NPC3/Convos" instance=ExtResource("5_6wsdv")]
+[node name="Conversation" parent="mom/Convos" instance=ExtResource("5_6wsdv")]
 
-[node name="Message" parent="NPC3/Convos/Conversation/Messages" index="0"]
+[node name="Message" parent="mom/Convos/Conversation/Messages" index="0"]
 text = "We know you can do it, we love you. As you know, we've fallen on hard times, but you are all we still have."
 
-[node name="speech1" type="Node2D" parent="NPC3"]
+[node name="speech1" type="Node2D" parent="mom"]
 position = Vector2(0, 96)
 script = ExtResource("6_2mi1c")
 speed = 50.0
@@ -296,6 +296,6 @@ num_dialogue = 1
 [connection signal="tree_entered" from="." to="." method="_on_tree_entered"]
 [connection signal="tree_exited" from="." to="." method="_on_tree_exited"]
 
-[editable path="NPC/Convos/Conversation"]
-[editable path="NPC/Convos/Conversation2"]
-[editable path="NPC3/Convos/Conversation"]
+[editable path="dad/Convos/Conversation"]
+[editable path="dad/Convos/Conversation2"]
+[editable path="mom/Convos/Conversation"]

@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://c8t53va2ko46x" path="res://assets/scenes/npcs/mom.tscn" id="8_fns02"]
 [ext_resource type="PackedScene" uid="uid://dy0dw10fu38wf" path="res://assets/scenes/npcs/normaldad.tscn" id="9_2rfny"]
 [ext_resource type="PackedScene" uid="uid://caraohecg8kjn" path="res://assets/scenes/bed.tscn" id="9_l7gog"]
-[ext_resource type="PackedScene" uid="uid://bmw6wxkk4jdhu" path="res://assets/scenes/transportzone.tscn" id="10_x8kts"]
+[ext_resource type="PackedScene" uid="uid://3m50jyt14pbk" path="res://assets/scenes/transportzone.tscn" id="10_x8kts"]
 [ext_resource type="Texture2D" uid="uid://bnbhvreiatj6s" path="res://assets/sprites/slideshows/slide6.png" id="11_jqfcl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_48lco"]
@@ -494,7 +494,7 @@ returns = true
 path_to_new_scene = ""
 
 [node name="CollisionShape2D" parent="transportzone/enterzone" index="0"]
-position = Vector2(13, 29.5)
+position = Vector2(11.5, 29.5)
 
 [node name="collisions" type="Node2D" parent="."]
 scale = Vector2(2, 2)

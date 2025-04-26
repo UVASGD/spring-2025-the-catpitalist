@@ -5,6 +5,8 @@ var second_cutscene = preload("res://assets/scenes/cutscenes/tut_cutscene_2.tscn
 func _ready() -> void:
 	super()
 	SignalBus.connect("mom_dialogue_done", transition)
+	if History.has_happened("mom_dialogue_done"):
+		$y_sorted/normaldad.show()
 	pass # Replace with function body.
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

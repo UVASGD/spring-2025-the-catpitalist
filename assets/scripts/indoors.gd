@@ -24,3 +24,6 @@ func _process(delta: float) -> void:
 func _on_unlock_water():
 	%water_entrance_closed.hide()
 	%water_entrance_open.show()
+
+func spawn_player(player:Player):
+	spawnpoint.add_child(player)

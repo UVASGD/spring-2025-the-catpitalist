@@ -58,8 +58,10 @@ func _on_add_money_input_text_submitted(new_text: String) -> void:
 
 
 func _on_give_blurbo_water_pressed() -> void:
-	SignalBus.emit_signal("item_given_to_npc", Items.get_item(1), DebugManager.Blurbo)
-	PlayerData.remove_inv(3)
+	SignalBus.emit_signal("unlock_city")
+	History.mark("unlock_city")
+	SignalBus.emit_signal("unlock_farmhouse")
+	History.mark("unlock_farmhouse")
 	pass # Replace with function body.
 
 
@@ -86,4 +88,10 @@ func _on_unlock_underwater_pressed() -> void:
 func _on_mention_jelline_pressed() -> void:
 	SignalBus.emit_signal("jellina_mentioned")
 	History.mark("jellina_mentioned")
+	pass # Replace with function body.
+
+
+
+func _on_midnight_pressed() -> void:
+	DayManager.time = DayManager.MIDNIGHT_TIME -1
 	pass # Replace with function body.

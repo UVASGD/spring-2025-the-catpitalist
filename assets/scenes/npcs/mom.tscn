@@ -15,6 +15,7 @@ size = Vector2(20, 24)
 scale = Vector2(2, 2)
 script = ExtResource("1_icq1v")
 npc_name = "Mom"
+exhaust_dialogue_text = "Hi dear, make sure you get some rest, okay?"
 voice_pitch = 0.7
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
