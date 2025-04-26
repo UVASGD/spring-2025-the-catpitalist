@@ -11,7 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://b3pc0t4lcmip8" path="res://assets/scenes/npcs/kwatos.tscn" id="9_g6plp"]
 [ext_resource type="PackedScene" uid="uid://cs1pvgleixkmc" path="res://assets/scenes/npcs/shrod.tscn" id="10_dxitf"]
 [ext_resource type="PackedScene" uid="uid://c8qbsnejl0gv3" path="res://assets/scenes/npcs/vincent.tscn" id="12_trtrc"]
-[ext_resource type="PackedScene" uid="uid://bmw6wxkk4jdhu" path="res://assets/scenes/transportzone.tscn" id="16_bq67p"]
+[ext_resource type="PackedScene" uid="uid://3m50jyt14pbk" path="res://assets/scenes/transportzone.tscn" id="16_bq67p"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xr6c6"]
 texture = ExtResource("2_ef8f5")
@@ -56,13 +56,13 @@ y_sort_enabled = true
 position = Vector2(-109, 192)
 
 [node name="BeanstalkMain" type="Sprite2D" parent="y_sorted/houses"]
-visible = false
-position = Vector2(-364, -681.64)
+position = Vector2(-379, -683)
 scale = Vector2(2, 1.855)
 texture = ExtResource("3_ho5ud")
+flip_h = true
 
 [node name="BeanstalkTop" type="Sprite2D" parent="y_sorted/houses"]
-position = Vector2(-368, -688)
+position = Vector2(-373, -800.64)
 scale = Vector2(1.76667, 1.855)
 texture = ExtResource("4_slllq")
 

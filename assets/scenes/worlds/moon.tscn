@@ -15,7 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://chh44siovg4h1" path="res://assets/sprites/world objects/moon/moon_tree_v1.png" id="11_0vakq"]
 [ext_resource type="Texture2D" uid="uid://ce36bxf27cob" path="res://assets/sprites/world objects/shared/Half_ROCK.png" id="14_bjsit"]
 [ext_resource type="PackedScene" uid="uid://r1gkmux58rxo" path="res://assets/scenes/npcs/alien.tscn" id="16_5mdmc"]
-[ext_resource type="PackedScene" uid="uid://bmw6wxkk4jdhu" path="res://assets/scenes/transportzone.tscn" id="30_lr2m8"]
+[ext_resource type="PackedScene" uid="uid://3m50jyt14pbk" path="res://assets/scenes/transportzone.tscn" id="30_lr2m8"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_yc1pl"]
 texture = ExtResource("2_5l5nu")

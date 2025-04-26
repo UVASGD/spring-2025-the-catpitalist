@@ -28,6 +28,7 @@ func clone():
 	if player:
 		var newplayer:Player = playerpacked.instantiate()
 		newplayer.money = player.money
+		newplayer.total_money_made = player.total_money_made
 		newplayer.inventory = player.inventory
 		newplayer.held_item_index = player.held_item_index
 		newplayer.pos_stack = player.pos_stack

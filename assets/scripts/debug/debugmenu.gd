@@ -44,12 +44,16 @@ func _on_tree_exited() -> void:
 func _on_set_money_input_text_submitted(new_text: String) -> void:
 	if(new_text.is_valid_int()):
 		PlayerData.player.money = int(new_text)
+		PlayerData.player.total_money_made += int(new_text)
+		PlayerData.player.check_money()
 	pass # Replace with function body.
 
 
 func _on_add_money_input_text_submitted(new_text: String) -> void:
 	if(new_text.is_valid_int()):
 		PlayerData.player.money += int(new_text)
+		PlayerData.total_money_made += int(new_text)
+		PlayerData.player.check_money()
 	pass # Replace with function body.
 
 
@@ -68,4 +72,18 @@ func _on_send_convo_signal_pressed() -> void:
 func _on_send_convo_signal_2_pressed() -> void:
 	SignalBus.emit_signal("made_1000")
 	History.mark("made_1000")
+	PlayerData.player.total_money_made = 1000
+	PlayerData.player.check_money()
+	pass # Replace with function body.
+
+
+func _on_unlock_underwater_pressed() -> void:
+	SignalBus.emit_signal("unlock_water")
+	History.mark("unlock_water")
+	pass # Replace with function body.
+
+
+func _on_mention_jelline_pressed() -> void:
+	SignalBus.emit_signal("jellina_mentioned")
+	History.mark("jellina_mentioned")
 	pass # Replace with function body.

@@ -6,6 +6,7 @@ class_name Player extends CharacterBody2D
 @onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
 
 var money = 0
+var total_money_made= 0
 var actionable = false
 var inventory = [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null]
 var inv_showing = false
@@ -15,6 +16,7 @@ var held_item_index = 0
 var last_pos_timer
 var pos_stack = []
 var progression = {
+	800: "scrappy_shop_closed",
 	1000: "made_1000",
 	10000: "made_10000",
 	100000: "made_100000",
@@ -28,11 +30,13 @@ func _ready() -> void:
 	flash_actionable()
 	SignalBus.connect("interact", interact)
 	SignalBus.connect("gift_100", get_100)
+	SignalBus.connect("give_suit", get_suit)
 	#SignalBus.connect("items_ready", _on_items_ready)
 	inventory[8] = Items.get_item(1) # debug watercan 
 	#inventory[9] = Items.get_item(4) #scythe
 	#inventory[1] = Items.get_item(1) #stack test
 	#inventory[2] = Items.get_item(2) # seeds test
+	inventory[3] = Items.get_item(23) # loan shark suit
 	SignalBus.emit_signal("player_ready", self)
 	last_pos_timer = Timer.new()
 	last_pos_timer.wait_time = 0.1
@@ -42,9 +46,15 @@ func _ready() -> void:
 	pos_stack.push_front(position)
 	flash_collision()
 	
-
+func check_money(): # called when the player gains money in any way
+	for val in progression.keys():
+		if total_money_made >= val:
+			SignalBus.emit(progression[val])
+			History.mark(progression[val])
 func get_100():
 	money += 100
+	total_money_made += 100
+	check_money()
 
 func flash_collision():
 	if collision_shape_2d == null:
@@ -72,7 +82,9 @@ func restore_pos():
 	pos_stack.pop_front()
 	position = pos_stack.pop_front() # call twice because push happens twice per cloning
 
-
+func get_suit():
+	add_to_inv(Items.get_item(23))
+	return
 func drop(item):
 	if item != null:
 		if not item is DropItem and item.ID == 1:
@@ -176,6 +188,9 @@ func remove_from_inv(item):
 			item.count -= 1
 			if inventory[ind].count == 0:
 				inventory[ind] = null
+		else:
+			return false
+	return true
 
 func interact(obj):
 	if not actionable:

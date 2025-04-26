@@ -1,0 +1,282 @@
+[gd_scene load_steps=21 format=3 uid="uid://d3urox2kq5t33"]
+
+[ext_resource type="Script" path="res://assets/scripts/npc.gd" id="1_0u2js"]
+[ext_resource type="Texture2D" uid="uid://dkruwonrdb1pb" path="res://assets/sprites/World NPCs/loan_shark-Sheet.png" id="2_5k1kp"]
+[ext_resource type="Script" path="res://assets/scripts/conversation.gd" id="3_eg66f"]
+[ext_resource type="Script" path="res://assets/scripts/message.gd" id="4_avrxd"]
+[ext_resource type="Texture2D" uid="uid://dracgmuk5pmxp" path="res://assets/sprites/slideshows/slide1.png" id="5_8yo3r"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hkfer"]
+atlas = ExtResource("2_5k1kp")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vp7ne"]
+atlas = ExtResource("2_5k1kp")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bdq0q"]
+atlas = ExtResource("2_5k1kp")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4espi"]
+atlas = ExtResource("2_5k1kp")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cdpuv"]
+atlas = ExtResource("2_5k1kp")
+region = Rect2(512, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_abw21"]
+atlas = ExtResource("2_5k1kp")
+region = Rect2(640, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2vwgy"]
+atlas = ExtResource("2_5k1kp")
+region = Rect2(768, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uewoh"]
+atlas = ExtResource("2_5k1kp")
+region = Rect2(896, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_muw3v"]
+atlas = ExtResource("2_5k1kp")
+region = Rect2(1024, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_g3btw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hkfer")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vp7ne")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bdq0q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4espi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cdpuv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_abw21")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2vwgy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uewoh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_muw3v")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pmeq2"]
+radius = 32.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_njb3k"]
+size = Vector2(20, 24)
+
+[sub_resource type="Animation" id="Animation_2dg40"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/TextureRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_0i3pd"]
+resource_name = "animation"
+length = 7.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/TextureRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 5.03333, 5.96667),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(6.83333),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"speak"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jl0lc"]
+_data = {
+"RESET": SubResource("Animation_2dg40"),
+"animation": SubResource("Animation_0i3pd")
+}
+
+[node name="NPC" type="Node2D" groups=["NPCs"]]
+script = ExtResource("1_0u2js")
+npc_name = "Loan Shark"
+exhaust_dialogue_text = "Beat it."
+voice_pitch = 0.2
+portrait_path = "res://assets/sprites/NPC portraits/sharkicon.jpeg"
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_g3btw")
+autoplay = "default"
+frame_progress = 0.621519
+
+[node name="hitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox"]
+shape = SubResource("CircleShape2D_pmeq2")
+
+[node name="collisionbox" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="collisionbox"]
+position = Vector2(0, 12)
+shape = SubResource("RectangleShape2D_njb3k")
+
+[node name="Convos" type="Node" parent="."]
+
+[node name="Conversation" type="Node" parent="Convos"]
+script = ExtResource("3_eg66f")
+signals_on_finish = true
+finish_signal = "jellina_mentioned"
+
+[node name="Messages" type="Node" parent="Convos/Conversation"]
+
+[node name="Message" type="Node" parent="Convos/Conversation/Messages"]
+script = ExtResource("4_avrxd")
+text = "Hmmph. Who are you, mouth breather? "
+
+[node name="Message2" type="Node" parent="Convos/Conversation/Messages"]
+script = ExtResource("4_avrxd")
+text = "Huh, scrappy? Doesn’t make a splash…wait, that screwball, yeah I know her, she’s in a wave of debt. "
+
+[node name="Message3" type="Node" parent="Convos/Conversation/Messages"]
+script = ExtResource("4_avrxd")
+text = "By my estimates, she only has a week, probably less, before my shiver of sharks hand her to me on a scrumptious silver platter. Ha!"
+
+[node name="Message4" type="Node" parent="Convos/Conversation/Messages"]
+script = ExtResource("4_avrxd")
+text = "Color me green and call me a sea cucumber, do you really think I’d cut a deal with you!? I could gut you clean in an instant, removing that…very soft, oh so comfortable and warm looking fur…"
+
+[node name="Message5" type="Node" parent="Convos/Conversation/Messages"]
+script = ExtResource("4_avrxd")
+text = "hmph…pardon me. I change my mind, I have a task for you."
+
+[node name="Message6" type="Node" parent="Convos/Conversation/Messages"]
+script = ExtResource("4_avrxd")
+text = "Go to The Underwater and fetch my suit for me. The one in my closet, not under my bed. DO NOT look under there."
+
+[node name="Message7" type="Node" parent="Convos/Conversation/Messages"]
+script = ExtResource("4_avrxd")
+text = "Why am I having you run these errands? Because I’m busy and I don’t have the time to do it myself. Mind your business!"
+
+[node name="Message8" type="Node" parent="Convos/Conversation/Messages"]
+script = ExtResource("4_avrxd")
+text = "Anyway, go talk to Jellina out in the city. Tell her I sent you."
+
+[node name="Conversation2" type="Node" parent="Convos"]
+script = ExtResource("3_eg66f")
+requests_item = true
+request_item_id = 23
+signals_on_finish = true
+finish_signal = "jellina_mentioned"
+
+[node name="Messages" type="Node" parent="Convos/Conversation2"]
+
+[node name="Message" type="Node" parent="Convos/Conversation2/Messages"]
+script = ExtResource("4_avrxd")
+text = "Where's my suit?!"
+item_condition = 23
+item_amount = 1
+is_request = true
+
+[node name="Conversation3" type="Node" parent="Convos"]
+script = ExtResource("3_eg66f")
+signals_on_finish = true
+finish_signal = "start_loan_shark_animation"
+
+[node name="Messages" type="Node" parent="Convos/Conversation3"]
+
+[node name="Message" type="Node" parent="Convos/Conversation3/Messages"]
+script = ExtResource("4_avrxd")
+text = "Finally—these fins of mine are not what they once were. What’s with that look? Are you…are you pitying me!??? "
+
+[node name="Message2" type="Node" parent="Convos/Conversation3/Messages"]
+script = ExtResource("4_avrxd")
+text = "Seriously! Somebody told you down there, didnt they!!!"
+
+[node name="Message3" type="Node" parent="Convos/Conversation3/Messages"]
+script = ExtResource("4_avrxd")
+text = "Ohhh stop it…its none of your business…fine, I guess I can tell you a little bit about it. "
+
+[node name="Message4" type="Node" parent="Convos/Conversation3/Messages"]
+script = ExtResource("4_avrxd")
+text = "You see, back home no one takes me seriously, I’m the butt of the joke. They call me…they call me the Lone Shark!"
+
+[node name="Message5" type="Node" parent="Convos/Conversation3/Messages"]
+script = ExtResource("4_avrxd")
+text = "Its hurtful, but how am I supposed to make any friends, all they do is talk about my stupid degree in clownery. "
+
+[node name="Message6" type="Node" parent="Convos/Conversation3/Messages"]
+script = ExtResource("4_avrxd")
+text = "They think its bogus…but I know…I know that its worth something. I had to leave, it was my only option. "
+
+[node name="Message7" type="Node" parent="Convos/Conversation3/Messages"]
+script = ExtResource("4_avrxd")
+text = "Up here, I’m powerful, I’m successful people fear me, they actually believe in my nonsense, my tomfoolery. I won’t…I can’t let you ruin this for me."
+
+[node name="Conversation4" type="Node" parent="Convos"]
+script = ExtResource("3_eg66f")
+signals_on_finish = true
+finish_signal = "end_loanshark_quest"
+
+[node name="Messages" type="Node" parent="Convos/Conversation4"]
+
+[node name="Message" type="Node" parent="Convos/Conversation4/Messages"]
+script = ExtResource("4_avrxd")
+text = "Thanks again for all your help. You taught me to value myself and to not let others bring me down. I will no longer use my influence for evil. Consider all the debts forgiven. I’m going home, proud to be a clown. "
+
+[node name="start" type="Marker2D" parent="."]
+
+[node name="end" type="Marker2D" parent="."]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_jl0lc")
+}
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_8yo3r")

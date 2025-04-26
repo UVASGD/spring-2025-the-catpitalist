@@ -15,7 +15,7 @@ func _process(delta: float) -> void:
 
 func load_items():
 	var path ="res://assets/scenes/items/"
-	var scene_loads = []
+	var scene_loads = {}
 
 	var dir = DirAccess.open(path)
 	if dir:
@@ -30,13 +30,11 @@ func load_items():
 					file.close()
 					var id_value = extract_id_from_tscn(content)
 					if id_value != null:
-						scene_loads.append({"path": full_path, "id": id_value, "packedscene": load(full_path)})
+						scene_loads[id_value] = [full_path,load(full_path)]
 			file_name = dir.get_next()
 	else:
 		print("An error occurred when trying to access the path.")
 
-	# Sort the scenes by their ID
-	scene_loads.sort_custom(scene_id_sort)
 	
 	items = scene_loads
 	SignalBus.emit_signal("items_ready")
@@ -56,10 +54,10 @@ func extract_id_from_tscn(content):
 	return null
 
 func get_item(id):
-	return items[id-1]["packedscene"].instantiate() #id - 1 to account for arrays starting at 0 
+	return items[id][1].instantiate() #id - 1 to account for arrays starting at 0 
 
 func clone(item): # will only copy over the count, anything else might need a more specific function
-	var pack = items[item.ID-1]["packedscene"]
+	var pack = items[item.ID][1]
 	var newitem = pack.instantiate()
 	newitem.count = item.count 
 	return newitem

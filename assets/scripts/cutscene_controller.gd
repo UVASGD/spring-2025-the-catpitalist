@@ -30,6 +30,7 @@ func _ready() -> void:
 	PlayerData.player.hide_ui()
 	
 	
+	
 func align_player(): # assumes we want to use real player's location as a start point for fake player, to prevent odd position jumping when cutscene ends
 	$Player.position = PlayerData.player.position
 
@@ -40,6 +41,7 @@ func _on_dialogue(_dialogue) -> void:
 	elapse_time = false
 	
 func _physics_process(delta: float) -> void:
+	DayManager.freeze()
 	if elapse_time:
 		time_elapsed += delta
 	PlayerData.player.actionable = false
@@ -119,5 +121,7 @@ func end_cutscene():
 	if signals_on_finish:
 		SignalBus.emit_signal(signal_name)
 		History.mark(signal_name)
+	DayManager.unfreeze()
+	SignalBus.emit_signal("tutorial_finished")
 	queue_free()
 	pass # Replace with function body.

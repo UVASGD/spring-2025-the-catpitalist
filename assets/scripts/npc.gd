@@ -25,6 +25,8 @@ func _ready() -> void:
 	if has_idle_walk:
 		$AnimationPlayer2D.play("idle_walk")
 	NPCS.load_cache(self)
+	if npc_name == "Loan Shark": # i know this sucks
+		SignalBus.connect("start_loan_shark_animation", play_loanshark_anim)
 	pass # Replace with function body.
 
 func _process(delta: float) -> void:
@@ -141,6 +143,7 @@ func _on_item_given(item, npc):
 	if item.ID == requested_item_id and npc.npc_name == self.npc_name:
 		requested_item_id = null
 		unlock_next_convo()
+		speak()
 
 func open_shop():
 	UI.open_shop(inventory, self)
@@ -150,3 +153,6 @@ func get_portrait():
 		return load(portrait_path)
 	else:
 		return load("res://assets/sprites/NPC portraits/default_portrait.png")
+
+func play_loanshark_anim():
+	$AnimationPlayer.play("animation")

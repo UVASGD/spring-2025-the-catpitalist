@@ -57,13 +57,22 @@ placeholder_text = "add $"
 layout_mode = 2
 text = "give blurbo water"
 
-[node name="send convo signal" type="Button" parent="Control/VBoxContainer"]
+[node name="start loanshark quest" type="Button" parent="Control/VBoxContainer"]
 layout_mode = 2
-text = "send convo signal"
+text = "start loan shark quest"
 
-[node name="send convo signal2" type="Button" parent="Control/VBoxContainer"]
+[node name="make 100" type="Button" parent="Control/VBoxContainer"]
 layout_mode = 2
 text = "make_1000"
+
+[node name="mention jelline" type="Button" parent="Control/VBoxContainer"]
+layout_mode = 2
+text = "mention jellina"
+
+[node name="unlock underwater" type="Button" parent="Control/VBoxContainer"]
+layout_mode = 2
+text = "unlock underwater
+"
 
 [connection signal="tree_exited" from="." to="." method="_on_tree_exited"]
 [connection signal="tree_exited" from="Control" to="Control" method="_on_tree_exited"]
@@ -75,6 +84,8 @@ text = "make_1000"
 [connection signal="text_submitted" from="Control/VBoxContainer/HBoxContainer/addMoneyInput" to="Control" method="_on_add_money_input_text_submitted"]
 [connection signal="pressed" from="Control/VBoxContainer/give blurbo water" to="." method="_on_give_blurbo_water_pressed"]
 [connection signal="pressed" from="Control/VBoxContainer/give blurbo water" to="Control" method="_on_give_blurbo_water_pressed"]
-[connection signal="pressed" from="Control/VBoxContainer/send convo signal" to="." method="_on_send_convo_signal_pressed"]
-[connection signal="pressed" from="Control/VBoxContainer/send convo signal" to="Control" method="_on_send_convo_signal_pressed"]
-[connection signal="pressed" from="Control/VBoxContainer/send convo signal2" to="." method="_on_send_convo_signal_2_pressed"]
+[connection signal="pressed" from="Control/VBoxContainer/start loanshark quest" to="." method="_on_send_convo_signal_pressed"]
+[connection signal="pressed" from="Control/VBoxContainer/start loanshark quest" to="Control" method="_on_send_convo_signal_pressed"]
+[connection signal="pressed" from="Control/VBoxContainer/make 100" to="." method="_on_send_convo_signal_2_pressed"]
+[connection signal="pressed" from="Control/VBoxContainer/mention jelline" to="." method="_on_mention_jelline_pressed"]
+[connection signal="pressed" from="Control/VBoxContainer/unlock underwater" to="." method="_on_unlock_underwater_pressed"]

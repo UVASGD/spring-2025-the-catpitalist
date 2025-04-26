@@ -1,0 +1,45 @@
+[gd_scene load_steps=7 format=3 uid="uid://cm3fbxrrdy6m3"]
+
+[ext_resource type="Script" path="res://assets/scripts/npc.gd" id="1_qlhx3"]
+[ext_resource type="Texture2D" uid="uid://dqxc7tlhtpes1" path="res://assets/sprites/world objects/indoors/bed_sprite.png" id="2_68t3c"]
+[ext_resource type="Script" path="res://assets/scripts/conversation.gd" id="3_yxwh4"]
+[ext_resource type="Script" path="res://assets/scripts/message.gd" id="4_bqhct"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pmeq2"]
+radius = 49.5908
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_njb3k"]
+size = Vector2(52, 63.5)
+
+[node name="NPC" type="Node2D"]
+scale = Vector2(2, 2)
+script = ExtResource("1_qlhx3")
+is_world_object = true
+npc_name = "bed"
+voice_pitch = 1.5
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, 4)
+texture = ExtResource("2_68t3c")
+
+[node name="hitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox"]
+shape = SubResource("CircleShape2D_pmeq2")
+
+[node name="collisionbox" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="collisionbox"]
+position = Vector2(-3.5, 10.75)
+shape = SubResource("RectangleShape2D_njb3k")
+
+[node name="Convos" type="Node" parent="."]
+
+[node name="Conversation3" type="Node" parent="Convos"]
+script = ExtResource("3_yxwh4")
+
+[node name="Messages" type="Node" parent="Convos/Conversation3"]
+
+[node name="Message" type="Node" parent="Convos/Conversation3/Messages"]
+script = ExtResource("4_bqhct")
+text = "There are.... clown magazines under here?"

@@ -1,4 +1,4 @@
-[gd_scene load_steps=67 format=4 uid="uid://cauh4a088iphm"]
+[gd_scene load_steps=72 format=4 uid="uid://cauh4a088iphm"]
 
 [ext_resource type="Script" path="res://assets/scripts/indoors.gd" id="1_ki6vb"]
 [ext_resource type="Texture2D" uid="uid://b27qipy3lg8og" path="res://assets/sprites/tilesets/SAND TILES.png" id="2_4ho4k"]
@@ -13,8 +13,10 @@
 [ext_resource type="Texture2D" uid="uid://cyhw4empbtshg" path="res://assets/sprites/world objects/underwater/tripi tropi tropi tripa.png" id="8_tglqa"]
 [ext_resource type="Texture2D" uid="uid://doy6tiaw5ocfp" path="res://assets/sprites/world objects/underwater/coralhuse_blue.png" id="9_swte0"]
 [ext_resource type="Texture2D" uid="uid://bstnwmn4eekt1" path="res://assets/sprites/world objects/underwater/coralhouse_purple.png" id="10_nmxri"]
-[ext_resource type="PackedScene" uid="uid://bmw6wxkk4jdhu" path="res://assets/scenes/transportzone.tscn" id="12_oodse"]
+[ext_resource type="PackedScene" uid="uid://3m50jyt14pbk" path="res://assets/scenes/transportzone.tscn" id="12_oodse"]
+[ext_resource type="PackedScene" uid="uid://cdv4rk5wg6o04" path="res://assets/scenes/npcs/fini.tscn" id="13_34ca2"]
 [ext_resource type="Texture2D" uid="uid://bfll2x55s5kro" path="res://assets/sprites/world objects/underwater/second_coral.png" id="13_q3ja5"]
+[ext_resource type="Texture2D" uid="uid://dscnu501lelwl" path="res://assets/sprites/world objects/underwater/shark_house.png" id="13_s32gs"]
 [ext_resource type="Texture2D" uid="uid://bsnuuvu7visvb" path="res://assets/sprites/world objects/underwater/alternate_coral.png" id="14_rs3xy"]
 [ext_resource type="Texture2D" uid="uid://c13n0hcglr44j" path="res://assets/sprites/world objects/underwater/seaweed-Sheet.png" id="15_w1x72"]
 [ext_resource type="PackedScene" uid="uid://ccgksxvw67p2r" path="res://assets/scenes/npcs/ogphish.tscn" id="16_ifrp4"]
@@ -25,7 +27,10 @@
 [ext_resource type="PackedScene" uid="uid://gpf1xb2f44y" path="res://assets/scenes/npcs/homerphish.tscn" id="21_7pjtb"]
 [ext_resource type="PackedScene" uid="uid://c8k72ifx1fmob" path="res://assets/scenes/npcs/jonnyoranghands.tscn" id="23_sjuul"]
 [ext_resource type="Script" path="res://assets/scenes/worlds/bubblemaker.gd" id="24_2q3ei"]
+[ext_resource type="PackedScene" uid="uid://mjp7tsxdcbs4" path="res://assets/scenes/npcs/goldfish.tscn" id="25_c57gv"]
 [ext_resource type="Texture2D" uid="uid://ds025a6nglfiy" path="res://assets/sprites/world objects/underwater/BUBBLES-Sheet.png" id="26_3y8ct"]
+[ext_resource type="PackedScene" uid="uid://dcpjxeouh1mm0" path="res://assets/scenes/npcs/tralalero.tscn" id="26_uvon6"]
+[ext_resource type="PackedScene" uid="uid://byfenl0ohbg02" path="res://assets/scenes/npcs/cheeto.tscn" id="28_pay7a"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0i4su"]
 texture = ExtResource("2_4ho4k")
@@ -342,10 +347,19 @@ scale = Vector2(2, 2)
 z_index = 1
 y_sort_enabled = true
 position = Vector2(-404.5, -206.5)
+scale = Vector2(0.5, 0.5)
 
 [node name="houses" type="Node2D" parent="y_sorted"]
 z_as_relative = false
 y_sort_enabled = true
+
+[node name="transportzone" parent="y_sorted/houses" instance=ExtResource("12_oodse")]
+position = Vector2(677.5, -179)
+scale = Vector2(0.5, 0.5)
+path_to_new_scene = "res://assets/scenes/worlds/loanshark_house.tscn"
+
+[node name="CollisionShape2D" parent="y_sorted/houses/transportzone/enterzone" index="0"]
+position = Vector2(11, -12.5)
 
 [node name="rockhouse" type="Sprite2D" parent="y_sorted/houses"]
 position = Vector2(1169.5, -43)
@@ -421,6 +435,16 @@ texture = ExtResource("8_tglqa")
 [node name="StaticBody2D" type="StaticBody2D" parent="y_sorted/houses/TripiTropiTropiTripa"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="y_sorted/houses/TripiTropiTropiTripa/StaticBody2D"]
+position = Vector2(3.875, 51)
+shape = SubResource("RectangleShape2D_vcvng")
+
+[node name="SharkHouse" type="Sprite2D" parent="y_sorted/houses"]
+position = Vector2(-408.5, 120.5)
+texture = ExtResource("13_s32gs")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="y_sorted/houses/SharkHouse"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="y_sorted/houses/SharkHouse/StaticBody2D"]
 position = Vector2(3.875, 51)
 shape = SubResource("RectangleShape2D_vcvng")
 
@@ -1145,11 +1169,25 @@ scale = Vector2(1, 1)
 position = Vector2(979.5, 532)
 scale = Vector2(1, 1)
 
-[node name="NPC7" parent="y_sorted/npcs" instance=ExtResource("23_sjuul")]
-position = Vector2(-318, -160)
+[node name="NPC8" parent="y_sorted/npcs" instance=ExtResource("13_34ca2")]
+position = Vector2(-36, 497.5)
 scale = Vector2(1, 1)
-npc_name = "Johnny OrangeHands"
-exhaust_dialogue_text = "how did i get here .... :3"
+
+[node name="NPC9" parent="y_sorted/npcs" instance=ExtResource("25_c57gv")]
+position = Vector2(-303, 521.5)
+scale = Vector2(1, 1)
+
+[node name="NPC10" parent="y_sorted/npcs" instance=ExtResource("26_uvon6")]
+position = Vector2(-413.5, 241.5)
+scale = Vector2(1, 1)
+
+[node name="NPC7" parent="y_sorted/npcs" instance=ExtResource("23_sjuul")]
+position = Vector2(-315, -140.5)
+scale = Vector2(1, 1)
+
+[node name="NPC11" parent="y_sorted/npcs" instance=ExtResource("28_pay7a")]
+position = Vector2(685, -210.5)
+scale = Vector2(1, 1)
 
 [node name="worldbounds" type="Node2D" parent="."]
 scale = Vector2(2, 2)
@@ -1416,4 +1454,5 @@ autostart = true
 
 [connection signal="timeout" from="CanvasLayer/bubbletimer" to="CanvasLayer" method="_on_bubbletimer_timeout"]
 
+[editable path="y_sorted/houses/transportzone"]
 [editable path="backhome"]

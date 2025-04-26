@@ -1,0 +1,51 @@
+[gd_scene load_steps=7 format=3 uid="uid://cd1ucf7a4sjae"]
+
+[ext_resource type="Script" path="res://assets/scripts/npc.gd" id="1_on3k1"]
+[ext_resource type="Texture2D" uid="uid://hyu8qroggxgn" path="res://assets/sprites/world objects/indoors/loansharkcloset.png" id="2_uid6i"]
+[ext_resource type="Script" path="res://assets/scripts/conversation.gd" id="3_s3va8"]
+[ext_resource type="Script" path="res://assets/scripts/message.gd" id="4_ku43m"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pmeq2"]
+radius = 75.4255
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_njb3k"]
+size = Vector2(100.5, 48.5)
+
+[node name="NPC" type="Node2D"]
+scale = Vector2(2, 2)
+script = ExtResource("1_on3k1")
+is_world_object = true
+npc_name = "closet"
+voice_pitch = 1.5
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, 4)
+texture = ExtResource("2_uid6i")
+
+[node name="hitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox"]
+shape = SubResource("CircleShape2D_pmeq2")
+
+[node name="collisionbox" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="collisionbox"]
+position = Vector2(1.25, 24.25)
+shape = SubResource("RectangleShape2D_njb3k")
+
+[node name="Convos" type="Node" parent="."]
+
+[node name="Conversation3" type="Node" parent="Convos"]
+script = ExtResource("3_s3va8")
+signals_on_finish = true
+finish_signal = "give_suit"
+
+[node name="Messages" type="Node" parent="Convos/Conversation3"]
+
+[node name="Message" type="Node" parent="Convos/Conversation3/Messages"]
+script = ExtResource("4_ku43m")
+text = "He really only has this one suit in here?"
+
+[node name="Message2" type="Node" parent="Convos/Conversation3/Messages"]
+script = ExtResource("4_ku43m")
+text = "You got: Loan Shark's Suit"

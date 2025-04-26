@@ -63,6 +63,24 @@ signal start_loanshark_quest
 signal made_1000
 signal gift_100
 signal chubbs_move
+signal unlock_water
+signal jellina_mentioned
+signal unlock_junkyard
+signal entered_junkyard
+signal tutorial_finished
+signal made_10000
+signal made_100000
+signal made_1000000
+signal made_10000000
+signal made_100000000
+signal scrappy_shop_closed
+signal unlock_scrappy_shop_again
+signal start_loan_shark_animation
+signal end_loanshark_quest
+signal give_suit
+signal unlock_loan_shark_house
+signal cheeto_move
+signal cheeto_can_move
 func emit(string):
 	emit_signal(string)
 	print("emitted: ", string)

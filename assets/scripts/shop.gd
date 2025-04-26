@@ -181,6 +181,8 @@ func _on_sell_pressed() -> void:
 	dialogue.text = sell_dialogue
 	Items.sell(sellercart)
 	PlayerData.player.money += get_sellercart_cost()
+	PlayerData.player.total_money_made += get_sellercart_cost()
+	PlayerData.player.check_money()
 	wallet.text = str("$", PlayerData.player.money)
 	sellercart = {}
 	

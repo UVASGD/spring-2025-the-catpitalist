@@ -6,7 +6,7 @@ class_name Overworld_area extends Node2D
 func _ready() -> void:
 	Music.play_random()
 	if debug:
-		for i in range(0,22):
+		for i in range(1,22):
 			PlayerData.player.inventory[i] = Items.get_item(i)
 		Music.set_mode(Music.INFINITE)
 		SignalBus.emit_signal("unlock_planting")

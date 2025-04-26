@@ -1,0 +1,46 @@
+[gd_scene load_steps=7 format=3 uid="uid://mjp7tsxdcbs4"]
+
+[ext_resource type="Script" path="res://assets/scripts/npc.gd" id="1_axot7"]
+[ext_resource type="Texture2D" uid="uid://b0556rprby5ow" path="res://assets/sprites/World NPCs/weirdsharki.png" id="2_68qi2"]
+[ext_resource type="Script" path="res://assets/scripts/conversation.gd" id="3_mmk6i"]
+[ext_resource type="Script" path="res://assets/scripts/message.gd" id="4_ub67j"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pmeq2"]
+radius = 63.2396
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_njb3k"]
+size = Vector2(112.5, 45.5)
+
+[node name="NPC" type="Node2D"]
+scale = Vector2(2, 2)
+script = ExtResource("1_axot7")
+npc_name = "Goldfish"
+exhaust_dialogue_text = "mhmhmhmmh!"
+voice_pitch = 0.6
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(2, 2)
+texture = ExtResource("2_68qi2")
+region_rect = Rect2(0, 66.25, 64, 61.75)
+
+[node name="hitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox"]
+shape = SubResource("CircleShape2D_pmeq2")
+
+[node name="collisionbox" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="collisionbox"]
+position = Vector2(-2.5, 35.75)
+shape = SubResource("RectangleShape2D_njb3k")
+
+[node name="Convos" type="Node" parent="."]
+
+[node name="Conversation" type="Node" parent="Convos"]
+script = ExtResource("3_mmk6i")
+
+[node name="Messages" type="Node" parent="Convos/Conversation"]
+
+[node name="Message" type="Node" parent="Convos/Conversation/Messages"]
+script = ExtResource("4_ub67j")
+text = "hehehehe... Lone Shark! Haven't heard that name in years!"

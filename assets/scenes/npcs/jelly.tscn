@@ -1,8 +1,9 @@
-[gd_scene load_steps=20 format=3 uid="uid://bs15iopm0q724"]
+[gd_scene load_steps=21 format=3 uid="uid://bs15iopm0q724"]
 
 [ext_resource type="Script" path="res://assets/scripts/npc.gd" id="1_57gek"]
 [ext_resource type="Texture2D" uid="uid://cui0n4x70oayk" path="res://assets/sprites/World NPCs/jellyperson-Sheet (1).png" id="2_g4tfd"]
 [ext_resource type="Script" path="res://assets/scripts/conversation.gd" id="2_irwds"]
+[ext_resource type="Script" path="res://assets/scripts/message.gd" id="4_kdkkm"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wgwr6"]
 atlas = ExtResource("2_g4tfd")
@@ -112,7 +113,8 @@ size = Vector2(20, 24)
 [node name="NPC" type="Node2D" groups=["NPCs"]]
 scale = Vector2(2, 2)
 script = ExtResource("1_57gek")
-npc_name = "The Jelly Lady"
+npc_name = "Jellina"
+exhaust_dialogue_text = "sigh"
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_7l7yu")
@@ -135,18 +137,37 @@ shape = SubResource("RectangleShape2D_njb3k")
 
 [node name="Conversation" type="Node" parent="Convos"]
 script = ExtResource("2_irwds")
+requests_signal = true
+request_signal_name = "jellina_mentioned"
 
 [node name="Messages" type="Node" parent="Convos/Conversation"]
 
+[node name="Message" type="Node" parent="Convos/Conversation/Messages"]
+script = ExtResource("4_kdkkm")
+text = "heeeey.... It's Jellina"
+
+[node name="Message2" type="Node" parent="Convos/Conversation/Messages"]
+script = ExtResource("4_kdkkm")
+text = "This manhole will take you to the Underwater."
+
+[node name="Message3" type="Node" parent="Convos/Conversation/Messages"]
+script = ExtResource("4_kdkkm")
+text = "But I don't feel like opening it right now... maybe later.."
+
 [node name="Conversation2" type="Node" parent="Convos"]
 script = ExtResource("2_irwds")
+signals_on_finish = true
+finish_signal = "unlock_water"
 
 [node name="Messages" type="Node" parent="Convos/Conversation2"]
 
-[node name="Conversation3" type="Node" parent="Convos"]
-script = ExtResource("2_irwds")
+[node name="Message" type="Node" parent="Convos/Conversation2/Messages"]
+script = ExtResource("4_kdkkm")
+text = "oh..... the Lone Shark sent you? I like him..."
 
-[node name="Messages" type="Node" parent="Convos/Conversation3"]
+[node name="Message2" type="Node" parent="Convos/Conversation2/Messages"]
+script = ExtResource("4_kdkkm")
+text = "here you go.... have a nice fall..."
 
 [node name="start" type="Marker2D" parent="."]
 

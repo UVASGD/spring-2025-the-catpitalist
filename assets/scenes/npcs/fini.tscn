@@ -1,0 +1,65 @@
+[gd_scene load_steps=7 format=3 uid="uid://cdv4rk5wg6o04"]
+
+[ext_resource type="Script" path="res://assets/scripts/npc.gd" id="1_5ln1m"]
+[ext_resource type="Texture2D" uid="uid://bkrq6i7j00kro" path="res://assets/sprites/World NPCs/angrysharki.png" id="2_42147"]
+[ext_resource type="Script" path="res://assets/scripts/conversation.gd" id="3_qq8lb"]
+[ext_resource type="Script" path="res://assets/scripts/message.gd" id="4_bopba"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pmeq2"]
+radius = 63.2396
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_njb3k"]
+size = Vector2(112.5, 45.5)
+
+[node name="NPC" type="Node2D"]
+scale = Vector2(2, 2)
+script = ExtResource("1_5ln1m")
+npc_name = "Fini"
+exhaust_dialogue_text = "You look kinda tasty..."
+voice_pitch = 0.6
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(2, 2)
+texture = ExtResource("2_42147")
+region_enabled = true
+region_rect = Rect2(0, 66.25, 64, 61.75)
+
+[node name="hitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox"]
+shape = SubResource("CircleShape2D_pmeq2")
+
+[node name="collisionbox" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="collisionbox"]
+position = Vector2(-2.5, 35.75)
+shape = SubResource("RectangleShape2D_njb3k")
+
+[node name="Convos" type="Node" parent="."]
+
+[node name="Conversation" type="Node" parent="Convos"]
+script = ExtResource("3_qq8lb")
+signals_on_finish = true
+finish_signal = "cheeto_can_move"
+
+[node name="Messages" type="Node" parent="Convos/Conversation"]
+
+[node name="Message" type="Node" parent="Convos/Conversation/Messages"]
+script = ExtResource("4_bopba")
+text = "HAHAHAHAH!! Him?? Scary?? "
+
+[node name="Message2" type="Node" parent="Convos/Conversation/Messages"]
+script = ExtResource("4_bopba")
+text = "That guy's a LOSER! Around here, we call him the Lone Shark! "
+
+[node name="Message3" type="Node" parent="Convos/Conversation/Messages"]
+script = ExtResource("4_bopba")
+text = "You know that little nerd went to college for a CLOWNERY degree??"
+
+[node name="Message4" type="Node" parent="Convos/Conversation/Messages"]
+script = ExtResource("4_bopba")
+text = "You'll find his house northeast from here. That old run down shipwreck."
+
+[node name="Message5" type="Node" parent="Convos/Conversation/Messages"]
+script = ExtResource("4_bopba")
+text = "Tell Cheeto dinner's ready, he'll come right home."

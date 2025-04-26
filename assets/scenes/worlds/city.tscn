@@ -1,4 +1,4 @@
-[gd_scene load_steps=64 format=4 uid="uid://cd74drdf1jwsh"]
+[gd_scene load_steps=67 format=4 uid="uid://cd74drdf1jwsh"]
 
 [ext_resource type="Script" path="res://assets/scripts/indoors.gd" id="1_608q5"]
 [ext_resource type="Texture2D" uid="uid://dd4wsteki2cb7" path="res://assets/sprites/tilesets/road tiles.png" id="2_b2ujj"]
@@ -20,12 +20,14 @@
 [ext_resource type="Texture2D" uid="uid://bh15g5vydwqd4" path="res://assets/sprites/world objects/city/cityhouse_back (1).png" id="11_067fl"]
 [ext_resource type="PackedScene" uid="uid://bvkqnjchqy427" path="res://assets/scenes/npcs/goober_npc.tscn" id="11_0206h"]
 [ext_resource type="PackedScene" uid="uid://3m50jyt14pbk" path="res://assets/scenes/transportzone.tscn" id="12_10djo"]
+[ext_resource type="Texture2D" uid="uid://deiyut235jhbr" path="res://assets/sprites/world objects/city/underwaterentrance_open.png" id="13_4lelp"]
 [ext_resource type="PackedScene" uid="uid://r1gkmux58rxo" path="res://assets/scenes/npcs/alien.tscn" id="15_p4dqs"]
 [ext_resource type="Texture2D" uid="uid://b5ysiovgmsvl3" path="res://assets/sprites/world objects/shared/tree_v1.png" id="16_cqknu"]
 [ext_resource type="Texture2D" uid="uid://mfyigq4tl03r" path="res://assets/sprites/world objects/shared/tree_v2.png" id="17_710yt"]
 [ext_resource type="Texture2D" uid="uid://dt0igu67d4sgi" path="res://assets/sprites/world objects/city/fountain-ezgif.com-gif-to-sprite-converter.png" id="18_m42qi"]
 [ext_resource type="Texture2D" uid="uid://qxv1c8kjngy" path="res://assets/sprites/world objects/city/mailbox_city.png" id="19_qu70w"]
 [ext_resource type="Texture2D" uid="uid://c1m1dp2mblpo4" path="res://assets/sprites/world objects/city/fire_hydrant.png" id="20_0jl5p"]
+[ext_resource type="PackedScene" uid="uid://cbdo28b5jlq6y" path="res://assets/scenes/npcs/scrappy.tscn" id="21_cvtxp"]
 [ext_resource type="Texture2D" uid="uid://bnehomndy7gj4" path="res://assets/sprites/world objects/city/monkeybars.png" id="22_t47q2"]
 [ext_resource type="Texture2D" uid="uid://cow6s21mfrtpv" path="res://assets/sprites/world objects/city/seesaw.png" id="23_e1b6s"]
 [ext_resource type="PackedScene" uid="uid://bs15iopm0q724" path="res://assets/scenes/npcs/jelly.tscn" id="23_xbpq2"]
@@ -36,6 +38,7 @@
 [ext_resource type="Texture2D" uid="uid://ce36bxf27cob" path="res://assets/sprites/world objects/shared/Half_ROCK.png" id="27_qmurg"]
 [ext_resource type="Texture2D" uid="uid://c30seulpk3ojg" path="res://assets/sprites/world objects/city/crash_dirt.png" id="30_te0eh"]
 [ext_resource type="Texture2D" uid="uid://qh8veeicoho" path="res://assets/sprites/world objects/city/rocketship_broken.png" id="31_raphl"]
+[ext_resource type="Script" path="res://assets/scenes/worlds/scrapdisabler.gd" id="39_vpgrv"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0ngmq"]
 texture = ExtResource("2_kair2")
@@ -707,10 +710,17 @@ position = Vector2(659, -1345)
 scale = Vector2(2, 2)
 texture = ExtResource("8_817pb")
 
-[node name="water_entrance_sprite" type="Sprite2D" parent="y_sorted/houses"]
+[node name="water_entrance_closed" type="Sprite2D" parent="y_sorted/houses"]
+unique_name_in_owner = true
 z_index = -5
 position = Vector2(1490, -738)
 texture = ExtResource("9_r8l54")
+
+[node name="water_entrance_open" type="Sprite2D" parent="y_sorted/houses"]
+unique_name_in_owner = true
+visible = false
+position = Vector2(1492, -738)
+texture = ExtResource("13_4lelp")
 
 [node name="lamps" type="Node2D" parent="y_sorted"]
 y_sort_enabled = true
@@ -862,6 +872,9 @@ position = Vector2(-611, 1076)
 
 [node name="NPC5" parent="y_sorted/npcs" instance=ExtResource("23_xbpq2")]
 position = Vector2(1521, -569)
+
+[node name="NPC8" parent="y_sorted/npcs" instance=ExtResource("21_cvtxp")]
+position = Vector2(604, 1125)
 
 [node name="trees" type="Node2D" parent="y_sorted"]
 y_sort_enabled = true
@@ -1489,6 +1502,23 @@ texture = ExtResource("31_raphl")
 position = Vector2(-2.02988, -12.4618)
 shape = SubResource("RectangleShape2D_8j4fk")
 
+[node name="to_scrapyard" parent="y_sorted" instance=ExtResource("12_10djo")]
+position = Vector2(538, 1225)
+scale = Vector2(4, 4)
+toggles_on_signal = true
+signal_name = "unlock_junkyard"
+path_to_new_scene = "res://assets/scenes/worlds/scrapyard.tscn"
+
+[node name="scrapdisabler" type="Node" parent="y_sorted/to_scrapyard"]
+script = ExtResource("39_vpgrv")
+
+[node name="transportzone" parent="y_sorted" instance=ExtResource("12_10djo")]
+position = Vector2(548, -733)
+path_to_new_scene = "res://assets/scenes/worlds/loansharkhq.tscn"
+
+[node name="CollisionShape2D" parent="y_sorted/transportzone/enterzone" index="0"]
+position = Vector2(2, 0)
+
 [node name="worldbounds" type="Node2D" parent="."]
 
 [node name="left" type="StaticBody2D" parent="worldbounds"]
@@ -1545,5 +1575,6 @@ path_to_new_scene = ""
 [node name="CollisionShape2D" parent="backhome/enterzone" index="0"]
 position = Vector2(-7.95322, 12.7258)
 
+[editable path="y_sorted/transportzone"]
 [editable path="waterentrance"]
 [editable path="backhome"]

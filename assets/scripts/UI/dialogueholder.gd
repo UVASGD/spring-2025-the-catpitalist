@@ -7,7 +7,7 @@ extends Control
 @onready var choices: VBoxContainer = $choices
 @export var TEXT_SPEED:int = 3
 
-var conversation = null
+var conversation:Conversation = null
 var is_skipping = false
 
 var awaiting_choice
@@ -88,8 +88,9 @@ func show_conversation() -> void:
 					await wait_for_choice()
 				await get_tree().create_timer(0.1).timeout
 				if dialogue_choice == "yes":
-					PlayerData.player.remove_from_inv(cond_item)
-					SignalBus.emit_signal("item_given_to_npc", cond_item, NPCS.get_npc("Blurbo").instantiate())
+					if PlayerData.player.remove_from_inv(cond_item):
+						
+						SignalBus.emit_signal("item_given_to_npc", cond_item, conversation.get_npc())
 				dialogue_choice = ""
 				choices.visible = false
 	return
@@ -101,6 +102,7 @@ func wait_for_user_input() -> void:
 func wait_for_choice() -> void:
 	while awaiting_choice:
 		await get_tree().process_frame
+	return
 
 func _on_yes_pressed() -> void:
 	print("??")

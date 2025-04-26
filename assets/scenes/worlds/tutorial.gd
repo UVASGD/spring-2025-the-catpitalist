@@ -2,13 +2,21 @@ extends Overworld_area
 @export var play_tutorial = true
 @onready var dadkiller: Area2D = $dadkiller
 @onready var seasonals = [$Spring_Summer, $Spring_Summer, $Fall, $Winter]
+var freezing = true
 func _ready() -> void:
 	super()
 	SignalBus.connect("spawn_seeds", spawn_seeds)
 	SignalBus.connect("context", _on_context)
 	SignalBus.connect("unlock_farmhouse", _enable_dadkiller)
 	seasonals[DayManager.season].show()
+	SignalBus.connect("tutorial_finished", _toggle_freezing)
 	return
+
+func _process(delta: float) -> void:
+	super(delta)
+	if freezing:
+		DayManager.freeze()
+		
 
 func spawn_seeds():
 	var seeds = Items.get_item(2)
@@ -24,7 +32,7 @@ func _on_context(context:Dictionary):
 func grow_player():
 	PlayerData.player.scale = Vector2(1,1)
 	PlayerData.player.alter_scale = Vector2(1,1)
-	return
+	return 
 
 
 func _on_dadkiller_body_entered(body: Node2D) -> void:
@@ -37,3 +45,7 @@ func _on_dadkiller_body_entered(body: Node2D) -> void:
 
 func _enable_dadkiller():
 	dadkiller.monitoring = true
+
+func _toggle_freezing():
+	freezing = false
+	DayManager.unfreeze()

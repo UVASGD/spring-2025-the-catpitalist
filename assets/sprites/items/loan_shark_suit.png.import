@@ -1,0 +1,14 @@
+[remap]
+
+importer="image"
+type="Image"
+uid="uid://dqahtcefmrhgl"
+path="res://.godot/imported/loan_shark_suit.png-f8089dd4a6b146cc23306a7033b2c153.image"
+
+[deps]
+
+source_file="res://assets/sprites/items/loan_shark_suit.png"
+dest_files=["res://.godot/imported/loan_shark_suit.png-f8089dd4a6b146cc23306a7033b2c153.image"]
+
+[params]
+

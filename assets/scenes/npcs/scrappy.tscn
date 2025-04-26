@@ -12,6 +12,7 @@ radius = 32.0
 size = Vector2(20, 24)
 
 [node name="NPC" type="Node2D" groups=["NPCs"]]
+scale = Vector2(2, 2)
 script = ExtResource("1_oi2ww")
 npc_name = "Scrappy"
 exhaust_dialogue_text = "I'M A REAL RACCOON!"
@@ -75,8 +76,10 @@ text = "Don't worry about it! see ya! "
 
 [node name="Conversation3" type="Node" parent="Convos"]
 script = ExtResource("3_aocrb")
+requests_signal = true
+request_signal_name = "end_loanshark_quest"
 signals_on_finish = true
-finish_signal = "Start_loanshark_quest"
+finish_signal = "start_loanshark_quest"
 
 [node name="Messages" type="Node" parent="Convos/Conversation3"]
 
@@ -99,6 +102,33 @@ text = "Who’s the Loan Shark? Are you kidding me? He’s only the most ruthles
 [node name="Message5" type="Node" parent="Convos/Conversation3/Messages"]
 script = ExtResource("4_lrxj8")
 text = "He lives in that giant building on the north side of town. If only someoe would stand up to him..."
+
+[node name="Conversation4" type="Node" parent="Convos"]
+script = ExtResource("3_aocrb")
+signals_on_finish = true
+finish_signal = "unlock_scrappy_shop_again"
+
+[node name="Messages" type="Node" parent="Convos/Conversation4"]
+
+[node name="Message" type="Node" parent="Convos/Conversation4/Messages"]
+script = ExtResource("4_lrxj8")
+text = "Welcome back valued customer! Yes, it really is me, Scrappy! I bet you’re wondering… what’s with all the orange? And the lack of a smelly cloud following me around?"
+
+[node name="Message2" type="Node" parent="Convos/Conversation4/Messages"]
+script = ExtResource("4_lrxj8")
+text = "If I told ya, I’d have to kill ya. Im kidding!!! "
+
+[node name="Message3" type="Node" parent="Convos/Conversation4/Messages"]
+script = ExtResource("4_lrxj8")
+text = "Thanks to you, the loan shark forgave all my debts. I can finally afford to take a shower. "
+
+[node name="Message4" type="Node" parent="Convos/Conversation4/Messages"]
+script = ExtResource("4_lrxj8")
+text = "Also, with the leftover funds, I took a genetics test, just to see what I really am. It turns out I am 102 percent orange panda with a 2 percent margin of error. "
+
+[node name="Message5" type="Node" parent="Convos/Conversation4/Messages"]
+script = ExtResource("4_lrxj8")
+text = "Anyway, Shop's back open thanks to you!"
 
 [node name="start" type="Marker2D" parent="."]
 
