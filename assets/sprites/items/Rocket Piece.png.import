@@ -1,0 +1,14 @@
+[remap]
+
+importer="image"
+type="Image"
+uid="uid://jxnrod7ro26k"
+path="res://.godot/imported/Rocket Piece.png-b4bd9732d9a3a05efb90b67971979e0c.image"
+
+[deps]
+
+source_file="res://assets/sprites/items/Rocket Piece.png"
+dest_files=["res://.godot/imported/Rocket Piece.png-b4bd9732d9a3a05efb90b67971979e0c.image"]
+
+[params]
+

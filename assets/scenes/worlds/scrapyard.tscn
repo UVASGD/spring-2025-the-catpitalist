@@ -1,9 +1,18 @@
-[gd_scene load_steps=11 format=4 uid="uid://ce8e5mlrrq3sv"]
+[gd_scene load_steps=28 format=4 uid="uid://ce8e5mlrrq3sv"]
 
 [ext_resource type="Script" path="res://assets/scripts/indoors.gd" id="1_wty2u"]
 [ext_resource type="Texture2D" uid="uid://cgnlp12cad61i" path="res://assets/sprites/tilesets/NEW_SAND.png" id="3_exudb"]
+[ext_resource type="Texture2D" uid="uid://bik40inilcyqa" path="res://assets/sprites/world objects/scrapyard/crane.png" id="4_8ppq4"]
 [ext_resource type="Script" path="res://assets/scenes/worlds/junkyardnoti.gd" id="4_gi1sh"]
+[ext_resource type="Texture2D" uid="uid://xenwivfv8cm2" path="res://assets/sprites/world objects/scrapyard/RV.png" id="5_5fq0q"]
+[ext_resource type="PackedScene" uid="uid://c63wd225e3dmn" path="res://assets/scenes/npcs/shop_scrappy.tscn" id="6_cdluu"]
+[ext_resource type="Texture2D" uid="uid://igbdqws3f5co" path="res://assets/sprites/world objects/scrapyard/scrap_cube.png" id="6_fyxha"]
 [ext_resource type="Texture2D" uid="uid://dd4wsteki2cb7" path="res://assets/sprites/tilesets/road tiles.png" id="6_m8gm8"]
+[ext_resource type="Texture2D" uid="uid://bsu05mgyrsym6" path="res://assets/sprites/world objects/scrapyard/scrap_cube_1.png" id="7_x364w"]
+[ext_resource type="Texture2D" uid="uid://cyre2v00ccnob" path="res://assets/sprites/world objects/scrapyard/scrap_cube_2.png" id="8_jum3m"]
+[ext_resource type="Texture2D" uid="uid://cd0fyqpbo0bwu" path="res://assets/sprites/world objects/scrapyard/scrap_cube_3.png" id="9_obicd"]
+[ext_resource type="Texture2D" uid="uid://cuyv0h820tw5h" path="res://assets/sprites/world objects/scrapyard/tire.png" id="10_8eefa"]
+[ext_resource type="Texture2D" uid="uid://d3m50wuelw8fs" path="res://assets/sprites/world objects/scrapyard/tires.png" id="11_f0mk5"]
 [ext_resource type="PackedScene" uid="uid://3m50jyt14pbk" path="res://assets/scenes/transportzone.tscn" id="38_1wigj"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ljycj"]
@@ -51,6 +60,42 @@ tile_size = Vector2i(32, 32)
 sources/0 = SubResource("TileSetAtlasSource_ljycj")
 sources/1 = SubResource("TileSetAtlasSource_jr4fw")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7gyao"]
+size = Vector2(107.5, 62.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_15oyu"]
+size = Vector2(184.5, 53.5)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bwh7r"]
+texture = ExtResource("6_fyxha")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ve0re"]
+texture = ExtResource("7_x364w")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7ay42"]
+texture = ExtResource("8_jum3m")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_epgxk"]
+texture = ExtResource("9_obicd")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_lq5p0"]
+tile_size = Vector2i(64, 64)
+sources/0 = SubResource("TileSetAtlasSource_bwh7r")
+sources/1 = SubResource("TileSetAtlasSource_ve0re")
+sources/2 = SubResource("TileSetAtlasSource_7ay42")
+sources/3 = SubResource("TileSetAtlasSource_epgxk")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7kor5"]
+size = Vector2(56.5, 46)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gc6oj"]
 size = Vector2(320, 201)
 
@@ -81,9 +126,171 @@ position = Vector2(-657, 574)
 y_sort_enabled = true
 position = Vector2(-548, 382)
 
+[node name="NPC" parent="y_sorted/npcs" instance=ExtResource("6_cdluu")]
+position = Vector2(1017, 48)
+
 [node name="bs" type="Node2D" parent="y_sorted"]
 y_sort_enabled = true
 position = Vector2(-548, 382)
+
+[node name="Crane" type="Sprite2D" parent="y_sorted/bs"]
+position = Vector2(122, -34)
+scale = Vector2(2, 2)
+texture = ExtResource("4_8ppq4")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="y_sorted/bs/Crane"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="y_sorted/bs/Crane/StaticBody2D"]
+position = Vector2(48, 56.25)
+shape = SubResource("RectangleShape2D_7gyao")
+
+[node name="Rv" type="Sprite2D" parent="y_sorted/bs"]
+position = Vector2(1011, -185)
+scale = Vector2(2, 2)
+texture = ExtResource("5_5fq0q")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="y_sorted/bs/Rv"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="y_sorted/bs/Rv/StaticBody2D"]
+position = Vector2(-0.75, 63.75)
+shape = SubResource("RectangleShape2D_15oyu")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="y_sorted/bs"]
+scale = Vector2(2, 2)
+tile_map_data = PackedByteArray("AAD9//n/AwAAAAAAAAD+//n/AQAAAAAAAAD///n/AAAAAAAAAAAAAPn/AAAAAAAAAAABAPn/AgAAAAAAAAACAPn/AgAAAAAAAAAGAPn/AQAAAAAAAAAHAPn/AQAAAAAAAAAIAPn/AgAAAAAAAAAJAPn/AAAAAAAAAAAKAPn/AgAAAAAAAAALAPn/AgAAAAAAAAAMAPn/AAAAAAAAAAAMAPr/AwAAAAAAAAAMAPv/AwAAAAAAAAAMAPz/AAAAAAAAAAAMAP3/AgAAAAAAAAAMAP7/AQAAAAAAAAAMAP//AQAAAAAAAAAMAAAAAgAAAAAAAAAMAAEAAwAAAAAAAAAMAAIAAgAAAAAAAAAMAAMAAgAAAAAAAAAMAAQAAgAAAAAAAAAMAAUAAAAAAAAAAAAMAAYAAwAAAAAAAAALAAYAAAAAAAAAAAAKAAYAAgAAAAAAAAAJAAYAAAAAAAAAAAAIAAYAAAAAAAAAAAAHAAYAAwAAAAAAAAAGAAYAAQAAAAAAAAAFAAYAAgAAAAAAAAAEAAYAAAAAAAAAAAADAAYAAAAAAAAAAAACAAYAAwAAAAAAAAABAAYAAwAAAAAAAAAAAAYAAwAAAAAAAAD//wYAAwAAAAAAAAD+/wYAAgAAAAAAAAD9/wYAAQAAAAAAAAD8/wYAAgAAAAAAAAD8/wUAAQAAAAAAAAD8/wQAAAAAAAAAAAD8/wMAAwAAAAAAAAD8/wIAAgAAAAAAAAD8/wEAAQAAAAAAAAD8/wAAAQAAAAAAAAD8////AAAAAAAAAAD8//7/AwAAAAAAAAD8//3/AAAAAAAAAAD8//z/AgAAAAAAAAD8//v/AgAAAAAAAAD8//r/AQAAAAAAAAD8//n/AwAAAAAAAAA=")
+tile_set = SubResource("TileSet_lq5p0")
+
+[node name="Tire" type="Sprite2D" parent="y_sorted/bs"]
+position = Vector2(174, 408)
+scale = Vector2(2, 2)
+texture = ExtResource("10_8eefa")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="y_sorted/bs/Tire"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="y_sorted/bs/Tire/StaticBody2D"]
+position = Vector2(0.25, 18.5)
+shape = SubResource("RectangleShape2D_7kor5")
+
+[node name="Tire2" type="Sprite2D" parent="y_sorted/bs"]
+position = Vector2(435, 290)
+scale = Vector2(2, 2)
+texture = ExtResource("10_8eefa")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="y_sorted/bs/Tire2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="y_sorted/bs/Tire2/StaticBody2D"]
+position = Vector2(0.25, 18.5)
+shape = SubResource("RectangleShape2D_7kor5")
+
+[node name="Tire3" type="Sprite2D" parent="y_sorted/bs"]
+position = Vector2(66, -547)
+scale = Vector2(2, 2)
+texture = ExtResource("10_8eefa")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="y_sorted/bs/Tire3"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="y_sorted/bs/Tire3/StaticBody2D"]
+position = Vector2(0.25, 18.5)
+shape = SubResource("RectangleShape2D_7kor5")
+
+[node name="Tire5" type="Sprite2D" parent="y_sorted/bs"]
+position = Vector2(66, -547)
+scale = Vector2(2, 2)
+texture = ExtResource("10_8eefa")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="y_sorted/bs/Tire5"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="y_sorted/bs/Tire5/StaticBody2D"]
+position = Vector2(0.25, 18.5)
+shape = SubResource("RectangleShape2D_7kor5")
+
+[node name="Tire4" type="Sprite2D" parent="y_sorted/bs"]
+position = Vector2(1142, -731)
+scale = Vector2(2, 2)
+texture = ExtResource("10_8eefa")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="y_sorted/bs/Tire4"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="y_sorted/bs/Tire4/StaticBody2D"]
+position = Vector2(0.25, 18.5)
+shape = SubResource("RectangleShape2D_7kor5")
+
+[node name="Tires" type="Sprite2D" parent="y_sorted/bs"]
+position = Vector2(918, 365)
+scale = Vector2(2, 2)
+texture = ExtResource("11_f0mk5")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="y_sorted/bs/Tires"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="y_sorted/bs/Tires/StaticBody2D"]
+position = Vector2(0.25, 18.5)
+shape = SubResource("RectangleShape2D_7kor5")
+
+[node name="Tires2" type="Sprite2D" parent="y_sorted/bs"]
+position = Vector2(1198, 39)
+scale = Vector2(2, 2)
+texture = ExtResource("11_f0mk5")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="y_sorted/bs/Tires2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="y_sorted/bs/Tires2/StaticBody2D"]
+position = Vector2(0.25, 18.5)
+shape = SubResource("RectangleShape2D_7kor5")
+
+[node name="Tires3" type="Sprite2D" parent="y_sorted/bs"]
+position = Vector2(804, 33)
+scale = Vector2(2, 2)
+texture = ExtResource("11_f0mk5")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="y_sorted/bs/Tires3"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="y_sorted/bs/Tires3/StaticBody2D"]
+position = Vector2(0.25, 18.5)
+shape = SubResource("RectangleShape2D_7kor5")
+
+[node name="Tires4" type="Sprite2D" parent="y_sorted/bs"]
+position = Vector2(-257, -301)
+scale = Vector2(2, 2)
+texture = ExtResource("11_f0mk5")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="y_sorted/bs/Tires4"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="y_sorted/bs/Tires4/StaticBody2D"]
+position = Vector2(0.25, 18.5)
+shape = SubResource("RectangleShape2D_7kor5")
+
+[node name="ScrapCube" type="Sprite2D" parent="y_sorted/bs"]
+position = Vector2(-17, 88)
+scale = Vector2(2, 2)
+texture = ExtResource("6_fyxha")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="y_sorted/bs/ScrapCube"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="y_sorted/bs/ScrapCube/StaticBody2D"]
+position = Vector2(-0.25, 7.5)
+shape = SubResource("RectangleShape2D_7kor5")
+
+[node name="ScrapCube2" type="Sprite2D" parent="y_sorted/bs"]
+position = Vector2(700, 613)
+scale = Vector2(2, 2)
+texture = ExtResource("6_fyxha")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="y_sorted/bs/ScrapCube2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="y_sorted/bs/ScrapCube2/StaticBody2D"]
+position = Vector2(-0.25, 7.5)
+shape = SubResource("RectangleShape2D_7kor5")
+
+[node name="ScrapCube3" type="Sprite2D" parent="y_sorted/bs"]
+position = Vector2(1187, -420)
+scale = Vector2(2, 2)
+texture = ExtResource("6_fyxha")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="y_sorted/bs/ScrapCube3"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="y_sorted/bs/ScrapCube3/StaticBody2D"]
+position = Vector2(-0.25, 7.5)
+shape = SubResource("RectangleShape2D_7kor5")
 
 [node name="dummyhouses" type="Node2D" parent="y_sorted"]
 y_sort_enabled = true

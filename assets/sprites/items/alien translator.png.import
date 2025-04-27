@@ -1,0 +1,14 @@
+[remap]
+
+importer="image"
+type="Image"
+uid="uid://dp7iikidnx647"
+path="res://.godot/imported/alien translator.png-aba892796b8ece73c5eaecd56f6ce196.image"
+
+[deps]
+
+source_file="res://assets/sprites/items/alien translator.png"
+dest_files=["res://.godot/imported/alien translator.png-aba892796b8ece73c5eaecd56f6ce196.image"]
+
+[params]
+

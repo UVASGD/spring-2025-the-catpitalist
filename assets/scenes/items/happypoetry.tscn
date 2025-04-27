@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://pam7ku0qobbp"]
+
+[ext_resource type="Script" path="res://assets/scripts/item.gd" id="1_bjnda"]
+[ext_resource type="Texture2D" uid="uid://cau5cly6msqdo" path="res://assets/sprites/items/happypoetry.png" id="2_tu6tx"]
+
+[node name="flower" type="Node2D"]
+script = ExtResource("1_bjnda")
+ID = 30
+item_name = "Happy Poetry"
+max_stack = 99
+count = 1
+sell_price = 3
+buy_price = 350
+sprite_path = "res://assets/sprites/items/happypoetry.png"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_tu6tx")

@@ -1,5 +1,7 @@
 class_name Indoors extends Node2D
 
+@export var playlist_songs: Array[String]
+
 @onready var spawnpoint: Node2D = $y_sorted/spawnpoint
 var can_transport = true
 @onready var exit: Area2D = $exit

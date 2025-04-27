@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://bnf7uyfd5jfeh"]
+
+[ext_resource type="Script" path="res://assets/scripts/item.gd" id="1_hdoq1"]
+[ext_resource type="Texture2D" uid="uid://c054g5k5s12r6" path="res://assets/sprites/items/sadpoetry.png" id="2_881d5"]
+
+[node name="flower" type="Node2D"]
+script = ExtResource("1_hdoq1")
+ID = 30
+item_name = "Sad Poetry"
+max_stack = 99
+count = 1
+sell_price = 3
+buy_price = 350
+sprite_path = "res://assets/sprites/items/sadpoetry.png"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_881d5")
