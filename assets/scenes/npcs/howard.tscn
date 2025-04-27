@@ -1115,6 +1115,7 @@ voice_pitch = 0.6
 position = Vector2(21.5, 1.5)
 scale = Vector2(0.25, 0.25)
 sprite_frames = SubResource("SpriteFrames_wsrj6")
+autoplay = "default"
 frame_progress = 0.337275
 speed_scale = 2.0
 
@@ -1134,8 +1135,8 @@ shape = SubResource("RectangleShape2D_njb3k")
 [node name="Conversation" type="Node" parent="Convos"]
 script = ExtResource("3_qvpjj")
 
-[node name="Node" type="Node" parent="Convos/Conversation"]
+[node name="Messages" type="Node" parent="Convos/Conversation"]
 
-[node name="Message" type="Node" parent="Convos/Conversation/Node"]
+[node name="Message" type="Node" parent="Convos/Conversation/Messages"]
 script = ExtResource("4_8bmvo")
 text = "It do not matter"

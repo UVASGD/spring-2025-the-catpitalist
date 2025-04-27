@@ -81,6 +81,10 @@ signal give_suit
 signal unlock_loan_shark_house
 signal cheeto_move
 signal cheeto_can_move
+signal emo_hazel
+signal final_hazel
+signal give_strange_piece
+signal ask_for_robocat
 func emit(string):
 	emit_signal(string)
 	print("emitted: ", string)

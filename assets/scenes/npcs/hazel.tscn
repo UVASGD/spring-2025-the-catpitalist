@@ -1,9 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://c5igsyxh1x2i2"]
+[gd_scene load_steps=9 format=3 uid="uid://c5igsyxh1x2i2"]
 
-[ext_resource type="Script" path="res://assets/scripts/npc.gd" id="1_32qql"]
+[ext_resource type="Script" path="res://assets/scenes/npcs/hazel.gd" id="1_t0ne5"]
 [ext_resource type="Texture2D" uid="uid://dxqdxq5budyx5" path="res://assets/sprites/World NPCs/defaultHazel-removebg-preview.png" id="2_1741w"]
 [ext_resource type="Script" path="res://assets/scripts/conversation.gd" id="3_66a06"]
+[ext_resource type="Texture2D" uid="uid://dc7nte1ssom75" path="res://assets/sprites/World NPCs/emoHazel-removebg-preview.png" id="3_hipvq"]
 [ext_resource type="Script" path="res://assets/scripts/message.gd" id="4_mnqcm"]
+[ext_resource type="Texture2D" uid="uid://dydyk2wkx52mj" path="res://assets/sprites/World NPCs/finalHazel-removebg-preview.png" id="4_tilk4"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_pmeq2"]
 radius = 32.0
@@ -13,15 +15,27 @@ size = Vector2(20, 24)
 
 [node name="NPC" type="Node2D"]
 scale = Vector2(2, 2)
-script = ExtResource("1_32qql")
+script = ExtResource("1_t0ne5")
 npc_name = "H4Z3L"
-exhaust_dialogue_text = "bruh"
-voice_pitch = 1.5
+exhaust_dialogue_text = "HIIIIIII"
+voice_pitch = 0.7
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, 4)
 scale = Vector2(0.15, 0.15)
 texture = ExtResource("2_1741w")
+
+[node name="Emo" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(0, 1)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("3_hipvq")
+
+[node name="final" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(1, 6.5)
+scale = Vector2(0.13, 0.13)
+texture = ExtResource("4_tilk4")
 
 [node name="hitbox" type="Area2D" parent="."]
 
@@ -43,7 +57,15 @@ script = ExtResource("3_66a06")
 
 [node name="Message" type="Node" parent="Convos/Conversation/Messages"]
 script = ExtResource("4_mnqcm")
-text = "hello"
+text = "01001000 01101001 00100000 01110100 01101000 01100101 01110010 01100101 00100001"
+
+[node name="Message2" type="Node" parent="Convos/Conversation/Messages"]
+script = ExtResource("4_mnqcm")
+text = "BEEEEEP~ MY TRANSLATOR GLITCHED OUT! WHAT I MEANT TO SAY WAS"
+
+[node name="Message3" type="Node" parent="Convos/Conversation/Messages"]
+script = ExtResource("4_mnqcm")
+text = "SORRY I FORGOT WHAT WE WERE TALKING ABOUT (•‿•)"
 
 [node name="Conversation2" type="Node" parent="Convos"]
 script = ExtResource("3_66a06")
@@ -52,7 +74,19 @@ script = ExtResource("3_66a06")
 
 [node name="Message" type="Node" parent="Convos/Conversation2/Messages"]
 script = ExtResource("4_mnqcm")
-text = "how are you"
+text = "OH HEY THERE"
+
+[node name="Message2" type="Node" parent="Convos/Conversation2/Messages"]
+script = ExtResource("4_mnqcm")
+text = "THE FLOWERS SAY MY NAME IS H4Z3L! IT’S ENGRAVED ON MY BACK APPARENTLY"
+
+[node name="Message3" type="Node" parent="Convos/Conversation2/Messages"]
+script = ExtResource("4_mnqcm")
+text = "WHAT FLOWERS? OH YOU KNOW THEY JUST LIVE IN MY NOGGIN (^_^)"
+
+[node name="Message4" type="Node" parent="Convos/Conversation2/Messages"]
+script = ExtResource("4_mnqcm")
+text = "SPEAKING OF WHICH THEY ARE CRAVING POETRY... WHAT NERDS! IF YOU BRING ME SOME I CAN TELL YOU THEIR SECRETS >:)"
 
 [node name="Conversation3" type="Node" parent="Convos"]
 script = ExtResource("3_66a06")
@@ -61,4 +95,127 @@ script = ExtResource("3_66a06")
 
 [node name="Message" type="Node" parent="Convos/Conversation3/Messages"]
 script = ExtResource("4_mnqcm")
-text = "goodbye"
+text = "HAI DO YOU HAVE ANYTHING FOR ME? NO? "
+
+[node name="Message2" type="Node" parent="Convos/Conversation3/Messages"]
+script = ExtResource("4_mnqcm")
+text = "WHAT’S THAT? THE FLOWERS ARE WHISPERING TO ME"
+
+[node name="Message3" type="Node" parent="Convos/Conversation3/Messages"]
+script = ExtResource("4_mnqcm")
+text = "THEY SAY YOU CAN FIND POETRY IN SCRAPPY’S STORE"
+
+[node name="Message4" type="Node" parent="Convos/Conversation3/Messages"]
+script = ExtResource("4_mnqcm")
+text = "SHE’S SO COOL IF YOU GO BY TELL HER I SAY HEY"
+
+[node name="Conversation4" type="Node" parent="Convos"]
+script = ExtResource("3_66a06")
+
+[node name="Messages" type="Node" parent="Convos/Conversation4"]
+
+[node name="Message" type="Node" parent="Convos/Conversation4/Messages"]
+script = ExtResource("4_mnqcm")
+text = "DID YOU BRING ME ANYTHING TO READ? "
+
+[node name="Message2" type="Node" parent="Convos/Conversation4/Messages"]
+script = ExtResource("4_mnqcm")
+text = "Give Poetry Book?"
+item_condition = 29
+item_amount = 1
+condition_action = 2
+is_request = true
+
+[node name="Message3" type="Node" parent="Convos/Conversation4/Messages"]
+script = ExtResource("4_mnqcm")
+text = "You don't have a book to give."
+item_condition = 29
+item_amount = 1
+condition_action = 1
+
+[node name="Conversation5" type="Node" parent="Convos"]
+script = ExtResource("3_66a06")
+signals_on_finish = true
+finish_signal = "emo_hazel"
+
+[node name="Messages" type="Node" parent="Convos/Conversation5"]
+
+[node name="Message" type="Node" parent="Convos/Conversation5/Messages"]
+script = ExtResource("4_mnqcm")
+text = "YAAAAY! THE FLOWERS ARE SO HAPPY! BY THE WAY DID SCRAPPY—"
+
+[node name="Message2" type="Node" parent="Convos/Conversation5/Messages"]
+script = ExtResource("4_mnqcm")
+text = "WAIT"
+
+[node name="Message3" type="Node" parent="Convos/Conversation5/Messages"]
+script = ExtResource("4_mnqcm")
+text = "LET ME TAKE A CLOSER LOOK AT THAT"
+
+[node name="Message4" type="Node" parent="Convos/Conversation5/Messages"]
+script = ExtResource("4_mnqcm")
+text = "ʘ‿ʘ"
+
+[node name="Conversation6" type="Node" parent="Convos"]
+script = ExtResource("3_66a06")
+requests_signal = true
+request_signal_name = "final_hazel"
+signals_on_finish = true
+finish_signal = "ask_for_robocat"
+
+[node name="Messages" type="Node" parent="Convos/Conversation6"]
+
+[node name="Message" type="Node" parent="Convos/Conversation6/Messages"]
+script = ExtResource("4_mnqcm")
+text = "NOOOOOOOOO OO O O THE BAD POETRY KILLED MY FLOWERS"
+
+[node name="Message2" type="Node" parent="Convos/Conversation6/Messages"]
+script = ExtResource("4_mnqcm")
+text = "I MISS THEM SO MUCH IT MADE ME EMO WTF"
+
+[node name="Message3" type="Node" parent="Convos/Conversation6/Messages"]
+script = ExtResource("4_mnqcm")
+text = "SIGH… NO ONE GETS ME… ESPECIALLY NOT YOU SINCE YOU REALLY THOUGHT I WOULD LIKE THAT SLOP"
+
+[node name="Message4" type="Node" parent="Convos/Conversation6/Messages"]
+script = ExtResource("4_mnqcm")
+text = "UGHHH I’M SO #ALONE…"
+
+[node name="Message5" type="Node" parent="Convos/Conversation6/Messages"]
+script = ExtResource("4_mnqcm")
+text = "I WISH I HAD A ROBOTIC FRIEND WITH SIMILAR GRANOLA TENDENCIES… SOMEONE WHO UNDERSTANDS ME…"
+
+[node name="Conversation7" type="Node" parent="Convos"]
+script = ExtResource("3_66a06")
+signals_on_finish = true
+finish_signal = "give_strange_piece"
+
+[node name="Messages" type="Node" parent="Convos/Conversation7"]
+
+[node name="Message" type="Node" parent="Convos/Conversation7/Messages"]
+script = ExtResource("4_mnqcm")
+text = "WOW THE POWER OF FRIENDSHIP IS BEAUTIFUL"
+
+[node name="Message2" type="Node" parent="Convos/Conversation7/Messages"]
+script = ExtResource("4_mnqcm")
+text = "I GUESS I WAS WRONG ABOUT YOU LITTLE PURPLE CAT"
+
+[node name="Message6" type="Node" parent="Convos/Conversation7/Messages"]
+script = ExtResource("4_mnqcm")
+text = "THANK YOU FOR INTRODUCING ME TO ROBOCAT"
+
+[node name="Message3" type="Node" parent="Convos/Conversation7/Messages"]
+script = ExtResource("4_mnqcm")
+text = "HEY GUESS WHAT >:D"
+
+[node name="Message4" type="Node" parent="Convos/Conversation7/Messages"]
+script = ExtResource("4_mnqcm")
+text = "ROBOCAT IS ALSO ENCHANTED WITH THE WONDERS OF NATURE AND WITH BEING MY FRIEND"
+
+[node name="Message5" type="Node" parent="Convos/Conversation7/Messages"]
+script = ExtResource("4_mnqcm")
+text = "IN RETURN, HERE IS THIS TREASURE I FOUND"
+
+[node name="Message7" type="Node" parent="Convos/Conversation7/Messages"]
+script = ExtResource("4_mnqcm")
+text = "You got: Strange Piece"
