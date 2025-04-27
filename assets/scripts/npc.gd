@@ -16,6 +16,7 @@ var inventory = [] # list of items the NPC can sell
 @export var has_idle_walk:bool = false
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	#current_convo_index = 0
 	super()
 	sign_messages()
 	SignalBus.connect("item_given_to_npc", _on_item_given)
@@ -51,10 +52,13 @@ func get_current_convo():
 
 func get_next_convo():
 	if is_world_object:
+		print("e")
 		return convos.get_child(0) # always use the same convo for world objects 
 	if current_convo_index < convos.get_child_count():
+		print("A")
 		var convo = convos.get_child(current_convo_index)
 		return convo
+	print(current_convo_index, convos.get_child_count())
 
 func get_old_convo():
 	if current_convo_index > 0:
@@ -117,7 +121,7 @@ func speak():
 		current_convo_index += 1
 	else:
 		play_exhaust_dialogue()
-	NPCS.update_cache(self)
+	NPCS.update_cache(self)   
 
 func setup_exhaust_dialogue():
 	var convo = Conversation.new()

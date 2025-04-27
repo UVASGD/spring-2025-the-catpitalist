@@ -40,8 +40,6 @@ func _process(delta: float) -> void:
 	prev_time = time
 	time += delta
 	
-	print(time)
-	
 	check_time_thresholds()
 
 func check_time_thresholds():
