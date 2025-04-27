@@ -4,6 +4,8 @@ extends Node
 @onready var songplayers_snow = {}
 @onready var songplayers_rain = {}
 
+var playlist_stack = []
+
 var path_to_music_dir = "res://assets/audio/music/"
 var current_playing = null
 var fade_duration = 5
@@ -42,6 +44,17 @@ func load_music():
 					add_child(player) # Add the player to the scene tree
 			file_name = dir.get_next()
 		dir.list_dir_end()
+		
+func push(playlist: Array[String]):
+	playlist_stack.push_front(playlist)
+	play_random_from_playlist(playlist)
+	
+func pop(playlist: Array[String]):
+	playlist_stack.pop_front()
+	play_random_from_playlist(playlist)
+
+func play_random_from_playlist(playlist: Array[String]):
+	play(playlist[randi() % playlist.size()])
 
 func play(songname: String):
 	await fade_out()

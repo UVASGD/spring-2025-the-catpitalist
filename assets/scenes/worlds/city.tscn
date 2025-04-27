@@ -1,4 +1,4 @@
-[gd_scene load_steps=67 format=4 uid="uid://cd74drdf1jwsh"]
+[gd_scene load_steps=68 format=4 uid="uid://cd74drdf1jwsh"]
 
 [ext_resource type="Script" path="res://assets/scripts/indoors.gd" id="1_608q5"]
 [ext_resource type="Texture2D" uid="uid://dd4wsteki2cb7" path="res://assets/sprites/tilesets/road tiles.png" id="2_b2ujj"]
@@ -601,6 +601,9 @@ size = Vector2(124.333, 54)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8j4fk"]
 size = Vector2(53.7645, 105.17)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_27o66"]
+size = Vector2(310, 430)
+
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_o7f2n"]
 normal = Vector2(1, 0)
 
@@ -609,6 +612,7 @@ radius = 17.0431
 
 [node name="City" type="Node2D"]
 script = ExtResource("1_608q5")
+playlist_songs = Array[String](["among_drip"])
 
 [node name="Fall" type="Node2D" parent="."]
 visible = false
@@ -827,7 +831,7 @@ position = Vector2(4.98442, 23.676)
 shape = SubResource("CircleShape2D_lcigp")
 
 [node name="lamp12" parent="y_sorted/lamps" instance=ExtResource("3_sasq6")]
-position = Vector2(356, -483)
+position = Vector2(349, -483)
 scale = Vector2(1.605, 1.605)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="y_sorted/lamps/lamp12"]
@@ -1518,6 +1522,13 @@ path_to_new_scene = "res://assets/scenes/worlds/loansharkhq.tscn"
 
 [node name="CollisionShape2D" parent="y_sorted/transportzone/enterzone" index="0"]
 position = Vector2(2, 0)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="y_sorted"]
+position = Vector2(-416, -466)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="y_sorted/StaticBody2D"]
+position = Vector2(-31, 15.5)
+shape = SubResource("RectangleShape2D_27o66")
 
 [node name="worldbounds" type="Node2D" parent="."]
 

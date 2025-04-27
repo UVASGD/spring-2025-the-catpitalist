@@ -72,6 +72,8 @@ func push(newscene, loading_screen_path:String="res://assets/scenes/ui/loadingsc
 	if newscene is PackedScene:
 		newscene = newscene.instantiate()
 	await private_change_scene(newscene, loading_screen_path)
+	if newscene is Indoors or newscene is Overworld_area:
+		Music.push(newscene.playlist_songs)
 	scene_stack.push_front(newscene)
 	return
 	#newscene.set_process_input(true)
@@ -82,6 +84,8 @@ func pop(loading_screen_path:String="res://assets/scenes/ui/loadingscreen.tscn")
 	cooldown()
 	save_current()
 	var current_scene = scene_stack.pop_front()
+	if current_scene is Indoors or current_scene is Overworld_area:
+		Music.pop(current_scene.playlist_songs)
 	#current_scene.set_process_input(false)
 	#current_scene.set_process_unhandled_input(false)
 	#current_scene.set_process_unhandled_key_input(false)

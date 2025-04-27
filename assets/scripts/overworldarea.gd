@@ -1,10 +1,11 @@
 class_name Overworld_area extends Node2D
 
+@export var playlist_songs: Array[String]
 @export var debug:bool
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	Music.play_random()
+	#Music.play_random()
 	if debug:
 		for i in range(1,22):
 			PlayerData.player.inventory[i] = Items.get_item(i)
