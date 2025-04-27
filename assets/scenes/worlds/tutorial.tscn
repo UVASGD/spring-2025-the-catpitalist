@@ -377,6 +377,7 @@ size = Vector2(38, 20)
 
 [node name="tutorial" type="Node2D" groups=["Saveable"]]
 script = ExtResource("1_y4adi")
+playlist_songs = Array[String](["cats_in_da_snow"])
 
 [node name="Spring_Summer" type="Node2D" parent="."]
 
