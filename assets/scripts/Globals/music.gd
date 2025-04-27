@@ -47,14 +47,13 @@ func load_music():
 		
 func push(playlist: Array[String]):
 	playlist_stack.push_front(playlist)
-	play_random_from_playlist(playlist)
+	play_random()
+	#play_random_from_playlist(playlist_stack[0])
 	
 func pop(playlist: Array[String]):
 	playlist_stack.pop_front()
-	play_random_from_playlist(playlist)
-
-func play_random_from_playlist(playlist: Array[String]):
-	play(playlist[randi() % playlist.size()])
+	play_random()
+	#play_random_from_playlist(playlist_stack[0])
 
 func play(songname: String):
 	await fade_out()
@@ -75,11 +74,13 @@ func _on_song_finish():
 		play(current_playing)
 
 func play_random():
-	var keys = songplayers.keys()
+	play(playlist_stack[0][randi_range(0, playlist_stack[0].size() - 1)])
+	
+	"""var keys = songplayers.keys()
 	if keys.size() > 0:
 		var random_songname = keys[randi() % keys.size()]
 		play(random_songname)
-	return
+	return"""
 
 func fade_out():
 	if current_playing:

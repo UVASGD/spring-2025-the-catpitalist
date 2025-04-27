@@ -612,7 +612,7 @@ radius = 17.0431
 
 [node name="City" type="Node2D"]
 script = ExtResource("1_608q5")
-playlist_songs = Array[String](["among_drip"])
+playlist_songs = Array[String](["among_drip", "rainy_paws", "catnipdealer"])
 
 [node name="Fall" type="Node2D" parent="."]
 visible = false
