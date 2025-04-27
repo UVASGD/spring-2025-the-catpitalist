@@ -431,6 +431,12 @@ position = Vector2(-121, 193)
 position = Vector2(-1, 2)
 animation = &"walk_right"
 
+[node name="shade" parent="y_sorted/Player/GameCam/weather" index="2"]
+offset_left = -368.0
+offset_top = -214.995
+offset_right = -283.48
+offset_bottom = -158.455
+
 [node name="tut_cutscene" parent="y_sorted" node_paths=PackedStringArray("hidden_things") instance=ExtResource("10_pi7pl")]
 position = Vector2(0, 8)
 scale = Vector2(2, 2)

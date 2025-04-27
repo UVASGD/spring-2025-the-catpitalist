@@ -180,6 +180,7 @@ position = Vector2(-295, 57)
 position = Vector2(294, 141)
 
 [node name="Player" parent="y_sorted" instance=ExtResource("4_53jsm")]
+y_sort_enabled = false
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="y_sorted/Player"]
 
