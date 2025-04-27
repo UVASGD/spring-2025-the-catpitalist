@@ -91,7 +91,7 @@ sources/2 = SubResource("TileSetAtlasSource_3ybep")
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_o7f2n"]
 normal = Vector2(1, 0)
 
-[node name="City" type="Node2D"]
+[node name="City2" type="Node2D"]
 script = ExtResource("1_3dmxp")
 
 [node name="sand" type="TileMapLayer" parent="."]

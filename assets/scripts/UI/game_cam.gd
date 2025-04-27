@@ -54,7 +54,7 @@ func set_time_label():
 func set_money_label():
 	var currentMoney = PlayerData.get_current_money()
 	if currentMoney != null:
-		money.text = "$" + str(currentMoney)
+		money.text = "$" + PlayerData.get_money_conversion(currentMoney)
 
 func set_season_label():
 	var season = DayManager.season

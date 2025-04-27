@@ -13,6 +13,18 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 
 	pass
+	
+func get_money_conversion(amount: int) -> String:
+	if amount < 1000:
+		return str(amount)
+	elif amount < 1000000:
+		return str((amount / 100) / 10.0) + "K"
+	elif amount < 1000000000:
+		return str((amount / 100000) / 10.0) + "M"
+	elif amount < 1000000000000:
+		return str((amount / 100000000) / 10.0) + "B"
+	else:
+		return "MUCHO"
 
 func clone_and_kill(): # removes reference to old plaeyr
 	if player:

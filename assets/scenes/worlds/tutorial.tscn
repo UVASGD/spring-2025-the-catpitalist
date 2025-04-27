@@ -377,7 +377,7 @@ size = Vector2(38, 20)
 
 [node name="tutorial" type="Node2D" groups=["Saveable"]]
 script = ExtResource("1_y4adi")
-playlist_songs = Array[String](["cats_in_da_snow"])
+playlist_songs = Array[String](["cats_in_da_snow", "raincity"])
 
 [node name="Spring_Summer" type="Node2D" parent="."]
 
@@ -430,6 +430,12 @@ position = Vector2(-121, 193)
 [node name="AnimatedSprite2D" parent="y_sorted/Player" index="1"]
 position = Vector2(-1, 2)
 animation = &"walk_right"
+
+[node name="shade" parent="y_sorted/Player/GameCam/weather" index="2"]
+offset_left = -368.0
+offset_top = -214.995
+offset_right = -283.48
+offset_bottom = -158.455
 
 [node name="tut_cutscene" parent="y_sorted" node_paths=PackedStringArray("hidden_things") instance=ExtResource("10_pi7pl")]
 position = Vector2(0, 8)

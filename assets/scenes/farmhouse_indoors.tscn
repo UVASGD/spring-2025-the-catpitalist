@@ -327,6 +327,7 @@ size = Vector2(194, 68)
 
 [node name="indoors" type="Node2D"]
 script = ExtResource("1_mdxdg")
+playlist_songs = Array[String](["raincity"])
 
 [node name="y_sorted" type="Node2D" parent="."]
 y_sort_enabled = true
