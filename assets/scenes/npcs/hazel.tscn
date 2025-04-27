@@ -1,0 +1,64 @@
+[gd_scene load_steps=7 format=3 uid="uid://c5igsyxh1x2i2"]
+
+[ext_resource type="Script" path="res://assets/scripts/npc.gd" id="1_32qql"]
+[ext_resource type="Texture2D" uid="uid://dxqdxq5budyx5" path="res://assets/sprites/World NPCs/defaultHazel-removebg-preview.png" id="2_1741w"]
+[ext_resource type="Script" path="res://assets/scripts/conversation.gd" id="3_66a06"]
+[ext_resource type="Script" path="res://assets/scripts/message.gd" id="4_mnqcm"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pmeq2"]
+radius = 32.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_njb3k"]
+size = Vector2(20, 24)
+
+[node name="NPC" type="Node2D"]
+scale = Vector2(2, 2)
+script = ExtResource("1_32qql")
+npc_name = "H4Z3L"
+exhaust_dialogue_text = "bruh"
+voice_pitch = 1.5
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, 4)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("2_1741w")
+
+[node name="hitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox"]
+shape = SubResource("CircleShape2D_pmeq2")
+
+[node name="collisionbox" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="collisionbox"]
+position = Vector2(0, 12)
+shape = SubResource("RectangleShape2D_njb3k")
+
+[node name="Convos" type="Node" parent="."]
+
+[node name="Conversation" type="Node" parent="Convos"]
+script = ExtResource("3_66a06")
+
+[node name="Messages" type="Node" parent="Convos/Conversation"]
+
+[node name="Message" type="Node" parent="Convos/Conversation/Messages"]
+script = ExtResource("4_mnqcm")
+text = "hello"
+
+[node name="Conversation2" type="Node" parent="Convos"]
+script = ExtResource("3_66a06")
+
+[node name="Messages" type="Node" parent="Convos/Conversation2"]
+
+[node name="Message" type="Node" parent="Convos/Conversation2/Messages"]
+script = ExtResource("4_mnqcm")
+text = "how are you"
+
+[node name="Conversation3" type="Node" parent="Convos"]
+script = ExtResource("3_66a06")
+
+[node name="Messages" type="Node" parent="Convos/Conversation3"]
+
+[node name="Message" type="Node" parent="Convos/Conversation3/Messages"]
+script = ExtResource("4_mnqcm")
+text = "goodbye"
