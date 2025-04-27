@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=4 uid="uid://b2133ovj0k7io"]
+[gd_scene load_steps=30 format=4 uid="uid://b2133ovj0k7io"]
 
 [ext_resource type="Script" path="res://assets/scripts/overworldarea.gd" id="1_dsj35"]
 [ext_resource type="PackedScene" uid="uid://rwurml76tnqs" path="res://assets/scenes/npcs/sign.tscn" id="3_23kby"]
@@ -21,6 +21,7 @@
 [ext_resource type="PackedScene" uid="uid://bf25le0d607b1" path="res://assets/scenes/npcs/gerardo.tscn" id="19_kvnm2"]
 [ext_resource type="PackedScene" uid="uid://c8qbsnejl0gv3" path="res://assets/scenes/npcs/vincent.tscn" id="20_filv4"]
 [ext_resource type="PackedScene" uid="uid://3m50jyt14pbk" path="res://assets/scenes/transportzone.tscn" id="21_1oevx"]
+[ext_resource type="PackedScene" uid="uid://55jvvahuslq8" path="res://assets/scenes/npcs/howard.tscn" id="22_dijn2"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7ivjj"]
 texture = ExtResource("8_2d8hv")
@@ -218,6 +219,9 @@ path_to_new_scene = "res://assets/scenes/worlds/underwater.tscn"
 offset_right = 40.0
 offset_bottom = 23.0
 text = "underwater"
+
+[node name="NPC5" parent="." instance=ExtResource("22_dijn2")]
+position = Vector2(521, -117)
 
 [editable path="y_sorted/DropItem"]
 [editable path="y_sorted/Farmhouse"]
