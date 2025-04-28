@@ -1,9 +1,7 @@
-[gd_scene load_steps=13 format=3 uid="uid://bflxv8laf1sq6"]
+[gd_scene load_steps=11 format=3 uid="uid://bflxv8laf1sq6"]
 
 [ext_resource type="Script" path="res://assets/scripts/npc.gd" id="1_4nm1b"]
 [ext_resource type="Texture2D" uid="uid://bjryg6al7ebh2" path="res://assets/sprites/World NPCs/headset alien-Sheet.png" id="2_hdg7x"]
-[ext_resource type="Script" path="res://assets/scripts/conversation.gd" id="3_ib3dk"]
-[ext_resource type="Script" path="res://assets/scripts/message.gd" id="4_wbww2"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ro7em"]
 atlas = ExtResource("2_hdg7x")
@@ -81,20 +79,6 @@ position = Vector2(0, 12)
 shape = SubResource("RectangleShape2D_njb3k")
 
 [node name="Convos" type="Node" parent="."]
-
-[node name="Conversation" type="Node" parent="Convos"]
-script = ExtResource("3_ib3dk")
-
-[node name="Messages" type="Node" parent="Convos/Conversation"]
-
-[node name="Message" type="Node" parent="Convos/Conversation/Messages"]
-script = ExtResource("4_wbww2")
-
-[node name="Message2" type="Node" parent="Convos/Conversation/Messages"]
-script = ExtResource("4_wbww2")
-
-[node name="Message3" type="Node" parent="Convos/Conversation/Messages"]
-script = ExtResource("4_wbww2")
 
 [node name="start" type="Marker2D" parent="."]
 

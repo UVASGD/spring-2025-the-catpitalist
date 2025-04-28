@@ -1,7 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://c52a8010k5en3"]
+[gd_scene load_steps=7 format=3 uid="uid://c52a8010k5en3"]
 
 [ext_resource type="Script" path="res://assets/scripts/npc.gd" id="1_0quos"]
 [ext_resource type="Texture2D" uid="uid://dfnoveg0ojndi" path="res://assets/sprites/World NPCs/Amooga Man.png" id="2_t2edc"]
+[ext_resource type="Script" path="res://assets/scripts/conversation.gd" id="3_v42or"]
+[ext_resource type="Script" path="res://assets/scripts/message.gd" id="4_lb4j6"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_pmeq2"]
 radius = 32.0
@@ -13,7 +15,7 @@ size = Vector2(20, 24)
 scale = Vector2(2, 2)
 script = ExtResource("1_0quos")
 npc_name = "Amooga Man"
-exhaust_dialogue_text = "DuDe, i don’t even know where am i. What im ah doing bo."
+exhaust_dialogue_text = "..."
 voice_pitch = 0.6
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -32,3 +34,16 @@ position = Vector2(0, 12)
 shape = SubResource("RectangleShape2D_njb3k")
 
 [node name="Convos" type="Node" parent="."]
+
+[node name="Conversation" type="Node" parent="Convos"]
+script = ExtResource("3_v42or")
+
+[node name="Messages" type="Node" parent="Convos/Conversation"]
+
+[node name="Message" type="Node" parent="Convos/Conversation/Messages"]
+script = ExtResource("4_lb4j6")
+text = "Among Us in real life (sus, sus)! Who’s the impostor? Looking sus, who can we trust?"
+
+[node name="Message2" type="Node" parent="Convos/Conversation/Messages"]
+script = ExtResource("4_lb4j6")
+text = "Sorry, that stupid song’s been in my head all day! Not sure why."

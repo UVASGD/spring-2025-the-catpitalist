@@ -4,6 +4,7 @@ class_name Player extends CharacterBody2D
 @export var alter_scale:Vector2 = Vector2(1,1)
 @onready var animated_sprite: AnimatedSprite2D = $"AnimatedSprite2D"
 @onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 var money = 1199
 var total_money_made= 0
@@ -32,12 +33,13 @@ func _ready() -> void:
 	SignalBus.connect("gift_100", get_100)
 	SignalBus.connect("give_suit", get_suit)
 	SignalBus.connect("give_strange_piece", get_strange_piece)
+	SignalBus.connect("give_rainbow_seed", get_bean)
 	#SignalBus.connect("items_ready", _on_items_ready)
-	inventory[8] = Items.get_item(1) # debug watercan 
+	inventory[8] = Items.get_item(1) # tutorial watercan 
 	#inventory[9] = Items.get_item(4) #scythe
 	#inventory[1] = Items.get_item(1) #stack test
 	#inventory[2] = Items.get_item(2) # seeds test
-	inventory[3] = Items.get_item(23) # loan shark suit
+	#inventory[3] = Items.get_item(23) # loan shark suit
 	SignalBus.emit_signal("player_ready", self)
 	last_pos_timer = Timer.new()
 	last_pos_timer.wait_time = 0.1
@@ -47,9 +49,17 @@ func _ready() -> void:
 	pos_stack.push_front(position)
 	flash_collision()
 
-func fall_asleep():
+func get_bean():
+	add_to_inv(Items.get_item(25))
+
+func fall_asleep(exhausted=true):
 	actionable = false
-	#play sleep animation
+	if exhausted:
+		animation_player.play("sleep_exhausted")
+		await get_tree().create_timer(3).timeout
+	else:
+		animation_player.play("sleep")
+		await get_tree().create_timer(3).timeout
 	actionable = true
 	return
 

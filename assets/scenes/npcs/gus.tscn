@@ -1,0 +1,47 @@
+[gd_scene load_steps=7 format=3 uid="uid://bghypfv4gk4km"]
+
+[ext_resource type="Script" path="res://assets/scripts/npc.gd" id="1_rsbqk"]
+[ext_resource type="Texture2D" uid="uid://cxgsk4fuhqq7j" path="res://assets/sprites/World NPCs/gus.png" id="2_wam08"]
+[ext_resource type="Script" path="res://assets/scripts/conversation.gd" id="3_huf2e"]
+[ext_resource type="Script" path="res://assets/scripts/message.gd" id="4_36bbd"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pmeq2"]
+radius = 32.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_njb3k"]
+size = Vector2(62.5, 61)
+
+[node name="NPC" type="Node2D"]
+scale = Vector2(2, 2)
+script = ExtResource("1_rsbqk")
+npc_name = "Gus"
+exhaust_dialogue_text = "No funny business, you heard?"
+voice_pitch = 1.5
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, 4)
+texture = ExtResource("2_wam08")
+
+[node name="hitbox" type="Area2D" parent="."]
+position = Vector2(0, 10)
+scale = Vector2(2, 2)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox"]
+shape = SubResource("CircleShape2D_pmeq2")
+
+[node name="collisionbox" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="collisionbox"]
+position = Vector2(2.25, 34)
+shape = SubResource("RectangleShape2D_njb3k")
+
+[node name="Convos" type="Node" parent="."]
+
+[node name="Conversation" type="Node" parent="Convos"]
+script = ExtResource("3_huf2e")
+
+[node name="Messages" type="Node" parent="Convos/Conversation"]
+
+[node name="Message" type="Node" parent="Convos/Conversation/Messages"]
+script = ExtResource("4_36bbd")
+text = "You look a bit too green to be in here. Don't get involved with the wrong crowd."

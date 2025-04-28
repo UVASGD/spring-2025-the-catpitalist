@@ -63,7 +63,7 @@ text = "That desperate, huh? How about this, I’ll give you some nip, some of t
 
 [node name="Message2" type="Node" parent="Convos/Conversation2/Messages" index="1"]
 script = ExtResource("4_q31wl")
-text = "What do you have to do?”"
+text = "What do you have to do?"
 
 [node name="Message3" type="Node" parent="Convos/Conversation2/Messages" index="2"]
 script = ExtResource("4_q31wl")
@@ -93,7 +93,7 @@ text = "Hey kid, you got what I asked for?"
 [node name="Message2" type="Node" parent="Convos/Conversation3/Messages"]
 script = ExtResource("4_q31wl")
 text = "Give Starfruit?"
-item_condition = 27
+item_condition = 17
 item_amount = 1
 condition_action = 2
 is_request = true
@@ -101,7 +101,7 @@ is_request = true
 [node name="Message3" type="Node" parent="Convos/Conversation3/Messages"]
 script = ExtResource("4_q31wl")
 text = "You don't have a starfruit give."
-item_condition = 29
+item_condition = 17
 item_amount = 1
 condition_action = 1
 

@@ -1,100 +1,78 @@
-[gd_scene load_steps=12 format=3 uid="uid://mr1iawd58i4y"]
+[gd_scene load_steps=5 format=3 uid="uid://mr1iawd58i4y"]
 
 [ext_resource type="Script" path="res://assets/scenes/start_screen/start_screen.gd" id="1_m41bo"]
-[ext_resource type="PackedScene" uid="uid://bb4nw4kkvht2k" path="res://assets/scenes/ui/flasher.tscn" id="2_p8oqj"]
-[ext_resource type="Texture2D" uid="uid://cmmmn5gaihj1r" path="res://assets/sprites/UI/shops/BGs/static1.png" id="3_vpl00"]
-[ext_resource type="Texture2D" uid="uid://dx2l3yhftn600" path="res://assets/sprites/UI/shops/BGs/static2.png" id="4_k1cjw"]
-[ext_resource type="Texture2D" uid="uid://d1xgrh3vgflan" path="res://assets/sprites/UI/shops/BGs/static3.png" id="5_43i5a"]
-[ext_resource type="Texture2D" uid="uid://853m6h3jfjrp" path="res://assets/sprites/UI/shops/BGs/static4.png" id="6_nnjhx"]
-[ext_resource type="Texture2D" uid="uid://c0ftaim41e4vh" path="res://assets/sprites/UI/shops/BGs/static5.png" id="7_g1f2u"]
-[ext_resource type="Texture2D" uid="uid://jkh40rjs3its" path="res://assets/sprites/UI/shops/BGs/static6.png" id="8_h573m"]
-[ext_resource type="Texture2D" uid="uid://31olluyurors" path="res://assets/sprites/UI/shops/BGs/static7.png" id="9_lwhsi"]
-[ext_resource type="Texture2D" uid="uid://fqa7hfg4hig8" path="res://assets/sprites/UI/shops/BGs/static8.png" id="10_gmuyj"]
-
-[sub_resource type="AnimatedTexture" id="AnimatedTexture_0yseu"]
-frames = 8
-speed_scale = 18.0
-frame_0/texture = ExtResource("3_vpl00")
-frame_1/texture = ExtResource("4_k1cjw")
-frame_1/duration = 1.0
-frame_2/texture = ExtResource("5_43i5a")
-frame_2/duration = 1.0
-frame_3/texture = ExtResource("6_nnjhx")
-frame_3/duration = 1.0
-frame_4/texture = ExtResource("7_g1f2u")
-frame_4/duration = 1.0
-frame_5/texture = ExtResource("8_h573m")
-frame_5/duration = 1.0
-frame_6/texture = ExtResource("9_lwhsi")
-frame_6/duration = 1.0
-frame_7/texture = ExtResource("10_gmuyj")
-frame_7/duration = 1.0
+[ext_resource type="Texture2D" uid="uid://ccxl5veadqw0n" path="res://assets/sprites/UI/title screen.png" id="2_alhgu"]
+[ext_resource type="Texture2D" uid="uid://iuodxl1ob644" path="res://assets/sprites/UI/play button.png" id="3_5mxro"]
+[ext_resource type="Texture2D" uid="uid://dsqthekoikkj" path="res://assets/sprites/UI/text-1735608119294.png" id="4_xnnvi"]
 
 [node name="StartScreen" type="Control"]
 layout_mode = 3
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -90.0
-offset_top = -56.0
-offset_right = -90.0
-offset_bottom = -56.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 6
 size_flags_vertical = 6
 mouse_filter = 1
 script = ExtResource("1_m41bo")
+debug = true
 
 [node name="TextureRect" type="TextureRect" parent="."]
-modulate = Color(1, 1, 1, 0.168627)
-layout_mode = 0
-offset_left = -232.0
-offset_top = -124.0
-offset_right = 414.0
-offset_bottom = 240.0
-texture = SubResource("AnimatedTexture_0yseu")
-
-[node name="flasher" parent="." instance=ExtResource("2_p8oqj")]
-position = Vector2(-100, 67)
-
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 32.0
-offset_top = 4.0
-offset_right = 156.0
-offset_bottom = 105.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+texture = ExtResource("2_alhgu")
 
-[node name="start" type="Button" parent="VBoxContainer"]
-layout_mode = 2
-text = "start new"
+[node name="TextureButton" type="TextureButton" parent="TextureRect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.192188
+anchor_top = 0.316667
+anchor_right = 0.8018
+anchor_bottom = 0.993599
+offset_left = -1.52588e-05
+offset_right = 499.696
+offset_bottom = 232.609
+scale = Vector2(0.609613, 0.676932)
+texture_normal = ExtResource("3_5mxro")
+metadata/_edit_use_anchors_ = true
 
-[node name="continue" type="Button" parent="VBoxContainer"]
-layout_mode = 2
-text = "continue game"
+[node name="debugbutton" type="TextureButton" parent="TextureRect"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.759375
+anchor_top = 0.276389
+anchor_right = 1.36899
+anchor_bottom = 0.953321
+offset_left = -1.52588e-05
+offset_right = 499.696
+offset_bottom = 232.609
+scale = Vector2(0.226896, 0.266077)
+texture_normal = ExtResource("3_5mxro")
+metadata/_edit_use_anchors_ = true
 
-[node name="quit" type="Button" parent="VBoxContainer"]
-layout_mode = 2
-text = "quit"
-
-[node name="Label" type="Label" parent="."]
+[node name="TextureRect" type="TextureRect" parent="TextureRect"]
 layout_mode = 0
-offset_left = 5.0
-offset_top = -69.0
-offset_right = 186.0
-offset_bottom = -46.0
-text = "five nights at catpitalist"
-horizontal_alignment = 1
+offset_left = 300.0
+offset_top = 92.0
+offset_right = 961.0
+offset_bottom = 173.0
+texture = ExtResource("4_xnnvi")
 
-[connection signal="pressed" from="VBoxContainer/start" to="." method="_on_start_pressed"]
-[connection signal="pressed" from="VBoxContainer/continue" to="." method="_on_continue_pressed"]
-[connection signal="pressed" from="VBoxContainer/quit" to="." method="_on_quit_pressed"]
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.530476, 0.484463, 0.9015, 0.19)
+
+[connection signal="pressed" from="TextureRect/TextureButton" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="TextureRect/debugbutton" to="." method="_on_debugbutton_pressed"]

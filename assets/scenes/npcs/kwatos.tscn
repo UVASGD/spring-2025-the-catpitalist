@@ -1,7 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://b3pc0t4lcmip8"]
+[gd_scene load_steps=7 format=3 uid="uid://b3pc0t4lcmip8"]
 
 [ext_resource type="Script" path="res://assets/scripts/npc.gd" id="1_jae1t"]
 [ext_resource type="Texture2D" uid="uid://km3kx5y8ge1k" path="res://assets/sprites/World NPCs/Kwatos.png" id="2_qfy6k"]
+[ext_resource type="Script" path="res://assets/scripts/conversation.gd" id="3_ns44b"]
+[ext_resource type="Script" path="res://assets/scripts/message.gd" id="4_f17jp"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_pmeq2"]
 radius = 32.0
@@ -13,7 +15,7 @@ size = Vector2(20, 24)
 scale = Vector2(2, 2)
 script = ExtResource("1_jae1t")
 npc_name = "Kwatos"
-exhaust_dialogue_text = "DuDe, i don’t even know where am i. What im ah doing bo."
+exhaust_dialogue_text = "UwU"
 voice_pitch = 0.6
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -31,3 +33,16 @@ position = Vector2(0, 12)
 shape = SubResource("RectangleShape2D_njb3k")
 
 [node name="Convos" type="Node" parent="."]
+
+[node name="Conversation" type="Node" parent="Convos"]
+script = ExtResource("3_ns44b")
+
+[node name="Messages" type="Node" parent="Convos/Conversation"]
+
+[node name="Message" type="Node" parent="Convos/Conversation/Messages"]
+script = ExtResource("4_f17jp")
+text = "..."
+
+[node name="Message2" type="Node" parent="Convos/Conversation/Messages"]
+script = ExtResource("4_f17jp")
+text = "Sorry, were you talking to me? Haiiiiiiii I’m Craigos!!!! From the iconic game series… Gyatt of Warb! Yeah, I’ll give you an autograph!!!!"

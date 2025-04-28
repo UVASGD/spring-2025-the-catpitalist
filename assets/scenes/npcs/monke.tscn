@@ -1,7 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://du4hcw432ewtn"]
+[gd_scene load_steps=7 format=3 uid="uid://du4hcw432ewtn"]
 
 [ext_resource type="Script" path="res://assets/scripts/npc.gd" id="1_dod63"]
 [ext_resource type="Texture2D" uid="uid://dfjvfc71dls2l" path="res://assets/sprites/World NPCs/cherrimonke.png" id="2_kbold"]
+[ext_resource type="Script" path="res://assets/scripts/conversation.gd" id="3_pt5gc"]
+[ext_resource type="Script" path="res://assets/scripts/message.gd" id="4_kssor"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_pmeq2"]
 radius = 32.0
@@ -13,7 +15,7 @@ size = Vector2(20, 24)
 scale = Vector2(2, 2)
 script = ExtResource("1_dod63")
 npc_name = "Cherri"
-exhaust_dialogue_text = "DuDe, i don’t even know where am i. What im ah doing bo."
+exhaust_dialogue_text = "sigh"
 voice_pitch = 0.6
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -31,3 +33,16 @@ position = Vector2(0, 12)
 shape = SubResource("RectangleShape2D_njb3k")
 
 [node name="Convos" type="Node" parent="."]
+
+[node name="Conversation" type="Node" parent="Convos"]
+script = ExtResource("3_pt5gc")
+
+[node name="Messages" type="Node" parent="Convos/Conversation"]
+
+[node name="Message" type="Node" parent="Convos/Conversation/Messages"]
+script = ExtResource("4_kssor")
+text = "This place kinda stinks."
+
+[node name="Message2" type="Node" parent="Convos/Conversation/Messages"]
+script = ExtResource("4_kssor")
+text = "And the $45 entrance fee is a bit steep, considering there's no drinks at the bar."

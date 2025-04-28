@@ -1,7 +1,9 @@
-[gd_scene load_steps=14 format=3 uid="uid://bondxjsd82ufl"]
+[gd_scene load_steps=16 format=3 uid="uid://bondxjsd82ufl"]
 
 [ext_resource type="Script" path="res://assets/scripts/npc.gd" id="1_1md20"]
 [ext_resource type="Texture2D" uid="uid://bkckblnww5iwc" path="res://assets/sprites/World NPCs/blue eyes-Sheet.png" id="2_ewpon"]
+[ext_resource type="Script" path="res://assets/scripts/conversation.gd" id="3_ogjo8"]
+[ext_resource type="Script" path="res://assets/scripts/message.gd" id="4_qrl3v"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xlfy1"]
 atlas = ExtResource("2_ewpon")
@@ -96,3 +98,20 @@ position = Vector2(0, 12)
 shape = SubResource("RectangleShape2D_njb3k")
 
 [node name="Convos" type="Node" parent="."]
+
+[node name="Conversation" type="Node" parent="Convos"]
+script = ExtResource("3_ogjo8")
+
+[node name="Messages" type="Node" parent="Convos/Conversation"]
+
+[node name="Message" type="Node" parent="Convos/Conversation/Messages"]
+script = ExtResource("4_qrl3v")
+text = "ZEEP ZEEP ZEEP!"
+
+[node name="Message2" type="Node" parent="Convos/Conversation/Messages"]
+script = ExtResource("4_qrl3v")
+text = "Erm… xello! Don’t know what got into me there. Isn’t my buddy here such a gorphead?"
+
+[node name="Message3" type="Node" parent="Convos/Conversation/Messages"]
+script = ExtResource("4_qrl3v")
+text = "Is this your first time in the cosmos? You’ve GOTTA try the blurstals here! They’re grumptious :)"

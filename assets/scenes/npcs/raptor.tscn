@@ -1,7 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://2q7bevcdef8l"]
+[gd_scene load_steps=7 format=3 uid="uid://2q7bevcdef8l"]
 
 [ext_resource type="Script" path="res://assets/scripts/npc.gd" id="1_yj82g"]
 [ext_resource type="Texture2D" uid="uid://bxdol5e2dgl8r" path="res://assets/sprites/World NPCs/velociraptor.png" id="2_6u2ft"]
+[ext_resource type="Script" path="res://assets/scripts/conversation.gd" id="3_ptwkt"]
+[ext_resource type="Script" path="res://assets/scripts/message.gd" id="4_lcito"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_pmeq2"]
 radius = 32.0
@@ -13,7 +15,7 @@ size = Vector2(20, 24)
 scale = Vector2(2, 2)
 script = ExtResource("1_yj82g")
 npc_name = "RAPTAR"
-exhaust_dialogue_text = "DuDe, i don’t even know where am i. What im ah doing bo."
+exhaust_dialogue_text = "RARRRRR"
 voice_pitch = 0.6
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -31,3 +33,46 @@ position = Vector2(0, 12)
 shape = SubResource("RectangleShape2D_njb3k")
 
 [node name="Convos" type="Node" parent="."]
+
+[node name="Conversation" type="Node" parent="Convos"]
+script = ExtResource("3_ptwkt")
+
+[node name="Messages" type="Node" parent="Convos/Conversation"]
+
+[node name="Message" type="Node" parent="Convos/Conversation/Messages"]
+script = ExtResource("4_lcito")
+text = "Hey, kid. If you need to go to the bathroom all you have to do is take a right, left, then jump off the nearest cloud down to earth face first."
+
+[node name="Conversation2" type="Node" parent="Convos"]
+script = ExtResource("3_ptwkt")
+
+[node name="Messages" type="Node" parent="Convos/Conversation2"]
+
+[node name="Message" type="Node" parent="Convos/Conversation2/Messages"]
+script = ExtResource("4_lcito")
+text = "Why so mean? A question like that is ironic from a beast like yourself. You try to act so innocent with your cute whiskers and fluffy tail!"
+
+[node name="Message2" type="Node" parent="Convos/Conversation2/Messages"]
+script = ExtResource("4_lcito")
+text = "If I wasn’t already full I’d eat you for sport but unlike you cats I’m an ethical being! "
+
+[node name="Conversation3" type="Node" parent="Convos"]
+script = ExtResource("3_ptwkt")
+
+[node name="Messages" type="Node" parent="Convos/Conversation3"]
+
+[node name="Message" type="Node" parent="Convos/Conversation3/Messages"]
+script = ExtResource("4_lcito")
+text = "What am I talking about? Don’t act so stupid fur for brains! Everyday I sit here and watch the horrors you pollotarians commit on my descendants.  "
+
+[node name="Message2" type="Node" parent="Convos/Conversation3/Messages"]
+script = ExtResource("4_lcito")
+text = "Who am I talking about? The Aves, the Eukaryota, The birds! "
+
+[node name="Message3" type="Node" parent="Convos/Conversation3/Messages"]
+script = ExtResource("4_lcito")
+text = "Ever since I perished from this earth due to a controversial meteor you cats have tortured and terrorized my descendants, and now I shall enact my revenge! "
+
+[node name="Message4" type="Node" parent="Convos/Conversation3/Messages"]
+script = ExtResource("4_lcito")
+text = "Wait, you’re a pescetarian? Oh you should have started with that, have a good day! "

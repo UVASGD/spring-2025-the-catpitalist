@@ -51,7 +51,11 @@ extends Node
 	"BP": "res://assets/scenes/npcs/voidfish.tscn",
 	"Washing Mashing": "res://assets/scenes/npcs/washingmashing.tscn",
 	"RoboCat": "res://assets/scenes/npcs/water_robocat.tscn",
-	"Xyler": "res://assets/scenes/npcs/xyler.tscn"
+	"Xyler": "res://assets/scenes/npcs/xyler.tscn",
+	"Gurt": "res://assets/scenes/npcs/gurt.tscn",
+	"Gus": "res://assets/scenes/npcs/gus.tscn",
+	"Big Dawg": "res://assets/scenes/npcs/bigdawg.tscn",
+	"Bart Tender": "res://assets/scenes/npcs/bart.tscn"
 }
 
 var npc_folder_path = "res://assets/scenes/npcs/"

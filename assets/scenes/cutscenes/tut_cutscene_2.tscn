@@ -271,6 +271,7 @@ shape = SubResource("CircleShape2D_83h80")
 position = Vector2(126.5, 160)
 script = ExtResource("2_46hqj")
 npc_name = "Mom*"
+voice_pitch = 0.8
 portrait_path = "res://assets/sprites/NPC portraits/catmom portrait.png"
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="mom"]

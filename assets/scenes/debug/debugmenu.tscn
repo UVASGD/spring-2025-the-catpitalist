@@ -110,6 +110,17 @@ layout_mode = 2
 text = "give beanseed
 "
 
+[node name="give starfruit" type="Button" parent="Control/VBoxContainer"]
+layout_mode = 2
+text = "give starfruit
+"
+
+[node name="test_exhaust" type="Button" parent="Control/VBoxContainer"]
+layout_mode = 2
+text = "test exhaust
+
+"
+
 [node name="SceneStackDebug" parent="Control" instance=ExtResource("2_xoue6")]
 
 [node name="VBoxContainer" parent="Control/SceneStackDebug" index="0"]
@@ -142,5 +153,7 @@ offset_bottom = 479.675
 [connection signal="pressed" from="Control/VBoxContainer/double speed" to="." method="_on_double_speed_pressed"]
 [connection signal="pressed" from="Control/VBoxContainer/half speed" to="." method="_on_half_speed_pressed"]
 [connection signal="pressed" from="Control/VBoxContainer/bean" to="." method="_on_bean_pressed"]
+[connection signal="pressed" from="Control/VBoxContainer/give starfruit" to="." method="_on_give_starfruit_pressed"]
+[connection signal="pressed" from="Control/VBoxContainer/test_exhaust" to="." method="_on_test_exhaust_pressed"]
 
 [editable path="Control/SceneStackDebug"]

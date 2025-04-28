@@ -16,6 +16,7 @@ extends Node
 	"sleepy kitty": "res://assets/audio/music/sleepykitty.mp3",
 	"main": "res://assets/audio/music/main theme cat.mp3",
 	"gerardo": "res://assets/audio/music/Schrodinger.mp3",
+	"mustard": "res://assets/audio/music/katrick_lameow.mp3",
 } # dict with keys = song name (string), and values = AudioStreamPlayer2D
 @onready var songplayers_snow = {}
 @onready var songplayers_rain = {}
@@ -24,7 +25,7 @@ var playlist_stack = []
 
 var path_to_music_dir = "res://assets/audio/music/"
 var current_playing = null
-var fade_duration = 5
+var fade_duration = 2
 var playlisting_random = false
 enum{INFINITE, LOOPING}
 var mode = null

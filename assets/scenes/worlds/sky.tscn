@@ -1,17 +1,25 @@
-[gd_scene load_steps=16 format=4 uid="uid://cs1grt3mirkh6"]
+[gd_scene load_steps=31 format=4 uid="uid://cs1grt3mirkh6"]
 
 [ext_resource type="Script" path="res://assets/scripts/indoors.gd" id="1_ostpw"]
 [ext_resource type="PackedScene" uid="uid://qoi6u6ftefs2" path="res://assets/scenes/skybg.tscn" id="2_6l8ku"]
 [ext_resource type="Texture2D" uid="uid://dfnbmynee5jdp" path="res://assets/sprites/tilesets/clouds.png" id="2_ef8f5"]
 [ext_resource type="Texture2D" uid="uid://ddgm841yvyffq" path="res://assets/sprites/world objects/sky/beanstalk main.png" id="3_ho5ud"]
 [ext_resource type="Texture2D" uid="uid://cmxp11amscbuy" path="res://assets/sprites/world objects/sky/beanstalk top.png" id="4_slllq"]
+[ext_resource type="Texture2D" uid="uid://dxfmxgjuthmpq" path="res://assets/sprites/world objects/sky/cardboard box house.png" id="6_4qbi0"]
 [ext_resource type="PackedScene" uid="uid://bf25le0d607b1" path="res://assets/scenes/npcs/gerardo.tscn" id="6_kgmr2"]
 [ext_resource type="PackedScene" uid="uid://2q7bevcdef8l" path="res://assets/scenes/npcs/raptor.tscn" id="7_c5ck6"]
+[ext_resource type="Texture2D" uid="uid://rdo4w8sd0k8m" path="res://assets/sprites/world objects/sky/ice_house.png" id="7_c6sxm"]
 [ext_resource type="PackedScene" uid="uid://b2s5brugrft1g" path="res://assets/scenes/npcs/crystal.tscn" id="8_ffcfi"]
+[ext_resource type="Texture2D" uid="uid://cm43taciqifag" path="res://assets/sprites/world objects/sky/cloudhouse.png" id="8_s6m7v"]
+[ext_resource type="Texture2D" uid="uid://dblvqg56pgg3c" path="res://assets/sprites/world objects/sky/gegysgoods.png" id="9_8suc8"]
 [ext_resource type="PackedScene" uid="uid://b3pc0t4lcmip8" path="res://assets/scenes/npcs/kwatos.tscn" id="9_g6plp"]
 [ext_resource type="PackedScene" uid="uid://cs1pvgleixkmc" path="res://assets/scenes/npcs/shrod.tscn" id="10_dxitf"]
 [ext_resource type="PackedScene" uid="uid://c8qbsnejl0gv3" path="res://assets/scenes/npcs/vincent.tscn" id="12_trtrc"]
 [ext_resource type="PackedScene" uid="uid://3m50jyt14pbk" path="res://assets/scenes/transportzone.tscn" id="16_bq67p"]
+[ext_resource type="Texture2D" uid="uid://v5bam0dumqcw" path="res://assets/sprites/world objects/sky/cloud_rock.png" id="16_v6558"]
+[ext_resource type="Texture2D" uid="uid://rkml7by1wvis" path="res://assets/sprites/world objects/sky/big_cloud_rock.png" id="17_fuhge"]
+[ext_resource type="Texture2D" uid="uid://danycyix0cepb" path="res://assets/sprites/world objects/sky/rainbow.png" id="18_ekqhb"]
+[ext_resource type="Texture2D" uid="uid://djqgpjqb1g1xv" path="res://assets/sprites/world objects/sky/cloudtree.png" id="19_lxfdk"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xr6c6"]
 texture = ExtResource("2_ef8f5")
@@ -30,15 +38,36 @@ texture_region_size = Vector2i(32, 32)
 tile_size = Vector2i(32, 32)
 sources/0 = SubResource("TileSetAtlasSource_xr6c6")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_trs8m"]
+size = Vector2(152.5, 94)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jgeko"]
+size = Vector2(169, 65)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a6mx8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_keqfy"]
+size = Vector2(84.5, 42)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lk7yy"]
+size = Vector2(83, 60)
+
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_o7f2n"]
 normal = Vector2(1, 0)
 distance = 8.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_aak4d"]
+size = Vector2(1091, 261)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bvw0r"]
+size = Vector2(335, 263)
 
 [node name="City" type="Node2D"]
 script = ExtResource("1_ostpw")
 playlist_songs = Array[String](["o e e a e"])
 
 [node name="SPACEBG" parent="." instance=ExtResource("2_6l8ku")]
+z_index = -10
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 scale = Vector2(2, 2)
@@ -73,30 +102,309 @@ scale = Vector2(2, 2)
 tile_map_data = PackedByteArray("AAD4//n/AAABAAAAAAD3//n/AAABAAEAAAA=")
 tile_set = SubResource("TileSet_tcsk3")
 
+[node name="CardboardBoxHouse" type="Sprite2D" parent="y_sorted/houses"]
+position = Vector2(1577, -139)
+scale = Vector2(2, 2)
+texture = ExtResource("6_4qbi0")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="y_sorted/houses/CardboardBoxHouse"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="y_sorted/houses/CardboardBoxHouse/StaticBody2D"]
+position = Vector2(3, 38.25)
+shape = SubResource("RectangleShape2D_trs8m")
+
+[node name="IceHouse" type="Sprite2D" parent="y_sorted/houses"]
+position = Vector2(-343, 212)
+scale = Vector2(2, 2)
+texture = ExtResource("7_c6sxm")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="y_sorted/houses/IceHouse"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="y_sorted/houses/IceHouse/StaticBody2D"]
+position = Vector2(14.75, 45)
+shape = SubResource("RectangleShape2D_trs8m")
+
+[node name="Cloudhouse" type="Sprite2D" parent="y_sorted/houses"]
+position = Vector2(-13, -105)
+scale = Vector2(2, 2)
+texture = ExtResource("8_s6m7v")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="y_sorted/houses/Cloudhouse"]
+position = Vector2(-12.5, -1.5)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="y_sorted/houses/Cloudhouse/StaticBody2D"]
+position = Vector2(14.75, 45)
+shape = SubResource("RectangleShape2D_trs8m")
+
+[node name="Gegysgoods" type="Sprite2D" parent="y_sorted/houses"]
+position = Vector2(1177, -622)
+texture = ExtResource("9_8suc8")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="y_sorted/houses/Gegysgoods"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="y_sorted/houses/Gegysgoods/StaticBody2D"]
+position = Vector2(-2.5, 47.5)
+shape = SubResource("RectangleShape2D_jgeko")
+
 [node name="npcs" type="Node2D" parent="y_sorted"]
 y_sort_enabled = true
 
 [node name="NPC" parent="y_sorted/npcs" instance=ExtResource("6_kgmr2")]
-position = Vector2(707, -475)
+position = Vector2(933, -400)
 scale = Vector2(2, 2)
 
 [node name="NPC2" parent="y_sorted/npcs" instance=ExtResource("7_c5ck6")]
-position = Vector2(-317, 272)
+position = Vector2(17, 272)
 
 [node name="NPC3" parent="y_sorted/npcs" instance=ExtResource("8_ffcfi")]
-position = Vector2(-391, 506)
+position = Vector2(-262, 588)
 
 [node name="NPC4" parent="y_sorted/npcs" instance=ExtResource("9_g6plp")]
-position = Vector2(1522, 491)
+position = Vector2(1702, 598)
 
 [node name="NPC5" parent="y_sorted/npcs" instance=ExtResource("10_dxitf")]
-position = Vector2(605, 212)
+position = Vector2(1350, 231)
+
+[node name="NPC" parent="y_sorted" instance=ExtResource("12_trtrc")]
+position = Vector2(766, 184)
+scale = Vector2(2, 2)
 
 [node name="trees" type="Node2D" parent="y_sorted"]
 y_sort_enabled = true
 
 [node name="bs" type="Node2D" parent="y_sorted"]
 y_sort_enabled = true
+
+[node name="CloudRock" type="Sprite2D" parent="y_sorted/bs"]
+position = Vector2(402, 539)
+scale = Vector2(2, 2)
+texture = ExtResource("16_v6558")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="y_sorted/bs/CloudRock"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="y_sorted/bs/CloudRock/StaticBody2D"]
+shape = SubResource("RectangleShape2D_a6mx8")
+
+[node name="CloudRock2" type="Sprite2D" parent="y_sorted/bs"]
+position = Vector2(-164, 411)
+scale = Vector2(2, 2)
+texture = ExtResource("16_v6558")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="y_sorted/bs/CloudRock2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="y_sorted/bs/CloudRock2/StaticBody2D"]
+shape = SubResource("RectangleShape2D_a6mx8")
+
+[node name="CloudRock3" type="Sprite2D" parent="y_sorted/bs"]
+position = Vector2(-538, 191)
+scale = Vector2(2, 2)
+texture = ExtResource("16_v6558")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="y_sorted/bs/CloudRock3"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="y_sorted/bs/CloudRock3/StaticBody2D"]
+shape = SubResource("RectangleShape2D_a6mx8")
+
+[node name="CloudRock4" type="Sprite2D" parent="y_sorted/bs"]
+position = Vector2(588, 53)
+scale = Vector2(2, 2)
+texture = ExtResource("16_v6558")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="y_sorted/bs/CloudRock4"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="y_sorted/bs/CloudRock4/StaticBody2D"]
+shape = SubResource("RectangleShape2D_a6mx8")
+
+[node name="CloudRock5" type="Sprite2D" parent="y_sorted/bs"]
+position = Vector2(1362, -357)
+scale = Vector2(2, 2)
+texture = ExtResource("16_v6558")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="y_sorted/bs/CloudRock5"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="y_sorted/bs/CloudRock5/StaticBody2D"]
+shape = SubResource("RectangleShape2D_a6mx8")
+
+[node name="CloudRock6" type="Sprite2D" parent="y_sorted/bs"]
+position = Vector2(1034, 351)
+scale = Vector2(2, 2)
+texture = ExtResource("16_v6558")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="y_sorted/bs/CloudRock6"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="y_sorted/bs/CloudRock6/StaticBody2D"]
+shape = SubResource("RectangleShape2D_a6mx8")
+
+[node name="CloudRock7" type="Sprite2D" parent="y_sorted/bs"]
+position = Vector2(-108, -519)
+scale = Vector2(2, 2)
+texture = ExtResource("16_v6558")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="y_sorted/bs/CloudRock7"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="y_sorted/bs/CloudRock7/StaticBody2D"]
+shape = SubResource("RectangleShape2D_a6mx8")
+
+[node name="CloudRock8" type="Sprite2D" parent="y_sorted/bs"]
+position = Vector2(-560, -199)
+scale = Vector2(2, 2)
+texture = ExtResource("16_v6558")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="y_sorted/bs/CloudRock8"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="y_sorted/bs/CloudRock8/StaticBody2D"]
+shape = SubResource("RectangleShape2D_a6mx8")
+
+[node name="BigCloudRock" type="Sprite2D" parent="y_sorted/bs"]
+position = Vector2(1466, 542)
+scale = Vector2(2, 2)
+texture = ExtResource("17_fuhge")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="y_sorted/bs/BigCloudRock"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="y_sorted/bs/BigCloudRock/StaticBody2D"]
+position = Vector2(1.75, 20.5)
+shape = SubResource("RectangleShape2D_keqfy")
+
+[node name="BigCloudRock2" type="Sprite2D" parent="y_sorted/bs"]
+position = Vector2(666, 422)
+scale = Vector2(2, 2)
+texture = ExtResource("17_fuhge")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="y_sorted/bs/BigCloudRock2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="y_sorted/bs/BigCloudRock2/StaticBody2D"]
+position = Vector2(1.75, 20.5)
+shape = SubResource("RectangleShape2D_keqfy")
+
+[node name="BigCloudRock3" type="Sprite2D" parent="y_sorted/bs"]
+position = Vector2(1126, -104)
+scale = Vector2(2, 2)
+texture = ExtResource("17_fuhge")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="y_sorted/bs/BigCloudRock3"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="y_sorted/bs/BigCloudRock3/StaticBody2D"]
+position = Vector2(1.75, 20.5)
+shape = SubResource("RectangleShape2D_keqfy")
+
+[node name="BigCloudRock4" type="Sprite2D" parent="y_sorted/bs"]
+position = Vector2(1614, -436)
+scale = Vector2(2, 2)
+texture = ExtResource("17_fuhge")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="y_sorted/bs/BigCloudRock4"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="y_sorted/bs/BigCloudRock4/StaticBody2D"]
+position = Vector2(1.75, 20.5)
+shape = SubResource("RectangleShape2D_keqfy")
+
+[node name="BigCloudRock5" type="Sprite2D" parent="y_sorted/bs"]
+position = Vector2(-148, -228)
+scale = Vector2(2, 2)
+texture = ExtResource("17_fuhge")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="y_sorted/bs/BigCloudRock5"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="y_sorted/bs/BigCloudRock5/StaticBody2D"]
+position = Vector2(1.75, 20.5)
+shape = SubResource("RectangleShape2D_keqfy")
+
+[node name="BigCloudRock6" type="Sprite2D" parent="y_sorted/bs"]
+position = Vector2(222, 180)
+scale = Vector2(2, 2)
+texture = ExtResource("17_fuhge")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="y_sorted/bs/BigCloudRock6"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="y_sorted/bs/BigCloudRock6/StaticBody2D"]
+position = Vector2(1.75, 20.5)
+shape = SubResource("RectangleShape2D_keqfy")
+
+[node name="Rainbow" type="Sprite2D" parent="y_sorted/bs"]
+z_index = -6
+position = Vector2(285, -431)
+texture = ExtResource("18_ekqhb")
+
+[node name="Cloudtree" type="Sprite2D" parent="y_sorted/bs"]
+position = Vector2(1461, -206)
+texture = ExtResource("19_lxfdk")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="y_sorted/bs/Cloudtree"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="y_sorted/bs/Cloudtree/StaticBody2D"]
+position = Vector2(-1.5, 64)
+shape = SubResource("RectangleShape2D_lk7yy")
+
+[node name="Cloudtree2" type="Sprite2D" parent="y_sorted/bs"]
+position = Vector2(540, -99)
+texture = ExtResource("19_lxfdk")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="y_sorted/bs/Cloudtree2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="y_sorted/bs/Cloudtree2/StaticBody2D"]
+position = Vector2(-1.5, 64)
+shape = SubResource("RectangleShape2D_lk7yy")
+
+[node name="Cloudtree3" type="Sprite2D" parent="y_sorted/bs"]
+position = Vector2(721, -482)
+texture = ExtResource("19_lxfdk")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="y_sorted/bs/Cloudtree3"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="y_sorted/bs/Cloudtree3/StaticBody2D"]
+position = Vector2(-1.5, 64)
+shape = SubResource("RectangleShape2D_lk7yy")
+
+[node name="Cloudtree4" type="Sprite2D" parent="y_sorted/bs"]
+position = Vector2(1290, -478)
+texture = ExtResource("19_lxfdk")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="y_sorted/bs/Cloudtree4"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="y_sorted/bs/Cloudtree4/StaticBody2D"]
+position = Vector2(-1.5, 64)
+shape = SubResource("RectangleShape2D_lk7yy")
+
+[node name="Cloudtree5" type="Sprite2D" parent="y_sorted/bs"]
+position = Vector2(1661, 349)
+texture = ExtResource("19_lxfdk")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="y_sorted/bs/Cloudtree5"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="y_sorted/bs/Cloudtree5/StaticBody2D"]
+position = Vector2(-1.5, 64)
+shape = SubResource("RectangleShape2D_lk7yy")
+
+[node name="Cloudtree6" type="Sprite2D" parent="y_sorted/bs"]
+position = Vector2(1006, 516)
+texture = ExtResource("19_lxfdk")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="y_sorted/bs/Cloudtree6"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="y_sorted/bs/Cloudtree6/StaticBody2D"]
+position = Vector2(-1.5, 64)
+shape = SubResource("RectangleShape2D_lk7yy")
+
+[node name="Cloudtree7" type="Sprite2D" parent="y_sorted/bs"]
+position = Vector2(179, 498)
+texture = ExtResource("19_lxfdk")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="y_sorted/bs/Cloudtree7"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="y_sorted/bs/Cloudtree7/StaticBody2D"]
+position = Vector2(-1.5, 64)
+shape = SubResource("RectangleShape2D_lk7yy")
+
+[node name="Cloudtree8" type="Sprite2D" parent="y_sorted/bs"]
+position = Vector2(-381, -314)
+texture = ExtResource("19_lxfdk")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="y_sorted/bs/Cloudtree8"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="y_sorted/bs/Cloudtree8/StaticBody2D"]
+position = Vector2(-1.5, 64)
+shape = SubResource("RectangleShape2D_lk7yy")
 
 [node name="dummyhouses" type="Node2D" parent="y_sorted"]
 y_sort_enabled = true
@@ -138,6 +446,22 @@ scale = Vector2(2, 2)
 position = Vector2(-392, 24)
 shape = SubResource("WorldBoundaryShape2D_o7f2n")
 
+[node name="StaticBody2D" type="StaticBody2D" parent="worldbounds"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="worldbounds/StaticBody2D"]
+position = Vector2(-90.5, -0.5)
+shape = SubResource("RectangleShape2D_aak4d")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="worldbounds"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="worldbounds/StaticBody2D2"]
+position = Vector2(288, -227)
+shape = SubResource("RectangleShape2D_bvw0r")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="worldbounds/StaticBody2D2"]
+position = Vector2(295, -600)
+shape = SubResource("RectangleShape2D_bvw0r")
+
 [node name="backhome" parent="." instance=ExtResource("16_bq67p")]
 position = Vector2(-442, -591)
 scale = Vector2(5.67, 9.025)
@@ -146,9 +470,5 @@ path_to_new_scene = ""
 
 [node name="CollisionShape2D" parent="backhome/enterzone" index="0"]
 position = Vector2(-6.96649, 12.9086)
-
-[node name="NPC" parent="." instance=ExtResource("12_trtrc")]
-position = Vector2(418, 481)
-scale = Vector2(2, 2)
 
 [editable path="backhome"]

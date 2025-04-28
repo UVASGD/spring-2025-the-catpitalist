@@ -64,7 +64,7 @@ buyscreen_dialogue = "This will cost you $*"
 sellscreen_dialogue = "I think I can spare $*"
 choosing_dialogue = "Welcome to RadioShack!"
 leaving_dialogue = "Have a nice trip, space tourist!"
-shop_items_sold = Array[int]([1, 2, 3])
+shop_items_sold = Array[int]([14, 16])
 
 [node name="BG" type="TextureRect" parent="."]
 offset_right = 640.0

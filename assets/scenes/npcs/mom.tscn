@@ -50,11 +50,15 @@ text = "No? Then what is it? "
 
 [node name="Message3" type="Node" parent="Convos/Conversation/Messages" index="2"]
 script = ExtResource("4_dud2m")
-text = "Your father said that, did he? I told him I thought you were too young for this, that we should wait just a little longer, at least until all yer baby teeth drop. "
+text = "Your father said that, did he? I told him I thought you were too young for this!"
 
 [node name="Message4" type="Node" parent="Convos/Conversation/Messages" index="3"]
 script = ExtResource("4_dud2m")
-text = "(*Sighs) But I suppose we couldn’t avoid the inevitable, but your father can be such an old Tom, how does he expect you to read my books if you don’t know how to read? Take my paw, I’ll teach you."
+text = "(*Sighs) But I suppose we couldn’t avoid the inevitable, but your father can be such an old Tom!"
+
+[node name="Message5" type="Node" parent="Convos/Conversation/Messages" index="4"]
+script = ExtResource("4_dud2m")
+text = "How does he expect you to read my books if you don’t know how to read? Take my paw, I’ll teach you."
 
 [node name="start" type="Marker2D" parent="."]
 

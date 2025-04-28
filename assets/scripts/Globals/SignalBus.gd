@@ -89,6 +89,8 @@ signal delete_water_robocat
 signal repair_rocket
 signal alien_learn_english
 signal beanstalk_grew
+signal give_rainbow_seed
+signal sleepinfo_done
 func emit(string):
 	emit_signal(string)
 	print("emitted: ", string)

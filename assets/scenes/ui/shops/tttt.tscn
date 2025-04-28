@@ -85,7 +85,7 @@ buyscreen_dialogue = "I think this will cost $* , but I cant do math..."
 sellscreen_dialogue = "I'll give you $* for this :>"
 choosing_dialogue = "Welcome to Trippi Troppi's Trippy Trinkets!"
 leaving_dialogue = "Come back soon :D"
-shop_items_sold = Array[int]([1, 2, 3])
+shop_items_sold = Array[int]([8, 12])
 
 [node name="BG" type="TextureRect" parent="."]
 anchors_preset = 15

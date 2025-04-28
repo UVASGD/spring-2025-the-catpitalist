@@ -58,10 +58,10 @@ autoplay = "rotate"
 speed_scale = 0.5
 
 [node name="TextureRect" type="TextureRect" parent="."]
-offset_left = -2539.0
-offset_top = -2018.0
-offset_right = 2703.0
-offset_bottom = 1981.0
+offset_left = -4729.0
+offset_top = -2994.0
+offset_right = 5640.0
+offset_bottom = 3343.0
 texture = ExtResource("1_r7f61")
 stretch_mode = 1
 

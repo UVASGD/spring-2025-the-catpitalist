@@ -71,6 +71,8 @@ func _on_send_convo_signal_pressed() -> void:
 func _on_send_convo_signal_2_pressed() -> void:
 	SignalBus.emit_signal("made_1000")
 	History.mark("made_1000")
+	SignalBus.emit_signal("scrappy_shop_closed")
+	History.mark("scrappy_shop_closed")
 	PlayerData.player.total_money_made = 1000
 	PlayerData.player.check_money()
 	pass # Replace with function body.
@@ -121,4 +123,14 @@ func _on_half_speed_pressed() -> void:
 
 func _on_bean_pressed() -> void:
 	PlayerData.player.add_to_inv(Items.get_item(25))
+	pass # Replace with function body.
+
+
+func _on_give_starfruit_pressed() -> void:
+	PlayerData.player.add_to_inv(Items.get_item(17))
+	pass # Replace with function body.
+
+
+func _on_test_exhaust_pressed() -> void:
+	PlayerData.player.fall_asleep()
 	pass # Replace with function body.

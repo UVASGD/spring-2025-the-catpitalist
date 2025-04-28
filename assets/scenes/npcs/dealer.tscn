@@ -15,6 +15,7 @@ scale = Vector2(2, 2)
 script = ExtResource("1_ao7rl")
 npc_name = "Catnip Dealer"
 exhaust_dialogue_text = "Wanna buy some Drugs?"
+voice_pitch = 0.6
 shopkeeper = true
 portrait_path = "res://assets/sprites/NPC portraits/catnip_dealer_drawing.jpg"
 

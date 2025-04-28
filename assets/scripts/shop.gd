@@ -42,9 +42,9 @@ func _ready() -> void:
 	
 	SignalBus.connect("cant_afford_item", _on_cant_afford)
 	SignalBus.connect("cant_hold_item", _on_cant_hold)
-	if npc_name == "Scrappy":
+	if npc_name == "Scrappy*":
 		if History.has_happened("end_loanshark_quest"):
-			shop_items_sold.append_array([22,29,30])
+			shop_items_sold.append_array([22])
 
 	pass # Replace with function body.
 

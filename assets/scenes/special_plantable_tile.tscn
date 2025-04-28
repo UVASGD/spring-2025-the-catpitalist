@@ -1,9 +1,25 @@
-[gd_scene load_steps=6 format=3 uid="uid://dsed2g1x7046l"]
+[gd_scene load_steps=7 format=3 uid="uid://dsed2g1x7046l"]
 
 [ext_resource type="Script" path="res://assets/scenes/special_plantable_tile.gd" id="1_dltf2"]
+[ext_resource type="Texture2D" uid="uid://demaw21ocpurs" path="res://assets/sprites/tilesets/dirt_sprites.png" id="2_65df5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_23vk1"]
 size = Vector2(32, 32)
+
+[sub_resource type="Animation" id="Animation_ersp7"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_dukyk"]
 resource_name = "new_animation"
@@ -19,22 +35,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.466667, 0.966667, 1.46667, 2, 2.53333),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Color(0.917346, 0, 0.239368, 1), Color(0.770104, 0.358804, 0, 1), Color(0.869633, 0.633234, 1.54018e-06, 1), Color(0.440463, 0.669316, 0, 1), Color(2.21401e-06, 0.651259, 0.813569, 1), Color(0.532982, 0.159999, 1, 1)]
-}
-
-[sub_resource type="Animation" id="Animation_ersp7"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("ColorRect:color")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
+"values": [Color(0.917, 0, 0.239, 0.308), Color(0.77, 0.359, 0, 0.308), Color(0.87, 0.633, 0, 0.308), Color(0.44, 0.669, 0, 0.308), Color(0, 0.651, 0.814, 0.308), Color(0.533, 0.16, 1, 0.308)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_hhyn6"]
@@ -59,6 +60,14 @@ color = Color(0, 0, 0, 0.529412)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox"]
 shape = SubResource("RectangleShape2D_23vk1")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = 16.0
+texture = ExtResource("2_65df5")
+expand_mode = 1
 
 [node name="ColorRect" type="ColorRect" parent="."]
 offset_left = -16.0

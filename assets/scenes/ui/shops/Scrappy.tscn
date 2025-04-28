@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://bvea4foo6yhiv"]
+[gd_scene load_steps=17 format=3 uid="uid://4mh3o6rp1tbx"]
 
 [ext_resource type="Script" path="res://assets/scripts/shop.gd" id="1_hhwqw"]
 [ext_resource type="Texture2D" uid="uid://bct1j31wdxkfy" path="res://assets/sprites/UI/shops/BGs/gerardo_bg.jpg" id="2_q613a"]

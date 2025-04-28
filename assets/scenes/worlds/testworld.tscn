@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=4 uid="uid://b2133ovj0k7io"]
+[gd_scene load_steps=34 format=4 uid="uid://b2133ovj0k7io"]
 
 [ext_resource type="Script" path="res://assets/scripts/overworldarea.gd" id="1_dsj35"]
 [ext_resource type="PackedScene" uid="uid://rwurml76tnqs" path="res://assets/scenes/npcs/sign.tscn" id="3_23kby"]
@@ -25,6 +25,7 @@
 [ext_resource type="PackedScene" uid="uid://3m50jyt14pbk" path="res://assets/scenes/transportzone.tscn" id="21_1oevx"]
 [ext_resource type="PackedScene" uid="uid://55jvvahuslq8" path="res://assets/scenes/npcs/howard.tscn" id="22_dijn2"]
 [ext_resource type="PackedScene" uid="uid://c63wd225e3dmn" path="res://assets/scenes/npcs/shop_scrappy.tscn" id="25_3bf3p"]
+[ext_resource type="PackedScene" uid="uid://bflxv8laf1sq6" path="res://assets/scenes/npcs/garebear.tscn" id="26_dbtqp"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7ivjj"]
 texture = ExtResource("8_2d8hv")
@@ -251,6 +252,10 @@ position = Vector2(521, -117)
 [node name="NPC6" parent="." instance=ExtResource("25_3bf3p")]
 position = Vector2(-164, 107)
 
+[node name="NPC7" parent="." instance=ExtResource("26_dbtqp")]
+position = Vector2(-101, 423)
+
 [editable path="y_sorted/DropItem"]
 [editable path="y_sorted/Farmhouse"]
+[editable path="y_sorted/beanstalkholder"]
 [editable path="y_sorted/beanstalk/transportzone"]

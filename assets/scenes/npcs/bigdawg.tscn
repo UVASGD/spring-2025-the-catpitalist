@@ -1,0 +1,49 @@
+[gd_scene load_steps=7 format=3 uid="uid://caor3vxtf111"]
+
+[ext_resource type="Script" path="res://assets/scripts/npc.gd" id="1_2mtwa"]
+[ext_resource type="Texture2D" uid="uid://tko4gsmahhk3" path="res://assets/sprites/World NPCs/big_dawg.png" id="2_2nork"]
+[ext_resource type="Script" path="res://assets/scripts/conversation.gd" id="3_lmk7u"]
+[ext_resource type="Script" path="res://assets/scripts/message.gd" id="4_dqbbg"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pmeq2"]
+radius = 32.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_njb3k"]
+size = Vector2(40, 34)
+
+[node name="NPC" type="Node2D"]
+scale = Vector2(2, 2)
+script = ExtResource("1_2mtwa")
+npc_name = "Big Dawg"
+exhaust_dialogue_text = "Te estoy vigilando."
+voice_pitch = 0.8
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, 4)
+texture = ExtResource("2_2nork")
+
+[node name="hitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox"]
+shape = SubResource("CircleShape2D_pmeq2")
+
+[node name="collisionbox" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="collisionbox"]
+position = Vector2(-1, 17)
+shape = SubResource("RectangleShape2D_njb3k")
+
+[node name="Convos" type="Node" parent="."]
+
+[node name="Conversation" type="Node" parent="Convos"]
+script = ExtResource("3_lmk7u")
+
+[node name="Messages" type="Node" parent="Convos/Conversation"]
+
+[node name="Message" type="Node" parent="Convos/Conversation/Messages"]
+script = ExtResource("4_dqbbg")
+text = "Me llaman Big Dawg. Soy el jefe por aquí. No te metas conmigo."
+
+[node name="Message2" type="Node" parent="Convos/Conversation/Messages"]
+script = ExtResource("4_dqbbg")
+text = "Estoy entrenado en más de 40 formas de combate. Puedo hacer que te arrepientas de haber puesto un pie aquí."

@@ -427,8 +427,8 @@ position = Vector2(0.682587, 3.63484)
 shape = SubResource("RectangleShape2D_qxikj")
 
 [node name="bed" parent="y_sorted" instance=ExtResource("9_l7gog")]
-position = Vector2(898, 371)
-scale = Vector2(2, 2)
+position = Vector2(947, 372)
+scale = Vector2(4, 4)
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 z_index = -5

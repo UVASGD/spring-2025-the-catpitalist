@@ -1,7 +1,9 @@
-[gd_scene load_steps=16 format=3 uid="uid://bvo2lai7y4w0v"]
+[gd_scene load_steps=18 format=3 uid="uid://bvo2lai7y4w0v"]
 
 [ext_resource type="Script" path="res://assets/scripts/npc.gd" id="1_xup1j"]
 [ext_resource type="Texture2D" uid="uid://b2vv5nec3m8vx" path="res://assets/sprites/World NPCs/headsquid-Sheet.png" id="2_chuoe"]
+[ext_resource type="Script" path="res://assets/scripts/conversation.gd" id="3_inmjf"]
+[ext_resource type="Script" path="res://assets/scripts/message.gd" id="4_osd7l"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_i44vl"]
 atlas = ExtResource("2_chuoe")
@@ -110,3 +112,20 @@ position = Vector2(0, 12)
 shape = SubResource("RectangleShape2D_njb3k")
 
 [node name="Convos" type="Node" parent="."]
+
+[node name="Conversation" type="Node" parent="Convos"]
+script = ExtResource("3_inmjf")
+
+[node name="Messages" type="Node" parent="Convos/Conversation"]
+
+[node name="Message" type="Node" parent="Convos/Conversation/Messages"]
+script = ExtResource("4_osd7l")
+text = "Zorp! You’re from Blearth? Wow, I haven’t been there in a long fleeb… it’s probably been several blorps! I haven’t been since… since I tore my glecksac. "
+
+[node name="Message2" type="Node" parent="Convos/Conversation/Messages"]
+script = ExtResource("4_osd7l")
+text = "Don’t ask how it happened. "
+
+[node name="Message3" type="Node" parent="Convos/Conversation/Messages"]
+script = ExtResource("4_osd7l")
+text = "Anyways…you beleep in the good word of the mighty Velnax? No? Zeep whiz, you’re outta control, kitty xat!"

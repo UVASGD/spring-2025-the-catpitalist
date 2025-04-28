@@ -2,7 +2,7 @@ extends Node
 var frozen = false 
 var day_num = 1
 var time = (6 * 3600) / TIME_SCALE # 6 am scaled to game time
-const DAY_LENGTH = 600 #num of seconds (real life) in a day (game)
+const DAY_LENGTH = 300 #num of seconds (real life) in a day (game)
 #const DAY_LENGTH = 60 #debug day speed (very fast)
 const TIME_SCALE = 86400 / DAY_LENGTH
 
@@ -150,11 +150,14 @@ func on_midnight():
 	end_day()
 	
 func sleep(exhausted=true):
+	if frozen:
+		return
 	freeze()
-	if exhausted:
-		await PlayerData.player.fall_asleep()
-	day_num -= 1
+	await PlayerData.player.fall_asleep(exhausted)
 	await sleep_screen()
+	day_num -= 1
+	PlayerData.player.animated_sprite.rotation_degrees = 0
+	PlayerData.player.animated_sprite.position = Vector2(0,0)
 	SceneSwapper.teleport_home()
 	unfreeze()
 	if exhausted:
@@ -165,4 +168,8 @@ func sleep(exhausted=true):
 	end_day()
 
 func sleep_screen():
+	var sleep_yscreen = load("res://assets/scenes/ui/sleepinfo.tscn").instantiate()
+	get_tree().root.add_child(sleep_yscreen)
+	await SignalBus.sleepinfo_done
+	get_tree().root.remove_child(sleep_yscreen)
 	return

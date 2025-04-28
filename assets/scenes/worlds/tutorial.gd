@@ -9,7 +9,7 @@ func _ready() -> void:
 	#SignalBus.connect("context", _on_context)
 	SignalBus.connect("unlock_farmhouse", _enable_dadkiller)
 	seasonals[DayManager.season].show()
-	SignalBus.connect("tutorial_finished", _toggle_freezing)
+	SignalBus.connect("unlock_city", _toggle_freezing)
 	return
 
 func _process(delta: float) -> void:
@@ -49,3 +49,5 @@ func _enable_dadkiller():
 func _toggle_freezing():
 	freezing = false
 	DayManager.unfreeze()
+
+	

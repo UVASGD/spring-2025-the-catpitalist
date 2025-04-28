@@ -1,7 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://cs1pvgleixkmc"]
+[gd_scene load_steps=7 format=3 uid="uid://cs1pvgleixkmc"]
 
 [ext_resource type="Script" path="res://assets/scripts/npc.gd" id="1_s6e1e"]
 [ext_resource type="Texture2D" uid="uid://bw2glve04i3a7" path="res://assets/sprites/World NPCs/shrodingus.png" id="2_d8b23"]
+[ext_resource type="Script" path="res://assets/scripts/conversation.gd" id="3_6e2yt"]
+[ext_resource type="Script" path="res://assets/scripts/message.gd" id="4_1rabq"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_pmeq2"]
 radius = 32.0
@@ -13,7 +15,7 @@ size = Vector2(20, 24)
 scale = Vector2(2, 2)
 script = ExtResource("1_s6e1e")
 npc_name = "Schrodinger's Cat"
-exhaust_dialogue_text = "DuDe, i don’t even know where am i. What im ah doing bo."
+exhaust_dialogue_text = "ooooooOOooOoO"
 voice_pitch = 0.6
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -31,3 +33,16 @@ position = Vector2(0, 12)
 shape = SubResource("RectangleShape2D_njb3k")
 
 [node name="Convos" type="Node" parent="."]
+
+[node name="Conversation" type="Node" parent="Convos"]
+script = ExtResource("3_6e2yt")
+
+[node name="Messages" type="Node" parent="Convos/Conversation"]
+
+[node name="Message" type="Node" parent="Convos/Conversation/Messages"]
+script = ExtResource("4_1rabq")
+text = "Hey! don't be afraid, I'm not dead!"
+
+[node name="Message2" type="Node" parent="Convos/Conversation/Messages"]
+script = ExtResource("4_1rabq")
+text = "At least I'm  not certain that I am."

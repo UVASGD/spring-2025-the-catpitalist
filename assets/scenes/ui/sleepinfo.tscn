@@ -1,0 +1,237 @@
+[gd_scene load_steps=16 format=3 uid="uid://dmwtaci14k0qi"]
+
+[ext_resource type="Script" path="res://sleepinfo.gd" id="1_qy10e"]
+[ext_resource type="Texture2D" uid="uid://cm8guhven8w8w" path="res://assets/sprites/UI/cat_sleeping_endscreen-ezgif.com-gif-to-sprite-converter.png" id="2_f0uo8"]
+[ext_resource type="Texture2D" uid="uid://cq54fs77l7vuw" path="res://assets/sprites/UI/z.png" id="3_gbjq0"]
+[ext_resource type="AudioStream" uid="uid://bqpelcfbrqdqw" path="res://assets/audio/music/sleepykitty.mp3" id="4_ane4s"]
+[ext_resource type="Texture2D" uid="uid://5avhp1ngn3qf" path="res://assets/sprites/UI/next_day.png" id="4_e811c"]
+[ext_resource type="Texture2D" uid="uid://wjmfjr213kod" path="res://assets/sprites/UI/next_day_selt.png" id="5_mnfj3"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8qqo1"]
+atlas = ExtResource("2_f0uo8")
+region = Rect2(0, 0, 240, 240)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3tsur"]
+atlas = ExtResource("2_f0uo8")
+region = Rect2(240, 0, 240, 240)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lrn77"]
+atlas = ExtResource("2_f0uo8")
+region = Rect2(480, 0, 240, 240)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_nxyvm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8qqo1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3tsur")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lrn77")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="LabelSettings" id="LabelSettings_syw3d"]
+font_size = 64
+font_color = Color(0.532982, 0.159999, 1, 1)
+outline_size = 16
+outline_color = Color(0.866826, 0.887675, 0.969781, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_ylhu6"]
+font_size = 32
+
+[sub_resource type="Animation" id="Animation_miqo1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TextureRect/Z:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("TextureRect/Z2:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("TextureRect/Z3:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_rwbdj"]
+resource_name = "new_animation"
+length = 10.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.966667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AudioStreamPlayer:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.866667),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("TextureRect/Z:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1, 1.06667, 1.46667, 2.43333, 3.03333, 4, 4.43333, 5.43333, 6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [false, true, false, true, false, true, false, true, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("TextureRect/Z2:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(1, 1.5, 1.96667, 2.96667, 3.46667, 4.53333, 4.96667, 6, 6.43333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [false, true, false, true, false, true, false, true, false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("TextureRect/Z3:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(1, 1.96667, 2.5, 3.5, 4.03333, 5.03333, 5.46667, 6.46667, 6.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [false, true, false, true, false, true, false, true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_g3hbw"]
+_data = {
+"RESET": SubResource("Animation_miqo1"),
+"new_animation": SubResource("Animation_rwbdj")
+}
+
+[node name="CanvasLayer" type="CanvasLayer"]
+script = ExtResource("1_qy10e")
+
+[node name="TextureRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0858786, 0.078406, 0.169975, 1)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="TextureRect"]
+position = Vector2(351, 355)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_nxyvm")
+autoplay = "default"
+frame_progress = 0.0900291
+
+[node name="Z" type="Sprite2D" parent="TextureRect"]
+position = Vector2(368, 245)
+texture = ExtResource("3_gbjq0")
+
+[node name="Z2" type="Sprite2D" parent="TextureRect"]
+position = Vector2(433, 173)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("3_gbjq0")
+
+[node name="Z3" type="Sprite2D" parent="TextureRect"]
+position = Vector2(531, 106)
+scale = Vector2(2, 2)
+texture = ExtResource("3_gbjq0")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TextureRect"]
+custom_minimum_size = Vector2(600, 0)
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="TextureRect/VBoxContainer"]
+layout_mode = 2
+text = "Day Over!"
+label_settings = SubResource("LabelSettings_syw3d")
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="TextureRect/VBoxContainer"]
+layout_mode = 2
+label_settings = SubResource("LabelSettings_ylhu6")
+
+[node name="Button" type="TextureButton" parent="TextureRect/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+texture_normal = ExtResource("4_e811c")
+texture_hover = ExtResource("5_mnfj3")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_g3hbw")
+}
+autoplay = "new_animation"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_ane4s")
+
+[connection signal="pressed" from="TextureRect/VBoxContainer/Button" to="." method="_on_button_pressed"]

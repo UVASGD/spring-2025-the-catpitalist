@@ -24,7 +24,7 @@ func _ready() -> void:
 	itemname.text = shop_item.item_name
 	if is_buy_item && shop_item.count > 1:
 		itemname.text += str(" (x", shop_item.count, ")")
-	spriteholder.texture = load(shop_item.sprite_path)
+	#spriteholder.texture = load(shop_item.sprite_path)
 	pass # Replace with function body.
 
 
