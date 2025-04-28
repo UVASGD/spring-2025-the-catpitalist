@@ -13,9 +13,6 @@ func enable():
 func disable():
 	self.hide()
 	disabled = true
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
 
 
 func _on_skipday_pressed() -> void:
@@ -94,4 +91,34 @@ func _on_mention_jelline_pressed() -> void:
 
 func _on_midnight_pressed() -> void:
 	DayManager.time = DayManager.MIDNIGHT_TIME -1
+	pass # Replace with function body.
+
+
+func _on_get_poetry_pressed() -> void:
+	PlayerData.player.inventory[10] = Items.get_item(29)
+	pass # Replace with function body.
+
+
+func _on_get_strange_piece_pressed() -> void:
+	PlayerData.player.add_to_inv(Items.get_item(24))
+	pass # Replace with function body.
+
+
+func _on_get_translator_pressed() -> void:
+	PlayerData.player.add_to_inv(Items.get_item(22))
+	pass # Replace with function body.
+
+
+func _on_double_speed_pressed() -> void:
+	PlayerData.player.speed *= 2
+	pass # Replace with function body.
+
+
+func _on_half_speed_pressed() -> void:
+	PlayerData.player.speed /= 2
+	pass # Replace with function body.
+
+
+func _on_bean_pressed() -> void:
+	PlayerData.player.add_to_inv(Items.get_item(25))
 	pass # Replace with function body.

@@ -31,6 +31,6 @@ void fragment() {
     vec3 hue_color = clamp(hue_shift * tex_color.rgb, 0.0, 1.0);
     tex_color.rgb = mix(tex_color.rgb, hue_color, hue_shift_strength);
 
-    
+
     COLOR = tex_color;
 }

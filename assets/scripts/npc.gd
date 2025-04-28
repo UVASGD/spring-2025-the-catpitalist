@@ -30,9 +30,6 @@ func _ready() -> void:
 		SignalBus.connect("start_loan_shark_animation", play_loanshark_anim)
 	pass # Replace with function body.
 
-func _process(delta: float) -> void:
-	
-	return 
 
 func get_convos():
 	if convos:
@@ -46,19 +43,19 @@ func sign_messages():
 func get_current_convo():
 	if is_world_object:
 		return convos.get_child(0) # always use the same convo for world objects 
-	if current_convo_index -1 > 0:
-		var convo = convos.get_child(current_convo_index)
+	if current_convo_index -1 >= 0:
+		var convo = convos.get_child(current_convo_index-1)
 		return convo
 
 func get_next_convo():
 	if is_world_object:
-		print("e")
+
 		return convos.get_child(0) # always use the same convo for world objects 
 	if current_convo_index < convos.get_child_count():
-		print("A")
+
 		var convo = convos.get_child(current_convo_index)
 		return convo
-	print(current_convo_index, convos.get_child_count())
+
 
 func get_old_convo():
 	if current_convo_index > 0:
@@ -70,33 +67,33 @@ func unlock_current_convo():
 		var convo = get_next_convo()
 		if convo:
 			convo.locked = false
-			print("unlocked ", convo.debugname)
+
 
 func lock_current_convo():
 	if current_convo_index < convos.get_child_count():
 		var convo = get_next_convo()
 		if convo:
 			convo.locked = true
-			print("unlocked ", convo.debugname)
+
 func unlock_next_convo():
 	if current_convo_index + 1 < convos.get_child_count():
 		var convo = convos.get_child(current_convo_index + 1)
 		if convo:
 			convo.locked = false
-			print("unlocked ", convo.debugname)
+
 
 func lock_next_convo():
 	if current_convo_index + 1 < convos.get_child_count():
 		var convo = convos.get_child(current_convo_index +1)
 		convo.locked = true
-		print("locked ", convo.debugname)
+
 
 func speak():
 	if Dialogue.is_busy:
 		return
 	var convo:Conversation = get_next_convo()
 	if convo:
-		print(convo.debugname, " " + str(convo.locked))
+
 		if convo.locked:
 			convo = get_old_convo() # repeat last dialogue if next dialogue is locked 
 			if convo:
@@ -139,7 +136,10 @@ func setup_exhaust_dialogue():
 	if shopkeeper:
 		convo.opens_shop = true
 	exhaust_convo = convo
-	
+
+func update_exhaust_dialogue(text:String):
+	exhaust_convo.get_child(0).get_child(0).text = text
+
 func play_exhaust_dialogue():
 	Dialogue.start_dialogue(exhaust_convo)
 	

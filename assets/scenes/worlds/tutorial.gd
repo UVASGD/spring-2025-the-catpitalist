@@ -6,7 +6,7 @@ var freezing = true
 func _ready() -> void:
 	super()
 	SignalBus.connect("spawn_seeds", spawn_seeds)
-	SignalBus.connect("context", _on_context)
+	#SignalBus.connect("context", _on_context)
 	SignalBus.connect("unlock_farmhouse", _enable_dadkiller)
 	seasonals[DayManager.season].show()
 	SignalBus.connect("tutorial_finished", _toggle_freezing)

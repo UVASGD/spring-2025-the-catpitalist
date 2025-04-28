@@ -1,15 +1,34 @@
-[gd_scene load_steps=17 format=3 uid="uid://c0w26cs1xsg4c"]
+[gd_scene load_steps=23 format=3 uid="uid://c0w26cs1xsg4c"]
 
 [ext_resource type="Script" path="res://assets/scripts/shop.gd" id="1_arh01"]
-[ext_resource type="Texture2D" uid="uid://bct1j31wdxkfy" path="res://assets/sprites/UI/shops/BGs/gerardo_bg.jpg" id="2_cq4e1"]
-[ext_resource type="Texture2D" uid="uid://bxlcvatm6jpg7" path="res://assets/sprites/UI/shops/portraits/gerardo/gerardo_portrait.png" id="3_2xod7"]
+[ext_resource type="Texture2D" uid="uid://bhgdgs7k0tl7y" path="res://assets/sprites/UI/shops/BGs/music store background.png" id="2_c8pol"]
 [ext_resource type="Texture2D" uid="uid://t61v413emq2h" path="res://assets/sprites/UI/shops/shop_cardboard.png" id="4_3o313"]
+[ext_resource type="Texture2D" uid="uid://bxws6d01vaeeh" path="res://assets/sprites/UI/shops/portraits/garebear/garebear001.png" id="4_tby5g"]
+[ext_resource type="Texture2D" uid="uid://ornwji2gu6bp" path="res://assets/sprites/UI/shops/portraits/garebear/garebear002.png" id="5_a2iph"]
 [ext_resource type="Texture2D" uid="uid://cr1scuwfnhc20" path="res://assets/sprites/UI/button3.png" id="5_f1fei"]
 [ext_resource type="Texture2D" uid="uid://b3pqvmma1c8vc" path="res://assets/sprites/UI/button3_s.png" id="6_acg47"]
+[ext_resource type="Texture2D" uid="uid://boxok05761o8s" path="res://assets/sprites/UI/shops/portraits/garebear/garebear003.png" id="6_p1aly"]
 [ext_resource type="Texture2D" uid="uid://cjyq1o7ajogye" path="res://assets/sprites/UI/button2.png" id="7_ehvq8"]
+[ext_resource type="Texture2D" uid="uid://cv2w3mio3vd85" path="res://assets/sprites/UI/shops/portraits/garebear/garebear004.png" id="7_uv51a"]
 [ext_resource type="Texture2D" uid="uid://b63cs1dw4yja0" path="res://assets/sprites/UI/button2_s.png" id="8_na1my"]
+[ext_resource type="Texture2D" uid="uid://b1eajcvua7p6a" path="res://assets/sprites/UI/shops/portraits/garebear/garebear005.png" id="8_vdb2e"]
 [ext_resource type="PackedScene" uid="uid://cluwosajte72y" path="res://shopitemrow.tscn" id="9_mus4x"]
+[ext_resource type="Texture2D" uid="uid://vlf5yefnsioa" path="res://assets/sprites/UI/shops/portraits/garebear/garebear006.png" id="9_qhpeg"]
 [ext_resource type="Texture2D" uid="uid://blvmtlga873ok" path="res://assets/sprites/UI/dbox.png" id="10_wok2k"]
+
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_gmtde"]
+frames = 6
+frame_0/texture = ExtResource("4_tby5g")
+frame_1/texture = ExtResource("5_a2iph")
+frame_1/duration = 1.0
+frame_2/texture = ExtResource("6_p1aly")
+frame_2/duration = 1.0
+frame_3/texture = ExtResource("7_uv51a")
+frame_3/duration = 1.0
+frame_4/texture = ExtResource("8_vdb2e")
+frame_4/duration = 1.0
+frame_5/texture = ExtResource("9_qhpeg")
+frame_5/duration = 1.0
 
 [sub_resource type="LabelSettings" id="LabelSettings_46ibt"]
 font_color = Color(0.486275, 0, 1, 1)
@@ -37,34 +56,34 @@ font_color = Color(0.486275, 0, 1, 1)
 scale = Vector2(2, 2)
 transform = Transform2D(2, 0, 0, 2, 0, 0)
 script = ExtResource("1_arh01")
-npc_name = "Gerardo"
-songtitle = "catnipdealer"
-buy_dialogue = "I'll use my flex dollars on this"
-sell_dialogue = "gimme your money boy"
-buyscreen_dialogue = "Gimme $* for that"
-sellscreen_dialogue = "Hmm.... $* or mystery gift?"
-choosing_dialogue = "You gonna buy or sell?"
-leaving_dialogue = "Dont get robbed!"
+npc_name = "Garebear"
+songtitle = "garebear shop"
+buy_dialogue = "I don't know why I did that, Earth currency is worthless here!"
+sell_dialogue = "A small price to pay!"
+buyscreen_dialogue = "This will cost you $*"
+sellscreen_dialogue = "I think I can spare $*"
+choosing_dialogue = "Welcome to RadioShack!"
+leaving_dialogue = "Have a nice trip, space tourist!"
 shop_items_sold = Array[int]([1, 2, 3])
 
 [node name="BG" type="TextureRect" parent="."]
 offset_right = 640.0
 offset_bottom = 363.0
-texture = ExtResource("2_cq4e1")
+texture = ExtResource("2_c8pol")
 expand_mode = 1
-
-[node name="Portrait" type="TextureRect" parent="."]
-offset_left = 65.5
-offset_top = 1.0
-offset_right = 705.5
-offset_bottom = 361.0
-texture = ExtResource("3_2xod7")
-stretch_mode = 2
 
 [node name="Cardboard" type="TextureRect" parent="."]
 offset_right = 640.0
 offset_bottom = 360.0
 texture = ExtResource("4_3o313")
+
+[node name="Portrait" type="TextureRect" parent="."]
+offset_left = -4.0
+offset_top = -1.5
+offset_right = 636.0
+offset_bottom = 358.5
+texture = SubResource("AnimatedTexture_gmtde")
+stretch_mode = 2
 
 [node name="choose" type="HBoxContainer" parent="."]
 offset_left = 337.0
@@ -171,9 +190,9 @@ is_buy_item = true
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 offset_left = 52.0
-offset_top = 205.0
+offset_top = 207.5
 offset_right = 596.0
-offset_bottom = 345.0
+offset_bottom = 347.5
 
 [node name="dbox" type="TextureRect" parent="HBoxContainer"]
 custom_minimum_size = Vector2(400, 0)

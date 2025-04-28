@@ -12,8 +12,8 @@ size = Vector2(20, 24)
 [node name="NPC" type="Node2D"]
 scale = Vector2(2, 2)
 script = ExtResource("1_t1spe")
-npc_name = "Mozzie"
-exhaust_dialogue_text = "DuDe, i don’t even know where am i. What im ah doing bo."
+npc_name = "BP"
+exhaust_dialogue_text = "Saw a truck. It sunk. Now I look like this."
 voice_pitch = 0.6
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

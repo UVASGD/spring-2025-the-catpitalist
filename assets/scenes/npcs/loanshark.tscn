@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://dkruwonrdb1pb" path="res://assets/sprites/World NPCs/loan_shark-Sheet.png" id="2_5k1kp"]
 [ext_resource type="Script" path="res://assets/scripts/conversation.gd" id="3_eg66f"]
 [ext_resource type="Script" path="res://assets/scripts/message.gd" id="4_avrxd"]
-[ext_resource type="Texture2D" uid="uid://dracgmuk5pmxp" path="res://assets/sprites/slideshows/slide1.png" id="5_8yo3r"]
+[ext_resource type="Texture2D" uid="uid://da118sj3n2wx0" path="res://assets/sprites/slideshows/loan_therapy.png" id="5_u38pg"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hkfer"]
 atlas = ExtResource("2_5k1kp")
@@ -138,7 +138,7 @@ _data = {
 script = ExtResource("1_0u2js")
 npc_name = "Loan Shark"
 exhaust_dialogue_text = "Beat it."
-voice_pitch = 0.2
+voice_pitch = 0.4
 portrait_path = "res://assets/sprites/NPC portraits/sharkicon.jpeg"
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
@@ -279,4 +279,4 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("5_8yo3r")
+texture = ExtResource("5_u38pg")

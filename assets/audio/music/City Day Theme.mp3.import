@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cxw1rboc5pab8"
+path="res://.godot/imported/City Day Theme.mp3-c4ac4f3921dcb6ee517a30d9deca4a04.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/music/City Day Theme.mp3"
+dest_files=["res://.godot/imported/City Day Theme.mp3-c4ac4f3921dcb6ee517a30d9deca4a04.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

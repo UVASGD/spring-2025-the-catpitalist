@@ -1,4 +1,4 @@
-[gd_scene load_steps=72 format=4 uid="uid://cauh4a088iphm"]
+[gd_scene load_steps=73 format=4 uid="uid://cauh4a088iphm"]
 
 [ext_resource type="Script" path="res://assets/scripts/indoors.gd" id="1_ki6vb"]
 [ext_resource type="Texture2D" uid="uid://b27qipy3lg8og" path="res://assets/sprites/tilesets/SAND TILES.png" id="2_4ho4k"]
@@ -31,6 +31,7 @@
 [ext_resource type="Texture2D" uid="uid://ds025a6nglfiy" path="res://assets/sprites/world objects/underwater/BUBBLES-Sheet.png" id="26_3y8ct"]
 [ext_resource type="PackedScene" uid="uid://dcpjxeouh1mm0" path="res://assets/scenes/npcs/tralalero.tscn" id="26_uvon6"]
 [ext_resource type="PackedScene" uid="uid://byfenl0ohbg02" path="res://assets/scenes/npcs/cheeto.tscn" id="28_pay7a"]
+[ext_resource type="PackedScene" uid="uid://bxncpu7xn7pvh" path="res://assets/scenes/npcs/water_robocat.tscn" id="32_mq5n0"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0i4su"]
 texture = ExtResource("2_4ho4k")
@@ -326,6 +327,7 @@ animations = [{
 
 [node name="City" type="Node2D"]
 script = ExtResource("1_ki6vb")
+playlist_songs = Array[String](["water main", "water 2"])
 
 [node name="sand" type="TileMapLayer" parent="."]
 scale = Vector2(2, 2)
@@ -1187,6 +1189,10 @@ scale = Vector2(1, 1)
 
 [node name="NPC11" parent="y_sorted/npcs" instance=ExtResource("28_pay7a")]
 position = Vector2(685, -210.5)
+scale = Vector2(1, 1)
+
+[node name="NPC12" parent="y_sorted/npcs" instance=ExtResource("32_mq5n0")]
+position = Vector2(266, -120.5)
 scale = Vector2(1, 1)
 
 [node name="worldbounds" type="Node2D" parent="."]

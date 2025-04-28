@@ -133,6 +133,30 @@ item_condition = 29
 item_amount = 1
 condition_action = 1
 
+[node name="Conversation8" type="Node" parent="Convos"]
+script = ExtResource("3_66a06")
+
+[node name="Messages" type="Node" parent="Convos/Conversation8"]
+
+[node name="Message" type="Node" parent="Convos/Conversation8/Messages"]
+script = ExtResource("4_mnqcm")
+text = "DID YOU BRING ME ANYTHING TO READ? "
+
+[node name="Message2" type="Node" parent="Convos/Conversation8/Messages"]
+script = ExtResource("4_mnqcm")
+text = "Give Poetry Book?"
+item_condition = 29
+item_amount = 1
+condition_action = 2
+is_request = true
+
+[node name="Message3" type="Node" parent="Convos/Conversation8/Messages"]
+script = ExtResource("4_mnqcm")
+text = "You don't have a book to give."
+item_condition = 29
+item_amount = 1
+condition_action = 1
+
 [node name="Conversation5" type="Node" parent="Convos"]
 script = ExtResource("3_66a06")
 signals_on_finish = true
@@ -159,7 +183,7 @@ text = "ʘ‿ʘ"
 [node name="Conversation6" type="Node" parent="Convos"]
 script = ExtResource("3_66a06")
 requests_signal = true
-request_signal_name = "final_hazel"
+request_signal_name = "delete_water_robocat"
 signals_on_finish = true
 finish_signal = "ask_for_robocat"
 

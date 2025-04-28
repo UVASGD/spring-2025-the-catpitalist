@@ -16,6 +16,7 @@ scale = Vector2(2, 2)
 script = ExtResource("1_oi2ww")
 npc_name = "Scrappy"
 exhaust_dialogue_text = "I'M A REAL RACCOON!"
+portrait_path = "res://assets/sprites/NPC portraits/scrappy portrait.png"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(-1, -6)

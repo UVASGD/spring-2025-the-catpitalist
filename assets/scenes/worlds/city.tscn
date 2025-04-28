@@ -1,4 +1,4 @@
-[gd_scene load_steps=68 format=4 uid="uid://cd74drdf1jwsh"]
+[gd_scene load_steps=75 format=4 uid="uid://cd74drdf1jwsh"]
 
 [ext_resource type="Script" path="res://assets/scripts/indoors.gd" id="1_608q5"]
 [ext_resource type="Texture2D" uid="uid://dd4wsteki2cb7" path="res://assets/sprites/tilesets/road tiles.png" id="2_b2ujj"]
@@ -21,8 +21,11 @@
 [ext_resource type="PackedScene" uid="uid://bvkqnjchqy427" path="res://assets/scenes/npcs/goober_npc.tscn" id="11_0206h"]
 [ext_resource type="PackedScene" uid="uid://3m50jyt14pbk" path="res://assets/scenes/transportzone.tscn" id="12_10djo"]
 [ext_resource type="Texture2D" uid="uid://deiyut235jhbr" path="res://assets/sprites/world objects/city/underwaterentrance_open.png" id="13_4lelp"]
+[ext_resource type="Texture2D" uid="uid://cy0v1o5gul51c" path="res://assets/sprites/world objects/city/Observatory_plants.png" id="14_qklr5"]
+[ext_resource type="Texture2D" uid="uid://qfu4j7u6cttu" path="res://assets/sprites/world objects/city/rocketship.png" id="15_g1hcl"]
 [ext_resource type="PackedScene" uid="uid://r1gkmux58rxo" path="res://assets/scenes/npcs/alien.tscn" id="15_p4dqs"]
 [ext_resource type="Texture2D" uid="uid://b5ysiovgmsvl3" path="res://assets/sprites/world objects/shared/tree_v1.png" id="16_cqknu"]
+[ext_resource type="Script" path="res://assets/scenes/worlds/rocketship.gd" id="16_h2wr2"]
 [ext_resource type="Texture2D" uid="uid://mfyigq4tl03r" path="res://assets/sprites/world objects/shared/tree_v2.png" id="17_710yt"]
 [ext_resource type="Texture2D" uid="uid://dt0igu67d4sgi" path="res://assets/sprites/world objects/city/fountain-ezgif.com-gif-to-sprite-converter.png" id="18_m42qi"]
 [ext_resource type="Texture2D" uid="uid://qxv1c8kjngy" path="res://assets/sprites/world objects/city/mailbox_city.png" id="19_qu70w"]
@@ -39,6 +42,9 @@
 [ext_resource type="Texture2D" uid="uid://c30seulpk3ojg" path="res://assets/sprites/world objects/city/crash_dirt.png" id="30_te0eh"]
 [ext_resource type="Texture2D" uid="uid://qh8veeicoho" path="res://assets/sprites/world objects/city/rocketship_broken.png" id="31_raphl"]
 [ext_resource type="Script" path="res://assets/scenes/worlds/scrapdisabler.gd" id="39_vpgrv"]
+[ext_resource type="PackedScene" uid="uid://fvk2auo3skku" path="res://assets/scenes/npcs/city_robocat.tscn" id="40_dhcs4"]
+[ext_resource type="PackedScene" uid="uid://c5igsyxh1x2i2" path="res://assets/scenes/npcs/hazel.tscn" id="41_qayw0"]
+[ext_resource type="Script" path="res://assets/scenes/worlds/rocketship_broken.gd" id="44_3nkcm"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0ngmq"]
 texture = ExtResource("2_kair2")
@@ -543,6 +549,9 @@ size = Vector2(102.5, 46.5)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8sjew"]
 size = Vector2(114.5, 104)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_paxid"]
+size = Vector2(132.5, 61)
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_lcigp"]
 radius = 5.68483
 
@@ -612,7 +621,7 @@ radius = 17.0431
 
 [node name="City" type="Node2D"]
 script = ExtResource("1_608q5")
-playlist_songs = Array[String](["among_drip", "rainy_paws", "catnipdealer"])
+playlist_songs = Array[String](["city theme", "rain city"])
 
 [node name="Fall" type="Node2D" parent="."]
 visible = false
@@ -725,6 +734,31 @@ unique_name_in_owner = true
 visible = false
 position = Vector2(1492, -738)
 texture = ExtResource("13_4lelp")
+
+[node name="ObservatoryPlants" type="Sprite2D" parent="y_sorted/houses"]
+position = Vector2(171, -746)
+scale = Vector2(2, 2)
+texture = ExtResource("14_qklr5")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="y_sorted/houses/ObservatoryPlants"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="y_sorted/houses/ObservatoryPlants/StaticBody2D"]
+position = Vector2(0.25, 63)
+shape = SubResource("RectangleShape2D_paxid")
+
+[node name="Rocketship" type="Sprite2D" parent="y_sorted/houses"]
+position = Vector2(-159, 700)
+scale = Vector2(2, 2)
+texture = ExtResource("15_g1hcl")
+script = ExtResource("16_h2wr2")
+
+[node name="transportzone" parent="y_sorted/houses/Rocketship" instance=ExtResource("12_10djo")]
+position = Vector2(-37, -45.5)
+scale = Vector2(3.25, 3.25)
+path_to_new_scene = "res://assets/scenes/worlds/moon.tscn"
+
+[node name="CollisionShape2D" parent="y_sorted/houses/Rocketship/transportzone/enterzone" index="0"]
+position = Vector2(13, 20)
 
 [node name="lamps" type="Node2D" parent="y_sorted"]
 y_sort_enabled = true
@@ -881,6 +915,12 @@ position = Vector2(1521, -569)
 
 [node name="NPC8" parent="y_sorted/npcs" instance=ExtResource("21_cvtxp")]
 position = Vector2(604, 1125)
+
+[node name="NPC9" parent="y_sorted/npcs" instance=ExtResource("40_dhcs4")]
+position = Vector2(49, -351)
+
+[node name="NPC10" parent="y_sorted/npcs" instance=ExtResource("41_qayw0")]
+position = Vector2(-115, -363)
 
 [node name="trees" type="Node2D" parent="y_sorted"]
 y_sort_enabled = true
@@ -1504,6 +1544,7 @@ position = Vector2(338, 627)
 rotation = -1.80747
 scale = Vector2(2, 2)
 texture = ExtResource("31_raphl")
+script = ExtResource("44_3nkcm")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="y_sorted/RocketshipBroken"]
 
@@ -1529,7 +1570,7 @@ path_to_new_scene = "res://assets/scenes/worlds/loansharkhq.tscn"
 position = Vector2(2, 0)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="y_sorted"]
-position = Vector2(-416, -466)
+position = Vector2(180, -740)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="y_sorted/StaticBody2D"]
 position = Vector2(-31, 15.5)
@@ -1592,6 +1633,7 @@ path_to_new_scene = ""
 [node name="CollisionShape2D" parent="backhome/enterzone" index="0"]
 position = Vector2(-7.95322, 12.7258)
 
+[editable path="y_sorted/houses/Rocketship/transportzone"]
 [editable path="y_sorted/transportzone"]
 [editable path="waterentrance"]
 [editable path="backhome"]

@@ -8,7 +8,7 @@ extends "res://assets/scripts/npc.gd"
 func _ready() -> void:
 	super()
 	SignalBus.connect("emo_hazel", _turn_emo)
-	SignalBus.connect("final_hazel", _turn_final)
+	SignalBus.connect("delete_water_robocat", _turn_final)
 	if History.has_happened("emo_hazel"):
 		_turn_emo()
 	if History.has_happened("final_hazel"):

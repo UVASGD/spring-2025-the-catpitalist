@@ -7,7 +7,7 @@ func _ready() -> void:
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if SceneSwapper.scene_stack:
 		arr = SceneSwapper.scene_stack
 		for i in $HBoxContainer.get_children(): # make labels

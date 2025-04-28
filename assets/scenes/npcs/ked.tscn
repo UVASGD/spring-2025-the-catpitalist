@@ -16,6 +16,7 @@ script = ExtResource("1_2n3ap")
 npc_name = "Kedrick"
 exhaust_dialogue_text = "You will die in 42 days."
 voice_pitch = 0.3
+portrait_path = "res://assets/sprites/NPC portraits/image.jpg"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.5, 0.5)

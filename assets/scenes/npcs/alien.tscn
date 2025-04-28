@@ -1,6 +1,6 @@
 [gd_scene load_steps=13 format=3 uid="uid://r1gkmux58rxo"]
 
-[ext_resource type="Script" path="res://assets/scripts/npc.gd" id="1_pcspi"]
+[ext_resource type="Script" path="res://assets/scenes/npcs/alien.gd" id="1_tjeuo"]
 [ext_resource type="Texture2D" uid="uid://c1tu1gpmtu2n0" path="res://assets/sprites/World NPCs/aliensheet.png" id="2_luysn"]
 [ext_resource type="Script" path="res://assets/scripts/conversation.gd" id="3_b4u1r"]
 [ext_resource type="Script" path="res://assets/scripts/message.gd" id="4_de3xi"]
@@ -77,10 +77,11 @@ size = Vector2(20, 24)
 
 [node name="NPC" type="Node2D" groups=["NPCs"]]
 scale = Vector2(2, 2)
-script = ExtResource("1_pcspi")
-npc_name = "???"
-exhaust_dialogue_text = "49 20 72 65 61 6C 6C 79 20 77 69 73 68 20 79 6F 75 20 63 6F 75 6C 64 20 75 6E 64 65 72 73 74 61 6E 64 20 6D 65 2E 20 49 27 6D 20 73 74 61 72 76 69 6E 67 21"
-voice_pitch = 0.9
+script = ExtResource("1_tjeuo")
+npc_name = "Alien"
+exhaust_dialogue_text = "64 72 20 70 65 70 70 65 72"
+voice_pitch = 0.7
+portrait_path = "res://assets/sprites/NPC portraits/alien icon.png"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_vmlx5")
@@ -117,6 +118,104 @@ text = "63 61 6E 20 69 20 61 6C 73 6F 20 67 65 74 20 61 20 6C 61 72 67 65 20 44 
 [node name="Message3" type="Node" parent="Convos/Conversation/Messages"]
 script = ExtResource("4_de3xi")
 text = "79 65 61 68 20 69 27 6C 6C 20 70 61 79 20 62 79 20 63 61 72 64"
+
+[node name="Conversation8" type="Node" parent="Convos"]
+script = ExtResource("3_b4u1r")
+
+[node name="Messages" type="Node" parent="Convos/Conversation8"]
+
+[node name="Message" type="Node" parent="Convos/Conversation8/Messages"]
+script = ExtResource("4_de3xi")
+text = "50 6C 65 61 73 65 20 66 69 6E 64 20 6D 65 20 61 6E 20 41 6C 69 65 6E 20 54 72 61 6E 73 6C 61 74 6F 72 2E 2E 2E"
+
+[node name="Message2" type="Node" parent="Convos/Conversation8/Messages"]
+script = ExtResource("4_de3xi")
+text = "Give Alien Translator?"
+item_condition = 22
+item_amount = 1
+condition_action = 2
+is_request = true
+
+[node name="Message3" type="Node" parent="Convos/Conversation8/Messages"]
+script = ExtResource("4_de3xi")
+text = "You don't have an Alien Translator."
+item_condition = 22
+item_amount = 1
+condition_action = 1
+
+[node name="Conversation9" type="Node" parent="Convos"]
+script = ExtResource("3_b4u1r")
+signals_on_finish = true
+finish_signal = "alien_learn_english"
+
+[node name="Messages" type="Node" parent="Convos/Conversation9"]
+
+[node name="Message" type="Node" parent="Convos/Conversation9/Messages"]
+script = ExtResource("4_de3xi")
+text = "Hello... Machine is the working?"
+
+[node name="Message2" type="Node" parent="Convos/Conversation9/Messages"]
+script = ExtResource("4_de3xi")
+text = "This is the biggest relief, I have been the lonely since no one understands my words."
+
+[node name="Message3" type="Node" parent="Convos/Conversation9/Messages"]
+script = ExtResource("4_de3xi")
+text = "Everyone tells me that I am ‘Mad Sus’ but I am not Mad and my name is not Sus."
+
+[node name="Message4" type="Node" parent="Convos/Conversation9/Messages"]
+script = ExtResource("4_de3xi")
+text = "Me and you are the friends now, I am full of the happy."
+
+[node name="Message5" type="Node" parent="Convos/Conversation9/Messages"]
+script = ExtResource("4_de3xi")
+text = "Mine ship is crash landed here... On trip to 'bahamas'?"
+
+[node name="Message6" type="Node" parent="Convos/Conversation9/Messages"]
+script = ExtResource("4_de3xi")
+text = "Dear friend, please, may help repair ship and go home?"
+
+[node name="Message7" type="Node" parent="Convos/Conversation9/Messages"]
+script = ExtResource("4_de3xi")
+text = "Need special piece. I am think that Nice Machine Lady is have it. "
+
+[node name="Conversation10" type="Node" parent="Convos"]
+script = ExtResource("3_b4u1r")
+
+[node name="Messages" type="Node" parent="Convos/Conversation10"]
+
+[node name="Message" type="Node" parent="Convos/Conversation10/Messages"]
+script = ExtResource("4_de3xi")
+text = "Dear friend, you have brought special piece?"
+
+[node name="Message2" type="Node" parent="Convos/Conversation10/Messages"]
+script = ExtResource("4_de3xi")
+text = "Give Strange Piece?"
+item_condition = 24
+item_amount = 1
+condition_action = 2
+is_request = true
+
+[node name="Message3" type="Node" parent="Convos/Conversation10/Messages"]
+script = ExtResource("4_de3xi")
+text = "You don't have an Strange Piece."
+item_condition = 24
+item_amount = 1
+condition_action = 1
+
+[node name="Conversation11" type="Node" parent="Convos"]
+script = ExtResource("3_b4u1r")
+signals_on_finish = true
+finish_signal = "repair_rocket"
+
+[node name="Messages" type="Node" parent="Convos/Conversation11"]
+
+[node name="Message" type="Node" parent="Convos/Conversation11/Messages"]
+script = ExtResource("4_de3xi")
+text = "The thanks, dear friend. Will repair ship and go home."
+
+[node name="Message2" type="Node" parent="Convos/Conversation11/Messages"]
+script = ExtResource("4_de3xi")
+text = "When Ship repaired, dear friend may come along."
 
 [node name="start" type="Marker2D" parent="."]
 

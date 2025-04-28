@@ -10,6 +10,7 @@ script = ExtResource("1_rgkkl")
 path_to_new_scene = "res://assets/scenes/farmhouse_indoors.tscn"
 
 [node name="enterzone" type="Area2D" parent="."]
+input_pickable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="enterzone"]
 shape = SubResource("RectangleShape2D_t35qx")

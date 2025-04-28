@@ -10,16 +10,14 @@ func _ready() -> void:
 	pass # Replace with function body.
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+
 
 func interact():
 	print("interacted")
 	SignalBus.emit_signal("interact", self)
 	return
 
-func _on_area_2d_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void: # when this plant is clicked on 
+func _on_area_2d_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void: # when this plant is clicked on 
 	if event.is_action_pressed("leftclick"):
 		var overlaps = $hitbox.get_overlapping_areas()
 		for area in overlaps:

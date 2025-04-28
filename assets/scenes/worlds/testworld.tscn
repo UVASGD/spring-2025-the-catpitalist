@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=4 uid="uid://b2133ovj0k7io"]
+[gd_scene load_steps=33 format=4 uid="uid://b2133ovj0k7io"]
 
 [ext_resource type="Script" path="res://assets/scripts/overworldarea.gd" id="1_dsj35"]
 [ext_resource type="PackedScene" uid="uid://rwurml76tnqs" path="res://assets/scenes/npcs/sign.tscn" id="3_23kby"]
@@ -17,11 +17,14 @@
 [ext_resource type="PackedScene" uid="uid://c7bpitve6lom3" path="res://assets/scenes/npcs/fatcat.tscn" id="14_xuub3"]
 [ext_resource type="PackedScene" uid="uid://r1gkmux58rxo" path="res://assets/scenes/npcs/alien.tscn" id="17_04x41"]
 [ext_resource type="PackedScene" uid="uid://byxam7udt4dw3" path="res://assets/scenes/farmhouse.tscn" id="17_g5ug5"]
+[ext_resource type="PackedScene" uid="uid://dsed2g1x7046l" path="res://assets/scenes/special_plantable_tile.tscn" id="17_lq8m3"]
 [ext_resource type="PackedScene" uid="uid://dpgpfvvpkmqe8" path="res://assets/scenes/npcs/tttt.tscn" id="18_08yli"]
+[ext_resource type="Texture2D" uid="uid://cef3w7tsrnk7t" path="res://assets/sprites/crops/grown_beanstalk.png" id="18_oi4d7"]
 [ext_resource type="PackedScene" uid="uid://bf25le0d607b1" path="res://assets/scenes/npcs/gerardo.tscn" id="19_kvnm2"]
 [ext_resource type="PackedScene" uid="uid://c8qbsnejl0gv3" path="res://assets/scenes/npcs/vincent.tscn" id="20_filv4"]
 [ext_resource type="PackedScene" uid="uid://3m50jyt14pbk" path="res://assets/scenes/transportzone.tscn" id="21_1oevx"]
 [ext_resource type="PackedScene" uid="uid://55jvvahuslq8" path="res://assets/scenes/npcs/howard.tscn" id="22_dijn2"]
+[ext_resource type="PackedScene" uid="uid://c63wd225e3dmn" path="res://assets/scenes/npcs/shop_scrappy.tscn" id="25_3bf3p"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7ivjj"]
 texture = ExtResource("8_2d8hv")
@@ -189,6 +192,27 @@ y_sort_enabled = false
 position = Vector2(-631, -160)
 scale = Vector2(2.734, 2.672)
 
+[node name="beanstalkholder" parent="y_sorted" instance=ExtResource("17_lq8m3")]
+unique_name_in_owner = true
+position = Vector2(18, -223)
+scale = Vector2(2, 2)
+
+[node name="beanstalk" type="Sprite2D" parent="y_sorted"]
+unique_name_in_owner = true
+visible = false
+position = Vector2(17, -593)
+scale = Vector2(2, 2)
+texture = ExtResource("18_oi4d7")
+
+[node name="transportzone" parent="y_sorted/beanstalk" instance=ExtResource("21_1oevx")]
+position = Vector2(1.5, 190)
+toggles_on_signal = true
+signal_name = "beanstalk_grew"
+path_to_new_scene = "res://assets/scenes/worlds/sky.tscn"
+
+[node name="CollisionShape2D" parent="y_sorted/beanstalk/transportzone/enterzone" index="0"]
+position = Vector2(0, -5.75)
+
 [node name="NPC" parent="." instance=ExtResource("17_04x41")]
 position = Vector2(75, 262)
 
@@ -224,5 +248,9 @@ text = "underwater"
 [node name="NPC5" parent="." instance=ExtResource("22_dijn2")]
 position = Vector2(521, -117)
 
+[node name="NPC6" parent="." instance=ExtResource("25_3bf3p")]
+position = Vector2(-164, 107)
+
 [editable path="y_sorted/DropItem"]
 [editable path="y_sorted/Farmhouse"]
+[editable path="y_sorted/beanstalk/transportzone"]

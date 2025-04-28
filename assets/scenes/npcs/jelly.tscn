@@ -115,6 +115,7 @@ scale = Vector2(2, 2)
 script = ExtResource("1_57gek")
 npc_name = "Jellina"
 exhaust_dialogue_text = "sigh"
+portrait_path = "res://assets/sprites/NPC portraits/jelly icon.png"
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_7l7yu")

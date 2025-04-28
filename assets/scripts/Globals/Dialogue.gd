@@ -9,9 +9,6 @@ func _ready() -> void:
 	pass # Replace with function body.
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
 
 func start_dialogue(convo:Conversation):
 	is_busy = true
@@ -20,7 +17,8 @@ func start_dialogue(convo:Conversation):
 func _on_dialogue_finished():
 	is_busy = false
 
-func play_voice(letter, speakername):
+func play_voice(letter:String, speakername):
 	var npc = NPCS.get_npc(speakername).instantiate()
+	letter = letter.to_lower()
 	audio_stream_player_2d.play(letter, npc)
 	

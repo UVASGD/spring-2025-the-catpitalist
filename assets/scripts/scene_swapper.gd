@@ -6,7 +6,6 @@ var scene_stack = []
 var busy = false
 
 func _ready() -> void:
-	var cur = get_tree().current_scene.name
 	if get_tree().current_scene.name in ["testworld", "StartScreen", "tutorial"]:
 		scene_stack.push_front(get_tree().current_scene)
 
@@ -61,11 +60,6 @@ func change_scene(new_scene, loading_screen_path:String="res://assets/scenes/ui/
 
 func push(newscene, loading_screen_path:String="res://assets/scenes/ui/loadingscreen.tscn"):
 	save_current() # may be unnecessary - test if this has performance impact
-	if scene_stack.size() > 0:
-		var current_scene = peek()
-		#current_scene.set_process_input(false)
-		#current_scene.set_process_unhandled_input(false)
-		#current_scene.set_process_unhandled_key_input(false)
 	
 	if newscene is String:
 		newscene = load(newscene)
@@ -85,7 +79,7 @@ func pop(loading_screen_path:String="res://assets/scenes/ui/loadingscreen.tscn")
 	save_current()
 	var current_scene = scene_stack.pop_front()
 	if current_scene is Indoors or current_scene is Overworld_area:
-		Music.pop(current_scene.playlist_songs)
+		Music.pop()
 	#current_scene.set_process_input(false)
 	#current_scene.set_process_unhandled_input(false)
 	#current_scene.set_process_unhandled_key_input(false)

@@ -18,7 +18,11 @@ func _ready() -> void:
 
 	self.hide()
 
-
+func format_speakername(npc_name:String):
+	if npc_name.ends_with("*") or npc_name.ends_with("^"): #strip * or ^ from end of NPCs that are duplicates
+		return npc_name.substr(0,len(npc_name)-1)
+	else:
+		return npc_name
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_released("skipdialogue"):
@@ -26,7 +30,7 @@ func _input(event: InputEvent) -> void:
 
 func write(message: Message) -> void:
 	var text: String = message.text
-	var speaker: String = message.speaker
+	var speaker: String = format_speakername(message.speaker)
 	speakerlabel.text = speaker
 	textbox.text = ""
 	
@@ -51,7 +55,9 @@ func skip() -> void:
 func _on_dialogue(convo: Conversation) -> void:
 	DayManager.freeze()
 	conversation = convo
-	portrait.texture = convo.get_npc().get_portrait()
+	var npc = convo.get_npc()
+	var nportrait = npc.get_portrait()
+	portrait.texture = nportrait
 	self.show()
 	await show_conversation()
 	self.hide()
@@ -64,7 +70,7 @@ func _on_dialogue(convo: Conversation) -> void:
 func show_conversation() -> void:
 	if conversation:
 		var run_message
-		for message in conversation.get_messages():
+		for message:Message in conversation.get_messages():
 			run_message = true
 			var cond = message.item_condition
 			var cond_item
@@ -78,19 +84,27 @@ func show_conversation() -> void:
 				elif cond_action == 2 && num_conditioned_item < cond_item.count:
 					run_message = false
 			if run_message:
+				await  write(message)
 				if message.is_request:
 					choices.visible = true
-				await  write(message)
-				if !message.is_request:
-					await  wait_for_user_input()
-				else:
 					awaiting_choice = true
 					await wait_for_choice()
-				await get_tree().create_timer(0.1).timeout
-				if dialogue_choice == "yes":
-					if PlayerData.player.remove_from_inv(cond_item):
+					await get_tree().create_timer(0.1).timeout
+					if dialogue_choice == "yes":
+						if PlayerData.player.remove_from_inv(cond_item):
 						
-						SignalBus.emit_signal("item_given_to_npc", cond_item, conversation.get_npc())
+							SignalBus.emit_signal("item_given_to_npc", cond_item, conversation.get_npc())
+							dialogue_choice = ""
+							choices.visible = false
+							break
+					else:
+						conversation.get_npc().current_convo_index -= 1
+						NPCS.update_cache(conversation.get_npc())
+				else:
+					await wait_for_user_input()
+					if message.item_condition != -1:
+						conversation.get_npc().current_convo_index -= 1
+						NPCS.update_cache(conversation.get_npc())
 				dialogue_choice = ""
 				choices.visible = false
 	return

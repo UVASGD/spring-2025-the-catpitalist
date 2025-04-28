@@ -29,7 +29,7 @@ func _ready() -> void:
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if is_buy_item:
 		if owner:
 			cart = owner.cart
@@ -96,7 +96,6 @@ func can_add_item():
 			for i in cart2:
 				if Items.get_item(i).stackable:
 					var this_item_slots_amount = PlayerData.player.inventory.filter(func(slot): return slot != null && slot.ID == i).size()
-					var total_this_item = 0
 					print(this_item_slots_amount, " ", cart2[i], " ")
 					print(PlayerData.player.get_total_item_count(Items.get_item(i)))
 					
@@ -107,7 +106,6 @@ func can_add_item():
 		return "good"
 	else:
 		return "cant_afford_item"
-	return "cant_hold_item"
 
 func removeitem():
 	#countlabel.text = str(int(countlabel.text)-1)

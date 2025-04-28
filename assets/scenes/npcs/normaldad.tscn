@@ -102,9 +102,10 @@ size = Vector2(20, 24)
 [node name="NPC" type="Node2D" groups=["NPCs"]]
 scale = Vector2(2, 2)
 script = ExtResource("1_kq3vf")
-npc_name = "Dad"
+npc_name = "Dad*"
 exhaust_dialogue_text = "Hey kiddo, I'll always be here to lend an ear when you need it. Yer mom and I believe in you!"
 voice_pitch = 0.4
+portrait_path = "res://assets/sprites/NPC portraits/catdad portrait.png"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.775, 0.775)

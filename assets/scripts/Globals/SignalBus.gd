@@ -85,6 +85,10 @@ signal emo_hazel
 signal final_hazel
 signal give_strange_piece
 signal ask_for_robocat
+signal delete_water_robocat
+signal repair_rocket
+signal alien_learn_english
+signal beanstalk_grew
 func emit(string):
 	emit_signal(string)
 	print("emitted: ", string)

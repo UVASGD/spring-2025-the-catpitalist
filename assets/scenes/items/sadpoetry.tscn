@@ -5,7 +5,7 @@
 
 [node name="flower" type="Node2D"]
 script = ExtResource("1_hdoq1")
-ID = 30
+ID = 29
 item_name = "Sad Poetry"
 max_stack = 99
 count = 1

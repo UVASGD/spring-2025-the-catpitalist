@@ -13,7 +13,7 @@ radius = 32.0
 scale = Vector2(2, 2)
 script = ExtResource("1_18afg")
 is_world_object = true
-npc_name = "unc bart"
+npc_name = "CITYSIGN"
 voice_pitch = -1.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

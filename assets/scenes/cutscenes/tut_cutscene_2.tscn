@@ -194,8 +194,9 @@ cutscene_length = 4
 [node name="dad" type="Node2D" parent="."]
 position = Vector2(293, 348.5)
 script = ExtResource("2_46hqj")
-npc_name = "Dad"
+npc_name = "Dad^"
 voice_pitch = 0.2
+portrait_path = "res://assets/sprites/NPC portraits/catdad portrait.png"
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="dad"]
 position = Vector2(-202, -135)
@@ -269,7 +270,8 @@ shape = SubResource("CircleShape2D_83h80")
 [node name="mom" type="Node2D" parent="."]
 position = Vector2(126.5, 160)
 script = ExtResource("2_46hqj")
-npc_name = "Mom"
+npc_name = "Mom*"
+portrait_path = "res://assets/sprites/NPC portraits/catmom portrait.png"
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="mom"]
 scale = Vector2(0.07, 0.07)

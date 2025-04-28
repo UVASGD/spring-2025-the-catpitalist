@@ -31,6 +31,7 @@ func _ready() -> void:
 	SignalBus.connect("interact", interact)
 	SignalBus.connect("gift_100", get_100)
 	SignalBus.connect("give_suit", get_suit)
+	SignalBus.connect("give_strange_piece", get_strange_piece)
 	#SignalBus.connect("items_ready", _on_items_ready)
 	inventory[8] = Items.get_item(1) # debug watercan 
 	#inventory[9] = Items.get_item(4) #scythe
@@ -73,14 +74,14 @@ func flash_actionable():
 	actionable = false
 	await get_tree().create_timer(0.5).timeout
 	actionable = true
-func _physics_process(delta):
+func _physics_process(_delta):
 	if actionable:
 		var direction = Input.get_vector("left", "right", "up", "down")
 		velocity = direction * speed
 		move_and_slide()
 
 func _on_items_ready():
-	print("player recieved items ready")
+
 	inventory[0] = Items.get_item(1) # debug watercan 
 	SignalBus.emit_signal("player_ready", self)
 
@@ -91,6 +92,11 @@ func restore_pos():
 func get_suit():
 	add_to_inv(Items.get_item(23))
 	return
+
+func get_strange_piece():
+	add_to_inv(Items.get_item(24))
+	return
+
 func drop(item):
 	if item != null:
 		if not item is DropItem and item.ID == 1:
@@ -127,7 +133,7 @@ func find_best_insert_slot(item):
 					lowest_stack_item = i
 				if lowest_stack_item == -1:
 					lowest_stack_item = i
-	print(lowest_stack_item)
+
 	if lowest_stack_item != -1:
 		return lowest_stack_item
 	else:
@@ -164,10 +170,10 @@ func find_available_selling_inv_slot(item):
 	return lowest_stack_item
 		
 func add_to_inv(item): # returns false if you cannot currently fit the item in your inventory
-	print(item.count)
+
 	var item_dup = item.duplicate()
 	while item_dup.count > 0:
-		print("iterating")
+
 		var ind = find_best_insert_slot(item_dup)
 		if ind >= 0:
 			#print("index:",ind)
@@ -228,6 +234,9 @@ func plant_on(obj:PlantableTile):
 	if held_item() == null:
 		return
 	if not History.has_happened("unlock_planting"):
+		return
+	if held_item() is RainbowBean and obj is SpecialPlantableTile:
+		held_item().plant_at(obj)
 		return
 	if held_item() is Plantable and obj.can_hold_plant():
 		held_item().plant_at(obj)

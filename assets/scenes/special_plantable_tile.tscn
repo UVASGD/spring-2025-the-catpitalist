@@ -1,0 +1,73 @@
+[gd_scene load_steps=6 format=3 uid="uid://dsed2g1x7046l"]
+
+[ext_resource type="Script" path="res://assets/scenes/special_plantable_tile.gd" id="1_dltf2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_23vk1"]
+size = Vector2(32, 32)
+
+[sub_resource type="Animation" id="Animation_dukyk"]
+resource_name = "new_animation"
+length = 2.6
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.466667, 0.966667, 1.46667, 2, 2.53333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(0.917346, 0, 0.239368, 1), Color(0.770104, 0.358804, 0, 1), Color(0.869633, 0.633234, 1.54018e-06, 1), Color(0.440463, 0.669316, 0, 1), Color(2.21401e-06, 0.651259, 0.813569, 1), Color(0.532982, 0.159999, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_ersp7"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_hhyn6"]
+_data = {
+"RESET": SubResource("Animation_ersp7"),
+"new_animation": SubResource("Animation_dukyk")
+}
+
+[node name="PlantableTile" type="Node2D"]
+script = ExtResource("1_dltf2")
+
+[node name="shading" type="ColorRect" parent="."]
+visible = false
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = 16.0
+mouse_filter = 2
+color = Color(0, 0, 0, 0.529412)
+
+[node name="hitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox"]
+shape = SubResource("RectangleShape2D_23vk1")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = 16.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_hhyn6")
+}
+autoplay = "new_animation"

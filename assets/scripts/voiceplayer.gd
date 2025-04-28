@@ -9,16 +9,14 @@ func _ready() -> void:
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
 
-func play(char:String, npc:NPC):
-	if char == " " or char == "." or char == "?" or char == "!":
+func play(chara:String, npc:NPC):
+	if chara == " " or chara == "." or chara == "?" or chara == "!":
 		not_breathing = false
 		await get_tree().create_timer(0.03).timeout
 		not_breathing = true
 		return
-	var sound:AudioStreamPlayer2D = letters.get(char)
+	var sound:AudioStreamPlayer = letters.get(chara)
 	if sound:
 		if npc.voice_pitch != -1: # npcs with no voice will have a voice pitch of -1
 			sound.pitch_scale = npc.voice_pitch * 0.9

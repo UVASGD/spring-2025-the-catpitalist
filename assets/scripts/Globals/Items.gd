@@ -1,57 +1,54 @@
 extends Node
 
-@onready var items = []
+
 @onready var drop_items = []
 @onready var dropitem = preload("res://assets/scenes/drop_item.tscn")
+var items = {
+	1: ["res://assets/scenes/items/watercan.tscn"],
+	2: ["res://assets/scenes/items/seeds.tscn"],
+	3: ["res://assets/scenes/items/flower.tscn"],
+	4: ["res://assets/scenes/items/cornseeds.tscn"],
+	5: ["res://assets/scenes/items/corn.tscn"],
+	6: ["res://assets/scenes/items/basilseeds.tscn"],
+	7: ["res://assets/scenes/items/basil.tscn"],
+	8: ["res://assets/scenes/items/chickensandwichseeds.tscn"],
+	9: ["res://assets/scenes/items/chickensandwich.tscn"],
+	10: ["res://assets/scenes/items/greenbeanseeds.tscn"],
+	11: ["res://assets/scenes/items/greenbean.tscn"],
+	12: ["res://assets/scenes/items/pickleseeds.tscn"],
+	13: ["res://assets/scenes/items/pickle.tscn"],
+	14: ["res://assets/scenes/items/blueseeds.tscn"],
+	15: ["res://assets/scenes/items/blue.tscn"],
+	16: ["res://assets/scenes/items/starseeds.tscn"],
+	17: ["res://assets/scenes/items/star.tscn"],
+	18: ["res://assets/scenes/items/wheatseeds.tscn"],
+	19: ["res://assets/scenes/items/wheat.tscn"],
+	20: ["res://assets/scenes/items/breadseeds.tscn"],
+	21: ["res://assets/scenes/items/bread.tscn"],
+	22: ["res://assets/scenes/items/alientranslator.tscn"],
+	23: ["res://assets/scenes/items/loansharksuit.tscn"],
+	24: ["res://assets/scenes/items/strangepiece.tscn"],
+	25: ["res://assets/scenes/items/rainbowbean.tscn"],
+	29: ["res://assets/scenes/items/sadpoetry.tscn"],
+	31: ["res://assets/scenes/items/scythe.tscn"],
+	32: [""],
+	33: [""],
+	34: [""],
+}
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	load_items()
 	pass # Replace with function body.
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+
 
 func load_items():
-	var path ="res://assets/scenes/items/"
-	var scene_loads = {}
+	for item in items:
+		items[item].append(load(items[item][0]))
 
-	var dir = DirAccess.open(path)
-	if dir:
-		dir.list_dir_begin()
-		var file_name = dir.get_next()
-		while file_name != "":
-			if not dir.current_is_dir() and file_name.get_extension() == "tscn":
-				var full_path = path.path_join(file_name)
-				var file = FileAccess.open(full_path, FileAccess.READ)
-				if file:
-					var content = file.get_as_text()
-					file.close()
-					var id_value = extract_id_from_tscn(content)
-					if id_value != null:
-						scene_loads[id_value] = [full_path,load(full_path)]
-			file_name = dir.get_next()
-	else:
-		print("An error occurred when trying to access the path.")
-
-	
-	items = scene_loads
 	SignalBus.emit_signal("items_ready")
 
-
-# Custom sort function
-func scene_id_sort(a, b):
-	return a["id"] < b["id"]
-
-# Function to extract ID from tscn file content
-func extract_id_from_tscn(content):
-	var id_regex = RegEx.new()
-	id_regex.compile('ID = (\\d+)')
-	var match = id_regex.search(content)
-	if match:
-		return int(match.get_string(1))
-	return null
 
 func get_item(id):
 	return items[id][1].instantiate() #id - 1 to account for arrays starting at 0 

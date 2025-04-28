@@ -35,7 +35,7 @@ var inventory = []
 func _ready() -> void:
 	wallet.text = str("$", PlayerData.player.money)
 	dialogue.text = choosing_dialogue
-	Music.play(songtitle)
+	Music.push([songtitle])
 	DayManager.freeze()
 	
 	SignalBus.connect("shop_price_change", _on_price_change)
@@ -49,13 +49,12 @@ func _ready() -> void:
 	pass # Replace with function body.
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+
 
 func close():
 	UI.close_shop()
 	DayManager.unfreeze()
+	Music.pop()
 	return
 	
 func get_buyscreen_dialogue() -> String:

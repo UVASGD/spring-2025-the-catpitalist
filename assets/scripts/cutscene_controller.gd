@@ -103,7 +103,8 @@ func _physics_process(delta: float) -> void:
 				animation_to_play = "walk_left"
 			
 		#execute animation
-		anim_sprite.play(animation_to_play, animation_speed)
+		if anim_sprite is AnimatedSprite2D and anim_sprite.get_sprite_frames().has_animation(animation_to_play):
+			anim_sprite.play(animation_to_play, animation_speed)
 			
 	if time_elapsed >= cutscene_length:
 		end_cutscene()

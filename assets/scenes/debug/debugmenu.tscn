@@ -20,14 +20,13 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-size_flags_horizontal = 0
-size_flags_vertical = 0
+mouse_filter = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Control"]
 layout_mode = 1
-anchors_preset = -1
-offset_right = 145.0
-offset_bottom = 201.0
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 178.0
 grow_vertical = 2
 
 [node name="Label" type="Label" parent="Control/VBoxContainer"]
@@ -80,6 +79,37 @@ layout_mode = 2
 text = "midnight
 "
 
+[node name="get poetry" type="Button" parent="Control/VBoxContainer"]
+layout_mode = 2
+text = "get poetry
+"
+
+[node name="get translator" type="Button" parent="Control/VBoxContainer"]
+layout_mode = 2
+text = "get translator
+"
+
+[node name="get strange piece" type="Button" parent="Control/VBoxContainer"]
+layout_mode = 2
+text = "get strange piece
+
+"
+
+[node name="double speed" type="Button" parent="Control/VBoxContainer"]
+layout_mode = 2
+text = "double speed
+"
+
+[node name="half speed" type="Button" parent="Control/VBoxContainer"]
+layout_mode = 2
+text = "half speed
+"
+
+[node name="bean" type="Button" parent="Control/VBoxContainer"]
+layout_mode = 2
+text = "give beanseed
+"
+
 [node name="SceneStackDebug" parent="Control" instance=ExtResource("2_xoue6")]
 
 [node name="VBoxContainer" parent="Control/SceneStackDebug" index="0"]
@@ -106,5 +136,11 @@ offset_bottom = 479.675
 [connection signal="pressed" from="Control/VBoxContainer/mention jelline" to="." method="_on_mention_jelline_pressed"]
 [connection signal="pressed" from="Control/VBoxContainer/unlock underwater" to="." method="_on_unlock_underwater_pressed"]
 [connection signal="pressed" from="Control/VBoxContainer/midnight" to="." method="_on_midnight_pressed"]
+[connection signal="pressed" from="Control/VBoxContainer/get poetry" to="." method="_on_get_poetry_pressed"]
+[connection signal="pressed" from="Control/VBoxContainer/get translator" to="." method="_on_get_translator_pressed"]
+[connection signal="pressed" from="Control/VBoxContainer/get strange piece" to="." method="_on_get_strange_piece_pressed"]
+[connection signal="pressed" from="Control/VBoxContainer/double speed" to="." method="_on_double_speed_pressed"]
+[connection signal="pressed" from="Control/VBoxContainer/half speed" to="." method="_on_half_speed_pressed"]
+[connection signal="pressed" from="Control/VBoxContainer/bean" to="." method="_on_bean_pressed"]
 
 [editable path="Control/SceneStackDebug"]

@@ -4,7 +4,7 @@ func _ready() -> void:
 	color = Color(0.2, 0.1, 0.0, 0.0) # deep blue with 0 alpha initially
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	update_night_overlay()
 
 func update_night_overlay():

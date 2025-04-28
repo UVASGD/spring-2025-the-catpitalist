@@ -19,11 +19,8 @@ func _ready() -> void:
 	pass # Replace with function body.
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
 	
-func get_npc():
+func get_npc() -> NPC:
 	if is_exhaust:
 		return get_parent()
 	return get_parent().get_parent()

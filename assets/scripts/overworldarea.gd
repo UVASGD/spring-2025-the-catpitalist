@@ -14,6 +14,7 @@ func _ready() -> void:
 		History.mark("unlock_planting")
 		History.mark("unlock_watering")
 		SignalBus.emit_signal("unlock_watering")
+	SignalBus.connect("beanstalk_grew", _on_beanstalk_grew)
 	pass # Replace with function body.
 
 
@@ -41,3 +42,6 @@ func load_save_data(save_data: Dictionary) -> void:
 		var child = self.get_node(child_data["name"])
 		if child and child.is_in_group("Saveable"):
 			child.load_save_data(child_data)
+
+func _on_beanstalk_grew():
+	%beanstalk.show()

@@ -2,7 +2,7 @@
 
 importer="wav"
 type="AudioStreamWAV"
-uid="uid://be5e3icxn0b6t"
+uid="uid://cb2y0377rxodx"
 path="res://.godot/imported/cats_in_da_snow.wav-00f66bb7988ac305872b8e4408f6835e.sample"
 
 [deps]
@@ -17,7 +17,7 @@ force/mono=false
 force/max_rate=false
 force/max_rate_hz=44100
 edit/trim=false
-edit/normalize=true
+edit/normalize=false
 edit/loop_mode=0
 edit/loop_begin=0
 edit/loop_end=-1

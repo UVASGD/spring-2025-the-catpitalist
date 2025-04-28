@@ -106,6 +106,7 @@ script = ExtResource("1_5o3n0")
 npc_name = "Dad"
 exhaust_dialogue_text = "Hey kiddo, I'll always be here to lend an ear when you need it. Yer mom and I believe in you!"
 voice_pitch = 0.4
+portrait_path = "res://assets/sprites/NPC portraits/catdad portrait.png"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_6vibn")

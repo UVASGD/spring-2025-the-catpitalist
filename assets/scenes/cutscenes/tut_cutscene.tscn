@@ -174,8 +174,9 @@ cutscene_length = 10
 [node name="NPC" type="Node2D" parent="."]
 position = Vector2(56, -73)
 script = ExtResource("2_q7n6k")
-npc_name = "Dad"
+npc_name = "Dad*"
 voice_pitch = 0.2
+portrait_path = "res://assets/sprites/NPC portraits/catdad portrait.png"
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="NPC"]
 sprite_frames = SubResource("SpriteFrames_taqc1")

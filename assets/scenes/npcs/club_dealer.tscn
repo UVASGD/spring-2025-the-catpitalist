@@ -1,0 +1,148 @@
+[gd_scene load_steps=8 format=3 uid="uid://r63dha04opav"]
+
+[ext_resource type="Script" path="res://assets/scripts/npc.gd" id="1_fnu0f"]
+[ext_resource type="Texture2D" uid="uid://cov3iyvykju12" path="res://assets/sprites/World NPCs/drippy_dealer.png" id="2_taaxe"]
+[ext_resource type="PackedScene" uid="uid://wfajuc7nk6w6" path="res://assets/scenes/templates/conversation.tscn" id="3_af0c3"]
+[ext_resource type="Script" path="res://assets/scripts/message.gd" id="4_q31wl"]
+[ext_resource type="Script" path="res://assets/scripts/conversation.gd" id="5_yjp2a"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pmeq2"]
+radius = 32.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_njb3k"]
+size = Vector2(20, 24)
+
+[node name="NPC" type="Node2D"]
+scale = Vector2(2, 2)
+script = ExtResource("1_fnu0f")
+npc_name = "Catnip Dealer*"
+exhaust_dialogue_text = "Beat it. You're making me look suspicious."
+voice_pitch = 0.6
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_taaxe")
+
+[node name="hitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox"]
+shape = SubResource("CircleShape2D_pmeq2")
+
+[node name="collisionbox" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="collisionbox"]
+position = Vector2(0, 12)
+shape = SubResource("RectangleShape2D_njb3k")
+
+[node name="Convos" type="Node" parent="."]
+
+[node name="Conversation" parent="Convos" instance=ExtResource("3_af0c3")]
+
+[node name="Message" parent="Convos/Conversation/Messages" index="0"]
+text = "Yo, kid, yeah you with the weird purple fur, come here, quick"
+
+[node name="Message2" type="Node" parent="Convos/Conversation/Messages" index="1"]
+script = ExtResource("4_q31wl")
+text = "You want some of that stuff?"
+
+[node name="Message3" type="Node" parent="Convos/Conversation/Messages" index="2"]
+script = ExtResource("4_q31wl")
+text = "You don’t know what I’m talking about? The stuff that makes your whiskers curl, that makes your paws feel like jelly."
+
+[node name="Message4" type="Node" parent="Convos/Conversation/Messages" index="3"]
+script = ExtResource("4_q31wl")
+text = "How much? How much you got on you furball?"
+
+[node name="Message5" type="Node" parent="Convos/Conversation/Messages" index="4"]
+script = ExtResource("4_q31wl")
+text = "What? Get out of my face, i ought to claw your eyes out for thinking my nip could ever go for such a price."
+
+[node name="Conversation2" parent="Convos" instance=ExtResource("3_af0c3")]
+
+[node name="Message" parent="Convos/Conversation2/Messages" index="0"]
+text = "That desperate, huh? How about this, I’ll give you some nip, some of the best nip in the world if you do something for me."
+
+[node name="Message2" type="Node" parent="Convos/Conversation2/Messages" index="1"]
+script = ExtResource("4_q31wl")
+text = "What do you have to do?”"
+
+[node name="Message3" type="Node" parent="Convos/Conversation2/Messages" index="2"]
+script = ExtResource("4_q31wl")
+text = "I want to make the best nip in the world, the kind that’ll make you and everyone else remember me and my nip forever."
+
+[node name="Message4" type="Node" parent="Convos/Conversation2/Messages" index="3"]
+script = ExtResource("4_q31wl")
+text = "All I need is a StarFruit, which I'll use to make some stardust."
+
+[node name="Message5" type="Node" parent="Convos/Conversation2/Messages" index="4"]
+script = ExtResource("4_q31wl")
+text = "Only problem is, you can only get a starfruit seed from the moon. that's where you come in."
+
+[node name="Message6" type="Node" parent="Convos/Conversation2/Messages" index="5"]
+script = ExtResource("4_q31wl")
+text = "You find it for me and bring it to me, do that and I'll reward you with a lil somethin."
+
+[node name="Conversation3" type="Node" parent="Convos"]
+script = ExtResource("5_yjp2a")
+
+[node name="Messages" type="Node" parent="Convos/Conversation3"]
+
+[node name="Message" type="Node" parent="Convos/Conversation3/Messages"]
+script = ExtResource("4_q31wl")
+text = "Hey kid, you got what I asked for?"
+
+[node name="Message2" type="Node" parent="Convos/Conversation3/Messages"]
+script = ExtResource("4_q31wl")
+text = "Give Starfruit?"
+item_condition = 27
+item_amount = 1
+condition_action = 2
+is_request = true
+
+[node name="Message3" type="Node" parent="Convos/Conversation3/Messages"]
+script = ExtResource("4_q31wl")
+text = "You don't have a starfruit give."
+item_condition = 29
+item_amount = 1
+condition_action = 1
+
+[node name="Conversation4" type="Node" parent="Convos"]
+script = ExtResource("5_yjp2a")
+signals_on_finish = true
+finish_signal = "give_rainbow_seed"
+
+[node name="Messages" type="Node" parent="Convos/Conversation4"]
+
+[node name="Message" type="Node" parent="Convos/Conversation4/Messages"]
+script = ExtResource("4_q31wl")
+text = "*sniffs flower*"
+
+[node name="Message2" type="Node" parent="Convos/Conversation4/Messages"]
+script = ExtResource("4_q31wl")
+text = "ahhh, that's the real stuff, that good stuff."
+
+[node name="Message3" type="Node" parent="Convos/Conversation4/Messages"]
+script = ExtResource("4_q31wl")
+text = "I'm gonna be the boss. The kingpin. El Jefe--"
+
+[node name="Message4" type="Node" parent="Convos/Conversation4/Messages"]
+script = ExtResource("4_q31wl")
+text = "Huh, what? Oh. Forgot about you, give me a sec."
+
+[node name="Message5" type="Node" parent="Convos/Conversation4/Messages"]
+script = ExtResource("4_q31wl")
+text = "You look like a good kid. I'll keep this for myself, but I'm a cat of my word. Here's something special for you."
+
+[node name="Message6" type="Node" parent="Convos/Conversation4/Messages"]
+script = ExtResource("4_q31wl")
+text = "You got: Rainbow Seed"
+
+[node name="Message7" type="Node" parent="Convos/Conversation4/Messages"]
+script = ExtResource("4_q31wl")
+text = "I scoped out your little farm. You got a good place to plant that thing. That glimmering dirt patch."
+
+[node name="Message8" type="Node" parent="Convos/Conversation4/Messages"]
+script = ExtResource("4_q31wl")
+text = "They say if you take good care of it, it'll grow up high enough to reach the sky."
+
+[editable path="Convos/Conversation"]
+[editable path="Convos/Conversation2"]

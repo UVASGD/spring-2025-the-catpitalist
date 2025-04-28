@@ -10,9 +10,6 @@ class_name TransportZone extends Node2D
 @export var loading_screen_path:String = "res://assets/scenes/ui/loadingscreen.tscn"
 
 
-func _process(delta: float) -> void:
-	if debug:
-		print(can_transport)
 
 func _on_enterzone_body_entered(body: Node2D) -> void:
 	if body == PlayerData.player and can_transport and not SceneSwapper.busy:
