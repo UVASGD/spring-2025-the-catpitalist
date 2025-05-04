@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://be347i8ueyu6k"]
 
 [ext_resource type="Script" path="res://assets/scripts/flower.gd" id="1_rxyem"]
-[ext_resource type="Texture2D" uid="uid://btyjvdrdn13vg" path="res://assets/sprites/testflower.png" id="2_ryrm4"]
+[ext_resource type="Texture2D" uid="uid://d30xbc21iakgj" path="res://assets/sprites/crops/Green Bean.png" id="2_mkqoj"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_4f7iw"]
 font_size = 12
@@ -25,8 +25,8 @@ size = Vector2(32, 32)
 script = ExtResource("1_rxyem")
 growth_time = 1
 hardiness = 3
-seed_item_id = 2
-flower_item_id = 1
+seed_item_id = 10
+flower_item_id = 11
 
 [node name="debugHolder" type="Node2D" parent="."]
 visible = false
@@ -76,31 +76,31 @@ label_settings = SubResource("LabelSettings_k132j")
 shape = SubResource("RectangleShape2D_oduee")
 
 [node name="seed" type="Sprite2D" parent="."]
-texture = ExtResource("2_ryrm4")
+texture = ExtResource("2_mkqoj")
 region_enabled = true
 region_rect = Rect2(0, 0, 32, 32)
 
 [node name="sprout" type="Sprite2D" parent="."]
 visible = false
-texture = ExtResource("2_ryrm4")
+texture = ExtResource("2_mkqoj")
 region_enabled = true
 region_rect = Rect2(32, 0, 32, 32)
 
 [node name="bud" type="Sprite2D" parent="."]
 visible = false
-texture = ExtResource("2_ryrm4")
+texture = ExtResource("2_mkqoj")
 region_enabled = true
 region_rect = Rect2(64, 0, 32, 32)
 
 [node name="bloom" type="Sprite2D" parent="."]
 visible = false
-texture = ExtResource("2_ryrm4")
+texture = ExtResource("2_mkqoj")
 region_enabled = true
 region_rect = Rect2(96, 0, 32, 32)
 
 [node name="dead" type="Sprite2D" parent="."]
 visible = false
-texture = ExtResource("2_ryrm4")
+texture = ExtResource("2_mkqoj")
 region_enabled = true
 region_rect = Rect2(128, 0, 32, 32)
 

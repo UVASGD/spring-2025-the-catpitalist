@@ -90,9 +90,10 @@ func fade_out():
 		var tween = get_tree().create_tween()
 		tween.tween_property(current_playing, "volume_db", current_playing.volume_db-80, fade_duration)
 		await tween.finished
-		current_playing.stop()
-		current_playing.volume_db = 0 # Reset volume for next play
-		current_playing = null
+		if current_playing:
+			current_playing.stop()
+			current_playing.volume_db = 0 # Reset volume for next play
+			current_playing = null
 	return	
 
 func play_random_snow():
