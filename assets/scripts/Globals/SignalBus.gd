@@ -52,6 +52,7 @@ signal pause_closed
 signal tutorial_planted
 signal tutorial_watered
 signal tutorial_pickup
+signal tutorial_watercan_equipped
 signal spawn_seeds
 signal mom_dialogue_done
 signal shop_price_change

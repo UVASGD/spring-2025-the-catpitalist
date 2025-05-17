@@ -101,11 +101,11 @@ func pop_and_return(context:Dictionary={},loading_screen_path:String="res://asse
 	if peek().has_method("spawn_player"):
 		peek().spawn_player(newplayer)
 	else:
-		peek().add_child(newplayer,true)
+		peek().find_child("y_sorted").add_child(newplayer,true)
 	if not context.is_empty():
 		SignalBus.emit_signal("context",context)
 
-func peek():
+func peek() -> Node:
 	if scene_stack.size() < 1:
 		return Node2D.new() # should do nothing
 	return scene_stack[0]

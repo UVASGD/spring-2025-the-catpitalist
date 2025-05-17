@@ -333,12 +333,15 @@ playlist_songs = Array[String](["raincity"])
 y_sort_enabled = true
 
 [node name="mom" parent="y_sorted" instance=ExtResource("8_fns02")]
-z_index = -2
 y_sort_enabled = true
 position = Vector2(253, 328)
 exhaust_dialogue_text = "Hello honey, always remember that you can stop by and rest here!"
 
+[node name="CollisionShape2D" parent="y_sorted/mom/collisionbox" index="0"]
+position = Vector2(0.75, -1.75)
+
 [node name="spawnpoint" type="Node2D" parent="y_sorted"]
+y_sort_enabled = true
 position = Vector2(570, 573)
 
 [node name="normaldad" parent="y_sorted" instance=ExtResource("9_2rfny")]
@@ -398,7 +401,6 @@ position = Vector2(17.4062, 4.09558)
 shape = SubResource("RectangleShape2D_glwcb")
 
 [node name="chair2" type="Sprite2D" parent="y_sorted/furniture"]
-z_index = -1
 position = Vector2(151, 184)
 scale = Vector2(1.465, 1.465)
 texture = ExtResource("5_1fdv0")
@@ -544,6 +546,8 @@ shape = SubResource("RectangleShape2D_3iyw7")
 
 [connection signal="hidden" from="." to="." method="_on_hidden"]
 
+[editable path="y_sorted/mom"]
+[editable path="y_sorted/mom/Convos/Conversation"]
 [editable path="y_sorted/normaldad"]
 [editable path="y_sorted/normaldad/Convos/Conversation"]
 [editable path="transportzone"]

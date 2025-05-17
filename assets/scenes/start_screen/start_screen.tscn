@@ -1,9 +1,208 @@
-[gd_scene load_steps=5 format=3 uid="uid://mr1iawd58i4y"]
+[gd_scene load_steps=25 format=3 uid="uid://mr1iawd58i4y"]
 
 [ext_resource type="Script" path="res://assets/scenes/start_screen/start_screen.gd" id="1_m41bo"]
-[ext_resource type="Texture2D" uid="uid://ccxl5veadqw0n" path="res://assets/sprites/UI/title screen.png" id="2_alhgu"]
+[ext_resource type="Texture2D" uid="uid://dpm38o5wf0ner" path="res://assets/sprites/UI/skybg.png" id="2_4w3dm"]
 [ext_resource type="Texture2D" uid="uid://iuodxl1ob644" path="res://assets/sprites/UI/play button.png" id="3_5mxro"]
-[ext_resource type="Texture2D" uid="uid://dsqthekoikkj" path="res://assets/sprites/UI/text-1735608119294.png" id="4_xnnvi"]
+[ext_resource type="Texture2D" uid="uid://cka8it78xk5qe" path="res://assets/sprites/UI/clouds.png" id="3_73gvt"]
+[ext_resource type="Texture2D" uid="uid://cs2yllck3ntme" path="res://assets/sprites/UI/foreground.png" id="4_3of62"]
+[ext_resource type="Texture2D" uid="uid://datro5iaaitku" path="res://assets/sprites/UI/catpitalist_logo.png" id="4_eagbp"]
+[ext_resource type="Texture2D" uid="uid://cywwubbqcgdse" path="res://assets/sprites/UI/play button_c.png" id="4_jvrpf"]
+[ext_resource type="Texture2D" uid="uid://we16dgl11hrh" path="res://assets/sprites/UI/play button_s.png" id="5_w32md"]
+[ext_resource type="AudioStream" uid="uid://dkhlf2llmp6m1" path="res://assets/audio/music/maintheme.mp3" id="9_6mqn7"]
+[ext_resource type="AudioStream" uid="uid://cvmggemofibq2" path="res://assets/audio/ui/select.mp3" id="10_cj0mp"]
+
+[sub_resource type="Animation" id="Animation_ebvri"]
+resource_name = "sway"
+length = 30.0
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 30),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-1172, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_52nsr"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_m6a05"]
+_data = {
+"RESET": SubResource("Animation_52nsr"),
+"sway": SubResource("Animation_ebvri")
+}
+
+[sub_resource type="Animation" id="Animation_4ybq0"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(497, 370)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_ueipn"]
+resource_name = "new_animation"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.53333, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(497, 370), Vector2(497, 361), Vector2(497, 370), Vector2(497, 380), Vector2(497, 370)]
+}
+
+[sub_resource type="Animation" id="Animation_ouvnc"]
+resource_name = "new_animation_2"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_o52x2"]
+_data = {
+"RESET": SubResource("Animation_4ybq0"),
+"new_animation": SubResource("Animation_ueipn"),
+"new_animation_2": SubResource("Animation_ouvnc")
+}
+
+[sub_resource type="Animation" id="Animation_mlrmx"]
+resource_name = "enter"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 1.16667, 1.33333),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(5, -326), Vector2(5, 2), Vector2(5, -24), Vector2(5, 2)]
+}
+
+[sub_resource type="Animation" id="Animation_rfpvx"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(5, 2)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_m87ae"]
+_data = {
+"RESET": SubResource("Animation_rfpvx"),
+"enter": SubResource("Animation_mlrmx")
+}
+
+[sub_resource type="Animation" id="Animation_7odvu"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_y65fe"]
+resource_name = "start"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_jckeo"]
+resource_name = "end"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tcafl"]
+_data = {
+"RESET": SubResource("Animation_7odvu"),
+"end": SubResource("Animation_jckeo"),
+"start": SubResource("Animation_y65fe")
+}
 
 [node name="StartScreen" type="Control"]
 layout_mode = 3
@@ -16,55 +215,82 @@ size_flags_horizontal = 6
 size_flags_vertical = 6
 mouse_filter = 1
 script = ExtResource("1_m41bo")
-debug = true
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="bg" type="TextureRect" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_alhgu")
+texture = ExtResource("2_4w3dm")
 
-[node name="TextureButton" type="TextureButton" parent="TextureRect"]
+[node name="clouds" type="TextureRect" parent="bg"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+texture = ExtResource("3_73gvt")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="bg/clouds"]
+libraries = {
+"": SubResource("AnimationLibrary_m6a05")
+}
+autoplay = "sway"
+speed_scale = 0.5
+
+[node name="foreground" type="TextureRect" parent="bg"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_3of62")
+
+[node name="TextureButton" type="TextureButton" parent="bg"]
+modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.192188
-anchor_top = 0.316667
-anchor_right = 0.8018
-anchor_bottom = 0.993599
-offset_left = -1.52588e-05
-offset_right = 499.696
-offset_bottom = 232.609
-scale = Vector2(0.609613, 0.676932)
+anchor_left = 0.399454
+anchor_top = 0.486994
+anchor_right = 0.399454
+anchor_bottom = 0.788926
+offset_left = -14.3011
+offset_top = 19.3643
+offset_right = 1035.39
+offset_bottom = 529.973
+scale = Vector2(0.3, 0.3)
 texture_normal = ExtResource("3_5mxro")
-metadata/_edit_use_anchors_ = true
+texture_pressed = ExtResource("4_jvrpf")
+texture_hover = ExtResource("5_w32md")
+ignore_texture_size = true
+stretch_mode = 3
 
-[node name="debugbutton" type="TextureButton" parent="TextureRect"]
-visible = false
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.759375
-anchor_top = 0.276389
-anchor_right = 1.36899
-anchor_bottom = 0.953321
-offset_left = -1.52588e-05
-offset_right = 499.696
-offset_bottom = 232.609
-scale = Vector2(0.226896, 0.266077)
-texture_normal = ExtResource("3_5mxro")
-metadata/_edit_use_anchors_ = true
+[node name="AnimationPlayer" type="AnimationPlayer" parent="bg/TextureButton"]
+libraries = {
+"": SubResource("AnimationLibrary_o52x2")
+}
 
-[node name="TextureRect" type="TextureRect" parent="TextureRect"]
+[node name="title" type="TextureRect" parent="bg"]
 layout_mode = 0
-offset_left = 300.0
-offset_top = 92.0
-offset_right = 961.0
-offset_bottom = 173.0
-texture = ExtResource("4_xnnvi")
+offset_left = 5.0
+offset_top = 2.0
+offset_right = 1285.0
+offset_bottom = 722.0
+mouse_filter = 2
+texture = ExtResource("4_eagbp")
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="bg/title"]
+libraries = {
+"": SubResource("AnimationLibrary_m87ae")
+}
+autoplay = "enter"
+
+[node name="shading" type="ColorRect" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -74,5 +300,17 @@ grow_vertical = 2
 mouse_filter = 2
 color = Color(0.530476, 0.484463, 0.9015, 0.19)
 
-[connection signal="pressed" from="TextureRect/TextureButton" to="." method="_on_start_pressed"]
-[connection signal="pressed" from="TextureRect/debugbutton" to="." method="_on_debugbutton_pressed"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_tcafl")
+}
+autoplay = "start"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_6mqn7")
+autoplay = true
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_cj0mp")
+
+[connection signal="pressed" from="bg/TextureButton" to="." method="_on_start_pressed"]

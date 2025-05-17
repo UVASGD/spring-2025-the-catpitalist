@@ -102,8 +102,10 @@ func _on_choose_sell_pressed() -> void:
 		var player_items = []
 		for n in inv.get_children():
 			inv.remove_child(n)
-			n.queue_free()
+			#n.queue_free()
 		for n in PlayerData.player.inventory:
+			if n == null:
+				continue
 			if n is Item && n.sellable && !player_items.has(n.ID):
 				player_items.append(n.ID)
 				var x = preload("res://shopitemrow.tscn").instantiate()
@@ -194,6 +196,8 @@ func _on_sell_pressed() -> void:
 		inv.remove_child(n)
 		n.queue_free()
 	for n in PlayerData.player.inventory:
+		if n == null:
+			continue
 		if n is Item && n.sellable && !player_items.has(n.ID):
 			player_items.append(n.ID)
 			var x = preload("res://shopitemrow.tscn").instantiate()

@@ -689,18 +689,21 @@ texture = ExtResource("10_y7yqb")
 
 [node name="club" type="Sprite2D" parent="y_sorted/houses"]
 y_sort_enabled = true
-position = Vector2(1119, -843)
+position = Vector2(1115, -637)
 scale = Vector2(4, 4)
 texture = ExtResource("6_yd1fw")
+region_enabled = true
+region_rect = Rect2(0, 5.6069, 120, 94.3931)
 
 [node name="building shadow2" type="Sprite2D" parent="y_sorted/houses/club"]
 modulate = Color(1, 1, 1, 0.733333)
 z_as_relative = false
-position = Vector2(73.625, 66.99)
+position = Vector2(73.75, 18)
 scale = Vector2(0.825, 0.323789)
 texture = ExtResource("10_y7yqb")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="y_sorted/houses/club"]
+position = Vector2(3.5, -49.5)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="y_sorted/houses/club/StaticBody2D"]
 position = Vector2(0.25, 73.25)
