@@ -1,9 +1,19 @@
 extends CanvasLayer
 @onready var slots: HBoxContainer = $Control/VBoxContainer/slots
 
-var active_index = 0
 var green = Color(0.031,0.5,0.0376)
 var grey = Color(0.5, 0.5, 0.5)
+
+# Use player's held_item_index instead of local active_index
+func get_active_index() -> int:
+	if PlayerData.player:
+		return PlayerData.player.held_item_index
+	return 0
+
+func set_active_index(val: int):
+	if PlayerData.player:
+		PlayerData.player.held_item_index = val
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	SignalBus.connect("new_dialogue", _on_new_dialogue)
@@ -13,22 +23,22 @@ func _ready() -> void:
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("slot0"):
 		flash_label()
-		active_index = 0
+		set_active_index(0)
 	if event.is_action_pressed("slot1"):
 		flash_label()
-		active_index = 1
+		set_active_index(1)
 	if event.is_action_pressed("slot2"):
 		flash_label()
-		active_index = 2
+		set_active_index(2)
 	if event.is_action_pressed("slot3"):
 		flash_label()
-		active_index = 3
+		set_active_index(3)
 	if event.is_action_pressed("slot4"):
 		flash_label()
-		active_index = 4
+		set_active_index(4)
 	if event.is_action_pressed("slot5"):
 		flash_label()
-		active_index = 5
+		set_active_index(5)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
@@ -82,7 +92,7 @@ func sync(slot:TextureRect):
 		slot.get_child(0).texture = null
 		slot.get_child(1).text = ""
 		
-	if slot.get_index() == active_index:
+	if slot.get_index() == get_active_index():
 		if item_data:
 			$Control/VBoxContainer/Label.text = item_data.item_name
 		slot.get_child(2).show()

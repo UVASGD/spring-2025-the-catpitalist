@@ -23,7 +23,7 @@ max_stack = 99
 count = 1
 description = "how did you grow that..."
 sellable = true
-sell_price = 500
+sell_price = 100
 buy_price = 5
 sprite_path = "res://assets/sprites/crops/fullgrown/star.png"
 

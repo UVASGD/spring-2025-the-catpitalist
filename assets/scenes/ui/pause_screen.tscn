@@ -40,10 +40,16 @@ layout_mode = 2
 mouse_filter = 1
 text = "settings (no settings yet lmao)"
 
+[node name="mainmenu" type="Button" parent="Control/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 1
+text = "main menu"
+
 [node name="quitgame" type="Button" parent="Control/VBoxContainer"]
 layout_mode = 2
 mouse_filter = 1
 text = "exit game"
 
 [connection signal="pressed" from="Control/VBoxContainer/backtogame" to="." method="_on_backtogame_pressed"]
+[connection signal="pressed" from="Control/VBoxContainer/mainmenu" to="." method="_on_mainmenu_pressed"]
 [connection signal="pressed" from="Control/VBoxContainer/quitgame" to="." method="_on_quitgame_pressed"]

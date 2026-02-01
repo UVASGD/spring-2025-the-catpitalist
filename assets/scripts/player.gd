@@ -26,6 +26,8 @@ var progression = {
 	100000000: "made_100000000",
 	
 }
+var is_clone = false  # Set by clone() to skip tutorial setup
+
 func _ready() -> void:
 	scale = alter_scale
 	flash_actionable()
@@ -35,7 +37,9 @@ func _ready() -> void:
 	SignalBus.connect("give_strange_piece", get_strange_piece)
 	SignalBus.connect("give_rainbow_seed", get_bean)
 	#SignalBus.connect("items_ready", _on_items_ready)
-	inventory[8] = Items.get_item(1) # tutorial watercan 
+	# Only give tutorial watercan to fresh players (not clones)
+	if not is_clone:
+		inventory[8] = Items.get_item(1) # tutorial watercan
 	#inventory[9] = Items.get_item(4) #scythe
 	#inventory[1] = Items.get_item(1) #stack test
 	#inventory[2] = Items.get_item(2) # seeds test
@@ -53,6 +57,9 @@ func get_bean():
 	add_to_inv(Items.get_item(25))
 
 func fall_asleep(exhausted=true):
+	print("[SLEEP] fall_asleep called, exhausted=", exhausted)
+	print("[SLEEP] animation_player valid: ", animation_player != null)
+	print("[SLEEP] player in tree: ", is_inside_tree())
 	actionable = false
 	if exhausted:
 		animation_player.play("sleep_exhausted")
@@ -60,6 +67,7 @@ func fall_asleep(exhausted=true):
 	else:
 		animation_player.play("sleep")
 		await get_tree().create_timer(3).timeout
+	print("[SLEEP] animation finished")
 	actionable = true
 	return
 
@@ -96,8 +104,11 @@ func _on_items_ready():
 	SignalBus.emit_signal("player_ready", self)
 
 func restore_pos():
-	pos_stack.pop_front()
-	position = pos_stack.pop_front() # call twice because push happens twice per cloning
+	if pos_stack.size() >= 2:
+		pos_stack.pop_front()
+		position = pos_stack.pop_front() # call twice because push happens twice per cloning
+	elif pos_stack.size() == 1:
+		position = pos_stack.pop_front()
 
 func get_suit():
 	add_to_inv(Items.get_item(23))
@@ -107,15 +118,17 @@ func get_strange_piece():
 	add_to_inv(Items.get_item(24))
 	return
 
-func drop(item):
+func drop(item, from_harvest = false):
 	if item != null:
 		if not item is DropItem and item.ID == 1:
 			SignalBus.emit_signal("tutorial_dropped")
-		can_pickup = false
 		get_tree().root.add_child(item)
 		item.global_position = position
-		await get_tree().create_timer(3).timeout
-		can_pickup = true
+		# Only apply pickup cooldown for manually dropped items, not harvested ones
+		if not from_harvest:
+			can_pickup = false
+			await get_tree().create_timer(3).timeout
+			can_pickup = true
 
 func pickup(item:DropItem):
 	if can_pickup and item != null:
@@ -228,10 +241,14 @@ func interact(obj):
 
 func water_or_harvest(obj:flower):
 	if held_item() == null:
+		print("[INTERACT] No held item")
 		return
 	if not History.has_happened("unlock_watering"):
+		print("[INTERACT] Watering not unlocked")
 		return
-	elif held_item() is Scythe:
+	print("[INTERACT] Held item: ", held_item(), " is Scythe: ", held_item() is Scythe)
+	if held_item() is Scythe:
+		print("[INTERACT] Calling harvest on ", obj)
 		obj.harvest()
 	elif held_item() is Watercan:
 		if held_item().use():

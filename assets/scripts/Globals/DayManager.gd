@@ -2,7 +2,7 @@ extends Node
 var frozen = false 
 var day_num = 1
 var time = (6 * 3600) / TIME_SCALE # 6 am scaled to game time
-const DAY_LENGTH = 300 #num of seconds (real life) in a day (game)
+const DAY_LENGTH = 450 #num of seconds (real life) in a day (game) - 1.5x slower than original 300
 #const DAY_LENGTH = 60 #debug day speed (very fast)
 const TIME_SCALE = 86400 / DAY_LENGTH
 
@@ -150,15 +150,18 @@ func on_midnight():
 	end_day()
 	
 func sleep(exhausted=true):
+	print("[DAYMANAGER] sleep called, frozen=", frozen, " exhausted=", exhausted)
 	if frozen:
+		print("[DAYMANAGER] sleep aborted - frozen!")
 		return
 	freeze()
+	print("[DAYMANAGER] calling fall_asleep on player: ", PlayerData.player)
 	await PlayerData.player.fall_asleep(exhausted)
 	await sleep_screen()
 	day_num -= 1
 	PlayerData.player.animated_sprite.rotation_degrees = 0
 	PlayerData.player.animated_sprite.position = Vector2(0,0)
-	SceneSwapper.teleport_home()
+	await SceneSwapper.teleport_home()
 	unfreeze()
 	if exhausted:
 		time = 10 * 3600 / TIME_SCALE #set time to 10am
@@ -166,6 +169,26 @@ func sleep(exhausted=true):
 		time = 8 * 3600 / TIME_SCALE #set time to 8am
 	prev_time = time
 	end_day()
+	# Plants grow and soil dries when waking up
+	SignalBus.emit_signal("morning_growth")
+	# UBI - prevent softlock if scrap shop closed but underwater not unlocked
+	apply_ubi()
+	# Auto-save after waking up (with small delay to ensure position is set)
+	await get_tree().create_timer(0.1).timeout
+	if SaveManager.current_slot >= 0:
+		SaveManager.save_game(SaveManager.current_slot)
+
+const UBI_AMOUNT = 25  # Daily UBI payment
+
+func apply_ubi():
+	# Only give UBI if player is in the "danger zone":
+	# Scrap shop is closed (can't buy seeds) but underwater isn't unlocked yet
+	if History.has_happened("scrappy_shop_closed") and not History.has_happened("unlock_water"):
+		if PlayerData.player:
+			PlayerData.player.money += UBI_AMOUNT
+			PlayerData.player.total_money_made += UBI_AMOUNT
+			PlayerData.player.check_money()  # Check for milestone progression
+			print("[UBI] Player received $", UBI_AMOUNT, " - Total: $", PlayerData.player.total_money_made)
 
 func sleep_screen():
 	var sleep_yscreen = load("res://assets/scenes/ui/sleepinfo.tscn").instantiate()

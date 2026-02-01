@@ -15,7 +15,18 @@ func _ready() -> void:
 		History.mark("unlock_watering")
 		SignalBus.emit_signal("unlock_watering")
 	SignalBus.connect("beanstalk_grew", _on_beanstalk_grew)
-	pass # Replace with function body.
+	# Apply saved farm data if loading a game
+	call_deferred("_apply_save_data")
+
+func _apply_save_data():
+	SaveManager.apply_farm_data(self)
+	# Apply clonable data (scale, inventory) even when loading into indoor scene
+	# This ensures the cloned player has correct data
+	var my_path = scene_file_path
+	if SaveManager._load_target_scene == "" or SaveManager._load_target_scene == my_path:
+		SaveManager.apply_player_data()
+	elif SaveManager.is_loading_save:
+		SaveManager.apply_clonable_data()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

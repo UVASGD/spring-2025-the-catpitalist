@@ -120,9 +120,49 @@ func cooldown():
 	busy = false
 
 func teleport_home():
+	# Pop back to overworld first
 	while not peek() is Overworld_area:
 		pop_and_return()
-	#PlayerData.player.global_position = Vector2(130,25) #hardcoded coords of front of farmhouse in tutorial.tscn
-	PlayerData.player.global_position = Vector2(-717, 196) #hardcode for testworld
-	#push("res://assets/scenes/farmhouse_indoors.tscn")
+	# Push into farmhouse and position player next to bed
+	push("res://assets/scenes/farmhouse_indoors.tscn")
+	await get_tree().process_frame
+	# Position player to the left of the bed
+	PlayerData.player.global_position = Vector2(860, 400)
 	return
+
+func reset_to_main_menu():
+	# Unpause game
+	get_tree().paused = false
+	
+	# Stop music and clear playlist
+	await Music.fade_out()
+	Music.playlist_stack.clear()
+	
+	# Clear all scenes from root except autoloads
+	for child in get_tree().root.get_children():
+		if child is CanvasLayer or child is Node2D or child is Control:
+			if child.name != "SaveManager" and child.name != "SceneSwapper":
+				child.queue_free()
+	
+	# Clear scene stack and permloads
+	scene_stack.clear()
+	permloads.clear()
+	
+	# Reset global state
+	DayManager.day_num = 1
+	DayManager.season = 0
+	DayManager.time = (6 * 3600) / DayManager.TIME_SCALE
+	DayManager.frozen = false
+	History.happened.clear()
+	NPCS.cache.clear()
+	PlayerData.player = null
+	SaveManager.current_slot = -1
+	SaveManager._pending_player_data = {}
+	SaveManager._pending_farm_data = {}
+	SaveManager.is_loading_save = false
+	
+	# Load fresh start screen
+	await get_tree().process_frame
+	var start_screen = load("res://assets/scenes/start_screen/start_screen.tscn").instantiate()
+	get_tree().root.add_child(start_screen)
+	scene_stack.push_front(start_screen)

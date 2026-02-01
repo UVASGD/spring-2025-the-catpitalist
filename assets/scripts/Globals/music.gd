@@ -53,7 +53,8 @@ func push(playlist: Array[String]):
 	
 func pop():
 	playlist_stack.pop_front()
-	play_random()
+	# Need to await play_random to ensure music transitions properly
+	await play_random()
 	#play_random_from_playlist(playlist_stack[0])
 
 func play(songname: String):
@@ -62,7 +63,10 @@ func play(songname: String):
 	if song:
 		current_playing = song
 		song.play()
-		song.connect("finished",_on_song_finish)
+		# Disconnect existing signal to avoid multiple connections
+		if song.is_connected("finished", _on_song_finish):
+			song.disconnect("finished", _on_song_finish)
+		song.connect("finished", _on_song_finish)
 
 func set_mode(newmode):
 	mode = newmode
@@ -77,7 +81,7 @@ func _on_song_finish():
 func play_random():
 	if playlist_stack.size() > 0:
 		if playlist_stack[0].size() > 0:
-			play(playlist_stack[0][randi_range(0, playlist_stack[0].size() - 1)])
+			await play(playlist_stack[0][randi_range(0, playlist_stack[0].size() - 1)])
 	
 	"""var keys = songplayers.keys()
 	if keys.size() > 0:

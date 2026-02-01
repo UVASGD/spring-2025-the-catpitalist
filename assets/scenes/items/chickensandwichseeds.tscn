@@ -25,7 +25,7 @@ count = 5
 description = "what??"
 sellable = true
 sell_price = 1
-buy_price = 1500
+buy_price = 75
 sprite_path = "res://assets/sprites/crops/seeds/chickensandwichseeds.png"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

@@ -16,6 +16,8 @@ func _on_backtogame_pressed() -> void:
 	pass # Replace with function body.
 
 
+func _on_mainmenu_pressed() -> void:
+	SceneSwapper.reset_to_main_menu()
+
 func _on_quitgame_pressed() -> void:
 	get_tree().quit()
-	pass # Replace with function body.

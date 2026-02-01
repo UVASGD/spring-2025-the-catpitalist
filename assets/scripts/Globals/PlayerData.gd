@@ -35,12 +35,14 @@ func clone_and_kill(): # removes reference to old plaeyr
 func clone():
 	if player:
 		var newplayer:Player = playerpacked.instantiate()
+		newplayer.is_clone = true  # Prevent tutorial watercan from being added
 		newplayer.money = player.money
 		newplayer.total_money_made = player.total_money_made
 		newplayer.inventory = player.inventory
 		newplayer.held_item_index = player.held_item_index
 		newplayer.pos_stack = player.pos_stack
 		newplayer.alter_scale = player.alter_scale
+		newplayer.scale = player.alter_scale  # Also copy actual scale
 		return newplayer
 
 func drop(index):

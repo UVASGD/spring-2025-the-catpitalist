@@ -23,7 +23,7 @@ max_stack = 99
 count = 1
 description = "for spaghetti"
 sellable = true
-sell_price = 3
+sell_price = 20
 buy_price = 5
 sprite_path = "res://assets/sprites/crops/fullgrown/basil.png"
 

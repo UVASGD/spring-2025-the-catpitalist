@@ -24,7 +24,7 @@ max_stack = 64
 count = 16
 sellable = true
 sell_price = 1
-buy_price = 100000
+buy_price = 1000
 sprite_path = "res://assets/sprites/crops/seeds/wheatseeds.png"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

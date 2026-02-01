@@ -30,6 +30,7 @@ SceneSwapper="*res://assets/scripts/scene_swapper.gd"
 SceneStackDebug="*res://assets/scenes/ui/scene_stack_debug.tscn"
 History="*res://history.gd"
 NpcCache="*res://npc_cache.gd"
+SaveManager="*res://assets/scripts/Globals/SaveManager.gd"
 
 [display]
 

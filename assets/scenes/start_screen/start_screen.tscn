@@ -11,6 +11,21 @@
 [ext_resource type="AudioStream" uid="uid://dkhlf2llmp6m1" path="res://assets/audio/music/maintheme.mp3" id="9_6mqn7"]
 [ext_resource type="AudioStream" uid="uid://cvmggemofibq2" path="res://assets/audio/ui/select.mp3" id="10_cj0mp"]
 
+[sub_resource type="Animation" id="Animation_52nsr"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
 [sub_resource type="Animation" id="Animation_ebvri"]
 resource_name = "sway"
 length = 30.0
@@ -26,21 +41,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(0, 0), Vector2(-1172, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_52nsr"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_m6a05"]
@@ -115,6 +115,21 @@ _data = {
 "new_animation_2": SubResource("Animation_ouvnc")
 }
 
+[sub_resource type="Animation" id="Animation_rfpvx"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(5, 2)]
+}
+
 [sub_resource type="Animation" id="Animation_mlrmx"]
 resource_name = "enter"
 length = 1.5
@@ -129,21 +144,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
 "values": [Vector2(5, -326), Vector2(5, 2), Vector2(5, -24), Vector2(5, 2)]
-}
-
-[sub_resource type="Animation" id="Animation_rfpvx"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(5, 2)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_m87ae"]
@@ -167,21 +167,6 @@ tracks/0/keys = {
 "values": [Color(1, 1, 1, 1)]
 }
 
-[sub_resource type="Animation" id="Animation_y65fe"]
-resource_name = "start"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(0, 0, 0, 1), Color(1, 1, 1, 1)]
-}
-
 [sub_resource type="Animation" id="Animation_jckeo"]
 resource_name = "end"
 tracks/0/type = "value"
@@ -195,6 +180,21 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_y65fe"]
+resource_name = "start"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_tcafl"]
@@ -275,6 +275,22 @@ libraries = {
 "": SubResource("AnimationLibrary_o52x2")
 }
 
+[node name="LoadButton" type="Button" parent="bg"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.399454
+anchor_top = 0.7
+anchor_right = 0.399454
+anchor_bottom = 0.788926
+offset_left = 61.6989
+offset_top = 115.0
+offset_right = 311.699
+offset_bottom = 165.0
+scale = Vector2(0.6, 0.56)
+theme_override_font_sizes/font_size = 20
+text = "Load Game"
+
 [node name="title" type="TextureRect" parent="bg"]
 layout_mode = 0
 offset_left = 5.0
@@ -289,6 +305,19 @@ libraries = {
 "": SubResource("AnimationLibrary_m87ae")
 }
 autoplay = "enter"
+
+[node name="QuitButton" type="Button" parent="bg"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -50.0
+offset_top = 10.0
+offset_right = -10.0
+offset_bottom = 50.0
+grow_horizontal = 0
+theme_override_font_sizes/font_size = 24
+text = "X"
 
 [node name="shading" type="ColorRect" parent="."]
 layout_mode = 1
@@ -314,3 +343,5 @@ autoplay = true
 stream = ExtResource("10_cj0mp")
 
 [connection signal="pressed" from="bg/TextureButton" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="bg/LoadButton" to="." method="_on_load_pressed"]
+[connection signal="pressed" from="bg/QuitButton" to="." method="_on_quit_button_pressed"]

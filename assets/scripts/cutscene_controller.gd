@@ -16,6 +16,11 @@ var npcs_in_scene: Array[CutsceneNPC]
 @export var cutscene_length: int
 @export var hidden_things:Array[Node2D]
 func _ready() -> void:
+	# Skip cutscene if tutorial already finished (loading a save)
+	if History.has_happened("tutorial_finished") or History.has_happened("unlock_city"):
+		queue_free()
+		return
+	
 	SignalBus.connect("dialogue_finished", _on_dialogue_finish)
 	SignalBus.connect("new_dialogue", _on_dialogue)
 	for i in get_children().filter(func(child): return child is CutsceneNPC):
@@ -24,7 +29,8 @@ func _ready() -> void:
 	elapse_time = true
 	if hides_things:
 		for node in hidden_things:
-			node.call_deferred("hide")
+			if is_instance_valid(node):
+				node.call_deferred("hide")
 	if $Player:
 		align_player()
 	PlayerData.player.hide_ui()
@@ -115,8 +121,8 @@ func _physics_process(delta: float) -> void:
 func end_cutscene():
 	if hides_things:
 		for node in hidden_things:
-			
-			node.show()
+			if is_instance_valid(node):
+				node.show()
 	PlayerData.player.actionable = true
 	PlayerData.player.show_ui()
 	if signals_on_finish:
@@ -125,4 +131,3 @@ func end_cutscene():
 	DayManager.unfreeze()
 	SignalBus.emit_signal("tutorial_finished")
 	queue_free()
-	pass # Replace with function body.

@@ -28,3 +28,13 @@ func update_shading():
 		else:
 			held_plant = null
 			$hitbox.input_pickable = true
+
+func _restore_plant(plant_obj: flower, stage: int):
+	held_plant = plant_obj
+	add_child(plant_obj)
+	$hitbox.input_pickable = false
+	# Update visual to match saved stage
+	for i in range(plant_obj.stages.size()):
+		plant_obj.stages[i].hide()
+	if stage < plant_obj.stages.size():
+		plant_obj.stages[stage].show()

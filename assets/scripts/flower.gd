@@ -23,7 +23,7 @@ var bloomed = false
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	super()
-	SignalBus.connect("day_end", age)
+	SignalBus.connect("morning_growth", age)
 	SignalBus.connect("plant_watered", get_watered)
 	if debug:
 		if debugHolder:
@@ -57,10 +57,20 @@ func age():
 	return
 	
 func harvest():
-	var to_drop
-	if dead:
+	var to_drop = null
+	# stages: 0=seed, 1=sprout, 2=bud, 3=bloom, 4=dead
+	var bloom_index = stages.size() - 2  # index 3
+	
+	print("[HARVEST] current_stage_index=", current_stage_index, " bloom_index=", bloom_index, " dead=", dead, " bloomed=", bloomed)
+	print("[HARVEST] seed_item_id=", seed_item_id, " flower_item_id=", flower_item_id)
+	
+	if dead or current_stage_index >= stages.size() - 1:
+		# Dead plants drop nothing
+		print("[HARVEST] Result: DEAD - dropping nothing")
 		pass
-	elif bloomed:
+	elif current_stage_index == bloom_index:
+		# Only bloom stage drops flowers
+		print("[HARVEST] Result: BLOOM - dropping flower id=", flower_item_id)
 		to_drop = Items.get_item(flower_item_id)
 		to_drop.count = flowers_dropped_on_harvest
 		
@@ -69,13 +79,15 @@ func harvest():
 			var seed_item = Items.get_item(seed_item_id)
 			seed_item.count = seeds_dropped_on_harvest
 			var seed_drop = Items.create_drop_item(seed_item)
-			PlayerData.player.drop(seed_drop)
+			PlayerData.player.drop(seed_drop, true)  # from_harvest = true
 	else:
+		# Not fully grown (seed/sprout/bud) - just drop the seed back
+		print("[HARVEST] Result: NOT GROWN - dropping seed id=", seed_item_id)
 		to_drop = Items.get_item(seed_item_id)
 		to_drop.count = 1
 	if to_drop:
 		var dropped = Items.create_drop_item(to_drop)
-		PlayerData.player.drop(dropped)
+		PlayerData.player.drop(dropped, true)  # from_harvest = true
 	#delete self
 	self.queue_free()
 	

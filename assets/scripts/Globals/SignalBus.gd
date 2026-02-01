@@ -92,6 +92,7 @@ signal alien_learn_english
 signal beanstalk_grew
 signal give_rainbow_seed
 signal sleepinfo_done
+signal morning_growth
 func emit(string):
 	emit_signal(string)
 	print("emitted: ", string)

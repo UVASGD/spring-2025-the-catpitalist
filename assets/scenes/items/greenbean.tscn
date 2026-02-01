@@ -23,7 +23,7 @@ max_stack = 99
 count = 1
 description = "yum"
 sellable = true
-sell_price = 10
+sell_price = 25
 buy_price = 5
 sprite_path = "res://assets/sprites/crops/fullgrown/greenbean.png"
 

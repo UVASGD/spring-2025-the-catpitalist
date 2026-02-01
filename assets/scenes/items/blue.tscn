@@ -23,7 +23,7 @@ max_stack = 99
 count = 1
 description = "It's so beautiful!"
 sellable = true
-sell_price = 500
+sell_price = 150
 sprite_path = "res://assets/sprites/crops/fullgrown/blue.png"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
